@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CellOmics Explorer Studio</title>
+  <meta name="description" content="Interactive cell-to-multi-omics visualization portfolio prototype." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">GenomeVista extension prototype</div>
+        <h1>CellOmics Explorer Studio</h1>
+      </div>
+      <div class="header-actions">
+        <span class="chip">Live application: cell-omics-explorer</span><span class="chip">Browser-local demo</span>
+        <button id="loadDemoBtn" class="primary">Load demo dataset</button>
+      </div>
+    </header>
+
+    <aside class="sidebar" aria-label="Omics modules">
+      <div class="sidebar-title">CELL → DATA</div>
+      <nav id="moduleNav"></nav>
+      <div class="sidebar-note">
+        <strong>Portfolio scope</strong>
+        <span>Interactive prototype with representative parsers and realistic sample data. Production-scale BAM/H5AD/Hi-C/PDB parsing should be delegated to backend libraries.</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section id="hero" class="hero panel">
+        <div>
+          <span class="kicker">Integrated molecular atlas</span>
+          <h2>Explore a cell, then follow each molecule into its experimental file.</h2>
+          <p>Click an organelle or choose an omics module. The interface connects biological location → molecule → experiment → file format → visualization → interpretation.</p>
+          <div class="hero-stats">
+            <div><strong>12</strong><span>omics workspaces</span></div>
+            <div><strong>20+</strong><span>recognized file types</span></div>
+            <div><strong>MS1+MS2</strong><span>proteomics demo</span></div>
+          </div>
+        </div>
+        <div class="flow-mini" aria-label="Multi-omics flow">
+          <div>DNA</div><span>→</span><div>RNA</div><span>→</span><div>Protein</div><span>→</span><div>Metabolite</div><span>→</span><div>Phenotype</div>
+        </div>
+      </section>
+
+      <section id="workspace" class="workspace"></section>
+    </main>
+  </div>
+
+  <template id="cell-template">
+    <div class="grid-2">
+      <div class="panel">
+        <div class="section-heading">
+          <div><span class="kicker">Interactive cell map</span><h2>Cell Explorer</h2></div>
+          <span class="chip">click an organelle</span>
+        </div>
+        <svg id="cellSvg" class="cell-svg" viewBox="0 0 760 520" role="img" aria-label="Interactive animal cell diagram">
+          <defs>
+            <radialGradient id="cellFill"><stop offset="0%" stop-color="#183d50"/><stop offset="100%" stop-color="#0d2431"/></radialGradient>
+            <linearGradient id="nucFill"><stop offset="0%" stop-color="#7b6af0"/><stop offset="100%" stop-color="#5146b8"/></linearGradient>
+          </defs>
+          <ellipse class="organelle membrane" data-organelle="membrane" cx="380" cy="260" rx="330" ry="210" fill="url(#cellFill)" />
+          <ellipse class="organelle nucleus" data-organelle="nucleus" cx="350" cy="245" rx="112" ry="93" fill="url(#nucFill)"/>
+          <circle cx="374" cy="226" r="26" fill="#aa9cff" opacity=".9" pointer-events="none"/>
+          <g class="organelle mito" data-organelle="mitochondria" transform="translate(505 125) rotate(-13)">
+            <ellipse cx="0" cy="0" rx="72" ry="34"/>
+            <path d="M-50,-8 C-30,20 -10,-20 10,8 S42,12 55,-8"/>
+          </g>
+          <g class="organelle mito" data-organelle="mitochondria" transform="translate(205 365) rotate(14)">
+            <ellipse cx="0" cy="0" rx="63" ry="30"/>
+            <path d="M-46,-7 C-25,17 -8,-17 12,7 S38,12 48,-7"/>
+          </g>
+          <g class="organelle er" data-organelle="er">
+            <path d="M180 175 C225 135, 270 145, 306 175 M170 195 C220 165, 267 172, 300 197 M170 215 C218 190, 260 199, 296 218"/>
+            <circle cx="194" cy="167" r="4"/><circle cx="221" cy="153" r="4"/><circle cx="248" cy="157" r="4"/><circle cx="186" cy="191" r="4"/><circle cx="232" cy="177" r="4"/>
+          </g>
+          <g class="organelle golgi" data-organelle="golgi">
+            <path d="M498 300 C545 278,585 282,610 300"/><path d="M491 315 C540 295,585 301,617 316"/><path d="M490 332 C545 315,584 320,608 337"/><path d="M500 348 C542 337,574 339,597 352"/>
+            <circle cx="623" cy="302" r="8"/><circle cx="618" cy="343" r="6"/>
+          </g>
+          <g class="organelle lysosome" data-organelle="lysosome"><circle cx="552" cy="405" r="31"/><circle cx="541" cy="397" r="5"/><circle cx="563" cy="414" r="7"/></g>
+          <g class="organelle ribosome" data-organelle="ribosome"><circle cx="285" cy="365" r="10"/><circle cx="300" cy="370" r="8"/><circle cx="295" cy="356" r="7"/></g>
+          <g class="organelle cytoplasm" data-organelle="cytoplasm"><circle cx="125" cy="275" r="18"/><circle cx="145" cy="286" r="9"/></g>
+          <text x="350" y="250" text-anchor="middle">Nucleus</text>
+          <text x="505" y="80" text-anchor="middle">Mitochondria</text>
+          <text x="220" y="130" text-anchor="middle">ER</text>
+          <text x="556" y="275" text-anchor="middle">Golgi</text>
+          <text x="552" y="455" text-anchor="middle">Lysosome</text>
+          <text x="295" y="405" text-anchor="middle">Ribosome</text>
+          <text x="126" y="325" text-anchor="middle">Cytoplasm</text>
+          <text x="382" y="490" text-anchor="middle">Cell membrane</text>
+        </svg>
+      </div>
+      <div id="organellePanel" class="panel detail-panel"></div>
+    </div>
+    <div class="panel"><div class="section-heading"><div><span class="kicker">Cell-to-file logic</span><h3>From location to data</h3></div></div><div id="cellFlow" class="pipeline"></div></div>
+  </template>
+
+  <template id="generic-template">
+    <div id="genericContent"></div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
