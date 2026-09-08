@@ -16,8 +16,12 @@ The native React upload workspace replaces the old single-file preview. Select t
 | FCS and image files | Export-to-table guidance; no image viewer or event decoder |
 | Compressed archives | Decompress externally; archive contents are never extracted |
 
-24 synthetic examples are available under `/data/` and in `data/templates/`. The catalog covers aligned DNA, reads, variants, intervals, haplotypes, methylation, accessibility, Hi-C contacts, expression, isoforms, cell embeddings, spatial spots, protein abundance, MS/MS peaks, PTMs, metabolites, lipids, glycans, immune repertoire, cytometry events, image measurements, network edges, clone fractions and multi-omics evidence.
+30 synthetic examples are available under `/data/` and in `data/templates/`. The catalog covers aligned DNA, reads, variants, intervals, haplotypes, methylation, accessibility, Hi-C contacts, expression, isoforms, cell embeddings, spatial spots, protein abundance, MS/MS peaks, PTMs, metabolites, lipids, glycans, immune repertoire, cytometry events, image measurements, network edges, clone fractions and multi-omics evidence.
 
 5 MiB per text file; 20 MiB total previews; 20 files per batch; 40 session entries. Delimited tables are capped at 10,000 data rows. Structured previews retain up to 200 rows and show up to 100 matching rows. Missing values are preserved, never filled with zero. Ready means the table can be inspected, not that all biological semantics are validated.
 
 Session datasets live in React memory across application navigation and clear on reload. Opening DNA analysis stores the alignment separately in sessionStorage. Paths shown in the sample library refer only to bundled application assets, not the user's local filesystem. No remote URL fetching, folder import, server-side storage, or cross-layer statistical integration is implemented.
+
+RNA FASTA: select Transcriptome before import; U-containing IUPAC RNA alphabet. Protein FASTA: select Proteome before import; amino-acid alphabet. These imports never trigger the aligned DNA analysis path. Participant-aware sequences must be supplied in `hierarchy_sequences.tsv` with metadata rather than assigned by filename.
+
+The hierarchy uses matching participant_id and sample_id and exact lowercase molecule keys from the node registry. Coordinates require finite x/y/z plus unit and resolution. A time series must have one comparable unit and one value per time; mixed units or duplicate times show an explanatory message instead of silent averaging.

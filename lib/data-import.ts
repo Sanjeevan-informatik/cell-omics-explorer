@@ -29,6 +29,14 @@ export function inspectData(name: string, text: string | null, category: DataCat
     if(!text.trim())throw new Error('This file is empty.');
     if(text.includes('\0'))throw new Error('Binary content detected. Select a text export.');
     if(['fa','fasta','fna'].includes(ext)) {
+      if(category==='transcriptome'||category==='proteome') {
+        if(!text.trimStart().startsWith('>'))throw new Error('FASTA requires a header starting with >.');
+        const records=text.trim().split(/^>/m).filter(Boolean).map(block=>{const [id,...lines]=block.split(/\r?\n/);return {id:id.trim(),sequence:lines.join('').replace(/\s/g,'').toUpperCase()};});
+        const alphabet=category==='transcriptome'?/^[ACGURYSWKMBDHVN]+$/:/^[ACDEFGHIKLMNPQRSTVWYBXZJUO*]+$/;
+        if(records.some(r=>!r.id||!alphabet.test(r.sequence)))throw new Error('Invalid '+(category==='transcriptome'?'RNA (use U, not T)':'protein')+' sequence or empty header.');
+        return {...result,status:'ready',format:category==='transcriptome'?'RNA FASTA':'Protein FASTA',headers:['sequence_id','sequence'],rows:records.slice(0,200).map(r=>[r.id,r.sequence]),rowCount:records.length,message:`${records.length} molecular sequences validated.`,nextStep:'Sequence only. Body location and participant identity require separately supplied sample metadata.'};
+      }
+
       const records=parseFasta(text);
       return {...result,status:'ready',format:'Aligned FASTA',category:'genome',headers:['sequence','length'],rows:records.map(r=>[r.id,String(r.sequence.length)]),rowCount:records.length,fasta:text,message:`${records.length} aligned DNA sequences validated.`,nextStep:'Open DNA analysis to calculate variants, distances, and a tree.',templateId:'alignment'};
     }
@@ -61,8 +69,8 @@ export function inspectData(name: string, text: string | null, category: DataCat
       if(rows.some(r=>r.length!==headers.length))throw new Error('Some rows have a different number of columns. Check the delimiter and quoting.');
       const template=TEMPLATES.find(t=>t.category===category&&t.columns?.every(c=>headers.includes(c)));
       const missing=rows.reduce((n,r)=>n+r.filter(v=>!v.trim()||/^(NA|N\/A|null|NaN)$/i.test(v.trim())).length,0);
-      const numeric=new Set(['beta','fraction','position','start','end','count','duplicate_count','mz','intensity','rt_min','tpm','abundance','control','case','x','y','signal','expression','area_um2','mean_intensity','fold_change','CD3','CD4','CD8']);
-      for(const [index,h] of headers.entries())if(template&&numeric.has(h))for(const row of rows){const v=row[index].trim();if(!v||/^(NA|N\/A|null|NaN)$/i.test(v))continue;const n=Number(v);if(!Number.isFinite(n))throw new Error(`Column ${h} contains a nonnumeric value.`);if(['beta','fraction'].includes(h)&&(n<0||n>1))throw new Error(`${h} must be between 0 and 1.`);if(!['x','y','fold_change'].includes(h)&&n<0)throw new Error(`${h} cannot be negative.`);}
+      const numeric=new Set(['beta','fraction','position','start','end','count','duplicate_count','mz','intensity','rt_min','tpm','abundance','control','case','x','y','z','time_hours','value','signal','expression','area_um2','mean_intensity','fold_change','CD3','CD4','CD8']);
+      for(const [index,h] of headers.entries())if(template&&numeric.has(h))for(const row of rows){const v=row[index].trim();if(!v||/^(NA|N\/A|null|NaN)$/i.test(v))continue;const n=Number(v);if(!Number.isFinite(n))throw new Error(`Column ${h} contains a nonnumeric value.`);if(['beta','fraction'].includes(h)&&(n<0||n>1))throw new Error(`${h} must be between 0 and 1.`);if(!['x','y','z','value','fold_change'].includes(h)&&n<0)throw new Error(`${h} cannot be negative.`);}
       return {...result,status:'ready',headers,rows:rows.slice(0,200),rowCount:rows.length,missing,templateId:template?.id,message:`${rows.length} rows loaded${missing?`; ${missing} missing values preserved`:''}. ${template?'Matches '+template.title+'.':'Generic table; biological schema not validated.'}`,nextStep:'Inspect rows in the matching workspace. Values are shown as supplied; no normalization or statistical analysis is performed.'};
     }
     return {...result,message:'Text preview available; this format has no scientific parser in the app.',nextStep:'Convert to a matching CSV/TSV template for a structured table.',headers:['text'],rows:text.split(/\r?\n/).slice(0,80).map(l=>[l.slice(0,500)]),rowCount:text.split(/\r?\n/).length};

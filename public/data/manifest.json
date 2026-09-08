@@ -1,5 +1,92 @@
 [
   {
+    "id": "rna-sequence",
+    "category": "transcriptome",
+    "title": "RNA sequence",
+    "filename": "rna_sequence.fasta",
+    "description": "Synthetic RNA with U bases; sequence preview, not expression quantification.",
+    "units": "1-based nucleotide positions",
+    "synthetic": true
+  },
+  {
+    "id": "protein-sequence",
+    "category": "proteome",
+    "title": "Protein sequence",
+    "filename": "protein_sequence.fasta",
+    "description": "Synthetic amino-acid sequence; no folding prediction.",
+    "units": "1-based residue positions",
+    "synthetic": true
+  },
+  {
+    "id": "hierarchy-metadata",
+    "category": "multiomics",
+    "title": "Participant & sample metadata",
+    "filename": "hierarchy_metadata.tsv",
+    "description": "Two fictional participants, blood/liver specimens, single-cell and bulk assays.",
+    "columns": [
+      "participant_id",
+      "sample_id",
+      "tissue",
+      "cell_type",
+      "assay_mode",
+      "cell_id"
+    ],
+    "units": "Categorical metadata; synthetic participants",
+    "synthetic": true
+  },
+  {
+    "id": "hierarchy-sequences",
+    "category": "multiomics",
+    "title": "Linked molecular sequences",
+    "filename": "hierarchy_sequences.tsv",
+    "description": "DNA, RNA, protein and peptide records linked by participant and sample IDs.",
+    "columns": [
+      "participant_id",
+      "sample_id",
+      "molecule",
+      "sequence"
+    ],
+    "units": "DNA/RNA nucleotides or protein residues; synthetic",
+    "synthetic": true
+  },
+  {
+    "id": "hierarchy-coordinates",
+    "category": "multiomics",
+    "title": "3D schematic coordinates",
+    "filename": "hierarchy_coordinates.tsv",
+    "description": "Synthetic coarse points for seven molecule layers. Not atoms or experimentally resolved structures.",
+    "columns": [
+      "participant_id",
+      "sample_id",
+      "molecule",
+      "point_id",
+      "x",
+      "y",
+      "z",
+      "unit",
+      "resolution"
+    ],
+    "units": "Schematic units; no physical length or inferred bonds",
+    "synthetic": true
+  },
+  {
+    "id": "hierarchy-time",
+    "category": "multiomics",
+    "title": "Molecular time course",
+    "filename": "hierarchy_timecourse.tsv",
+    "description": "Four synthetic measurement times for seven molecule layers; not a moving molecular trajectory.",
+    "columns": [
+      "participant_id",
+      "sample_id",
+      "molecule",
+      "time_hours",
+      "value",
+      "unit"
+    ],
+    "units": "Hours; arbitrary measurement units",
+    "synthetic": true
+  },
+  {
     "id": "alignment",
     "category": "genome",
     "title": "Aligned DNA",

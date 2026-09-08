@@ -51,7 +51,7 @@ API docs: **http://localhost:8000/docs**. Set `NEXT_PUBLIC_API_BASE_URL=http://l
 | Imaging & cytometry | Synthetic examples | Microscopy and event-marker concepts |
 | Pathways/evolution/integration | Synthetic examples | Signaling, tumor clone relationships, and EGFR evidence |
 
-Open **Upload data & samples** to select multiple local files, drag and drop a batch, or load any of **24 synthetic templates across 11 omics families**. Samples are served from `/data/` and maintained in `data/templates/`, with a manifest describing units and expected columns. Load all samples or only the selected category.
+Open **Upload data & samples** to select multiple local files, drag and drop a batch, or load any of **30 synthetic templates across 11 omics families**. Samples are served from `/data/` and maintained in `data/templates/`, with a manifest describing units and expected columns. Load all samples or only the selected category.
 
 Ready tables appear in their selected omics workspace. Invalid files show correction guidance; binary files show specialist conversion routes. Missing data remains empty until a file or sample is selected. Teaching demos require an explicit action and remain separate from uploaded measurements. FASTA can be passed directly to DNA analysis.
 
@@ -97,3 +97,11 @@ This repository has its own CellOmics Explorer deployment. The live application 
 ## License
 
 [MIT](LICENSE). The migration retains the supplied project's license and attribution.
+
+## Participant-aware hierarchical model
+
+Open **DNA → RNA → protein** in the navigation, then **Load hierarchy samples**. Select a fictional participant and specimen (blood leukocytes, a single CD4 T cell, or hepatocyte-enriched liver tissue). Every hierarchy node opens the same detail panel with 2D sequence/features, 3D coordinates, time measurements, and biological provenance. RNA now accepts U-containing FASTA and proteins have their own sequence alphabet.
+
+Six new templates include RNA/protein FASTA plus metadata, linked sequences, schematic 3D points, and time-course tables. Match `participant_id`, `sample_id`, and `molecule` across files. Built-in samples and uploaded files are kept separate. Body location and cell type are supplied metadata, never inferred from a sequence. The viewer reads only retained preview rows (first 200 per file).
+
+DNA/RNA base selection opens 2D chemistry and rotatable 3D heavy-atom schematics, including uracil. These omit sugar, phosphate, and explicit hydrogens. Other 3D views plot supplied coordinates without inferred bonds. Synthetic coordinates are coarse teaching points, not resolved or predicted folds. The 4D tab shows time-course measurements, not a molecular-dynamics trajectory. Molecular layers without matching evidence show the required input fields.
