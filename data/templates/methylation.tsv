@@ -1,0 +1,5 @@
+feature	sample	beta
+promoter_A	control	0.18
+promoter_A	case	0.78
+promoter_B	control	0.42
+promoter_B	case	0.36

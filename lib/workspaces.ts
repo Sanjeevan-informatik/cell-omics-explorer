@@ -1,6 +1,6 @@
 export const WORKSPACES = [
   { id: "cell", label: "Cell explorer", group: "Start", detail: "Select a cell compartment and follow its molecules into experimental data." },
-  { id: "loader", label: "Data preview", group: "Start", detail: "Preview small local files. Recognized binary formats require specialist tools." },
+  { id: "loader", label: "Upload data & samples", group: "Start", detail: "Preview small local files. Recognized binary formats require specialist tools." },
   { id: "genome", label: "Variant examples", group: "Genome & regulation", detail: "Synthetic variants and chromosome tracks; use DNA analysis for aligned FASTA." },
   { id: "epigenome", label: "Epigenome & Hi-C", group: "Genome & regulation", detail: "Teaching examples of methylation and contact maps, not a Hi-C processing pipeline." },
   { id: "transcriptome", label: "Transcriptome", group: "Expression & molecules", detail: "Synthetic expression and alternative-splicing examples." },

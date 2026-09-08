@@ -1,13 +1,23 @@
-# Format support
+# Data import and format support
 
-| Input | Current behavior | Limit / unsupported behavior |
-| --- | --- | --- |
-| Aligned DNA FASTA | Analysis in browser or optional API | 2–50 sequences, up to 20,000 sites |
-| FASTA preview | Record/header and symbol-shape checks | No automatic alphabet or alignment inference |
-| Four-line FASTQ | Header, nucleotide, quality-character and length checks | Wrapped FASTQ not supported |
-| VCF | Basic header, eight-column and positive-position checks | No complete allele/genotype validation |
-| CSV/TSV, BED/GTF/GFF3, MSP, PDB/mmCIF, mzML/XML | Escaped text preview only | No schema validation or binary-array decoding |
-| BAM/CRAM/BCF, H5AD/H5, Hi-C/Cooler, FCS, TIFF/Zarr, bigWig | Recognized only | Requires external specialist parser |
-| Compressed files | Recognized only | Decompress externally |
+The native React upload workspace replaces the old single-file preview. Select the destination category before uploading tables. FASTA, VCF and BED route to Genome & variants. Each file records its origin (uploaded or synthetic sample), status, format, row count, missing-value count and next action.
 
-All text previews are capped at 5 MiB and do not update the teaching panels. The bundled examples are synthetic. The initial explorer's more expansive format list described a future production plan, not implemented parsing.
+| Input | Current behavior |
+| --- | --- |
+| Aligned DNA FASTA | Validation and handoff to DNA analysis; 2–50 sequences × up to 20,000 sites |
+| Four-line FASTQ | Record/base/quality validation and read preview; alignment requires external tools |
+| VCF | Basic headers, record columns and positions; no full genotype/allele validation |
+| BED | Nonnegative start, end greater than start; 0-based half-open intervals |
+| CSV/TSV/text tables | Delimited parser including quoted fields, basic row/header checks, structured preview |
+| Tables matching catalog schemas | Additional numeric and beta/fraction range checks; no normalization |
+| Other text, including PDB/mmCIF and Matrix Market | Plain-text preview; no scientific parser |
+| BAM/CRAM/BCF, bigWig/bigBed, Hi-C/Cooler, H5AD/H5/loom/RDS | Recognition and conversion guidance |
+| mzML/mzXML and vendor MS files | Specialist conversion guidance; no spectrum decoding |
+| FCS and image files | Export-to-table guidance; no image viewer or event decoder |
+| Compressed archives | Decompress externally; archive contents are never extracted |
+
+24 synthetic examples are available under `/data/` and in `data/templates/`. The catalog covers aligned DNA, reads, variants, intervals, haplotypes, methylation, accessibility, Hi-C contacts, expression, isoforms, cell embeddings, spatial spots, protein abundance, MS/MS peaks, PTMs, metabolites, lipids, glycans, immune repertoire, cytometry events, image measurements, network edges, clone fractions and multi-omics evidence.
+
+5 MiB per text file; 20 MiB total previews; 20 files per batch; 40 session entries. Delimited tables are capped at 10,000 data rows. Structured previews retain up to 200 rows and show up to 100 matching rows. Missing values are preserved, never filled with zero. Ready means the table can be inspected, not that all biological semantics are validated.
+
+Session datasets live in React memory across application navigation and clear on reload. Opening DNA analysis stores the alignment separately in sessionStorage. Paths shown in the sample library refer only to bundled application assets, not the user's local filesystem. No remote URL fetching, folder import, server-side storage, or cross-layer statistical integration is implemented.

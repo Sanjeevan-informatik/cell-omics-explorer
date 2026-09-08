@@ -41,7 +41,7 @@ API docs: **http://localhost:8000/docs**. Set `NEXT_PUBLIC_API_BASE_URL=http://l
 | DNA analysis | Implemented | Validate aligned FASTA, QC, GC composition, variants, p-distance/JC69/K2P, UPGMA, JSON/Newick exports |
 | Sequence map | Implemented | Linked position selection and base-by-base alignment navigation |
 | DNA → RNA → protein | Teaching model | Linked codons and residues with conceptual molecular views |
-| Data preview | Implemented, bounded | Basic FASTA/FASTQ/VCF validation; other text preview; binary recognition only |
+| Upload data & samples | Implemented, bounded | Multi-file input, CSV/TSV tables, FASTA/FASTQ/VCF/BED validation, sample catalog and conversion guidance |
 | Epigenome & Hi-C | Synthetic examples | Methylation table and contact-map illustration |
 | Transcriptome | Synthetic examples | Expression and exon/isoform illustration |
 | Single cell & spatial | Synthetic examples | Predetermined clusters and spatial positions, not computed UMAP |
@@ -51,7 +51,11 @@ API docs: **http://localhost:8000/docs**. Set `NEXT_PUBLIC_API_BASE_URL=http://l
 | Imaging & cytometry | Synthetic examples | Microscopy and event-marker concepts |
 | Pathways/evolution/integration | Synthetic examples | Signaling, tumor clone relationships, and EGFR evidence |
 
-Loading a preview file does **not** replace the synthetic datasets in teaching panels. BAM/CRAM, H5AD, Hi-C, and other binary files are not parsed or automatically sent to a backend. See [format support](docs/FORMAT_SUPPORT.md).
+Open **Upload data & samples** to select multiple local files, drag and drop a batch, or load any of **24 synthetic templates across 11 omics families**. Samples are served from `/data/` and maintained in `data/templates/`, with a manifest describing units and expected columns. Load all samples or only the selected category.
+
+Ready tables appear in their selected omics workspace. Invalid files show correction guidance; binary files show specialist conversion routes. Missing data remains empty until a file or sample is selected. Teaching demos require an explicit action and remain separate from uploaded measurements. FASTA can be passed directly to DNA analysis.
+
+Limits: 5 MiB per text file, 20 MiB of previews per session, 20 files per batch, 40 files total, and 10,000 rows for delimited tables. Table previews retain the first 200 rows and display/filter that subset. Files stay in browser memory and the upload list clears on refresh; opening FASTA analysis separately stores that alignment in tab session storage. There is no server upload store, remote path/URL importer, or universal binary parser. See [format support](docs/FORMAT_SUPPORT.md).
 
 DNA analysis accepts 2–50 aligned sequences of up to 20,000 sites. Positions are 1-based alignment columns, not automatically mapped human reference coordinates. Pairwise noncanonical bases are excluded; null distances indicate saturation or no comparable bases. UPGMA assumes approximately clock-like evolution. The 30-base coding example translates to 10 amino acids within a longer protein context, not 30 amino acids. Conceptual structures are not experimentally resolved structures or folding predictions.
 

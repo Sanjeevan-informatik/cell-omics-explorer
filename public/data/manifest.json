@@ -1,0 +1,332 @@
+[
+  {
+    "id": "alignment",
+    "category": "genome",
+    "title": "Aligned DNA",
+    "filename": "aligned_dna.fasta",
+    "description": "Three aligned sequences ready for DNA analysis.",
+    "units": "1-based alignment columns",
+    "synthetic": true
+  },
+  {
+    "id": "reads",
+    "category": "genome",
+    "title": "Sequencing reads",
+    "filename": "reads.fastq",
+    "description": "Two four-line FASTQ reads with quality scores.",
+    "units": "Phred+33 example",
+    "synthetic": true
+  },
+  {
+    "id": "variants",
+    "category": "genome",
+    "title": "Variant calls",
+    "filename": "variants.vcf",
+    "description": "Synthetic variants on an artificial demo chromosome.",
+    "units": "1-based positions; assembly: demo",
+    "synthetic": true
+  },
+  {
+    "id": "intervals",
+    "category": "genome",
+    "title": "Genome intervals",
+    "filename": "intervals.bed",
+    "description": "Two named intervals on an artificial chromosome.",
+    "units": "0-based, half-open; assembly: demo",
+    "synthetic": true
+  },
+  {
+    "id": "haplotypes",
+    "category": "genome",
+    "title": "Phased haplotypes",
+    "filename": "haplotypes.tsv",
+    "description": "Processed phased genotype table; no phasing is computed.",
+    "columns": [
+      "sample",
+      "chrom",
+      "position",
+      "haplotype_1",
+      "haplotype_2"
+    ],
+    "units": "1-based; assembly: demo",
+    "synthetic": true
+  },
+  {
+    "id": "methylation",
+    "category": "epigenome",
+    "title": "DNA methylation",
+    "filename": "methylation.tsv",
+    "description": "Per-feature methylation beta values.",
+    "columns": [
+      "feature",
+      "sample",
+      "beta"
+    ],
+    "units": "Beta: 0–1",
+    "synthetic": true
+  },
+  {
+    "id": "accessibility",
+    "category": "epigenome",
+    "title": "Chromatin accessibility",
+    "filename": "accessibility.tsv",
+    "description": "Processed ATAC-style peak signal.",
+    "columns": [
+      "chrom",
+      "start",
+      "end",
+      "signal"
+    ],
+    "units": "0-based, half-open; arbitrary signal",
+    "synthetic": true
+  },
+  {
+    "id": "contacts",
+    "category": "epigenome",
+    "title": "Hi-C contact export",
+    "filename": "hic_contacts.tsv",
+    "description": "Sparse binned contact counts; not a .hic/.cool binary file.",
+    "columns": [
+      "bin_1",
+      "bin_2",
+      "count"
+    ],
+    "units": "Demo bin IDs; raw counts",
+    "synthetic": true
+  },
+  {
+    "id": "expression",
+    "category": "transcriptome",
+    "title": "RNA expression",
+    "filename": "expression.csv",
+    "description": "Small gene-by-sample count matrix.",
+    "columns": [
+      "gene",
+      "control",
+      "case"
+    ],
+    "units": "Raw integer counts; not normalized",
+    "synthetic": true
+  },
+  {
+    "id": "isoforms",
+    "category": "transcriptome",
+    "title": "Isoform abundance",
+    "filename": "isoforms.tsv",
+    "description": "Processed transcript abundance for two samples.",
+    "columns": [
+      "transcript",
+      "gene",
+      "sample",
+      "tpm"
+    ],
+    "units": "TPM",
+    "synthetic": true
+  },
+  {
+    "id": "cells",
+    "category": "singlecell",
+    "title": "Cell embedding",
+    "filename": "cell_embedding.csv",
+    "description": "Precomputed illustrative coordinates and cluster labels.",
+    "columns": [
+      "cell_id",
+      "x",
+      "y",
+      "cluster"
+    ],
+    "units": "Arbitrary embedding coordinates; not computed UMAP",
+    "synthetic": true
+  },
+  {
+    "id": "spatial",
+    "category": "singlecell",
+    "title": "Spatial spots",
+    "filename": "spatial_spots.tsv",
+    "description": "Spot coordinates and a marker value.",
+    "columns": [
+      "spot",
+      "x",
+      "y",
+      "gene",
+      "expression"
+    ],
+    "units": "Micrometres; arbitrary expression",
+    "synthetic": true
+  },
+  {
+    "id": "proteins",
+    "category": "proteome",
+    "title": "Protein abundance",
+    "filename": "protein_abundance.tsv",
+    "description": "Processed relative protein intensities.",
+    "columns": [
+      "protein",
+      "control",
+      "case"
+    ],
+    "units": "Arbitrary intensity",
+    "synthetic": true
+  },
+  {
+    "id": "spectrum",
+    "category": "proteome",
+    "title": "MS/MS peaks",
+    "filename": "msms_peaks.tsv",
+    "description": "Centroided peak list for a teaching spectrum.",
+    "columns": [
+      "mz",
+      "intensity"
+    ],
+    "units": "m/z; arbitrary intensity",
+    "synthetic": true
+  },
+  {
+    "id": "ptm",
+    "category": "proteome",
+    "title": "Protein modifications",
+    "filename": "protein_ptm.tsv",
+    "description": "Processed site-level modification table.",
+    "columns": [
+      "protein",
+      "residue",
+      "modification",
+      "fold_change"
+    ],
+    "units": "1-based residues; case/control ratio",
+    "synthetic": true
+  },
+  {
+    "id": "metabolites",
+    "category": "metabolome",
+    "title": "Metabolite features",
+    "filename": "metabolite_features.csv",
+    "description": "Processed LC-MS features with candidate annotations.",
+    "columns": [
+      "feature",
+      "mz",
+      "rt_min",
+      "intensity",
+      "candidate"
+    ],
+    "units": "m/z; minutes; arbitrary intensity",
+    "synthetic": true
+  },
+  {
+    "id": "lipids",
+    "category": "metabolome",
+    "title": "Lipid abundance",
+    "filename": "lipids.tsv",
+    "description": "Processed lipid-class abundance examples.",
+    "columns": [
+      "lipid",
+      "sample",
+      "abundance"
+    ],
+    "units": "Relative abundance",
+    "synthetic": true
+  },
+  {
+    "id": "glycans",
+    "category": "metabolome",
+    "title": "Glycan compositions",
+    "filename": "glycans.tsv",
+    "description": "Composition annotations, not resolved glycan structures.",
+    "columns": [
+      "composition",
+      "sample",
+      "abundance"
+    ],
+    "units": "Relative abundance",
+    "synthetic": true
+  },
+  {
+    "id": "airr",
+    "category": "immunomics",
+    "title": "Repertoire export",
+    "filename": "repertoire.tsv",
+    "description": "AIRR-inspired subset; not full AIRR schema validation.",
+    "columns": [
+      "sequence_id",
+      "junction_aa",
+      "v_call",
+      "j_call",
+      "duplicate_count"
+    ],
+    "units": "Clonotype counts",
+    "synthetic": true
+  },
+  {
+    "id": "cytometry",
+    "category": "imaging",
+    "title": "Cytometry events",
+    "filename": "cytometry_events.csv",
+    "description": "Processed event intensities exported from an FCS workflow.",
+    "columns": [
+      "event",
+      "CD3",
+      "CD4",
+      "CD8"
+    ],
+    "units": "Arbitrary fluorescence; uncompensated teaching values",
+    "synthetic": true
+  },
+  {
+    "id": "imagefeatures",
+    "category": "imaging",
+    "title": "Image measurements",
+    "filename": "image_measurements.tsv",
+    "description": "Segmented-cell measurements, not an image file.",
+    "columns": [
+      "cell",
+      "area_um2",
+      "mean_intensity"
+    ],
+    "units": "Square micrometres; arbitrary intensity",
+    "synthetic": true
+  },
+  {
+    "id": "network",
+    "category": "pathways",
+    "title": "Interaction edges",
+    "filename": "network_edges.tsv",
+    "description": "Illustrative directed interactions.",
+    "columns": [
+      "source",
+      "target",
+      "relationship"
+    ],
+    "units": "Categorical relationships",
+    "synthetic": true
+  },
+  {
+    "id": "clones",
+    "category": "evolution",
+    "title": "Clone fractions",
+    "filename": "clone_fractions.tsv",
+    "description": "Processed clone fractions; no tree inference.",
+    "columns": [
+      "clone",
+      "parent",
+      "fraction"
+    ],
+    "units": "Fraction: 0–1",
+    "synthetic": true
+  },
+  {
+    "id": "integration",
+    "category": "multiomics",
+    "title": "Multi-omics evidence",
+    "filename": "multiomics_evidence.tsv",
+    "description": "Long-form evidence with explicit units per row.",
+    "columns": [
+      "sample",
+      "feature",
+      "layer",
+      "value",
+      "unit"
+    ],
+    "units": "Mixed; see unit column",
+    "synthetic": true
+  }
+]

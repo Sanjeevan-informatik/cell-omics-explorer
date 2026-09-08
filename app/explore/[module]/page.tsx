@@ -6,5 +6,5 @@ export default async function Page({ params }: { params: Promise<{ module: strin
   const { module } = await params;
   const workspace = WORKSPACES.find((item) => item.id === module);
   if (!workspace) notFound();
-  return <ExplorerFrame module={workspace.id} />;
+  return <ExplorerFrame key={workspace.id} module={workspace.id} />;
 }

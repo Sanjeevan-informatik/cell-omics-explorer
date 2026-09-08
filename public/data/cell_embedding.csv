@@ -1,0 +1,5 @@
+cell_id,x,y,cluster
+cell_1,1.2,2.3,T-cell
+cell_2,1.5,2.1,T-cell
+cell_3,4.2,5.1,B-cell
+cell_4,4.5,5.3,B-cell
