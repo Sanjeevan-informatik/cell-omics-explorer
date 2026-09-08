@@ -1,5 +1,7 @@
 # CellOmics Explorer
 
+**Live application:** [Open CellOmics Explorer](https://cell-omics-explorer.sanjeevanvive.chatgpt.site) — private to the owner; sign in with the owning account.
+
 A cell-to-molecule teaching explorer and DNA analysis workbench, built with React, TypeScript, Vinext/Vite, and an optional Python/FastAPI service.
 
 [![CI](https://github.com/Sanjeevan-informatik/cell-omics-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/Sanjeevan-informatik/cell-omics-explorer/actions/workflows/ci.yml)
@@ -86,7 +88,7 @@ Repository settings such as required reviews, branch rules, private vulnerabilit
 
 The default workbench processes DNA in the browser. Configuring an API URL sends analysis inputs to that service. There is no patient-data platform, authentication, or durable upload store. See [security](SECURITY.md). Production infrastructure and access policy need to be selected before exposing an API publicly.
 
-The copied ZIP's old Sites project identifier and live URL are deliberately not reused for this repository. No deployment is implied by this migration.
+This repository has its own CellOmics Explorer deployment. The live application currently uses browser-local DNA analysis; the optional Python API is not deployed with it.
 
 ## License
 
