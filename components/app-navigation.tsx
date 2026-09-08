@@ -1,0 +1,12 @@
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { WORKSPACES } from "@/lib/workspaces";
+
+export function AppNavigation() {
+  const pathname = usePathname();
+  const link = (href: string, label: string) => <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined}>{label}</Link>;
+  return <aside className="platform-navigation"><Link className="platform-brand" href="/">CellOmics<span>Explore · Analyze · Learn</span></Link><nav aria-label="Workspaces">
+    {[...new Set(WORKSPACES.map((item) => item.group))].map((group) => <section key={group}><h2>{group}</h2>{WORKSPACES.filter((item) => item.group === group).map((item) => link(item.id === "cell" ? "/" : `/explore/${item.id}`, item.label))}{group === "Genome & regulation" && <>{link("/genomics", "DNA analysis")}{link("/sequence-map", "Sequence map")}{link("/hierarchical-model", "DNA → RNA → protein")}</>}</section>)}
+  </nav><a className="repository-link" href="https://github.com/Sanjeevan-informatik/cell-omics-explorer">GitHub repository ↗</a></aside>;
+}

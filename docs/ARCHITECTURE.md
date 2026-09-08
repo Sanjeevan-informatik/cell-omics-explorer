@@ -1,25 +1,11 @@
 # Architecture
 
-## Navigation model
+The React application owns navigation and route selection. DNA workspaces use React directly and share `lib/sequence-workspace.ts` for the original browser-local alignment state. The server validates `/explore/[module]` against a single registry and returns a 404 for unknown names.
 
-Cell organelle → biological layer → experimental assay → raw/standard file → processed feature → visualization → cross-omics link.
+The preexisting vanilla-JavaScript explorer lives under `public/explorer/`. A sandboxed iframe retains its templates and charts while hiding duplicate navigation. It receives only a whitelisted module ID through the URL fragment. It has no same-origin permission, parent-storage access, or backend bridge. This migration is a modular integration, not a completed rewrite of every teaching view into React.
 
-## Recommended production architecture
+The preview parser is independent of the DOM and tested with Node. It rejects empty/binary inputs, validates basic FASTA/FASTQ/VCF structure, and avoids claiming validation for other formats. The UI checks the 5 MiB file limit before reading. Rendered filenames and preview text are escaped.
 
-```text
-Browser UI
-  |
-  +-- lightweight text parsing + visualization
-  |
-  +-- API gateway
-       |
-       +-- genomics service (pysam/htslib, VCF, bigWig)
-       +-- single-cell service (AnnData/Scanpy)
-       +-- 3D-genome service (cooler / Hi-C)
-       +-- proteomics service (pyteomics/pymzML)
-       +-- structures service (mmCIF/PDB)
-       +-- imaging service (OME-Zarr)
-       +-- graph/integration service
-```
+DNA analysis runs in TypeScript by default. The optional FastAPI endpoint implements the same model family and JSON result structure. It bounds the request field to two million characters and accepts at most 50 sequences × 20,000 sites. It provides no authentication or storage.
 
-A common entity registry should use stable identifiers (gene, transcript, protein, metabolite, sample, genomic interval) so layers can be linked rather than displayed as isolated dashboards.
+For future production data, implement specialist parsers behind explicit dataset contracts including sample IDs, assembly, coordinate convention, units, provenance, and missing values. Add module-specific analyses only after end-to-end data validation. Do not turn teaching datasets into purported user results.

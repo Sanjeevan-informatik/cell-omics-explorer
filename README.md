@@ -1,432 +1,93 @@
-# CellOmics Explorer Studio
+# CellOmics Explorer
 
-Interactive **cell-to-multi-omics visualization and data-management studio** that extends the ideas in [Sanjeevan-informatik/omics-data-visualization-and-managment-management](https://github.com/Sanjeevan-informatik/omics-data-visualization-and-managment-management) from a DNA/phylogenetics workbench into an integrated human-cell molecular explorer.
+A cell-to-molecule teaching explorer and DNA analysis workbench, built with React, TypeScript, Vinext/Vite, and an optional Python/FastAPI service.
 
-> **Live application:** `cell-omics-explorer`
+[![CI](https://github.com/Sanjeevan-informatik/cell-omics-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/Sanjeevan-informatik/cell-omics-explorer/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/Sanjeevan-informatik/cell-omics-explorer/actions/workflows/codeql.yml/badge.svg)](https://github.com/Sanjeevan-informatik/cell-omics-explorer/actions/workflows/codeql.yml)
 
-CellOmics Explorer starts from an interactive human-cell diagram and connects each organelle to the molecular data that can be measured there. It links biological location → molecule → experiment → raw/processed file → visualization → interpretation, while preserving the GenomeVista-style genome and phylogenetic concepts as the **Genome & Variants** layer.
+## Start locally
 
-## What it demonstrates
-
-- **Cell biology:** interactive nucleus, mitochondria, cell membrane, endoplasmic reticulum, Golgi apparatus, ribosome, lysosome and cytoplasm.
-- **Genomics:** FASTA/FASTQ concepts, SNPs, indels, CNVs, structural variants, haplotypes, chromosome tracks and alignment-oriented workflows.
-- **Epigenomics & 3D genome:** DNA methylation, chromatin accessibility, ChIP/CUT&Tag concepts, Hi-C contact maps, TADs and chromatin loops.
-- **Transcriptomics:** RNA-seq expression, genes, isoforms, exon skipping and tumor-vs-control comparison.
-- **Single-cell & spatial omics:** 10x/h5ad concepts, cell embeddings, clusters, marker genes and spatial tissue-style maps.
-- **Proteomics:** LC-MS/MS, MS1 precursor spectra, MS2 fragment spectra, peptide-spectrum matches, protein inference, PTMs and reference-spectrum matching.
-- **Protein structures:** PDB/mmCIF concepts, chains, residues, atoms and X/Y/Z coordinates.
-- **Metabolomics / lipidomics / glycomics:** LC-MS features, m/z, retention time, intensity, chemical formulas, adduct concepts and small-molecule structure formats.
-- **Immunomics:** TCR/BCR/HLA concepts, CDR3 sequences, V/J assignments, clonotypes and AIRR-style repertoire data.
-- **Imaging & cytometry:** microscopy/histology concepts, FCS-like cell events, cell markers and imaging file families.
-- **Interactions & pathways:** gene/protein/metabolite networks, signaling relationships and phenotype links.
-- **Cell evolution:** tumor clone relationships, somatic events and phylogenetic-style reconstruction concepts.
-- **Multi-omics integration:** one gene or locus linked across DNA → epigenome → RNA → protein → phosphoproteome → metabolite → phenotype.
-- **Data loading:** local recognition/preview of small text files and routing guidance for large scientific binary formats.
-
-## Application workspaces
-
-### 1. Cell Explorer
-
-The home workspace is a clickable cell map. Selecting an organelle opens its molecular contents, representative file formats and connected omics workspaces.
-
-| Organelle / region | Example molecular data | Representative files |
-| --- | --- | --- |
-| Nucleus | DNA, chromatin, pre-mRNA, lncRNA, histones | FASTA, FASTQ, BAM/CRAM, VCF/BCF, BED, GTF/GFF3, bigWig, `.cool/.hic` |
-| Mitochondria | mtDNA, mtRNA, respiratory proteins, ATP, NADH, TCA metabolites | VCF, BAM, FASTQ, mzML, CSV/TSV, PDB/mmCIF |
-| Cell membrane | receptors, phospholipids, cholesterol, CD markers, glycans | mzML, SDF/SMILES, FCS, CSV/TSV |
-| ER | nascent proteins, chaperones, lipids, stress proteins | mzML, PDB/mmCIF, FASTA, CSV/TSV |
-| Golgi | glycoproteins, glycans, lipids, secretory cargo | mzML, SDF, GlycoCT/WURCS, CSV/TSV |
-| Ribosome | rRNA, ribosomal proteins, mRNA, nascent peptide | FASTQ, BAM, FASTA, mzML, PDB/mmCIF |
-| Lysosome | hydrolases, degraded peptides, lipids, metabolites | mzML, CSV/TSV, PDB/mmCIF |
-| Cytoplasm | enzymes, RNA, ATP, lactate, amino acids, signaling proteins | mzML, FASTQ, BAM, CSV/TSV, PDB/mmCIF |
-
-The Cell Explorer also shows the common biological data path:
-
-```text
-Organelle → Molecule → Experiment → Raw file → Processed feature → Visualization → Biological interpretation
-```
-
-### 2. Genome & Variants
-
-Representative functions:
-
-- Genome/reference-sequence concepts
-- SNP/SNV and indel visualization
-- Variant table with chromosome, position, REF, ALT, type and gene
-- Gene, SNP and coverage-style tracks
-- Extension points for CNV, SV and haplotype layers
-- Production routing for BAM/CRAM through `pysam`/`htslib`
-
-Representative formats:
-
-`FASTA`, `FASTQ`, `SAM`, `BAM`, `CRAM`, `VCF`, `BCF`, `BED`, `GTF`, `GFF3`, `bigWig`, `bedGraph`.
-
-### 3. Epigenome & 3D Genome
-
-Representative functions:
-
-- CpG methylation table with beta values
-- Low/intermediate/hypermethylated interpretation
-- Hi-C-style contact heatmap
-- Chromatin/TAD/loop concepts
-- ATAC-seq, ChIP-seq, CUT&Tag and WGBS/RRBS workflow concepts
-
-Representative formats:
-
-`BED`, `bedGraph`, `bigWig`, `narrowPeak`, `broadPeak`, `.cool`, `.mcool`, `.hic`, methylation tables.
-
-### 4. Transcriptome
-
-Representative functions:
-
-- Tumor-vs-control expression comparison
-- Gene-expression table
-- Isoform/exon visualization
-- Alternative exon-skipping example
-- RNA-seq file/workflow integration points
-
-Representative formats:
-
-`FASTQ`, `BAM/CRAM`, `GTF/GFF3`, count matrices, CSV/TSV.
-
-### 5. Single Cell & Spatial
-
-Representative functions:
-
-- UMAP-like cell embedding
-- T-cell, B-cell and myeloid demo clusters
-- Marker-gene table
-- Spatial grid/tissue-style map
-- 10x and AnnData/h5ad data-model concepts
-
-Representative formats:
-
-`matrix.mtx`, `features.tsv`, `barcodes.tsv`, `.h5`, `.h5ad`, `.loom`, `.zarr`, CSV/TSV.
-
-### 6. Proteome & Structures
-
-The proteomics workspace contains four views:
-
-#### MS1 + MS2
-
-Shows the complete teaching path:
-
-```text
-Cell → Protein → tryptic peptide → LC → ionization
-     → MS1 precursor → isolate → HCD/CID → MS2 fragments
-     → peptide identification → protein identification
-```
-
-Demo MS1 precursor spectrum:
-
-```text
-m/z        intensity
-440.7424     620000
-464.7347     850000
-500.2011      35000
-```
-
-The demo selects `464.7347 (2+)`, fragments it and shows a reference-like MS2 series.
-
-#### Proteomics files
-
-The app demonstrates the relationship between:
-
-```text
-sample.mzML
-    +
-proteins.fasta
-    +
-reference_library.msp
-    ↓
-peptide-spectrum match (PSM)
-    ↓
-peptide
-    ↓
-protein
-```
-
-Bundled teaching files:
-
-- `data/sample.mzML`
-- `data/proteins.fasta`
-- `data/reference_library.msp`
-- `data/psm.tsv`
-
-#### Structures
-
-Demonstrates PDB/mmCIF structure concepts:
-
-```text
-Macromolecule → Chain → Residue → Atom → X/Y/Z coordinates
-```
-
-A sample mmCIF-style atom table is included in `data/example_structure.cif`.
-
-#### PTMs
-
-Representative post-translational modifications include phosphorylation and acetylation with residue-level fold-change examples.
-
-### 7. Metabolome / Lipidome / Glycome
-
-Representative functions:
-
-- LC-MS processed-feature table
-- m/z
-- retention time (RT)
-- peak height/intensity
-- candidate compound
-- chemical formula
-- selected-molecule view
-- adduct concept such as `[M-H]-`
-- pathway context
-
-Example demo features include pyruvate, lactate and citrate.
-
-Representative formats:
-
-`mzML`, `mzXML`, `mzTab-M`, `SDF`, `MOL`, `SMILES`, `GlycoCT`, `WURCS`, CSV/TSV.
-
-### 8. Immunomics
-
-Representative functions:
-
-- TCR clonotype table
-- CDR3 sequence
-- V gene / J gene assignments
-- clonotype frequency
-- V(D)J → CDR3 → clonotype → diversity/expansion workflow
-
-Representative formats:
-
-`FASTQ`, AIRR TSV, CSV/TSV.
-
-### 9. Imaging & Cytometry
-
-Representative functions:
-
-- Synthetic microscopy field
-- Flow-cytometry event table
-- CD3/CD4/CD8 markers
-- simple cell gating labels
-
-Representative formats:
-
-`FCS`, `OME-TIFF`, `OME-Zarr`, `DICOM`, `SVS`, `NDPI`.
-
-### 10. Interactions & Pathways
-
-Interactive-style pathway concept connecting:
-
-```text
-EGFR → RAS / PI3K → MAPK / AKT → Proliferation
-```
-
-Nodes can conceptually receive evidence from genomic variants, RNA expression, protein abundance, phosphorylation and metabolites.
-
-### 11. Cell Evolution
-
-Representative tumor-clone model:
-
-```text
-Normal → TP53-mutant ancestor
-            ├── KRAS clone → EGFR-amplified descendant
-            └── CNV clone
-```
-
-This workspace is designed to reuse the phylogenetic ideas from GenomeVista for somatic evolution while keeping the biological assumptions distinct from ordinary species-tree inference.
-
-### 12. Multi-Omics Integration
-
-The bundled demo uses **EGFR** as an anchor across seven layers:
-
-```text
-DNA
- ↓
-Epigenome
- ↓
-RNA
- ↓
-Protein
- ↓
-Phosphoproteome
- ↓
-Metabolome
- ↓
-Phenotype
-```
-
-Example linked evidence includes EGFR amplification, promoter accessibility, RNA abundance, EGFR protein abundance, pEGFR Y1068, lactate and proliferation.
-
-### 13. Data Loader
-
-The Data Loader recognizes or previews the following families:
-
-| File family | Purpose |
-| --- | --- |
-| FASTA / FASTQ | sequences / sequencing reads |
-| VCF / BCF | genetic variants |
-| SAM / BAM / CRAM | sequence alignments |
-| BED / GTF / GFF3 | genome annotations |
-| bigWig / bedGraph | genomic signals |
-| `.cool` / `.mcool` / `.hic` | 3D genome / Hi-C |
-| `.h5ad` / 10x | single-cell data |
-| mzML / mzXML | mass spectrometry |
-| PDB / mmCIF | macromolecular 3D structures |
-| SDF / MOL / SMILES | small-molecule chemistry |
-| FCS | flow cytometry |
-| OME-TIFF / OME-Zarr | biological imaging |
-| AIRR TSV | immune repertoire |
-| CSV / TSV | processed biological matrices |
-
-Small text files can be previewed locally. The application intentionally recognizes large/binary formats without pretending to fully parse production-scale scientific files in browser JavaScript.
-
-## Demo data
-
-The `data/` directory contains small educational datasets:
-
-```text
-data/
-├── example_alignment.fasta
-├── example_variants.vcf
-├── example_expression.csv
-├── example_methylation.tsv
-├── example_single_cell.csv
-├── sample.mzML
-├── proteins.fasta
-├── reference_library.msp
-├── psm.tsv
-├── example_structure.cif
-├── example_clonotypes.tsv
-└── example_multiomics.tsv
-```
-
-These files are designed for learning and UI demonstration. They are deliberately small enough to inspect manually.
-
-## Run locally
-
-No npm installation is required for this prototype.
+Requires Node.js 22.13+ and npm. Python 3.12 is recommended for the optional API.
 
 ```bash
-git clone https://github.com/Sanjeevan-informatik/omics-data-visualization-and-managment-management.git
-```
-
-For the ZIP version, extract the archive and enter the project directory:
-
-```bash
+git clone https://github.com/Sanjeevan-informatik/cell-omics-explorer.git
 cd cell-omics-explorer
-python server.py
+npm ci
+npm run dev
 ```
 
-Then open:
+Open **http://localhost:3000**. The cell explorer opens immediately. Choose **DNA analysis** for an aligned FASTA dataset; the other workspaces explain molecular layers using synthetic examples.
 
-```text
-http://127.0.0.1:8765
+For the optional API, in another terminal:
+
+```bash
+cd backend
+python -m venv .venv
+source .venv/bin/activate
+# Windows PowerShell: .venv\Scripts\Activate.ps1
+pip install -r requirements-dev.txt
+uvicorn app.main:app --reload --port 8000
 ```
 
-You may also open `index.html` directly in a modern browser for most functionality.
+API docs: **http://localhost:8000/docs**. Set `NEXT_PUBLIC_API_BASE_URL=http://localhost:8000` in `.env.local` and restart the frontend to use the API. Without that setting, DNA analysis runs locally in the browser. `docker compose up --build` provides an alternative full-stack setup; the container workflow is not required for browser-local analysis.
 
-## Project structure
+## Workspaces and actual capabilities
 
-```text
-cell-omics-explorer/
-├── index.html                 Main application shell and interactive cell SVG
-├── app.js                     Omics workspaces, demo data, charts and loader logic
-├── styles.css                 Responsive visual design system
-├── server.py                  Minimal local static server
-├── README.md                  Project documentation
-├── data/                      Educational example biological datasets
-└── docs/
-    ├── ARCHITECTURE.md        Production-extension architecture
-    └── FORMAT_SUPPORT.md      File-format support strategy
+| Workspace | Status | What it does |
+| --- | --- | --- |
+| Cell explorer | Interactive teaching view | Select organelles and inspect molecules, experiments, and file families |
+| DNA analysis | Implemented | Validate aligned FASTA, QC, GC composition, variants, p-distance/JC69/K2P, UPGMA, JSON/Newick exports |
+| Sequence map | Implemented | Linked position selection and base-by-base alignment navigation |
+| DNA → RNA → protein | Teaching model | Linked codons and residues with conceptual molecular views |
+| Data preview | Implemented, bounded | Basic FASTA/FASTQ/VCF validation; other text preview; binary recognition only |
+| Epigenome & Hi-C | Synthetic examples | Methylation table and contact-map illustration |
+| Transcriptome | Synthetic examples | Expression and exon/isoform illustration |
+| Single cell & spatial | Synthetic examples | Predetermined clusters and spatial positions, not computed UMAP |
+| Proteome & structures | Synthetic examples | MS1/MS2, peptide matches, modifications, atom-coordinate concepts |
+| Metabolites/lipids/glycans | Synthetic examples | LC-MS feature and chemistry concepts |
+| Immunomics | Synthetic examples | Clonotype sequences and frequencies |
+| Imaging & cytometry | Synthetic examples | Microscopy and event-marker concepts |
+| Pathways/evolution/integration | Synthetic examples | Signaling, tumor clone relationships, and EGFR evidence |
+
+Loading a preview file does **not** replace the synthetic datasets in teaching panels. BAM/CRAM, H5AD, Hi-C, and other binary files are not parsed or automatically sent to a backend. See [format support](docs/FORMAT_SUPPORT.md).
+
+DNA analysis accepts 2–50 aligned sequences of up to 20,000 sites. Positions are 1-based alignment columns, not automatically mapped human reference coordinates. Pairwise noncanonical bases are excluded; null distances indicate saturation or no comparable bases. UPGMA assumes approximately clock-like evolution. The 30-base coding example translates to 10 amino acids within a longer protein context, not 30 amino acids. Conceptual structures are not experimentally resolved structures or folding predictions.
+
+## Architecture
+
+- `app/`: React routes and shared application layout.
+- `components/`: navigation, sequence workbench, hierarchy, and teaching-view adapter.
+- `lib/`: pure DNA analysis, sequence workspace state, and workspace registry.
+- `public/explorer/`: retained multi-omics teaching engine, isolated in a sandboxed iframe; no access to the parent page's storage.
+- `backend/app/`: FastAPI contracts and scientific functions.
+- `tests/`, `backend/tests/`: parser and analysis checks.
+- `data/`: synthetic input examples.
+
+The migration preserves the existing cell explorer while bringing the ZIP's larger analysis workbench into the same navigation. The teaching engine is **not yet fully ported to React**. This explicit boundary allows incremental replacement without dropping its existing views. See [architecture](docs/ARCHITECTURE.md) and [migration notes](docs/MIGRATION.md).
+
+## Validation
+
+```bash
+npm run typecheck
+npm test
+npm run build
+cd backend
+ruff check app tests
+pytest -q
 ```
 
-## Production architecture
+## GitHub features
 
-For real research-scale datasets, the recommended architecture is:
+Included: frontend/backend CI, build artifacts, scheduled CodeQL scanning, Dependabot for npm/Python/Actions/Docker, CODEOWNERS, issue forms, pull-request template, release-note categories, tagged source releases gated by CI, and a Codespaces/devcontainer configuration.
 
-```text
-Browser UI
-   ↓
-Upload / region query / analysis request
-   ↓
-API service
-   ↓
-Format-specific scientific parser
-   ↓
-Normalized internal data model
-   ↓
-Visualization-ready JSON / tiles / binary chunks
-   ↓
-CellOmics Explorer visualization
-```
+Repository settings such as required reviews, branch rules, private vulnerability reporting, Discussions, and Projects are separate GitHub settings. They are not enabled by adding files. See [GitHub administration](docs/GITHUB.md). GitHub Pages cannot directly run this server-rendered frontend or FastAPI service.
 
-Recommended backend/tooling directions:
+## Privacy and deployment
 
-- **BAM/CRAM/BCF:** `htslib`, `pysam`
-- **Single-cell h5ad/10x:** `anndata`, `scanpy`
-- **Hi-C:** `cooler`, Juicer-compatible tooling
-- **mzML/proteomics:** `pyteomics`, `pymzML`, ProteoWizard workflows
-- **PDB/mmCIF:** Mol* or NGL frontend; Biopython/MDAnalysis backend
-- **Small-molecule chemistry:** RDKit / Open Babel-compatible services
-- **FCS:** FlowKit / flowCore-compatible processing
-- **OME imaging:** Bio-Formats / OME-Zarr tooling
+The default workbench processes DNA in the browser. Configuring an API URL sends analysis inputs to that service. There is no patient-data platform, authentication, or durable upload store. See [security](SECURITY.md). Production infrastructure and access policy need to be selected before exposing an API publicly.
 
-## Relationship to GenomeVista Studio
+The copied ZIP's old Sites project identifier and live URL are deliberately not reused for this repository. No deployment is implied by this migration.
 
-The original repository currently demonstrates aligned FASTA exploration, SNP detection, p-distance, JC69, K2P, UPGMA/Newick output, sequence navigation and nucleobase chemistry. CellOmics Explorer keeps those capabilities conceptually as the **Genome layer** and extends the architecture across the rest of the cell rather than replacing them.
+## License
 
-This makes the combined portfolio story:
-
-```text
-GenomeVista
-DNA / variants / phylogenetics
-          ↓
-CellOmics Explorer
-cell → genome → epigenome → transcriptome → proteome
-     → metabolome → immunome → phenotype
-```
-
-## Scientific scope
-
-This application is intended for:
-
-- education
-- portfolio demonstration
-- data-model exploration
-- UI/UX prototyping
-- small synthetic/example datasets
-- planning production bioinformatics architecture
-
-It is **not** a clinical diagnostic system, validated medical device or substitute for established scientific pipelines.
-
-## Data privacy
-
-The static demo performs supported text-file preview locally in the browser. Do not use identifiable clinical/patient data in the prototype. Production deployment should add authentication, authorization, encryption, audit logging, ethics/consent controls and an appropriate data-processing agreement.
-
-## Future development
-
-The architecture is ready to grow toward:
-
-- true regional BAM/CRAM genome browsing
-- indexed VCF/BCF querying
-- chromosome ideograms and CNV/SV arcs
-- production Hi-C/TAD visualization
-- real AnnData/h5ad-backed UMAP and marker analysis
-- spatial transcriptomics image overlays
-- full mzML spectrum/chromatogram parsing
-- DDA/DIA proteomics workflows
-- PSM/FDR and protein-inference pages
-- Mol* 3D PDB/mmCIF viewer
-- RDKit small-molecule rendering
-- lipid/glycan structure viewers
-- TCR/BCR repertoire statistics
-- FCS gating workflows
-- OME-Zarr microscopy viewer
-- pathway database integration
-- somatic clone trees / fish plots
-- linked gene-centric multi-omics queries
-
-## License / attribution
-
-This prototype is an extension concept built around the user's existing GenomeVista repository and is intended to follow the licensing and attribution requirements of the source project and any future third-party libraries integrated into production.
+[MIT](LICENSE). The migration retains the supplied project's license and attribution.
