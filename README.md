@@ -55,7 +55,7 @@ Open **Upload data & samples** to select multiple local files, drag and drop a b
 
 Ready tables appear in their selected omics workspace. Invalid files show correction guidance; binary files show specialist conversion routes. Missing data remains empty until a file or sample is selected. Teaching demos require an explicit action and remain separate from uploaded measurements. FASTA can be passed directly to DNA analysis.
 
-Limits: 5 MiB per text file, 20 MiB of previews per session, 20 files per batch, 40 files total, and 10,000 rows for delimited tables. Table previews retain the first 200 rows and display/filter that subset. Files stay in browser memory and the upload list clears on refresh; opening FASTA analysis separately stores that alignment in tab session storage. There is no server upload store, remote path/URL importer, or universal binary parser. See [format support](docs/FORMAT_SUPPORT.md).
+Limits: 5 MiB per text file, 20 MiB of previews per session, 20 files per batch, 40 files total, and 10,000 rows for delimited tables. Table previews retain the first 5,000 delimited-table rows and display/filter that subset. Files stay in browser memory and the upload list clears on refresh; opening FASTA analysis separately stores that alignment in tab session storage. There is no server upload store, remote path/URL importer, or universal binary parser. See [format support](docs/FORMAT_SUPPORT.md).
 
 DNA analysis accepts 2–50 aligned sequences of up to 20,000 sites. Positions are 1-based alignment columns, not automatically mapped human reference coordinates. Pairwise noncanonical bases are excluded; null distances indicate saturation or no comparable bases. UPGMA assumes approximately clock-like evolution. The 30-base coding example translates to 10 amino acids within a longer protein context, not 30 amino acids. Conceptual structures are not experimentally resolved structures or folding predictions.
 
@@ -102,6 +102,14 @@ This repository has its own CellOmics Explorer deployment. The live application 
 
 Open **DNA → RNA → protein** in the navigation, then **Load hierarchy samples**. Select a fictional participant and specimen (blood leukocytes, a single CD4 T cell, or hepatocyte-enriched liver tissue). Every hierarchy node opens the same detail panel with 2D sequence/features, 3D coordinates, time measurements, and biological provenance. RNA now accepts U-containing FASTA and proteins have their own sequence alphabet.
 
-Six new templates include RNA/protein FASTA plus metadata, linked sequences, schematic 3D points, and time-course tables. Match `participant_id`, `sample_id`, and `molecule` across files. Built-in samples and uploaded files are kept separate. Body location and cell type are supplied metadata, never inferred from a sequence. The viewer reads only retained preview rows (first 200 per file).
+Six new templates include RNA/protein FASTA plus metadata, linked sequences, schematic 3D points, and time-course tables. Match `participant_id`, `sample_id`, and `molecule` across files. Built-in samples and uploaded files are kept separate. Body location and cell type are supplied metadata, never inferred from a sequence. The viewer reads only retained preview rows (first 5,000 per delimited table).
 
 DNA/RNA base selection opens 2D chemistry and rotatable 3D heavy-atom schematics, including uracil. These omit sugar, phosphate, and explicit hydrogens. Other 3D views plot supplied coordinates without inferred bonds. Synthetic coordinates are coarse teaching points, not resolved or predicted folds. The 4D tab shows time-course measurements, not a molecular-dynamics trajectory. Molecular layers without matching evidence show the required input fields.
+
+## Range-linked molecular views
+
+In the hierarchical model, load the samples, select a specimen and molecule, then choose **20–60** or enter start/end positions. Positions are 1-based and inclusive: 20–60 contains 41 positions. The viewer supports up to 500 positions per selection, with start/end sliders and selected-FASTA export.
+
+2D shows the entire selected sequence and a polymer schematic (including a derived complementary DNA strand). Single-base chemistry is optional. 3D plots only coordinate points mapped into the range. Time-course records must be fully contained in the range; separate measured regions remain separate selectable series. No partial-region signal is invented or averaged.
+
+Coordinate and time tables require `reference_id`, `coordinate_system=1-based-inclusive`, `start`, and `end`. The sequence record carries the same reference ID. Ranges remain molecule-local; DNA coordinates are not automatically translated into RNA/protein coordinates. Non-sequence omics layers can use explicit feature-reference positions but do not acquire a biological sequence by inference. Sample geometry remains schematic and the time view is not molecular dynamics.

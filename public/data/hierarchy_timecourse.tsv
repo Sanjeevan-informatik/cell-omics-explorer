@@ -1,85 +1,169 @@
-participant_id	sample_id	molecule	time_hours	value	unit
-SYN001	blood_bulk	dna	0	10	arbitrary_units
-SYN001	blood_bulk	dna	6	11	arbitrary_units
-SYN001	blood_bulk	dna	12	12	arbitrary_units
-SYN001	blood_bulk	dna	24	13	arbitrary_units
-SYN001	blood_bulk	rna	0	14	arbitrary_units
-SYN001	blood_bulk	rna	6	17	arbitrary_units
-SYN001	blood_bulk	rna	12	20	arbitrary_units
-SYN001	blood_bulk	rna	24	23	arbitrary_units
-SYN001	blood_bulk	protein	0	18	arbitrary_units
-SYN001	blood_bulk	protein	6	19	arbitrary_units
-SYN001	blood_bulk	protein	12	20	arbitrary_units
-SYN001	blood_bulk	protein	24	21	arbitrary_units
-SYN001	blood_bulk	peptide-ms	0	22	arbitrary_units
-SYN001	blood_bulk	peptide-ms	6	25	arbitrary_units
-SYN001	blood_bulk	peptide-ms	12	28	arbitrary_units
-SYN001	blood_bulk	peptide-ms	24	31	arbitrary_units
-SYN001	blood_bulk	metabolite	0	26	arbitrary_units
-SYN001	blood_bulk	metabolite	6	27	arbitrary_units
-SYN001	blood_bulk	metabolite	12	28	arbitrary_units
-SYN001	blood_bulk	metabolite	24	29	arbitrary_units
-SYN001	blood_bulk	lipid	0	30	arbitrary_units
-SYN001	blood_bulk	lipid	6	33	arbitrary_units
-SYN001	blood_bulk	lipid	12	36	arbitrary_units
-SYN001	blood_bulk	lipid	24	39	arbitrary_units
-SYN001	blood_bulk	glycan	0	34	arbitrary_units
-SYN001	blood_bulk	glycan	6	35	arbitrary_units
-SYN001	blood_bulk	glycan	12	36	arbitrary_units
-SYN001	blood_bulk	glycan	24	37	arbitrary_units
-SYN001	blood_T01	dna	0	10	arbitrary_units
-SYN001	blood_T01	dna	6	11	arbitrary_units
-SYN001	blood_T01	dna	12	12	arbitrary_units
-SYN001	blood_T01	dna	24	13	arbitrary_units
-SYN001	blood_T01	rna	0	14	arbitrary_units
-SYN001	blood_T01	rna	6	17	arbitrary_units
-SYN001	blood_T01	rna	12	20	arbitrary_units
-SYN001	blood_T01	rna	24	23	arbitrary_units
-SYN001	blood_T01	protein	0	18	arbitrary_units
-SYN001	blood_T01	protein	6	19	arbitrary_units
-SYN001	blood_T01	protein	12	20	arbitrary_units
-SYN001	blood_T01	protein	24	21	arbitrary_units
-SYN001	blood_T01	peptide-ms	0	22	arbitrary_units
-SYN001	blood_T01	peptide-ms	6	25	arbitrary_units
-SYN001	blood_T01	peptide-ms	12	28	arbitrary_units
-SYN001	blood_T01	peptide-ms	24	31	arbitrary_units
-SYN001	blood_T01	metabolite	0	26	arbitrary_units
-SYN001	blood_T01	metabolite	6	27	arbitrary_units
-SYN001	blood_T01	metabolite	12	28	arbitrary_units
-SYN001	blood_T01	metabolite	24	29	arbitrary_units
-SYN001	blood_T01	lipid	0	30	arbitrary_units
-SYN001	blood_T01	lipid	6	33	arbitrary_units
-SYN001	blood_T01	lipid	12	36	arbitrary_units
-SYN001	blood_T01	lipid	24	39	arbitrary_units
-SYN001	blood_T01	glycan	0	34	arbitrary_units
-SYN001	blood_T01	glycan	6	35	arbitrary_units
-SYN001	blood_T01	glycan	12	36	arbitrary_units
-SYN001	blood_T01	glycan	24	37	arbitrary_units
-SYN002	liver_bulk	dna	0	10	arbitrary_units
-SYN002	liver_bulk	dna	6	11	arbitrary_units
-SYN002	liver_bulk	dna	12	12	arbitrary_units
-SYN002	liver_bulk	dna	24	13	arbitrary_units
-SYN002	liver_bulk	rna	0	14	arbitrary_units
-SYN002	liver_bulk	rna	6	17	arbitrary_units
-SYN002	liver_bulk	rna	12	20	arbitrary_units
-SYN002	liver_bulk	rna	24	23	arbitrary_units
-SYN002	liver_bulk	protein	0	18	arbitrary_units
-SYN002	liver_bulk	protein	6	19	arbitrary_units
-SYN002	liver_bulk	protein	12	20	arbitrary_units
-SYN002	liver_bulk	protein	24	21	arbitrary_units
-SYN002	liver_bulk	peptide-ms	0	22	arbitrary_units
-SYN002	liver_bulk	peptide-ms	6	25	arbitrary_units
-SYN002	liver_bulk	peptide-ms	12	28	arbitrary_units
-SYN002	liver_bulk	peptide-ms	24	31	arbitrary_units
-SYN002	liver_bulk	metabolite	0	26	arbitrary_units
-SYN002	liver_bulk	metabolite	6	27	arbitrary_units
-SYN002	liver_bulk	metabolite	12	28	arbitrary_units
-SYN002	liver_bulk	metabolite	24	29	arbitrary_units
-SYN002	liver_bulk	lipid	0	30	arbitrary_units
-SYN002	liver_bulk	lipid	6	33	arbitrary_units
-SYN002	liver_bulk	lipid	12	36	arbitrary_units
-SYN002	liver_bulk	lipid	24	39	arbitrary_units
-SYN002	liver_bulk	glycan	0	34	arbitrary_units
-SYN002	liver_bulk	glycan	6	35	arbitrary_units
-SYN002	liver_bulk	glycan	12	36	arbitrary_units
-SYN002	liver_bulk	glycan	24	37	arbitrary_units
+participant_id	sample_id	molecule	time_hours	value	unit	reference_id	coordinate_system	start	end	feature_id
+SYN001	blood_bulk	dna	0	10	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	dna	6	11	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	dna	12	12	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	dna	24	13	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	dna	0	10	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	dna	6	11	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	dna	12	12	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	dna	24	13	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	rna	0	14	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	rna	6	17	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	rna	12	20	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	rna	24	23	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	rna	0	14	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	rna	6	17	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	rna	12	20	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	rna	24	23	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	protein	0	18	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	protein	6	19	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	protein	12	20	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	protein	24	21	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	protein	0	18	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	protein	6	19	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	protein	12	20	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	protein	24	21	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	peptide-ms	0	22	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	peptide-ms	6	25	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	peptide-ms	12	28	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	peptide-ms	24	31	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	peptide-ms	0	22	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	peptide-ms	6	25	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	peptide-ms	12	28	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	peptide-ms	24	31	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	metabolite	0	26	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	metabolite	6	27	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	metabolite	12	28	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	metabolite	24	29	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	metabolite	0	26	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	metabolite	6	27	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	metabolite	12	28	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	metabolite	24	29	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	lipid	0	30	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	lipid	6	33	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	lipid	12	36	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	lipid	24	39	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	lipid	0	30	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	lipid	6	33	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	lipid	12	36	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	lipid	24	39	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	glycan	0	34	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	glycan	6	35	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	glycan	12	36	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	glycan	24	37	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN001	blood_bulk	glycan	0	34	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	glycan	6	35	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	glycan	12	36	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60
+SYN001	blood_bulk	glycan	24	37	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	dna	0	10	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	dna	6	11	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	dna	12	12	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	dna	24	13	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	dna	0	10	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	dna	6	11	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	dna	12	12	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	dna	24	13	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	rna	0	14	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	rna	6	17	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	rna	12	20	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	rna	24	23	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	rna	0	14	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	rna	6	17	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	rna	12	20	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	rna	24	23	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	protein	0	18	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	protein	6	19	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	protein	12	20	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	protein	24	21	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	protein	0	18	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	protein	6	19	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	protein	12	20	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	protein	24	21	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	peptide-ms	0	22	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	peptide-ms	6	25	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	peptide-ms	12	28	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	peptide-ms	24	31	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	peptide-ms	0	22	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	peptide-ms	6	25	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	peptide-ms	12	28	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	peptide-ms	24	31	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	metabolite	0	26	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	metabolite	6	27	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	metabolite	12	28	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	metabolite	24	29	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	metabolite	0	26	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	metabolite	6	27	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	metabolite	12	28	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	metabolite	24	29	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	lipid	0	30	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	lipid	6	33	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	lipid	12	36	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	lipid	24	39	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	lipid	0	30	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	lipid	6	33	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	lipid	12	36	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	lipid	24	39	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	glycan	0	34	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	glycan	6	35	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	glycan	12	36	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	glycan	24	37	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN001	blood_T01	glycan	0	34	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	glycan	6	35	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	glycan	12	36	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60
+SYN001	blood_T01	glycan	24	37	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	dna	0	10	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	dna	6	11	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	dna	12	12	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	dna	24	13	arbitrary_units	demo-dna	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	dna	0	10	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	dna	6	11	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	dna	12	12	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	dna	24	13	arbitrary_units	demo-dna	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	rna	0	14	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	rna	6	17	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	rna	12	20	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	rna	24	23	arbitrary_units	demo-rna	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	rna	0	14	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	rna	6	17	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	rna	12	20	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	rna	24	23	arbitrary_units	demo-rna	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	protein	0	18	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	protein	6	19	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	protein	12	20	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	protein	24	21	arbitrary_units	demo-protein	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	protein	0	18	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	protein	6	19	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	protein	12	20	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	protein	24	21	arbitrary_units	demo-protein	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	peptide-ms	0	22	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	peptide-ms	6	25	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	peptide-ms	12	28	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	peptide-ms	24	31	arbitrary_units	demo-peptide-ms	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	peptide-ms	0	22	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	peptide-ms	6	25	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	peptide-ms	12	28	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	peptide-ms	24	31	arbitrary_units	demo-peptide-ms	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	metabolite	0	26	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	metabolite	6	27	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	metabolite	12	28	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	metabolite	24	29	arbitrary_units	demo-metabolite	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	metabolite	0	26	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	metabolite	6	27	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	metabolite	12	28	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	metabolite	24	29	arbitrary_units	demo-metabolite	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	lipid	0	30	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	lipid	6	33	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	lipid	12	36	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	lipid	24	39	arbitrary_units	demo-lipid	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	lipid	0	30	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	lipid	6	33	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	lipid	12	36	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	lipid	24	39	arbitrary_units	demo-lipid	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	glycan	0	34	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	glycan	6	35	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	glycan	12	36	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	glycan	24	37	arbitrary_units	demo-glycan	1-based-inclusive	20	40	region_20_40
+SYN002	liver_bulk	glycan	0	34	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	glycan	6	35	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	glycan	12	36	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60
+SYN002	liver_bulk	glycan	24	37	arbitrary_units	demo-glycan	1-based-inclusive	41	60	region_41_60

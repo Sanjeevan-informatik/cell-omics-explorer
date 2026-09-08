@@ -64,7 +64,11 @@
       "y",
       "z",
       "unit",
-      "resolution"
+      "resolution",
+      "reference_id",
+      "coordinate_system",
+      "start",
+      "end"
     ],
     "units": "Schematic units; no physical length or inferred bonds",
     "synthetic": true
@@ -81,7 +85,12 @@
       "molecule",
       "time_hours",
       "value",
-      "unit"
+      "unit",
+      "reference_id",
+      "coordinate_system",
+      "start",
+      "end",
+      "feature_id"
     ],
     "units": "Hours; arbitrary measurement units",
     "synthetic": true

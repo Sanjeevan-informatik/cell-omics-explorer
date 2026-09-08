@@ -51,3 +51,21 @@ test('RNA uracil has the expected heavy atoms and valid bond endpoints',async()=
  const {URACIL}=await vite.ssrLoadModule('/components/nucleobase-viewer.tsx');
  assert.equal(URACIL.atoms.length,8);assert.equal(URACIL.formula,'C₄H₄N₂O₂');assert.ok(URACIL.bonds.every(b=>b.from<8&&b.to<8));
 });
+
+test('range selection is 1-based inclusive and refuses invalid or oversized intervals',async()=>{
+ const {rangeError,rangeSequence}=await vite.ssrLoadModule('/lib/sequence-range.ts');
+ assert.equal(rangeSequence('A'.repeat(90),{start:20,end:60}).length,41);
+ assert.equal(rangeError(20,60,90),'');assert.ok(rangeError(0,60,90));assert.ok(rangeError(60,20,90));assert.ok(rangeError(20,91,90));assert.ok(rangeError(1.5,60,90));assert.ok(rangeError(1,501,900));
+});
+test('range evidence requires an exact reference, coordinate convention, and full containment',async()=>{
+ const {mappedRows}=await vite.ssrLoadModule('/lib/sequence-range.ts');
+ const common={reference_id:'rna-A',coordinate_system:'1-based-inclusive'};
+ const rows=[{...common,start:'20',end:'60'},{...common,start:'19',end:'40'},{...common,start:'21',end:'61'},{...common,start:'20',end:'20',reference_id:'dna-A'},{...common,start:'20',end:'20',coordinate_system:'0-based'}];
+ assert.equal(mappedRows(rows,{start:20,end:60},'rna-A').length,1);assert.equal(mappedRows(rows,{start:20,end:60},'').length,0);
+});
+test('all three demo specimens have 41 DNA coordinates and two time regions for 20–60',async()=>{
+ const {rowsWithColumns}=await vite.ssrLoadModule('/lib/hierarchy-data.ts');const {mappedRows}=await vite.ssrLoadModule('/lib/sequence-range.ts');
+ const data=TEMPLATES.filter(t=>t.id.startsWith('hierarchy-')).map(t=>({...inspectData(t.filename,t.content,t.category),id:t.id,name:t.filename,source:'sample'}));
+ const coordinates=rowsWithColumns(data,['x','y','z','start','end']);
+ for(const sample of ['blood_bulk','blood_T01','liver_bulk']){assert.equal(mappedRows(coordinates.filter(r=>r.sample_id===sample&&r.molecule==='dna'),{start:20,end:60},'demo-dna').length,41);}
+});
