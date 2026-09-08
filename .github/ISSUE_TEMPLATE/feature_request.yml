@@ -1,0 +1,17 @@
+name: Feature request
+description: Propose a biological workflow or usability improvement
+labels: [enhancement]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: User problem and biological question
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Input, desired output, and acceptance criteria
+      description: Include file format, units, genome assembly, and synthetic example if applicable.
+    validations:
+      required: true
