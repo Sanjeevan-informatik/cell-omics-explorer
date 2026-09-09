@@ -96,6 +96,60 @@
     "synthetic": true
   },
   {
+    "id": "ethanol-demo",
+    "category": "metabolome",
+    "title": "Ethanol structure",
+    "filename": "ethanol-demo.json",
+    "description": "Synthetic heavy-atom connectivity and illustrative coordinates. Hydrogens are implicit; stereochemistry, protonation equilibria and energy minimization are not modeled. Motion is not molecular dynamics.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "glycerol-demo",
+    "category": "metabolome",
+    "title": "Glycerol structure",
+    "filename": "glycerol-demo.json",
+    "description": "Synthetic heavy-atom connectivity and illustrative coordinates. Hydrogens are implicit; stereochemistry, protonation equilibria and energy minimization are not modeled. Motion is not molecular dynamics.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "palmitic-acid-demo",
+    "category": "metabolome",
+    "title": "Palmitic acid structure",
+    "filename": "palmitic-acid-demo.json",
+    "description": "Synthetic heavy-atom connectivity and illustrative coordinates. Hydrogens are implicit; stereochemistry, protonation equilibria and energy minimization are not modeled. Motion is not molecular dynamics.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "glucose-ring-demo",
+    "category": "metabolome",
+    "title": "Glucose ring connectivity structure",
+    "filename": "glucose-ring-demo.json",
+    "description": "Synthetic heavy-atom connectivity and illustrative coordinates. Hydrogens are implicit; stereochemistry, protonation equilibria and energy minimization are not modeled. Motion is not molecular dynamics.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "maltose-demo",
+    "category": "metabolome",
+    "title": "Maltose connectivity structure",
+    "filename": "maltose-demo.json",
+    "description": "Synthetic heavy-atom connectivity and illustrative coordinates. Hydrogens are implicit; stereochemistry, protonation equilibria and energy minimization are not modeled. Motion is not molecular dynamics.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "metabolite-missing-demo",
+    "category": "metabolome",
+    "title": "Unresolved metabolite feature structure",
+    "filename": "metabolite-missing-demo.json",
+    "description": "Synthetic unresolved feature. No chemical identity, atom graph or coordinates supplied.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
     "id": "protein-modified-chemistry",
     "category": "proteome",
     "title": "Phosphate & acetyl chemical components",

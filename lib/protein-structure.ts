@@ -6,7 +6,7 @@ export function validateStructure(raw:unknown):Structure {
  const d=raw as Structure;const fail=(s:string):never=>{throw Error(s);};
  if(!d||!d.reference||!d.provenance||!d.sequence||!(/^[ACDEFGHIKLMNPQRSTVWY]+$/).test(d.sequence)||d.sequence.length>500)fail('Provide reference, provenance and a sequence of 1–500 standard amino acids.');
  if(!['angstrom','schematic'].includes(d.unit)||!Array.isArray(d.atoms)||d.atoms.length>5000)fail('Use angstrom or schematic units and at most 5,000 atoms.');
- const ids=new Set<string>();for(const a of d.atoms){if(!a.id||ids.has(a.id)||!a.name||!['C','N','O','S','H','P','Se','Zn','Fe','Mg','Ca'].includes(a.element)||!Number.isInteger(a.residue)||a.residue<1||a.residue>d.sequence.length||![a.x,a.y,a.z].every(n=>Number.isFinite(n)&&Math.abs(n)<1e5))fail('Invalid or duplicate atom, residue mapping, element, or coordinate.');ids.add(a.id);}
+ const ids=new Set<string>();for(const a of d.atoms){if(!a.id||ids.has(a.id)||!a.name||!['C','N','O','S','H','P','Se','Zn','Fe','Mg','Ca','F','Cl','Br','I'].includes(a.element)||!Number.isInteger(a.residue)||a.residue<1||a.residue>d.sequence.length||![a.x,a.y,a.z].every(n=>Number.isFinite(n)&&Math.abs(n)<1e5))fail('Invalid or duplicate atom, residue mapping, element, or coordinate.');ids.add(a.id);}
  for(const key of ['bonds','modifications','interactions','frames'] as const)if(!Array.isArray(d[key]))fail('Missing array: '+key);
  if(d.bonds.length>10000||d.interactions.length>10000||d.modifications.length>5000||d.frames.length>100)fail('Too many annotations or frames (maximum 100 frames).');
  for(const b of d.bonds)if(!ids.has(b.a)||!ids.has(b.b)||b.a===b.b||![1,2,3].includes(b.order))fail('Bonds require two existing atoms and bond order 1, 2, or 3.');

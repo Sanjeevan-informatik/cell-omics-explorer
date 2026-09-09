@@ -113,3 +113,11 @@ In the hierarchical model, load the samples, select a specimen and molecule, the
 2D shows the entire selected sequence and a polymer schematic (including a derived complementary DNA strand). Single-base chemistry is optional. 3D plots only coordinate points mapped into the range. Time-course records must be fully contained in the range; separate measured regions remain separate selectable series. No partial-region signal is invented or averaged.
 
 Coordinate and time tables require `reference_id`, `coordinate_system=1-based-inclusive`, `start`, and `end`. The sequence record carries the same reference ID. Ranges remain molecule-local; DNA coordinates are not automatically translated into RNA/protein coordinates. Non-sequence omics layers can use explicit feature-reference positions but do not acquire a biological sequence by inference. Sample geometry remains schematic and the time view is not molecular dynamics.
+
+## Integrated release v6
+
+The uploaded v5 archive is integrated with the latest range, protein-modification and molecular trajectory tools. Open `/atlas` for the unified teaching atlas. `/explore/metabolome` now separates **Compound library**, **My structures & motion**, and **Data tables & original demos**. The shared loader keeps the current 40 sample templates and exposes the archive's 36 canonical datasets in its archive catalog.
+
+The compound library contains generated conformers (not time trajectories); uploaded coordinate motion stays in the dedicated workbench. The atlas displays fixed teaching fixtures and summarizes loaded-file availability; it does not claim that changing an assembly or locus queries external data.
+
+All 154 input archive files are preserved byte-for-byte, either at their integrated path or as source snapshots when adapted or conflicting. `data/provenance/v5-import-manifest.json` records their SHA-256 hashes. `data/provenance/live-samples-before-v5.json` verifies that all prior teaching payloads remain unchanged. Run `npm run data:materialize` before serving; it adds catalog assets without deleting existing files. See `docs/INTEGRATION_V6.md`.

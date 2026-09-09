@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "collections": [
+    {
+      "id": "teaching-v3",
+      "label": "Unified teaching samples",
+      "synthetic": true,
+      "description": "Current 24 cross-omics sample datasets."
+    },
+    {
+      "id": "legacy-v2",
+      "label": "Preserved legacy samples",
+      "synthetic": true,
+      "description": "12 unique legacy Cell Omics Explorer datasets retained without information loss."
+    }
+  ]
+}

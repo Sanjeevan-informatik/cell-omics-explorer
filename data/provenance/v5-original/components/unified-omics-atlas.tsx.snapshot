@@ -1,0 +1,189 @@
+"use client";
+
+import { useMemo, useState } from 'react';
+import Link from 'next/link';
+import {
+  Activity, Atom, Boxes, BrainCircuit, ChevronRight, CircleDot, Database,
+  Dna, FlaskConical, GitBranch, Grid3X3, Layers3, Microscope, Network,
+  ScanSearch, Sparkles, Workflow,
+} from 'lucide-react';
+import { useDataSession } from './data-session';
+import { MetabolomeStructureExplorer } from './metabolome-structure-explorer';
+import type { DataCategory } from '@/lib/data-catalog';
+import {
+  BENCHMARK_MODELS, DEMO_LOCUS, DEMO_TRACKS, HIC_MATRIX, OMICS_LAYERS,
+  ONCOPRINT, PROTEIN_SEQUENCE, PTM_SITES, SINGLE_CELL_POINTS, SPECTRUM, WORKFLOW,
+} from '@/lib/unified-omics';
+
+const layerRoutes: Record<string,string> = {
+  genome:'/explore/genome', epigenome:'/explore/epigenome', transcriptome:'/explore/transcriptome',
+  singlecell:'/explore/singlecell', proteome:'/explore/proteome', metabolome:'/explore/metabolome',
+  immunomics:'/explore/immunomics', imaging:'/explore/imaging', pathways:'/explore/pathways',
+  evolution:'/explore/evolution', multiomics:'/explore/multiomics',
+};
+
+function MiniBar({value,max=100}:{value:number;max?:number}) {
+  return <span className="atlas-mini-bar"><i style={{width:`${Math.max(2,Math.min(100,value/max*100))}%`}} /></span>;
+}
+
+function GenomeTracks({start,end}:{start:number;end:number}) {
+  return <div className="atlas-track-stack">
+    <div className="atlas-axis"><span>{start.toLocaleString()}</span><span>{Math.round((start+end)/2).toLocaleString()}</span><span>{end.toLocaleString()}</span></div>
+    {DEMO_TRACKS.map(track=><div className="atlas-track" key={track.label}>
+      <div className="atlas-track-label"><strong>{track.label}</strong><small>{track.detail}</small></div>
+      <div className="atlas-track-values">{track.values.map((v,i)=><span key={i} className={track.label==='Variants'&&v>0?'is-hit':''} style={{height:`${Math.max(4,Math.min(100,v))}%`}} title={`${track.label}: ${v}`} />)}</div>
+    </div>)}
+    <div className="atlas-gene-model"><span className="exon e1"/><span className="intron"/><span className="exon e2"/><span className="intron wide"/><span className="exon e3"/><span className="intron"/><span className="exon e4"/><b>BRCA1 transcript model</b></div>
+  </div>;
+}
+
+function HiCView() {
+  const max=Math.max(...HIC_MATRIX.flat());
+  return <div className="atlas-hic-wrap">
+    <div className="atlas-hic" style={{gridTemplateColumns:`repeat(${HIC_MATRIX.length},1fr)`}}>
+      {HIC_MATRIX.flatMap((row,r)=>row.map((value,c)=><span key={`${r}-${c}`} style={{opacity:.12+.88*(value/max)}} title={`Bin ${r+1} ↔ ${c+1}: ${value}`}>{value}</span>))}
+    </div>
+    <div className="atlas-scale"><span>low contact</span><i/><span>high contact</span></div>
+  </div>;
+}
+
+function SingleCellView() {
+  const [feature,setFeature]=useState('BRCA1');
+  const clusters=[...new Set(SINGLE_CELL_POINTS.map(p=>p.cluster))];
+  return <div className="atlas-cell-layout">
+    <div>
+      <div className="atlas-inline-control"><label>Feature</label><select value={feature} onChange={e=>setFeature(e.target.value)}><option>BRCA1</option><option>TP53</option><option>EGFR</option><option>MYC</option></select></div>
+      <svg className="atlas-cellplot" viewBox="0 0 100 100" role="img" aria-label="Synthetic single-cell embedding">
+        <line x1="8" x2="92" y1="92" y2="92"/><line x1="8" x2="8" y1="8" y2="92"/>
+        {SINGLE_CELL_POINTS.map((p,i)=><circle key={i} cx={p.x} cy={p.y} r={1.8+p.expression*.8} className={`cluster-${i%4}`} opacity={.35+.65*p.expression}><title>{p.cluster} · {feature} expression {(p.expression*5.4).toFixed(2)}</title></circle>)}
+        <text x="78" y="98">latent 1</text><text x="1" y="9">latent 2</text>
+      </svg>
+    </div>
+    <div className="atlas-cluster-list">{clusters.map((cluster,index)=><div key={cluster}><span className={`cluster-dot cluster-${index}`}/><div><strong>{cluster}</strong><small>{SINGLE_CELL_POINTS.filter(p=>p.cluster===cluster).length} cells · synthetic embedding</small></div></div>)}</div>
+  </div>;
+}
+
+function Oncoprint() {
+  return <div className="atlas-oncoprint">
+    <div className="oncoprint-head"><span/><>{Array.from({length:8},(_,i)=><b key={i}>S{i+1}</b>)}</></div>
+    {ONCOPRINT.map(row=><div className="oncoprint-row" key={row.feature}><strong>{row.feature}</strong>{row.values.map((v,i)=><span key={i} className={`alter-${v}`} title={`${row.feature} · S${i+1}: ${v}`}>{v==='mut'?'M':v==='gain'?'G':v==='loss'?'L':'·'}</span>)}</div>)}
+    <div className="oncoprint-legend"><span><i className="alter-mut"/> mutation</span><span><i className="alter-gain"/> gain</span><span><i className="alter-loss"/> loss</span><span><i className="alter-none"/> unchanged</span></div>
+  </div>;
+}
+
+function ProteinExplorer() {
+  const [mode,setMode]=useState<'2d'|'3d'|'4d'>('2d');
+  const [start,setStart]=useState(1);
+  const [windowSize,setWindowSize]=useState(20);
+  const [frame,setFrame]=useState(42);
+  const end=Math.min(PROTEIN_SEQUENCE.length,start+windowSize-1);
+  const residues=PROTEIN_SEQUENCE.slice(start-1,end).split('');
+  const atoms=Array.from({length:26},(_,i)=>({
+    x:50+Math.cos(i*.78)*(22+(i%4)*4), y:50+Math.sin(i*.78)*(22+(i%3)*3), z:(i%7)-3,
+  }));
+  return <div className="atlas-protein">
+    <div className="atlas-protein-controls">
+      <div><label>Residue start</label><input type="number" min={1} max={PROTEIN_SEQUENCE.length} value={start} onChange={e=>setStart(Math.max(1,Math.min(PROTEIN_SEQUENCE.length,Number(e.target.value)||1)))}/></div>
+      <div><label>Window</label><select value={windowSize} onChange={e=>setWindowSize(Number(e.target.value))}><option value={10}>10 aa</option><option value={20}>20 aa</option><option value={40}>40 aa</option><option value={80}>80 aa</option></select></div>
+      <div className="structure-switch" aria-label="Structure mode">{(['2d','3d','4d'] as const).map(v=><button key={v} className={mode===v?'active':''} onClick={()=>setMode(v)}>{v.toUpperCase()}</button>)}</div>
+    </div>
+    <div className="residue-strip">{residues.map((aa,i)=>{const pos=start+i;const mod=PTM_SITES.get(pos);return <button key={pos} className={mod?'modified':''} title={`Residue ${pos}: ${aa}${mod?` · ${mod}`:''}`}><b>{aa}</b><small>{pos}</small>{mod&&<i/>}</button>})}</div>
+    <div className={`structure-stage mode-${mode}`}>
+      {mode==='2d'?<div className="chemical-2d">
+        <svg viewBox="0 0 560 210" role="img" aria-label="Conceptual peptide chemical graph">
+          {residues.slice(0,12).map((aa,i)=>{const x=30+i*45;const y=90+(i%2)*34;return <g key={i}><circle cx={x} cy={y} r="13"/><text x={x} y={y+4}>{aa}</text>{i<Math.min(11,residues.length-1)&&<line x1={x+13} y1={y} x2={x+32} y2={90+((i+1)%2)*34}/>} {PTM_SITES.get(start+i)&&<g><line className="mod-bond" x1={x} y1={y-13} x2={x} y2={y-34}/><circle className="mod-node" cx={x} cy={y-42} r="8"/></g>}</g>})}
+        </svg><p>Backbone-level teaching graph. Marked branches indicate known demo PTM sites.</p>
+      </div>:<div className="molecule-3d">
+        <svg viewBox="0 0 100 100" role="img" aria-label={mode==='4d'?'Conceptual molecular trajectory frame':'Conceptual 3D molecular structure'}>
+          {atoms.slice(0,-1).map((a,i)=>{const b=atoms[i+1];const drift=mode==='4d'?Math.sin((frame+i)*.12)*2:0;return <line key={`b${i}`} x1={a.x+drift} y1={a.y} x2={b.x+(mode==='4d'?Math.sin((frame+i+1)*.12)*2:0)} y2={b.y}/>} )}
+          {atoms.map((a,i)=>{const drift=mode==='4d'?Math.sin((frame+i)*.12)*2:0;return <circle key={i} cx={a.x+drift} cy={a.y} r={2.3+((a.z+3)/8)} className={`atom-${i%4}`}><title>Conceptual atom {i+1} · pseudo-z {a.z}</title></circle>})}
+        </svg>
+        <p>{mode==='3d'?'Interactive-style 3D teaching representation; not a solved structure.':'4D mode adds a trajectory/time dimension to the conceptual structure; it is not molecular-dynamics output.'}</p>
+        {mode==='4d'&&<label className="trajectory-control">Trajectory frame <input type="range" min="0" max="100" value={frame} onChange={e=>setFrame(Number(e.target.value))}/><span>{frame}</span></label>}
+      </div>}
+    </div>
+    <div className="protein-facts"><span><b>{start}–{end}</b> selected residues</span><span><b>{residues.filter((_,i)=>PTM_SITES.has(start+i)).length}</b> PTM sites in range</span><span><b>sequence → peptide → atom</b> linked hierarchy</span></div>
+  </div>;
+}
+
+function MetabolomeView() {
+  return <MetabolomeStructureExplorer compact/>;
+}
+
+function WorkflowStudio() {
+  return <div className="atlas-workflow">
+    {WORKFLOW.map((step,i)=><div key={step.id} className="workflow-step"><span>{step.id}</span><div><strong>{step.label}</strong><small>{step.detail}</small></div>{i<WORKFLOW.length-1&&<ChevronRight/>}</div>)}
+  </div>;
+}
+
+export function UnifiedOmicsAtlas() {
+  const {datasets}=useDataSession();
+  const [assembly,setAssembly]=useState(DEMO_LOCUS.assembly);
+  const [chromosome,setChromosome]=useState(DEMO_LOCUS.chromosome);
+  const [start,setStart]=useState(DEMO_LOCUS.start);
+  const [end,setEnd]=useState(DEMO_LOCUS.end);
+  const [gene,setGene]=useState(DEMO_LOCUS.gene);
+  const [activeLayers,setActiveLayers]=useState<Set<DataCategory>>(()=>new Set(OMICS_LAYERS.map(l=>l.id)));
+  const [panel,setPanel]=useState<'overview'|'genome'|'cells'|'cancer'|'protein'|'metabolome'|'workflow'>('overview');
+  const ready=datasets.filter(d=>d.status==='ready');
+  const counts=useMemo<Record<DataCategory,number>>(()=>Object.fromEntries(OMICS_LAYERS.map(l=>[l.id,ready.filter(d=>d.category===l.id).length])) as Record<DataCategory,number>,[ready]);
+  const rangeSize=Math.max(1,end-start+1);
+  const toggle=(id:DataCategory)=>setActiveLayers(old=>{const next=new Set(old);if(next.has(id))next.delete(id);else next.add(id);return next;});
+  const resetLocus=()=>{setAssembly(DEMO_LOCUS.assembly);setChromosome(DEMO_LOCUS.chromosome);setStart(DEMO_LOCUS.start);setEnd(DEMO_LOCUS.end);setGene(DEMO_LOCUS.gene)};
+
+  return <section className="atlas-page">
+    <header className="atlas-hero">
+      <div className="atlas-kicker"><Sparkles/> CellOmics Explorer v3 · unified layer</div>
+      <div className="atlas-hero-row"><div><h1>Unified Omics Atlas</h1><p>One synchronized biological selection connecting genome, epigenome, transcriptome, cells, proteins, structures, metabolites and system-level evidence—without removing the original CellOmics Explorer.</p></div><div className="atlas-health"><span><i/>{ready.length} imported datasets ready</span><span>{activeLayers.size} layers visible</span></div></div>
+      <div className="atlas-locus-bar">
+        <div><label>Assembly</label><select value={assembly} onChange={e=>setAssembly(e.target.value)}><option>GRCh38</option><option>GRCh37</option><option>demo</option></select></div>
+        <div><label>Chromosome</label><input value={chromosome} onChange={e=>setChromosome(e.target.value)}/></div>
+        <div><label>Start</label><input type="number" value={start} onChange={e=>setStart(Number(e.target.value)||1)}/></div>
+        <div><label>End</label><input type="number" value={end} onChange={e=>setEnd(Math.max(start,Number(e.target.value)||start))}/></div>
+        <div><label>Gene / feature</label><input value={gene} onChange={e=>setGene(e.target.value)}/></div>
+        <button onClick={resetLocus}>Load BRCA1 example</button>
+      </div>
+      <div className="atlas-locus-summary"><Dna/><strong>{gene || 'Selected locus'}</strong><span>{assembly} · {chromosome}:{start.toLocaleString()}–{end.toLocaleString()}</span><small>{rangeSize.toLocaleString()} bp selected</small></div>
+    </header>
+
+    <div className="atlas-layer-ribbon">
+      {OMICS_LAYERS.map(layer=>{const isOn=activeLayers.has(layer.id);return <button key={layer.id} className={isOn?'active':''} onClick={()=>toggle(layer.id)} title={layer.description}><span>{layer.short}</span><strong>{layer.label}</strong><small>{counts[layer.id]||0} loaded</small></button>})}
+    </div>
+
+    <nav className="atlas-tabs" aria-label="Atlas views">
+      {([
+        {id:'overview',label:'Overview',Icon:Layers3}, {id:'genome',label:'Genome + Hi-C',Icon:Dna},
+        {id:'cells',label:'Single cell',Icon:CircleDot}, {id:'cancer',label:'Multi-omics matrix',Icon:Grid3X3},
+        {id:'protein',label:'Protein + structure',Icon:Atom}, {id:'metabolome',label:'Metabolome',Icon:FlaskConical},
+        {id:'workflow',label:'Workflow',Icon:Workflow},
+      ] as const).map(({id,label,Icon})=><button key={id} className={panel===id?'active':''} onClick={()=>setPanel(id)}><Icon/>{label}</button>)}
+    </nav>
+
+    {(panel==='genome'||(panel==='overview'&&(activeLayers.has('genome')||activeLayers.has('epigenome')||activeLayers.has('transcriptome'))))&&<div className="atlas-grid atlas-grid-2">
+      <article className="atlas-card atlas-span-2"><div className="atlas-card-head"><div><span className="atlas-eyebrow"><Dna/> coordinate-first browser</span><h2>Genome browser + linked molecular tracks</h2><p>JBrowse/IGV-inspired synchronization: a range selection is the anchor for every coordinate-aware layer.</p></div><Link href="/sequence-map">Open sequence map →</Link></div><GenomeTracks start={start} end={end}/></article>
+      <article className="atlas-card"><div className="atlas-card-head"><div><span className="atlas-eyebrow"><Grid3X3/> 3D genome</span><h2>Hi-C contact map</h2><p>HiGlass-inspired multiscale contact view for the selected region.</p></div><Link href="/explore/epigenome">Epigenome workspace →</Link></div><HiCView/></article>
+      <article className="atlas-card"><div className="atlas-card-head"><div><span className="atlas-eyebrow"><Activity/> evidence summary</span><h2>Cross-omics signal</h2><p>Keep measurement units explicit while comparing evidence availability.</p></div></div><div className="atlas-signal-list">{DEMO_TRACKS.slice(1).map((track,i)=><div key={track.label}><span>{track.label}</span><MiniBar value={[42,67,74,58][i]}/><b>{[42,67,74,58][i]}%</b></div>)}</div><div className="atlas-note">Demo percentages describe visualization strength only; they are not biological probabilities.</div></article>
+    </div>}
+
+    {(panel==='cells'||(panel==='overview'&&(activeLayers.has('singlecell')||activeLayers.has('imaging'))))&&<div className="atlas-grid atlas-grid-2">
+      <article className="atlas-card"><div className="atlas-card-head"><div><span className="atlas-eyebrow"><Microscope/> linked observations</span><h2>Single-cell state explorer</h2><p>CELLxGENE/scverse-inspired observation/feature linking. Coordinates are explicitly synthetic.</p></div><Link href="/explore/singlecell">Single-cell workspace →</Link></div><SingleCellView/></article>
+      <article className="atlas-card"><div className="atlas-card-head"><div><span className="atlas-eyebrow"><Boxes/> spatial bridge</span><h2>Cell → tissue → molecule</h2><p>Preserve hierarchy while connecting spatial position, cell state and molecular evidence.</p></div></div><div className="atlas-hierarchy"><div><Microscope/><b>Tissue</b><small>spatial region</small></div><ChevronRight/><div><CircleDot/><b>Cell</b><small>cluster / phenotype</small></div><ChevronRight/><div><Dna/><b>Gene</b><small>{gene}</small></div><ChevronRight/><div><Atom/><b>Protein</b><small>sequence / PTM</small></div><ChevronRight/><div><FlaskConical/><b>Metabolite</b><small>pathway effect</small></div></div></article>
+    </div>}
+
+    {(panel==='cancer'||(panel==='overview'&&(activeLayers.has('multiomics')||activeLayers.has('pathways')||activeLayers.has('evolution')||activeLayers.has('immunomics'))))&&<div className="atlas-grid atlas-grid-2">
+      <article className="atlas-card"><div className="atlas-card-head"><div><span className="atlas-eyebrow"><Grid3X3/> sample-centric integration</span><h2>Multi-omics alteration matrix</h2><p>cBioPortal-inspired compact sample × feature view for integrated evidence.</p></div><Link href="/explore/multiomics">Multi-omics workspace →</Link></div><Oncoprint/></article>
+      <article className="atlas-card"><div className="atlas-card-head"><div><span className="atlas-eyebrow"><Database/> dataset bridge</span><h2>Imported data availability</h2><p>Your existing loader/session remains the source of truth; the atlas only summarizes what is actually ready.</p></div><Link href="/explore/loader">Upload data →</Link></div><div className="atlas-dataset-grid">{OMICS_LAYERS.map(layer=><Link key={layer.id} href={layerRoutes[layer.id]}><span>{layer.short}</span><div><strong>{layer.label}</strong><small>{counts[layer.id]?`${counts[layer.id]} ready dataset${counts[layer.id]===1?'':'s'}`:'No imported data'}</small></div><ChevronRight/></Link>)}</div></article>
+    </div>}
+
+    {(panel==='protein'||(panel==='overview'&&activeLayers.has('proteome')))&&<article className="atlas-card atlas-feature-card"><div className="atlas-card-head"><div><span className="atlas-eyebrow"><Atom/> sequence → structure</span><h2>Proteome & molecular structure explorer</h2><p>FragPipe/Mol*-inspired navigation from residue windows and PTMs into 2D chemistry, conceptual 3D, and a time/trajectory teaching mode.</p></div><Link href="/explore/proteome">Original proteome workspace →</Link></div><ProteinExplorer/></article>}
+
+    {(panel==='metabolome'||(panel==='overview'&&activeLayers.has('metabolome')))&&<article className="atlas-card atlas-feature-card"><div className="atlas-card-head"><div><span className="atlas-eyebrow"><FlaskConical/> feature → pathway</span><h2>Metabolomics evidence explorer</h2><p>MetaboAnalyst-inspired evidence flow expanded with 1D identity, 2D chemistry, 3D conformers, 4D ensembles, ions/isotopes, MS/MS and pathway context.</p></div><Link href="/explore/metabolome">Full metabolome structure workspace →</Link></div><MetabolomeView/></article>}
+
+    {(panel==='overview'||panel==='workflow')&&<div className="atlas-grid atlas-grid-2">
+      <article className="atlas-card"><div className="atlas-card-head"><div><span className="atlas-eyebrow"><Workflow/> reproducibility first</span><h2>Omics workflow studio</h2><p>Galaxy-inspired explicit stages. Heavy specialist computations remain external until a validated parser/tool is implemented.</p></div></div><WorkflowStudio/></article>
+      <article className="atlas-card"><div className="atlas-card-head"><div><span className="atlas-eyebrow"><BrainCircuit/> design lineage</span><h2>What this v3 layer combines</h2><p>Design ideas are adapted, not cloned; all original CellOmics Explorer content remains accessible.</p></div></div><div className="benchmark-list">{BENCHMARK_MODELS.map(model=><div key={model.name}><strong>{model.name}</strong><p>{model.contribution}</p></div>)}</div></article>
+    </div>}
+
+    <article className="atlas-card atlas-preservation"><div><GitBranch/><div><h2>No-information-loss migration</h2><p>The v4 restructuring is additive. The original cell explorer iframe, DNA analysis, sequence map, DNA→RNA→protein hierarchy, 11 omics workspace routes, upload/session model, backend and tests remain. Sample data are consolidated into one canonical catalog without losing unique content.</p></div></div><div className="preservation-links"><Link href="/">Original cell explorer</Link><Link href="/genomics">DNA analysis</Link><Link href="/hierarchical-model">DNA → RNA → protein</Link><Link href="/explore/loader">Data loader</Link></div></article>
+  </section>;
+}

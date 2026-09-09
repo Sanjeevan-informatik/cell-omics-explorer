@@ -1,0 +1,4 @@
+source	target	relationship
+EGFR	GRB2	recruitment
+GRB2	SOS1	recruitment
+SOS1	KRAS	activation

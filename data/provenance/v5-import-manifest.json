@@ -1,0 +1,929 @@
+{
+  "file_count": 154,
+  "files": [
+    {
+      "original_path": "docs/NO_INFORMATION_LOSS_V4.md",
+      "preserved_path": "docs/NO_INFORMATION_LOSS_V4.md",
+      "sha256": "78676d5e2cf4b7590766ffbd672943554b9c75499bfcb46b79223f2ae10880d0",
+      "integration": "new"
+    },
+    {
+      "original_path": "docs/DATA_ARCHITECTURE_V4.md",
+      "preserved_path": "docs/DATA_ARCHITECTURE_V4.md",
+      "sha256": "a7495abb3d025d8cd979bd6bf63197e1c1c5047292db17dc4d27e81558391d63",
+      "integration": "new"
+    },
+    {
+      "original_path": "docs/UNIFIED_ATLAS_V3.md",
+      "preserved_path": "docs/UNIFIED_ATLAS_V3.md",
+      "sha256": "5ba5a8c6915488f4b24ae9f8134752df59b70d41eaae8bc73c2df9a6a5b1f1a0",
+      "integration": "new"
+    },
+    {
+      "original_path": "docs/METABOLOME_STRUCTURE_EXPLORER_V5.md",
+      "preserved_path": "docs/METABOLOME_STRUCTURE_EXPLORER_V5.md",
+      "sha256": "d7a26c7c462da09e8096a70b1049aa6bac9c5efa1910f36daf2303e5488e59c1",
+      "integration": "new"
+    },
+    {
+      "original_path": "docs/PRESERVATION_REPORT_V3.md",
+      "preserved_path": "docs/PRESERVATION_REPORT_V3.md",
+      "sha256": "d32e1aa3bdd21967b3e799df0981a74c5ba1bdfc933a5a3fdab33d87f8155c1d",
+      "integration": "new"
+    },
+    {
+      "original_path": "components/unified-omics-atlas.tsx",
+      "preserved_path": "data/provenance/v5-original/components/unified-omics-atlas.tsx.snapshot",
+      "sha256": "80b79a3849076c00a5375a156a950ff609b7e78af26ea02ca7824a22deb78e2b",
+      "integration": "new"
+    },
+    {
+      "original_path": "components/metabolome-structure-explorer.tsx",
+      "preserved_path": "data/provenance/v5-original/components/metabolome-structure-explorer.tsx.snapshot",
+      "sha256": "d0bcd88a54538598373ee10e4a36fed054316d75f0222204b537de8b4c51d832",
+      "integration": "new"
+    },
+    {
+      "original_path": "tests/metabolome-structures.test.mjs",
+      "preserved_path": "tests/metabolome-structures.test.mjs",
+      "sha256": "6490ea986250b21bfc2122cc2b4e9f67c8846f227b7a8413d68e06a89eafc1dd",
+      "integration": "new"
+    },
+    {
+      "original_path": "tests/unified-omics.test.mjs",
+      "preserved_path": "tests/unified-omics.test.mjs",
+      "sha256": "0b0c3569d72940fafd1448bca245124579cd03d8a19e37c2a8966093c55de685",
+      "integration": "new"
+    },
+    {
+      "original_path": "tests/data-architecture.test.mjs",
+      "preserved_path": "data/provenance/v5-original/tests/data-architecture.test.mjs.snapshot",
+      "sha256": "6a367f1a3ef2a1c57acf23940d6fba8b5ad3e51e9b89531496fb1c7e4312ded4",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/README.md",
+      "preserved_path": "data/README.md",
+      "sha256": "9e4eceed565ac2d2abf91d823c5ebd3608e8559d4cb1bfc4ca6b819cbc1adeac",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/provenance/project-path-audit.json",
+      "preserved_path": "data/provenance/project-path-audit.json",
+      "sha256": "aba4587740f44f7b6c27479447394617d6db19f1f83595df2759d87ee5c70ea9",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/provenance/original-metadata/teaching-manifest-v3.json",
+      "preserved_path": "data/provenance/original-metadata/teaching-manifest-v3.json",
+      "sha256": "47f44c09ac8c5dd592d519d52396dea4a2b65ab9593c4b90eb2ca343412d7dfe",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/provenance/SHA256SUMS.txt",
+      "preserved_path": "data/provenance/SHA256SUMS.txt",
+      "sha256": "3a87465a412c290697be5d2141775d5f407829e5e4e3a0ab8fd538693fd61cb5",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/provenance/migration-map.json",
+      "preserved_path": "data/provenance/migration-map.json",
+      "sha256": "e5141262472434f867d3c5bdab34ac7966a4864aaadf9661a1f5abb72c9aa834",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/provenance/v5-metabolome-structure-audit.json",
+      "preserved_path": "data/provenance/v5-metabolome-structure-audit.json",
+      "sha256": "fbf8920ff33f017989ba1cc4cff2bab8c67dbb785d66dcde3aba49b80f5ff618",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/knowledge/unified-atlas.json",
+      "preserved_path": "data/knowledge/unified-atlas.json",
+      "sha256": "42f83de07a11e4065935a8c49987a499b717a5d33ecc1a35a43ec3a940489cd3",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/knowledge/biological-hierarchy.json",
+      "preserved_path": "data/knowledge/biological-hierarchy.json",
+      "sha256": "ce9776c369ebea1ecb11d854e900e833bd99c7864e7955b1d8139aa86acdfdd6",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/knowledge/metabolome-structures.json",
+      "preserved_path": "data/knowledge/metabolome-structures.json",
+      "sha256": "c4b60bd06de6c261d0b2fc91aa244e2f6a98d750655c311b20f85a8f67bdbbef",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/knowledge/legacy-explorer.json",
+      "preserved_path": "data/knowledge/legacy-explorer.json",
+      "sha256": "5fb9e66f0d514eb3ea3f294ecd952dcc5b2c59a3e93dc699b8cbabe91916bf3c",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/evolution/clone_fractions.tsv",
+      "preserved_path": "data/datasets/teaching-v3/evolution/clone_fractions.tsv",
+      "sha256": "cb876ee56dcbd08f3368e34ce49770f4485e27a2f527a499683350f9c3c0bbd6",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/pathways/network_edges.tsv",
+      "preserved_path": "data/datasets/teaching-v3/pathways/network_edges.tsv",
+      "sha256": "8fef11d04a2de7601c1ce4c35906d183e74abc8aea06ec652cf039d02b12deaf",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/immunomics/repertoire.tsv",
+      "preserved_path": "data/datasets/teaching-v3/immunomics/repertoire.tsv",
+      "sha256": "e1f81607388535d74ad73c2b976cac2bafe728ac2c9c87f9e9c42b4f93d01e4d",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/multi-omics/multiomics_evidence.tsv",
+      "preserved_path": "data/datasets/teaching-v3/multi-omics/multiomics_evidence.tsv",
+      "sha256": "080b2387a414efb30a440fd9fd5c7c1a4f393772184209bdeca2d1d4dd4d4356",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/epigenomics/accessibility.tsv",
+      "preserved_path": "data/datasets/teaching-v3/epigenomics/accessibility.tsv",
+      "sha256": "7f8f943ef2ea265dd5c3b2e390fef233974dbaeaee7ad3a1669266ec6ead86bc",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/epigenomics/hic_contacts.tsv",
+      "preserved_path": "data/datasets/teaching-v3/epigenomics/hic_contacts.tsv",
+      "sha256": "946d8dee7c6a8f26a19f62d1319368ed63f95d1d50447e70747cc6c788371b11",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/epigenomics/methylation.tsv",
+      "preserved_path": "data/datasets/teaching-v3/epigenomics/methylation.tsv",
+      "sha256": "771896086f110a50a98c3dc1657f87c2868ecc9ee2ccc336548655f3d776f9e8",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/metabolomics/glycans.tsv",
+      "preserved_path": "data/datasets/teaching-v3/metabolomics/glycans.tsv",
+      "sha256": "009927e103dc97dba1438352cac345a99108aec93a9dfbc10512fa8fbb056630",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/metabolomics/lipids.tsv",
+      "preserved_path": "data/datasets/teaching-v3/metabolomics/lipids.tsv",
+      "sha256": "3ec68209e6c5a482c3d9cd0ed09f81528b1b764acf277a536485478c8baea3be",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/metabolomics/metabolite_features.csv",
+      "preserved_path": "data/datasets/teaching-v3/metabolomics/metabolite_features.csv",
+      "sha256": "9ad0532107cd347ff29635379826c7c03699ae483cde45362030d1ee75d5154d",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/proteomics/protein_ptm.tsv",
+      "preserved_path": "data/datasets/teaching-v3/proteomics/protein_ptm.tsv",
+      "sha256": "8a60dd24f91a5bc948c4f3c30cb0951e0b61a0d140c87120d3598d3c9c158f31",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/proteomics/msms_peaks.tsv",
+      "preserved_path": "data/datasets/teaching-v3/proteomics/msms_peaks.tsv",
+      "sha256": "df8c043a2fcf243c58b8f8cc0ccb52776831607a19b677960f05af0797931ec8",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/proteomics/protein_abundance.tsv",
+      "preserved_path": "data/datasets/teaching-v3/proteomics/protein_abundance.tsv",
+      "sha256": "6ea8e863b642c00f1f5d8d1846cb08d530f9ed2aabceb3c4e60c5327b6f02fda",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/imaging-cytometry/image_measurements.tsv",
+      "preserved_path": "data/datasets/teaching-v3/imaging-cytometry/image_measurements.tsv",
+      "sha256": "c8c07be6c876f8b7d646281282efc6f84aafa093a6715244cee75e9ef2273d4e",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/imaging-cytometry/cytometry_events.csv",
+      "preserved_path": "data/datasets/teaching-v3/imaging-cytometry/cytometry_events.csv",
+      "sha256": "fa01e941306c1f5498f3dd6d3e11d28a153fa184c10781e2a35b42779217405b",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/genomics/intervals.bed",
+      "preserved_path": "data/datasets/teaching-v3/genomics/intervals.bed",
+      "sha256": "2cd55f030791f27ae99c1b7b723359ffe064846253054587a2ea81b4aaefe2ba",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/genomics/aligned_dna.fasta",
+      "preserved_path": "data/datasets/teaching-v3/genomics/aligned_dna.fasta",
+      "sha256": "d3278fd84e0c2e51e8ee4e32834c30375dcd9d902fffb2f669e708c76f57e79e",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/genomics/haplotypes.tsv",
+      "preserved_path": "data/datasets/teaching-v3/genomics/haplotypes.tsv",
+      "sha256": "bc915227c3da21f82f63073cb3de622f11833a15383de70851cf7f6cab1ce374",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/genomics/reads.fastq",
+      "preserved_path": "data/datasets/teaching-v3/genomics/reads.fastq",
+      "sha256": "d73339f558296f4d1a010278ead253b877f83cf9ca388dbfbd4e8c5ff4a8e6e8",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/genomics/variants.vcf",
+      "preserved_path": "data/datasets/teaching-v3/genomics/variants.vcf",
+      "sha256": "f76206f130aa2530f6d4dba9a04f34f6d8994e28040d30d5d5e63a6a4d7e7d94",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/single-cell/cell_embedding.csv",
+      "preserved_path": "data/datasets/teaching-v3/single-cell/cell_embedding.csv",
+      "sha256": "1f66728fd9924f700ab37d011c442e001aa94fc35e695458405d5552f581ec28",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/single-cell/spatial_spots.tsv",
+      "preserved_path": "data/datasets/teaching-v3/single-cell/spatial_spots.tsv",
+      "sha256": "9557b2285776e3627f76730182f28a5ebd9a47186b0198d26786dfc1ca7fbde5",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/transcriptomics/isoforms.tsv",
+      "preserved_path": "data/datasets/teaching-v3/transcriptomics/isoforms.tsv",
+      "sha256": "6f267fda08539b1f5fb5b959896d1d519349e86861249f1e19edf906cf3c55e1",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/teaching-v3/transcriptomics/expression.csv",
+      "preserved_path": "data/datasets/teaching-v3/transcriptomics/expression.csv",
+      "sha256": "1d396e94d8a01b7e8d739b8440e63423dbb83ce0a638e42e701587dff135e3ac",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/immunomics/example_clonotypes.tsv",
+      "preserved_path": "data/datasets/legacy-v2/immunomics/example_clonotypes.tsv",
+      "sha256": "377c5c537d4f7bee6eb91711acd0cff263488728d4d778dbadddf7c680341197",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/multi-omics/example_multiomics.tsv",
+      "preserved_path": "data/datasets/legacy-v2/multi-omics/example_multiomics.tsv",
+      "sha256": "26ffce9f44abdf2ed4c0f2cf4df93f7a778b5e2159c0e90f5d229daf27c8d13f",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/epigenomics/example_methylation.tsv",
+      "preserved_path": "data/datasets/legacy-v2/epigenomics/example_methylation.tsv",
+      "sha256": "946700f9dae7e304ee83c26022e734967f15921a2bc4db4a3e0c6c03b0a5eb8f",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/proteomics/psm.tsv",
+      "preserved_path": "data/datasets/legacy-v2/proteomics/psm.tsv",
+      "sha256": "90128b83e7bfbd39d01afc1be8f9524b8b66949abdb55f907d888dd388634751",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/proteomics/sample.mzML",
+      "preserved_path": "data/datasets/legacy-v2/proteomics/sample.mzML",
+      "sha256": "cadd630cd94b9514b2837975dd7c9ea0656e2e1641912c4e73c2e8d0f227e51b",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/proteomics/proteins.fasta",
+      "preserved_path": "data/datasets/legacy-v2/proteomics/proteins.fasta",
+      "sha256": "ccc45b19d40d879cd93f9bef281785fc737205eb3a51732f7c3fd0ef983eaacc",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/proteomics/example_structure.cif",
+      "preserved_path": "data/datasets/legacy-v2/proteomics/example_structure.cif",
+      "sha256": "4a8929d07290de6b1806abc4095d8246ac6891943d1d3b20ee4db4969d21ae5a",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/proteomics/reference_library.msp",
+      "preserved_path": "data/datasets/legacy-v2/proteomics/reference_library.msp",
+      "sha256": "dffad34c06d4661f4026d122f98ed7ce978c997320481df2f64c0f1f3fb89a81",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/genomics/example_alignment.fasta",
+      "preserved_path": "data/datasets/legacy-v2/genomics/example_alignment.fasta",
+      "sha256": "a94899b2a7b1949c93385ed089806cc290c3e0112aa735f4e0cf2b9931104a20",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/genomics/example_variants.vcf",
+      "preserved_path": "data/datasets/legacy-v2/genomics/example_variants.vcf",
+      "sha256": "9c870f380ea662c97ae6b5e03134c95bf388f85b40edcfddec342759a8b605c8",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/single-cell/example_single_cell.csv",
+      "preserved_path": "data/datasets/legacy-v2/single-cell/example_single_cell.csv",
+      "sha256": "7f6169e5b3a7026dc535c85262ddb696781d3daa4d87a4fadc716aa1579bd77f",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/datasets/legacy-v2/transcriptomics/example_expression.csv",
+      "preserved_path": "data/datasets/legacy-v2/transcriptomics/example_expression.csv",
+      "sha256": "0b2ffcf57517128e47d5e75d6960d196e1ce19fd70271c0fe0b83d0709d90baa",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/catalog/datasets.json",
+      "preserved_path": "data/catalog/datasets.json",
+      "sha256": "c2cc25d13baddfa6ba09fed6c6e2ad52da695581bfc3aaced8d0750322af71a0",
+      "integration": "new"
+    },
+    {
+      "original_path": "data/catalog/collections.json",
+      "preserved_path": "data/catalog/collections.json",
+      "sha256": "4b22299d9d68e6d20bdd87402640389d724d072e7e9bb71edfddaa2a7b05cefe",
+      "integration": "new"
+    },
+    {
+      "original_path": "app/atlas/page.tsx",
+      "preserved_path": "app/atlas/page.tsx",
+      "sha256": "968ad2fc657a60cf4dabc128b228616a84479bf972b8f23b2a1b2fd34c3a822d",
+      "integration": "new"
+    },
+    {
+      "original_path": "lib/storage/browser-static-repository.ts",
+      "preserved_path": "data/provenance/v5-original/lib/storage/browser-static-repository.ts.snapshot",
+      "sha256": "47692d4dd572bed83450024ced5788b60728ba33986a4688a28c6a85f4d6f140",
+      "integration": "new"
+    },
+    {
+      "original_path": "lib/storage/dataset-repository.ts",
+      "preserved_path": "lib/storage/dataset-repository.ts",
+      "sha256": "2a48e80ba0611f0fe10d4e8feef076f362285a640317930b79910a572f0191a2",
+      "integration": "new"
+    },
+    {
+      "original_path": "lib/metabolome-structures.ts",
+      "preserved_path": "lib/metabolome-structures.ts",
+      "sha256": "1534355905be927042dfb38d68f9b0ac219e64c9766bcf63920755977b5fe447",
+      "integration": "new"
+    },
+    {
+      "original_path": "lib/unified-omics.ts",
+      "preserved_path": "lib/unified-omics.ts",
+      "sha256": "b3ec5b1148500c79db51ec914043f82953bf9b55b305ad180d4feab1ef6748f8",
+      "integration": "new"
+    },
+    {
+      "original_path": "scripts/generate-metabolome-structures.py",
+      "preserved_path": "scripts/generate-metabolome-structures.py",
+      "sha256": "a7c00f47a28c7a8583ccd4ffa74a73c50ecd9f3c6f03772a69b35649e24a6ceb",
+      "integration": "new"
+    },
+    {
+      "original_path": "scripts/materialize-data.mjs",
+      "preserved_path": "data/provenance/v5-original/scripts/materialize-data.mjs.snapshot",
+      "sha256": "656752554f8e55ab0918a7972d662aa997ef3e54595014656b9fb2656e767ac2",
+      "integration": "new"
+    },
+    {
+      "original_path": "docs/ORIGINAL_EXPLORER.md",
+      "preserved_path": "data/provenance/v5-original/docs/ORIGINAL_EXPLORER.md.snapshot",
+      "sha256": "02f54a7feb8e4b275fbcbf2d8e5cf88d2da0eaa492e9df1f622bbd2bb76f6916",
+      "integration": "changed"
+    },
+    {
+      "original_path": "docs/FORMAT_SUPPORT.md",
+      "preserved_path": "data/provenance/v5-original/docs/FORMAT_SUPPORT.md.snapshot",
+      "sha256": "a4a957692aea1f395b0b012c120af714ccdc0408cfb62b36e2f28b42245e0c09",
+      "integration": "changed"
+    },
+    {
+      "original_path": "components/explorer-frame.tsx",
+      "preserved_path": "data/provenance/v5-original/components/explorer-frame.tsx.snapshot",
+      "sha256": "41c5518b99080c7ba5ec04ad568b434998c23b729346f394769201704f8540da",
+      "integration": "changed"
+    },
+    {
+      "original_path": "components/nucleobase-viewer.tsx",
+      "preserved_path": "data/provenance/v5-original/components/nucleobase-viewer.tsx.snapshot",
+      "sha256": "07835fd2faa1bcfcd5a59c633696820fe0867b96c77521f85217c3a1e39b986b",
+      "integration": "changed"
+    },
+    {
+      "original_path": "components/app-navigation.tsx",
+      "preserved_path": "data/provenance/v5-original/components/app-navigation.tsx.snapshot",
+      "sha256": "6640a68c54e6b38ba738d5d0304c690a52e4d88d0174806f99b9f1b4a95c70f0",
+      "integration": "changed"
+    },
+    {
+      "original_path": "components/data-hub.tsx",
+      "preserved_path": "data/provenance/v5-original/components/data-hub.tsx.snapshot",
+      "sha256": "118c7a4035fc3827c898e80536405cd43a8feb51b403151ddd0d20a5fbcca8b4",
+      "integration": "changed"
+    },
+    {
+      "original_path": "tests/data-import.test.mjs",
+      "preserved_path": "data/provenance/v5-original/tests/data-import.test.mjs.snapshot",
+      "sha256": "784accd886c2ad511b55d7905404649c0266556daaf283214b867b4248edead1",
+      "integration": "changed"
+    },
+    {
+      "original_path": "package-lock.json",
+      "preserved_path": "data/provenance/v5-original/package-lock.json.snapshot",
+      "sha256": "24de44db82a58433fd996690ea127e05090df125a82de5874c56fdf4f02870ed",
+      "integration": "changed"
+    },
+    {
+      "original_path": "package.json",
+      "preserved_path": "data/provenance/v5-original/package.json.snapshot",
+      "sha256": "81609ee2bc3fd332a056317bb74edd228720430fa5c5e27515f947619ac61887",
+      "integration": "changed"
+    },
+    {
+      "original_path": "README.md",
+      "preserved_path": "data/provenance/v5-original/README.md.snapshot",
+      "sha256": "ad46fdb8957b337ce6a3ac1c8edfdd3a54aed4a53cf5c790c04d8fe2d248c21b",
+      "integration": "changed"
+    },
+    {
+      "original_path": "app/globals.css",
+      "preserved_path": "data/provenance/v5-original/app/globals.css.snapshot",
+      "sha256": "17c3592a3daafffd6ec36fadb126effd58d8b1891f64f0c0c54d26d923bac28b",
+      "integration": "changed"
+    },
+    {
+      "original_path": "app/layout.tsx",
+      "preserved_path": "data/provenance/v5-original/app/layout.tsx.snapshot",
+      "sha256": "0263dd43a4bf7581b25d219a9921c3d0946ca8c830e555ac1fd74ca5897bed65",
+      "integration": "changed"
+    },
+    {
+      "original_path": "app/hierarchical-model/page.tsx",
+      "preserved_path": "data/provenance/v5-original/app/hierarchical-model/page.tsx.snapshot",
+      "sha256": "49a07ec305000e179d41a9ae020a68403ec5fd7c6683dc9899e18484ee9a5c41",
+      "integration": "changed"
+    },
+    {
+      "original_path": "tsconfig.tsbuildinfo",
+      "preserved_path": "data/provenance/v5-original/tsconfig.tsbuildinfo.snapshot",
+      "sha256": "098b231445696a451abb73d8ed774449790f0070b0a6ae789ca5a86af0ac8451",
+      "integration": "changed"
+    },
+    {
+      "original_path": "lib/data-catalog.ts",
+      "preserved_path": "data/provenance/v5-original/lib/data-catalog.ts.snapshot",
+      "sha256": "864901c15d4aeffba76306e1464cb3d8350855ffe07fb16d68392a1431ad19f5",
+      "integration": "changed"
+    },
+    {
+      "original_path": "lib/workspaces.ts",
+      "preserved_path": "data/provenance/v5-original/lib/workspaces.ts.snapshot",
+      "sha256": "3cb1cd0436118efd59c6cd7081acc4350e87df845dc411d5dbb72775e2e0cce9",
+      "integration": "changed"
+    },
+    {
+      "original_path": "lib/biological-hierarchy.ts",
+      "preserved_path": "data/provenance/v5-original/lib/biological-hierarchy.ts.snapshot",
+      "sha256": "91fdc13ad4fd4a46f0af9d2205b050fd95c679b548b556293321682cb70dd0b3",
+      "integration": "changed"
+    },
+    {
+      "original_path": "lib/data-import.ts",
+      "preserved_path": "data/provenance/v5-original/lib/data-import.ts.snapshot",
+      "sha256": "f1636fb28b0a7d1d67573b4fd4da82e18f9cd4097ecaf5d2a8793ffc7d36a973",
+      "integration": "changed"
+    },
+    {
+      "original_path": ".gitignore",
+      "preserved_path": "data/provenance/v5-original/.gitignore.snapshot",
+      "sha256": "4e310187875c9b383a24748b1dbab2e1b9f1fe69e7c9dc87af99b2b2fd7a8a1f",
+      "integration": "changed"
+    },
+    {
+      "original_path": "scripts/generate-samples.mjs",
+      "preserved_path": "data/provenance/v5-original/scripts/generate-samples.mjs.snapshot",
+      "sha256": "b91732da5023c1e271579bddb00ef9d9a0e5040f81780eea4dfb4797521b099e",
+      "integration": "changed"
+    },
+    {
+      "original_path": "docs/ARCHITECTURE.md",
+      "preserved_path": "docs/ARCHITECTURE.md",
+      "sha256": "b1b1137d11c9e5075d7c39aafac40ff1f47b4ddf47628074cb4e48f8cf750165",
+      "integration": "same"
+    },
+    {
+      "original_path": "docs/MIGRATION.md",
+      "preserved_path": "docs/MIGRATION.md",
+      "sha256": "0277b6bd7038c9cb0c60e0f4f6fda8f479edb0928a1d95f190dfe3253ea30a97",
+      "integration": "same"
+    },
+    {
+      "original_path": "docs/GITHUB.md",
+      "preserved_path": "docs/GITHUB.md",
+      "sha256": "b77b3c7a8a969f85823543fcda002696588b7b5539e6b67d36acd6e02f187166",
+      "integration": "same"
+    },
+    {
+      "original_path": ".openai/hosting.json",
+      "preserved_path": ".openai/hosting.json",
+      "sha256": "d5682b9ba8402127fd30c2280f3f94ec5f84b6d83ff177cf9a348d92f2b1e6c4",
+      "integration": "same"
+    },
+    {
+      "original_path": "tsconfig.json",
+      "preserved_path": "tsconfig.json",
+      "sha256": "6bd0ed0e2c76697670121cc52bf6db581650997846033674e98b76f42e3a7f45",
+      "integration": "same"
+    },
+    {
+      "original_path": "components/dataset-preview.tsx",
+      "preserved_path": "components/dataset-preview.tsx",
+      "sha256": "39763467664df9ed9307115709c17d26ce27285ca085dcb4872c5c94ea8ee19e",
+      "integration": "same"
+    },
+    {
+      "original_path": "components/sequence-map-page.tsx",
+      "preserved_path": "components/sequence-map-page.tsx",
+      "sha256": "1de62414264551ea629593cc29aaecd31a651d595c00bc2ac28848c0b37a3032",
+      "integration": "same"
+    },
+    {
+      "original_path": "components/data-session.tsx",
+      "preserved_path": "components/data-session.tsx",
+      "sha256": "4654196116d23d9206eb8c856fe6c4a4e471b2bec6683d7a30763e0fe0b0f4ea",
+      "integration": "same"
+    },
+    {
+      "original_path": "components/genome-workbench.tsx",
+      "preserved_path": "components/genome-workbench.tsx",
+      "sha256": "6d77b6337ce42268c93fcc8858bec838e2a8974ec5b9b4a6a60856ca67dd23f6",
+      "integration": "same"
+    },
+    {
+      "original_path": "components/hierarchical-biology-panel.tsx",
+      "preserved_path": "components/hierarchical-biology-panel.tsx",
+      "sha256": "657cd799b103e9b7335a18792a55c895fa1e409ea229a3b3b676800913db5c73",
+      "integration": "same"
+    },
+    {
+      "original_path": "components/ui/badge.tsx",
+      "preserved_path": "components/ui/badge.tsx",
+      "sha256": "46a0de5224f6a5d5d63d45246534288518dce888f031064bff925bbc7fe6ad97",
+      "integration": "same"
+    },
+    {
+      "original_path": "components/ui/button.tsx",
+      "preserved_path": "components/ui/button.tsx",
+      "sha256": "cc36af0f8b5019c33cc039fbf03bb952a513072b15b55b53c592b78af3e5f4c4",
+      "integration": "same"
+    },
+    {
+      "original_path": "components/ui/select.tsx",
+      "preserved_path": "components/ui/select.tsx",
+      "sha256": "0b796a108a4eb5ba52d9ad938b7aea36dc56ae66c703a6d0a23dbc24f96daff3",
+      "integration": "same"
+    },
+    {
+      "original_path": "components/ui/textarea.tsx",
+      "preserved_path": "components/ui/textarea.tsx",
+      "sha256": "253cdeb487c73beaaccdf47fc163e36e7d5b7ae6ddf09a4f64998a109a112979",
+      "integration": "same"
+    },
+    {
+      "original_path": "components/ui/tabs.tsx",
+      "preserved_path": "components/ui/tabs.tsx",
+      "sha256": "865d0194331b9b2be36723fa79d3575dc83078b4cb941cafee87cb72fc2cff46",
+      "integration": "same"
+    },
+    {
+      "original_path": ".env.example",
+      "preserved_path": ".env.example",
+      "sha256": "e62eb14d88586d2dc991f5cdb72021111687983590cb59b6c74f879e17d3ca64",
+      "integration": "same"
+    },
+    {
+      "original_path": "tests/loader.test.mjs",
+      "preserved_path": "tests/loader.test.mjs",
+      "sha256": "df63ee53c81dd2a0d9dd9b3ff0fd3d5a781d5ad8c1695b7150c931d26fae611b",
+      "integration": "same"
+    },
+    {
+      "original_path": "tests/genome-analysis.test.mjs",
+      "preserved_path": "tests/genome-analysis.test.mjs",
+      "sha256": "56a837b6e90f61b343c5c41507b405cca086181dca1a625749b98f846ef18acc",
+      "integration": "same"
+    },
+    {
+      "original_path": ".devcontainer/devcontainer.json",
+      "preserved_path": ".devcontainer/devcontainer.json",
+      "sha256": "0fc36e2a51f60da906e54cf1578e15e19c60d5522561b9cf39460c4e497639ba",
+      "integration": "same"
+    },
+    {
+      "original_path": "compose.yaml",
+      "preserved_path": "compose.yaml",
+      "sha256": "f01b4e30779f1f17357a8bf755a52fe9885d38f463d141489527e76b88ff6119",
+      "integration": "same"
+    },
+    {
+      "original_path": "CONTRIBUTING.md",
+      "preserved_path": "CONTRIBUTING.md",
+      "sha256": "6176f3575c9cdfb1182e9eca921bc6aa8c17c616c5f6c7a80e781eae16e8cfbd",
+      "integration": "same"
+    },
+    {
+      "original_path": "backend/requirements-dev.txt",
+      "preserved_path": "backend/requirements-dev.txt",
+      "sha256": "b8b27640c2a33f48b17dbdaa5f7bedc32af2009c271b4a543d7f2d3f96889d7c",
+      "integration": "same"
+    },
+    {
+      "original_path": "backend/tests/test_api.py",
+      "preserved_path": "backend/tests/test_api.py",
+      "sha256": "3406395d29a7716d96e4c7bced69d426a816f7d208e5e683b3559fc8e86afc5d",
+      "integration": "same"
+    },
+    {
+      "original_path": "backend/tests/test_analysis.py",
+      "preserved_path": "backend/tests/test_analysis.py",
+      "sha256": "cfce020ae1ca39b3f35098bd09887494ed16c2e544503322dfea888b20ee464d",
+      "integration": "same"
+    },
+    {
+      "original_path": "backend/pyproject.toml",
+      "preserved_path": "backend/pyproject.toml",
+      "sha256": "2e4fa336d00926554f91649bee1d59865c09cf7d51f6835e5131a795c53db4c1",
+      "integration": "same"
+    },
+    {
+      "original_path": "backend/Dockerfile",
+      "preserved_path": "backend/Dockerfile",
+      "sha256": "3e73771cc6af1154ea7e3d00c1fcf03c9a93906bbba32e48c63dfc8ceef13297",
+      "integration": "same"
+    },
+    {
+      "original_path": "backend/app/main.py",
+      "preserved_path": "backend/app/main.py",
+      "sha256": "42abb06ed46c5f475ac8682d31eabb4767c8068574c665ba502e9217d0e9dbcf",
+      "integration": "same"
+    },
+    {
+      "original_path": "backend/app/models.py",
+      "preserved_path": "backend/app/models.py",
+      "sha256": "82a88fe8e4fe28f034686aaf062c23ef312eb99cb45264420c757e308bf97193",
+      "integration": "same"
+    },
+    {
+      "original_path": "backend/app/__init__.py",
+      "preserved_path": "backend/app/__init__.py",
+      "sha256": "749ef1c0beb79856407939d2420ffd5e21c411f978df2df00dfaba8bc2bb898a",
+      "integration": "same"
+    },
+    {
+      "original_path": "backend/app/analysis.py",
+      "preserved_path": "backend/app/analysis.py",
+      "sha256": "1f771f5a5fe288a48eaff78c8ff07ce959e6fed11a93772cddb8e4027fcf3ec1",
+      "integration": "same"
+    },
+    {
+      "original_path": "backend/requirements.txt",
+      "preserved_path": "backend/requirements.txt",
+      "sha256": "6bf71ed11112b16f411a0012257ac007e928aee9f7afa38791a94b2cb0056dd7",
+      "integration": "same"
+    },
+    {
+      "original_path": "postcss.config.mjs",
+      "preserved_path": "postcss.config.mjs",
+      "sha256": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde",
+      "integration": "same"
+    },
+    {
+      "original_path": "vite.config.ts",
+      "preserved_path": "vite.config.ts",
+      "sha256": "43e5f02f727ca043f08ebf34789f330580a7a0cb90f426c92f4a454d066988fc",
+      "integration": "same"
+    },
+    {
+      "original_path": "components.json",
+      "preserved_path": "components.json",
+      "sha256": "31f4ca67a4a62572571003d3d5aac85ee6fbfca67a192924bac6b168d95e98fd",
+      "integration": "same"
+    },
+    {
+      "original_path": ".github/dependabot.yml",
+      "preserved_path": ".github/dependabot.yml",
+      "sha256": "b1e5c08eab52c1e6f1bdf82890f6098df420ccdc0b7636810b42bc4372dae341",
+      "integration": "same"
+    },
+    {
+      "original_path": ".github/CODEOWNERS",
+      "preserved_path": ".github/CODEOWNERS",
+      "sha256": "c31a9b7dcd3679d5b000daee40065e2301c898d810d7320b090f92cb82d9276c",
+      "integration": "same"
+    },
+    {
+      "original_path": ".github/ISSUE_TEMPLATE/config.yml",
+      "preserved_path": ".github/ISSUE_TEMPLATE/config.yml",
+      "sha256": "13064e7bea658e01e718b414fbb7b3b244f36411fe25ee2055c151f7b534547a",
+      "integration": "same"
+    },
+    {
+      "original_path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "preserved_path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "sha256": "c4fd7ca7821bb80a8ee0ca37b5ed6409e630e7d666d247674a981c3e918a3d30",
+      "integration": "same"
+    },
+    {
+      "original_path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "preserved_path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "sha256": "95ed30b683d97b1cd1c9f178f6578eaad138ebe90c23a01f3886879ac456b3fb",
+      "integration": "same"
+    },
+    {
+      "original_path": ".github/workflows/ci.yml",
+      "preserved_path": ".github/workflows/ci.yml",
+      "sha256": "f2f1cd9e7f95c6db1508e5f3be5bce63fa965faed84f3f5de34a5e0f0fd19f29",
+      "integration": "same"
+    },
+    {
+      "original_path": ".github/workflows/release.yml",
+      "preserved_path": ".github/workflows/release.yml",
+      "sha256": "ef19fcb0087b59507ddd304a3e2172f0e792da80c2cf5fa206cf61e624fd18cb",
+      "integration": "same"
+    },
+    {
+      "original_path": ".github/workflows/codeql.yml",
+      "preserved_path": ".github/workflows/codeql.yml",
+      "sha256": "d6ead7d43343ecbb87eca89139461c109d5f5a4179f37eda3d3c58ca1d21bafa",
+      "integration": "same"
+    },
+    {
+      "original_path": ".github/release.yml",
+      "preserved_path": ".github/release.yml",
+      "sha256": "2e784bb26d7d2cf97c850b0c67b3f3d0661497084b61f98456cfe873046e366c",
+      "integration": "same"
+    },
+    {
+      "original_path": ".github/pull_request_template.md",
+      "preserved_path": ".github/pull_request_template.md",
+      "sha256": "6abc8fa3da243c1e7947c64c8eb10fd786bb58149bc5a15b1830be8d2762993c",
+      "integration": "same"
+    },
+    {
+      "original_path": "LICENSE",
+      "preserved_path": "LICENSE",
+      "sha256": "fabeb89eebf332ab1e8c64897838f4dfcead69dfae1d02ed741a7cd03de8a061",
+      "integration": "same"
+    },
+    {
+      "original_path": ".dockerignore",
+      "preserved_path": ".dockerignore",
+      "sha256": "8e52fe1d9c7db0e30f7101fd930ac4f59f36a2123f95e7b2b722b53f4a60c27e",
+      "integration": "same"
+    },
+    {
+      "original_path": "build/sites-vite-plugin.ts",
+      "preserved_path": "build/sites-vite-plugin.ts",
+      "sha256": "81b7cbfaeb970611572256aba0e313425beb3809f6426f63750696c15d9c756b",
+      "integration": "same"
+    },
+    {
+      "original_path": "worker/index.ts",
+      "preserved_path": "worker/index.ts",
+      "sha256": "2ed36d7fa996e946d9d7695c5925e7760246f6bf8fa35c06f1bc515c087dc450",
+      "integration": "same"
+    },
+    {
+      "original_path": "app/sequence-map/page.tsx",
+      "preserved_path": "app/sequence-map/page.tsx",
+      "sha256": "f59cef1674c75a100c6c3aedf2213b1467bf75d221fa1f019a3bc029689ccbbe",
+      "integration": "same"
+    },
+    {
+      "original_path": "app/page.tsx",
+      "preserved_path": "app/page.tsx",
+      "sha256": "603bd0dfc42ad3bf43abc29a4fa30c50957d39747fb7f353f09b1fb2f61c17b0",
+      "integration": "same"
+    },
+    {
+      "original_path": "app/not-found.tsx",
+      "preserved_path": "app/not-found.tsx",
+      "sha256": "2085faafa0c8be0abd46348005df0d3b7af6e57e37c58a166ab3f9886b0bb7dd",
+      "integration": "same"
+    },
+    {
+      "original_path": "app/explore/[module]/page.tsx",
+      "preserved_path": "app/explore/[module]/page.tsx",
+      "sha256": "0143607b21de38edd4e521855917269aed673ed73d18c1a6f30282d78de2d1f3",
+      "integration": "same"
+    },
+    {
+      "original_path": "app/genomics/page.tsx",
+      "preserved_path": "app/genomics/page.tsx",
+      "sha256": "0c33289eb2ba06040f09b0b917b29bbf7135b99dbc6d21ada40d251118a589bc",
+      "integration": "same"
+    },
+    {
+      "original_path": "eslint.config.mjs",
+      "preserved_path": "eslint.config.mjs",
+      "sha256": "f22a254df7d934bbf9be499d3c969a13abb7f7f64c03f5967d0095cad81dfe06",
+      "integration": "same"
+    },
+    {
+      "original_path": "Dockerfile.frontend",
+      "preserved_path": "Dockerfile.frontend",
+      "sha256": "8b6ee54c2ef44c1a96b2e20fed40fb0c0880dea631f36ea9814a270995c7db21",
+      "integration": "same"
+    },
+    {
+      "original_path": "SECURITY.md",
+      "preserved_path": "SECURITY.md",
+      "sha256": "11d4d879b5eeb2813f5555645ef41100962cb0f814c4d920ca05e7425b67edeb",
+      "integration": "same"
+    },
+    {
+      "original_path": "next.config.ts",
+      "preserved_path": "next.config.ts",
+      "sha256": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc",
+      "integration": "same"
+    },
+    {
+      "original_path": "lib/utils.ts",
+      "preserved_path": "lib/utils.ts",
+      "sha256": "53f3d3d070f0a9082934da25b875f9499855c2b0693868dd28be8c23d8730f68",
+      "integration": "same"
+    },
+    {
+      "original_path": "lib/genome-analysis.ts",
+      "preserved_path": "lib/genome-analysis.ts",
+      "sha256": "8567dfab18c5c8ba465875152ac81c7c8863c3fb868adbbc7eadef13882a510d",
+      "integration": "same"
+    },
+    {
+      "original_path": "lib/sequence-workspace.ts",
+      "preserved_path": "lib/sequence-workspace.ts",
+      "sha256": "cf6228f63077a38695eb50de1c4b66304876d3ccff0ec5b2971d498e0e3c89bf",
+      "integration": "same"
+    },
+    {
+      "original_path": "public/explorer/loader.js",
+      "preserved_path": "public/explorer/loader.js",
+      "sha256": "6b57e8a67117bcc60ade71b33dc3c09a0ad31f4062ad17b953e9a01885cc59bb",
+      "integration": "same"
+    },
+    {
+      "original_path": "public/explorer/app.js",
+      "preserved_path": "public/explorer/app.js",
+      "sha256": "c22ae5448e453ca321019d212b7e65d07e1a3dd8b6a8c7811b6d2ccafc89ea2d",
+      "integration": "same"
+    },
+    {
+      "original_path": "public/explorer/index.html",
+      "preserved_path": "public/explorer/index.html",
+      "sha256": "1b03b02133814665e01453a3a0ac01c9d7d093571aeef7f3f1856f50b8932d93",
+      "integration": "same"
+    },
+    {
+      "original_path": "public/explorer/styles.css",
+      "preserved_path": "public/explorer/styles.css",
+      "sha256": "c61a489b05bfa12277d31560245b2c74b2eaceaeb4e433ee5ed3abd6ab23da11",
+      "integration": "same"
+    },
+    {
+      "original_path": "public/favicon.svg",
+      "preserved_path": "public/favicon.svg",
+      "sha256": "bbddc5766664cc6dab79335903b8fd2def1bd8ad6427bdd3c308a27bf6d08bf0",
+      "integration": "same"
+    },
+    {
+      "original_path": ".npmrc",
+      "preserved_path": ".npmrc",
+      "sha256": "a3909ac0447c469fda12c57374993be70f47ce73e49fd3124678c7c047f2214d",
+      "integration": "same"
+    },
+    {
+      "original_path": "scripts/sites-env.sh",
+      "preserved_path": "scripts/sites-env.sh",
+      "sha256": "6f49948b593493f17c57bd280e71ffb3c2be1e99696e96c36d123929488bf4ca",
+      "integration": "same"
+    },
+    {
+      "original_path": "scripts/build-verified.sh",
+      "preserved_path": "scripts/build-verified.sh",
+      "sha256": "e385de69881bb49a71f1048130d653b41628aea304c50e6726982a5a1cdd5fe3",
+      "integration": "same"
+    },
+    {
+      "original_path": "scripts/install-ci.sh",
+      "preserved_path": "scripts/install-ci.sh",
+      "sha256": "c6e81b177e8ed0788cbf4176d9b3cf70cb1b999cef0c8702ae4b5ff4b6dbd794",
+      "integration": "same"
+    }
+  ]
+}

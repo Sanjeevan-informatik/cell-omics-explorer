@@ -1,8 +1,9 @@
+import {validateMolecule,type Molecule} from './metabolite-structures';
 import {validateStructure,type Structure} from './protein-structure';
 import { EXTERNAL_FORMATS, TEMPLATES, type DataCategory } from './data-catalog';
 import { parseFasta } from './genome-analysis';
 export const MAX_FILE_BYTES = 5 * 1024 * 1024;
-export type Inspection = { structure?:Structure; status: 'ready' | 'preview' | 'unsupported' | 'invalid'; format: string; category: DataCategory; message: string; nextStep: string; headers: string[]; rows: string[][]; rowCount: number; missing: number; templateId?: string; fasta?: string; };
+export type Inspection = { molecule?:Molecule; structure?:Structure; status: 'ready' | 'preview' | 'unsupported' | 'invalid'; format: string; category: DataCategory; message: string; nextStep: string; headers: string[]; rows: string[][]; rowCount: number; missing: number; templateId?: string; fasta?: string; };
 export function parseDelimited(text: string, delimiter: string): string[][] {
   const records: string[][] = []; let row: string[] = [], value = '', quoted = false, closed = false;
   const field = () => {row.push(value); value = ''; closed = false;};
@@ -29,6 +30,7 @@ export function inspectData(name: string, text: string | null, category: DataCat
     text=text.replace(/^\uFEFF/,'');
     if(!text.trim())throw new Error('This file is empty.');
     if(text.includes('\0'))throw new Error('Binary content detected. Select a text export.');
+    if(ext==='json'&&category==='metabolome'){const molecule=validateMolecule(JSON.parse(text));return {...result,status:'ready',format:'Molecular structure bundle',molecule,headers:['molecule','formula','atoms'],rows:[[molecule.name,molecule.formula,String(molecule.atoms.length)]],rowCount:1,message:'Molecular structure bundle validated.',nextStep:'Open Metabolites, lipids & glycans to inspect chemistry, atoms and frames.'};}
     if(ext==='json'&&category==='proteome'){const structure=validateStructure(JSON.parse(text));return {...result,status:'ready',format:'Protein structure bundle',structure,headers:['reference','sequence'],rows:[[structure.reference,structure.sequence]],rowCount:1,message:'Protein structure bundle validated.',nextStep:'Open Proteome & structures to inspect atomic coordinates, annotations and frames.'};}
     if(['fa','fasta','fna'].includes(ext)) {
       if(category==='transcriptome'||category==='proteome') {
