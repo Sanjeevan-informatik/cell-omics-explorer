@@ -96,6 +96,15 @@
     "synthetic": true
   },
   {
+    "id": "protein-atomic-bundle",
+    "category": "proteome",
+    "title": "Peptide atoms, modifications & motion",
+    "filename": "protein_structure.json",
+    "description": "Synthetic backbone atoms, annotation examples and illustrative coordinate frames. No physical simulation.",
+    "units": "Schematic coordinates and illustrative steps",
+    "synthetic": true
+  },
+  {
     "id": "alignment",
     "category": "genome",
     "title": "Aligned DNA",

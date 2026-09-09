@@ -1,3 +1,4 @@
+import { proteinSample } from './protein-structure';
 import { HIERARCHY_TEMPLATES } from "./hierarchy-data";
 export type DataCategory = 'genome' | 'epigenome' | 'transcriptome' | 'singlecell' | 'proteome' | 'metabolome' | 'immunomics' | 'imaging' | 'pathways' | 'evolution' | 'multiomics';
 export type DataTemplate = { id: string; category: DataCategory; title: string; filename: string; description: string; columns?: string[]; content: string; units: string; };
@@ -6,6 +7,7 @@ export const CATEGORY_LABELS: Record<DataCategory, string> = {
 };
 export const TEMPLATES: DataTemplate[] = [
   ...HIERARCHY_TEMPLATES,
+  {id:'protein-atomic-bundle',category:'proteome',title:'Peptide atoms, modifications & motion',filename:'protein_structure.json',description:'Synthetic backbone atoms, annotation examples and illustrative coordinate frames. No physical simulation.',units:'Schematic coordinates and illustrative steps',content:JSON.stringify(proteinSample(),null,2)+'\n'},
   {id:'alignment',category:'genome',title:'Aligned DNA',filename:'aligned_dna.fasta',description:'Three aligned sequences ready for DNA analysis.',units:'1-based alignment columns',content:'>reference\nATGGCTGAATTTCCGAAAGGTTACTGGAAC\n>sample_A\nATGGCTGAATTTCCAAAAGGTTACTGGAAC\n>sample_B\nATGGCTGAGTTTCCGAAAGGTTACTGGAAC\n'},
   {id:'reads',category:'genome',title:'Sequencing reads',filename:'reads.fastq',description:'Two four-line FASTQ reads with quality scores.',units:'Phred+33 example',content:'@read_1\nACGTACGT\n+\nIIIIIIII\n@read_2\nACGTTCGT\n+\nIIIIHIII\n'},
   {id:'variants',category:'genome',title:'Variant calls',filename:'variants.vcf',description:'Synthetic variants on an artificial demo chromosome.',units:'1-based positions; assembly: demo',content:'##fileformat=VCFv4.2\n##contig=<ID=demo,length=1000>\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\ndemo\t20\t.\tA\tG\t60\tPASS\t.\ndemo\t40\t.\tC\tT\t50\tPASS\t.\n'},
