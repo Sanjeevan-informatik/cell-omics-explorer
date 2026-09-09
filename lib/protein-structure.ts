@@ -21,3 +21,16 @@ export function proteinSample():Structure {
  return {reference:'synthetic-peptide-21',sequence,provenance:'Synthetic backbone-only teaching geometry. No side-chain atoms, hydrogens, terminal oxygen, or physical simulation. No experimental inference.',unit:'schematic',atoms,bonds,modifications:[{residue:16,name:'Phosphorylation',evidence:'Synthetic annotation at S16; modified atoms not supplied'},{residue:9,name:'Acetylation',evidence:'Synthetic annotation at K9; modified atoms not supplied'}],interactions:[{a:'1:O',b:'5:N',type:'Hydrogen bond',evidence:'Illustrative annotation only; geometry not validated'},{a:'5:C',b:'10:CA',type:'Hydrophobic contact',evidence:'Illustrative annotation only; backbone endpoints represent residues'}],frames:Array.from({length:16},(_,f)=>({time:f,positions:atoms.map(a=>[a.x+Math.sin(f*.3+a.residue*.2)*1.2,a.y+Math.cos(f*.3+a.residue*.2)*1.2,a.z])})),timeUnit:'illustrative step'};
 }
 export function selectAtoms(d:Structure,start:number,end:number){return d.atoms.filter(a=>a.residue>=start&&a.residue<=end);}
+
+export function residueBoxSize(count:number,width:number,min:number,max:number,mode:string){
+ const low=Math.max(28,Math.min(min,max));const high=Math.max(low,max);
+ return Math.round(mode==='min'?low:mode==='max'?high:Math.max(low,Math.min(high,(width-Math.max(0,count-1)*5)/Math.max(1,count))));
+}
+export function proteinTeachingSamples():Structure[]{
+ const basic=proteinSample();const extended=proteinSample();extended.reference='synthetic-protein-100';extended.sequence='ACDEFGHIKLMNPQRSTVWY'.repeat(5);extended.atoms=[];extended.bonds=[];
+ for(let r=1;r<=100;r++){const template=basic.atoms.filter(a=>a.residue===1);for(const a of template)extended.atoms.push({...a,id:`${r}:${a.name}`,residue:r,x:a.x+Math.sin(r*.35)*10,y:a.y+Math.cos(r*.35)*10,z:a.z+r*1.2});for(const b of basic.bonds.filter(b=>b.a.startsWith('1:')&&b.b.startsWith('1:')))extended.bonds.push({...b,a:b.a.replace('1:',r+':'),b:b.b.replace('1:',r+':')});if(r>1)extended.bonds.push({a:`${r-1}:C`,b:`${r}:N`,order:1});}
+ extended.modifications=MODIFICATIONS.map(([name,sites],i)=>({residue:extended.sequence.indexOf(sites[0],Math.floor(i/5)*20)+1,name,evidence:'Synthetic teaching annotation; modification atoms absent. Not an observed site.'}));
+ extended.frames=Array.from({length:20},(_,i)=>({time:i,positions:extended.atoms.map(a=>[a.x+Math.sin(i*.2+a.residue*.15),a.y+Math.cos(i*.2+a.residue*.15),a.z])}));
+ extended.provenance='Synthetic backbone-only teaching geometry across all 20 standard amino-acid types. All 15 reference modification categories are annotations only. No side-chain atoms, hydrogens, terminal oxygen or physical simulation.';
+ const missing:Structure={...basic,reference:'sequence-only-teaching',sequence:'ACDEFGHIKLMNPQRSTVWY',provenance:'Synthetic sequence only. No atom, modification or interaction evidence supplied.',atoms:[],bonds:[],modifications:[],interactions:[],frames:[],timeUnit:''};return [basic,extended,missing];
+}

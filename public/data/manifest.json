@@ -96,6 +96,24 @@
     "synthetic": true
   },
   {
+    "id": "protein-teaching-0",
+    "category": "proteome",
+    "title": "100-residue structure & modification teaching set",
+    "filename": "protein_teaching_100.json",
+    "description": "Synthetic backbone-only teaching geometry across all 20 standard amino-acid types. All 15 reference modification categories are annotations only. No side-chain atoms, hydrogens, terminal oxygen or physical simulation.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "protein-teaching-1",
+    "category": "proteome",
+    "title": "Sequence-only structure teaching set",
+    "filename": "protein_teaching_missing.json",
+    "description": "Synthetic sequence only. No atom, modification or interaction evidence supplied.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
     "id": "protein-atomic-bundle",
     "category": "proteome",
     "title": "Peptide atoms, modifications & motion",
