@@ -19,3 +19,11 @@ Sources: [Unimod](https://www.unimod.org/) for the modification reference; [RCSB
 Users can enter inclusive start/end positions, move sliders, show the full sequence, or advance to the next window. Automatic residue widths shrink to a configurable minimum; maximum mode, minimum mode and wrapping are available. The 3D/4D viewer supports drag rotation, Shift-drag pan, wheel/pinch zoom, double-click atom focus, fit-range reset and expanded inline display. Keyboard controls and an atom selector provide alternatives to pointer gestures. Atom inspection includes live frame coordinates, explicit bonds and nearest displayed atoms (proximity is not interaction evidence).
 
 Teaching bundles cover the short backbone example, 100 residues with all 20 standard amino-acid types and all 15 reference modification annotations, and a sequence-only missing-structure example. All geometry and motion remain synthetic and backbone-only; annotations do not supply missing chemical atoms.
+
+## Modification chemical panels
+
+Load **modified peptide** to inspect phosphate at S16 and acetyl at K9. The 2D panel draws supplied component connectivity, highlighting modification atoms and the original-residue attachment separately. The same site selection colors the sequence strip, peptide diagram and 3D/4D atom halos. Focus and isolate controls help inspect the component. Coordinate playback carries atom identity forward; it does not model the formation/removal of a modification.
+
+Bundles may add `atom_ids` and `attachment_atom_id` to each modification record. IDs must exist, the attachment must belong to the annotated residue, and a bond must connect the attachment to the component. Old annotation-only files remain supported with dashed residue markers and a missing-component explanation. Molecular validity is not inferred from passing structural validation.
+
+The new example adds explicit heavy atoms for the two modified side chains. Other residues remain backbone-only. Stereochemistry, hydrogens, protonation and energies are not modeled. Chemical connectivity references: [ChEBI O-phospho-L-serine](https://www.ebi.ac.uk/chebi/CHEBI:15811) and [ChEBI N6-acetyl-L-lysine](https://www.ebi.ac.uk/chebi/CHEBI:17752). The 2D panel is a bond graph, not an angle-preserving chemical layout.

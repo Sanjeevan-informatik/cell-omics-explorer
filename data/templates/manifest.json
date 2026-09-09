@@ -96,6 +96,15 @@
     "synthetic": true
   },
   {
+    "id": "protein-modified-chemistry",
+    "category": "proteome",
+    "title": "Phosphate & acetyl chemical components",
+    "filename": "protein_modified_chemistry.json",
+    "description": "Synthetic S16 phosphate and K9 acetyl heavy atoms, attachment bonds and coordinate frames.",
+    "units": "Schematic coordinates; illustrative steps",
+    "synthetic": true
+  },
+  {
     "id": "protein-teaching-0",
     "category": "proteome",
     "title": "100-residue structure & modification teaching set",

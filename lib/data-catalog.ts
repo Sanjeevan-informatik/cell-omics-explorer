@@ -1,3 +1,4 @@
+import {modifiedProteinSample} from './protein-modifications';
 import { proteinSample, proteinTeachingSamples } from './protein-structure';
 import { HIERARCHY_TEMPLATES } from "./hierarchy-data";
 export type DataCategory = 'genome' | 'epigenome' | 'transcriptome' | 'singlecell' | 'proteome' | 'metabolome' | 'immunomics' | 'imaging' | 'pathways' | 'evolution' | 'multiomics';
@@ -7,6 +8,7 @@ export const CATEGORY_LABELS: Record<DataCategory, string> = {
 };
 export const TEMPLATES: DataTemplate[] = [
   ...HIERARCHY_TEMPLATES,
+  {id:'protein-modified-chemistry',category:'proteome',title:'Phosphate & acetyl chemical components',filename:'protein_modified_chemistry.json',description:'Synthetic S16 phosphate and K9 acetyl heavy atoms, attachment bonds and coordinate frames.',units:'Schematic coordinates; illustrative steps',content:JSON.stringify(modifiedProteinSample(),null,2)+'\n'},
   ...proteinTeachingSamples().slice(1).map((sample,i)=>({id:'protein-teaching-'+i,category:'proteome' as const,title:i===0?'100-residue structure & modification teaching set':'Sequence-only structure teaching set',filename:i===0?'protein_teaching_100.json':'protein_teaching_missing.json',description:sample.provenance,units:'Schematic coordinates',content:JSON.stringify(sample,null,2)+'\n'})),
   {id:'protein-atomic-bundle',category:'proteome',title:'Peptide atoms, modifications & motion',filename:'protein_structure.json',description:'Synthetic backbone atoms, annotation examples and illustrative coordinate frames. No physical simulation.',units:'Schematic coordinates and illustrative steps',content:JSON.stringify(proteinSample(),null,2)+'\n'},
   {id:'alignment',category:'genome',title:'Aligned DNA',filename:'aligned_dna.fasta',description:'Three aligned sequences ready for DNA analysis.',units:'1-based alignment columns',content:'>reference\nATGGCTGAATTTCCGAAAGGTTACTGGAAC\n>sample_A\nATGGCTGAATTTCCAAAAGGTTACTGGAAC\n>sample_B\nATGGCTGAGTTTCCGAAAGGTTACTGGAAC\n'},
