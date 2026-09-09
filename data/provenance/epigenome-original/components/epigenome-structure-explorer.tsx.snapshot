@@ -1,0 +1,111 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { Atom, Dna, Layers3, Microscope, Play, Pause, Rotate3D, Search, Sparkles } from "lucide-react";
+import { DNA_MODIFICATION_BY_ID, DNA_MODIFICATIONS, EPIGENOME_KNOWLEDGE, type DnaModification } from "@/lib/epigenome-structures";
+
+type ViewMode = "sequence" | "2d" | "3d" | "4d" | "tracks" | "registry";
+
+const BASE_COLORS: Record<string, string> = { A: "#80b7ff", C: "#61d1b2", G: "#f3bc67", T: "#e985a4", U: "#d59bea", N: "#94a3ad" };
+const categories = ["All", ...Array.from(new Set(DNA_MODIFICATIONS.map((m) => m.category)))];
+
+function BaseRing({ base, mod }: { base: string; mod: DnaModification }) {
+  const purine = base === "A" || base === "G";
+  const atoms = purine
+    ? [[44,34,"N"],[68,26,"C"],[87,43,"N"],[80,68,"C"],[55,73,"C"],[31,60,"N"],[95,75,"C"],[119,65,"N"],[121,40,"C"]]
+    : [[50,31,"N"],[78,28,"C"],[95,50,"N"],[80,75,"C"],[50,75,"C"],[34,52,"C"]];
+  const bonds = purine
+    ? [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[3,6],[6,7],[7,8],[8,2]]
+    : [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0]];
+  return <svg viewBox="0 0 250 130" className="epi-molecule-svg" role="img" aria-label={`${mod.name} molecular teaching schematic`}>
+    {bonds.map(([a,b],i)=><line key={i} x1={atoms[a][0] as number} y1={atoms[a][1] as number} x2={atoms[b][0] as number} y2={atoms[b][1] as number}/>) }
+    {atoms.map(([x,y,e],i)=><g key={i}><circle cx={x as number} cy={y as number} r="8" className={`epi-element epi-${String(e).toLowerCase()}`}/><text x={x as number} y={(y as number)+3}>{e}</text></g>)}
+    <line x1={purine?121:95} y1={purine?40:50} x2="176" y2="35" className="epi-mod-bond"/>
+    <rect x="166" y="16" width="70" height="38" rx="10" fill={mod.color}/>
+    <text x="201" y="39" className="epi-mod-label">{mod.group}</text>
+    <text x="20" y="112" className="epi-base-caption">Parent base: {base} · {mod.short}</text>
+  </svg>;
+}
+
+function SequenceView({ selectedId, setSelectedId }: { selectedId: string; setSelectedId: (id:string)=>void }) {
+  const seq = EPIGENOME_KNOWLEDGE.sequence.sequence;
+  const calls = EPIGENOME_KNOWLEDGE.exampleCalls;
+  const callAt = new Map<number, (typeof calls)[number]>();
+  calls.forEach((c)=>{ callAt.set(c.position,c); if(c.span && c.span>1) for(let i=1;i<c.span;i++) callAt.set(c.position+i,c); });
+  return <div className="epi-sequence-panel">
+    <div className="epi-ruler"><span>1</span><span>{Math.round(seq.length/2)}</span><span>{seq.length}</span></div>
+    <div className="epi-sequence-grid">{seq.split("").map((base,index)=>{
+      const pos=index+1; const call=callAt.get(pos); const mod=call?DNA_MODIFICATION_BY_ID.get(call.modification):undefined;
+      return <button key={pos} title={mod?`${pos}: ${mod.name}`:`${pos}: ${base}`} onClick={()=>mod&&setSelectedId(mod.id)} className={mod?.id===selectedId?"selected":""} style={{borderColor:mod?.color||"transparent"}}>
+        <span style={{color:BASE_COLORS[base]}}>{base}</span><small>{pos}</small>{mod&&<i style={{background:mod.color}}>{mod.short}</i>}
+      </button>;
+    })}</div>
+    <div className="epi-sequence-legend"><span><b className="epi-dot epigenetic"/>Epigenetic/base marks</span><span><b className="epi-dot damage"/>Damage/adduct examples</span><span>Click a modified base to inspect its chemistry.</span></div>
+  </div>;
+}
+
+function HelixView({ selectedId, state=0 }: { selectedId:string; state?:number }) {
+  const calls=EPIGENOME_KNOWLEDGE.exampleCalls;
+  const selectedCalls=calls.filter(c=>c.modification===selectedId);
+  const points=EPIGENOME_KNOWLEDGE.helix;
+  const maxZ=Math.max(...points.map(p=>p.z));
+  const compression=1-state*0.36;
+  return <div className="epi-helix-stage">
+    <svg viewBox="0 0 900 410" className="epi-helix-svg" role="img" aria-label="Teaching B-DNA helix with modification positions">
+      {[1,2].map(strand=>{
+        const ps=points.filter(p=>p.strand===strand && p.position<=58);
+        const d=ps.map((p,i)=>`${i?"L":"M"} ${70+(p.z/maxZ)*760} ${205+p.y*6.2*compression}`).join(" ");
+        return <path key={strand} d={d} className={`epi-backbone strand-${strand}`}/>;
+      })}
+      {points.filter(p=>p.strand===1 && p.position<=58).map((p)=>{
+        const mate=points.find(x=>x.strand===2&&x.position===p.position)!;
+        const x=70+(p.z/maxZ)*760; const y1=205+p.y*6.2*compression; const y2=205+mate.y*6.2*compression;
+        const call=calls.find(c=>p.position>=c.position && p.position<c.position+(c.span||1));
+        const mod=call?DNA_MODIFICATION_BY_ID.get(call.modification):undefined;
+        const selected=mod?.id===selectedId;
+        return <g key={p.position}><line x1={x} y1={y1} x2={x} y2={y2} className="epi-basepair"/><circle cx={x} cy={y1} r={selected?7:mod?5:2.7} fill={mod?.color||BASE_COLORS[p.base]} className={selected?"epi-selected-mod":""}/>{mod&&<text x={x} y={Math.min(y1,y2)-10} className="epi-helix-label">{mod.short}</text>}</g>;
+      })}
+    </svg>
+    <div className="epi-helix-note"><Rotate3D size={14}/> B-DNA teaching geometry: ~10.5 bp/turn and ~3.4 Å rise/bp. Modification markers are schematic, not an experimentally solved structure.</div>
+  </div>;
+}
+
+function TrackView() {
+  return <div className="epi-track-stack">
+    {EPIGENOME_KNOWLEDGE.tracks.map((track)=><div key={track.id} className="epi-track-row"><div><strong>{track.label}</strong><small>{track.id}</small></div><div className="epi-track-bars">{track.values.map((v,i)=>{const max=Math.max(...track.values);return <span key={i} style={{height:`${Math.max(5,(v/max)*100)}%`}} title={`${track.label}: ${v}`}/>})}</div></div>)}
+    <div className="epi-hic-card"><strong>Hi-C / 3D genome contact map</strong><div className="epi-hic-grid">{EPIGENOME_KNOWLEDGE.hic.matrix.flatMap((row,r)=>row.map((value,c)=><span key={`${r}-${c}`} title={`bin ${r+1} × ${c+1}: ${value}`} style={{opacity:.16+.84*(value/80)}}/>))}</div></div>
+  </div>;
+}
+
+export function EpigenomeStructureExplorer() {
+  const [view,setView]=useState<ViewMode>("sequence");
+  const [selectedId,setSelectedId]=useState("5mc");
+  const [query,setQuery]=useState("");
+  const [category,setCategory]=useState("All");
+  const [frame,setFrame]=useState(0);
+  const [playing,setPlaying]=useState(false);
+  const selected=DNA_MODIFICATION_BY_ID.get(selectedId)||DNA_MODIFICATIONS[0];
+  const visible=useMemo(()=>DNA_MODIFICATIONS.filter(m=>(category==="All"||m.category===category)&&(`${m.name} ${m.short} ${m.base} ${m.group}`.toLowerCase().includes(query.toLowerCase()))),[query,category]);
+  const setPlay=()=>{ setPlaying(v=>!v); if(!playing){ let n=frame; const timer=setInterval(()=>{n=(n+1)%5;setFrame(n)},650); setTimeout(()=>clearInterval(timer),3300);} };
+  const views:[ViewMode,string,React.ReactNode][]=[
+    ["sequence","Sequence",<Dna key="a" size={14}/>],["2d","2D chemistry",<Atom key="b" size={14}/>],["3d","3D DNA",<Rotate3D key="c" size={14}/>],["4d","4D states",<Layers3 key="d" size={14}/>],["tracks","Epigenomic tracks",<Sparkles key="e" size={14}/>],["registry","Modification registry",<Microscope key="f" size={14}/>]
+  ];
+  return <section className="epigenome-structure-explorer">
+    <header className="epi-header"><div><span className="epi-kicker">v6 · sequence → chemistry → chromatin</span><h2>Epigenome & DNA Structures</h2><p>Explore covalent DNA modifications at nucleotide, molecular, helix, chromatin-state and assay levels. Epigenetic marks and DNA damage/adducts are intentionally labeled separately.</p></div><div className="epi-count">{DNA_MODIFICATIONS.length} representative modification types</div></header>
+    <div className="epi-tabs">{views.map(([id,label,icon])=><button key={id} onClick={()=>setView(id)} className={view===id?"active":""}>{icon}{label}</button>)}</div>
+    <div className="epi-main">
+      <aside className="epi-library"><div className="epi-search"><Search size={13}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search 5mC, oxidation, UV…"/></div><select value={category} onChange={e=>setCategory(e.target.value)}>{categories.map(c=><option key={c}>{c}</option>)}</select><div className="epi-mod-list">{visible.map(mod=><button key={mod.id} onClick={()=>setSelectedId(mod.id)} className={selectedId===mod.id?"active":""}><i style={{background:mod.color}}/><span><strong>{mod.short}</strong><small>{mod.name}</small></span><b>{mod.base}</b></button>)}</div></aside>
+      <div className="epi-workbench">
+        <div className="epi-selected-head"><div><span style={{color:selected.color}}>{selected.short}</span><h3>{selected.name}</h3><p>{selected.category}</p></div><div className="epi-formula"><b>{selected.formula}</b><small>{selected.deltaMass==null?"Δ mass varies / structural lesion":`Δ mass ${selected.deltaMass.toFixed(5)} Da`}</small></div></div>
+        {view==="sequence"&&<SequenceView selectedId={selectedId} setSelectedId={setSelectedId}/>} 
+        {view==="2d"&&<div className="epi-chem-layout"><BaseRing base={selected.base.length===1?selected.base:"N"} mod={selected}/><div className="epi-chem-facts"><div><b>Modification</b><span>{selected.group}</span></div><div><b>SMILES / representation</b><code>{selected.smiles||"Complex lesion represented by registry metadata"}</code></div><div><b>Biological role</b><span>{selected.roles.join(" · ")}</span></div></div></div>}
+        {view==="3d"&&<HelixView selectedId={selectedId}/>}
+        {view==="4d"&&<div><div className="epi-state-controls"><button onClick={setPlay}>{playing?<Pause size={13}/>:<Play size={13}/>} {playing?"Pause":"Play states"}</button><input type="range" min="0" max="4" value={frame} onChange={e=>setFrame(Number(e.target.value))}/><span>State {frame+1}/5</span></div><HelixView selectedId={selectedId} state={frame/4}/><div className="epi-state-caption"><b>{["Accessible B-DNA","mark deposition","reader recruitment","locally compacted chromatin","remodeling / repair state"][frame]}</b><span>4D is a teaching state/ensemble view. It is not a molecular-dynamics trajectory or time-resolved experiment.</span></div></div>}
+        {view==="tracks"&&<TrackView/>}
+        {view==="registry"&&<div className="epi-registry-table"><table><thead><tr><th>Mark/lesion</th><th>Parent</th><th>Category</th><th>Chemical change</th><th>Enzymes / repair</th><th>Example assays</th></tr></thead><tbody>{visible.map(m=><tr key={m.id} onClick={()=>setSelectedId(m.id)}><td><b style={{color:m.color}}>{m.short}</b><span>{m.name}</span></td><td>{m.base}</td><td>{m.category}</td><td>{m.group}</td><td>{m.enzymes.join(", ")}</td><td>{m.assays.join(", ")}</td></tr>)}</tbody></table></div>}
+        <footer className="epi-detail-footer"><div><b>Selected biology</b>{selected.roles.map(r=><span key={r}>• {r}</span>)}</div><div><b>Enzymes / repair</b>{selected.enzymes.map(r=><span key={r}>• {r}</span>)}</div><div><b>Compatible assay examples</b>{selected.assays.map(r=><span key={r}>• {r}</span>)}</div></footer>
+      </div>
+    </div>
+    <details className="epi-scope"><summary>What “all DNA modifications” means in this software</summary><p>The bundled registry is representative, not chemically exhaustive. It includes major cytosine oxidation states, adenine/cytosine methylation, oxidative lesions, deamination products, alkylation adducts, UV photoproducts, abasic sites, bulky adducts and crosslinks. The schema is extensible so future database/data-lake records can add arbitrary new modifications, structures, assay evidence and sequence positions without changing the viewer.</p></details>
+  </section>;
+}
