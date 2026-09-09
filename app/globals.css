@@ -889,3 +889,5 @@ footer svg { width: 14px; }
 @media(max-width:850px){.epi-main{grid-template-columns:1fr}.epi-library{border-right:0}.epi-mod-list{max-height:180px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.epi-chem-layout{grid-template-columns:1fr}.epi-count{white-space:normal}}
 
 .epi-state-story{margin:12px 20px;padding:18px;border:1px solid #52699a;border-radius:12px;display:flex;gap:20px;align-items:center;background:#14243a}.epi-state-symbol{padding:20px;border:2px solid #af9ef4;border-radius:45%;color:#d8cfff;white-space:nowrap}.epi-state-story p{font-size:13px;line-height:1.6}
+
+.hic-linked-table{border-collapse:collapse;width:100%;min-width:650px;margin:16px 0}.hic-linked-table th{font-size:10px;padding:5px;color:#b7cad8}.hic-linked-table td{padding:2px}.hic-linked-table button{width:100%;padding:12px 5px;border:1px solid #34505c;color:#fff;border-radius:4px;cursor:pointer}.hic-linked-table button:focus-visible{outline:2px solid #ffdc88}.hic-linked-table caption{font-size:12px;padding:10px;text-align:left}
