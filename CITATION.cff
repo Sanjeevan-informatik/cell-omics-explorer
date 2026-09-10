@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Please cite the evaluated version of CellOmics Explorer and the original sources of any reused data."
+title: "CellOmics Explorer"
+type: software
+authors:
+  - family-names: Sanjeevan
+    given-names: Vivekanantha
+    email: sanjeevanvive@gmail.com
+repository-code: "https://github.com/Sanjeevan-informatik/cell-omics-explorer"
+url: "https://cell-omics-explorer.sanjeevanvive.chatgpt.site"
+license: MIT
+abstract: "Browser workbench for specimen-linked multiomics inspection and explicitly labeled molecular teaching representations."

@@ -1,0 +1,390 @@
+{
+  "date": "2026-09-10T20:44:35.736Z",
+  "source": "0a5ba02709e2d4f665c3bda6018d30e654db8e9d",
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C"
+  },
+  "template_count": 40,
+  "supplementary_templates": 2,
+  "templates": [
+    {
+      "file": "rna_sequence.fasta",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "protein_sequence.fasta",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "hierarchy_metadata.tsv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "hierarchy_sequences.tsv",
+      "status": "ready",
+      "records": 12,
+      "retained": 12
+    },
+    {
+      "file": "hierarchy_coordinates.tsv",
+      "status": "ready",
+      "records": 2610,
+      "retained": 2610
+    },
+    {
+      "file": "hierarchy_timecourse.tsv",
+      "status": "ready",
+      "records": 168,
+      "retained": 168
+    },
+    {
+      "file": "ethanol-demo.json",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "glycerol-demo.json",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "palmitic-acid-demo.json",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "glucose-ring-demo.json",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "maltose-demo.json",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "metabolite-missing-demo.json",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "protein_modified_chemistry.json",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "protein_teaching_100.json",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "protein_teaching_missing.json",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "protein_structure.json",
+      "status": "ready",
+      "records": 1,
+      "retained": 1
+    },
+    {
+      "file": "aligned_dna.fasta",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "reads.fastq",
+      "status": "preview",
+      "records": 2,
+      "retained": 2
+    },
+    {
+      "file": "variants.vcf",
+      "status": "ready",
+      "records": 2,
+      "retained": 2
+    },
+    {
+      "file": "intervals.bed",
+      "status": "ready",
+      "records": 2,
+      "retained": 2
+    },
+    {
+      "file": "haplotypes.tsv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "methylation.tsv",
+      "status": "ready",
+      "records": 4,
+      "retained": 4
+    },
+    {
+      "file": "accessibility.tsv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "hic_contacts.tsv",
+      "status": "ready",
+      "records": 6,
+      "retained": 6
+    },
+    {
+      "file": "expression.csv",
+      "status": "ready",
+      "records": 4,
+      "retained": 4
+    },
+    {
+      "file": "isoforms.tsv",
+      "status": "ready",
+      "records": 4,
+      "retained": 4
+    },
+    {
+      "file": "cell_embedding.csv",
+      "status": "ready",
+      "records": 4,
+      "retained": 4
+    },
+    {
+      "file": "spatial_spots.tsv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "protein_abundance.tsv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "msms_peaks.tsv",
+      "status": "ready",
+      "records": 5,
+      "retained": 5
+    },
+    {
+      "file": "protein_ptm.tsv",
+      "status": "ready",
+      "records": 2,
+      "retained": 2
+    },
+    {
+      "file": "metabolite_features.csv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "lipids.tsv",
+      "status": "ready",
+      "records": 4,
+      "retained": 4
+    },
+    {
+      "file": "glycans.tsv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "repertoire.tsv",
+      "status": "ready",
+      "records": 2,
+      "retained": 2
+    },
+    {
+      "file": "cytometry_events.csv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "image_measurements.tsv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "network_edges.tsv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "clone_fractions.tsv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "multiomics_evidence.tsv",
+      "status": "ready",
+      "records": 3,
+      "retained": 3
+    },
+    {
+      "file": "hierarchy_hic.tsv",
+      "status": "ready",
+      "records": 108,
+      "retained": 108
+    },
+    {
+      "file": "hierarchy_evidence.tsv",
+      "status": "ready",
+      "records": 77,
+      "retained": 77
+    }
+  ],
+  "fixture_checks": [
+    {
+      "id": "valid_csv",
+      "expected": "ready",
+      "actual": "ready"
+    },
+    {
+      "id": "duplicate_headers",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "id": "unequal_columns",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "id": "unclosed_quote",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "id": "beta_out_of_bounds",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "id": "unmatched_generic_beta",
+      "expected": "ready",
+      "actual": "ready"
+    },
+    {
+      "id": "empty",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "id": "binary",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "id": "unaligned",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "id": "unsupported",
+      "expected": "unsupported",
+      "actual": "unsupported"
+    }
+  ],
+  "retention": [
+    {
+      "input": 100,
+      "status": "ready",
+      "reported": 100,
+      "retained": 100
+    },
+    {
+      "input": 1000,
+      "status": "ready",
+      "reported": 1000,
+      "retained": 1000
+    },
+    {
+      "input": 5000,
+      "status": "ready",
+      "reported": 5000,
+      "retained": 5000
+    },
+    {
+      "input": 10000,
+      "status": "ready",
+      "reported": 10000,
+      "retained": 5000
+    },
+    {
+      "input": 10001,
+      "status": "invalid",
+      "reported": 0,
+      "retained": 0
+    }
+  ],
+  "dna": {
+    "p-distance": 0.125,
+    "jc69": 0.13674116759546595,
+    "k2p": 0.14384103622589045
+  },
+  "matrices": [
+    {
+      "sample": "blood_bulk",
+      "bins": 8,
+      "unique_contacts": 36
+    },
+    {
+      "sample": "blood_T01",
+      "bins": 8,
+      "unique_contacts": 36
+    },
+    {
+      "sample": "liver_bulk",
+      "bins": 8,
+      "unique_contacts": 36
+    }
+  ],
+  "evidence_rows": 77,
+  "evidence_layers": {
+    "dna-features": 6,
+    "epigenome": 9,
+    "gene-regulation": 6,
+    "imaging": 6,
+    "pathways": 6,
+    "immunomics": 4,
+    "evolution": 6,
+    "rna": 6,
+    "protein": 6,
+    "peptide-ms": 6,
+    "metabolite": 6,
+    "lipid": 3,
+    "glycan": 3,
+    "single-cell": 2,
+    "spatial": 2
+  }
+}
