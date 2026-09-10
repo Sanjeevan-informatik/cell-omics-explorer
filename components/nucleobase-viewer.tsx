@@ -9,7 +9,7 @@ type ElementSymbol = "C" | "N" | "O";
 type Atom = { element: ElementSymbol; x: number; y: number; z: number };
 type Bond = { from: number; to: number; order?: 1 | 2 };
 type NucleobaseCompound = {
-  symbol: "A" | "C" | "G" | "T";
+  symbol: "A" | "C" | "G" | "T" | "U";
   name: string;
   formula: string;
   mass: string;
@@ -106,6 +106,13 @@ export const NUCLEOBASES: Record<"A" | "C" | "G" | "T", NucleobaseCompound> = {
   },
 };
 
+export const URACIL: NucleobaseCompound = {
+  symbol: "U", name: "Uracil", formula: "C₄H₄N₂O₂", mass: "112.09 g/mol", family: "Pyrimidine",
+  partner: "Adenine (A)", cid: "1174", smiles: "O=C1NC=CC(=O)N1",
+  atoms: [...PYRIMIDINE_CORE, {element:"O",x:-1.35,y:-1.65,z:0.06}, {element:"O",x:2.8,y:0.45,z:-0.05}],
+  bonds: [...THYMINE_BONDS, {from:1,to:6,order:2}, {from:3,to:7,order:2}],
+};
+
 const ELEMENT_COLORS: Record<ElementSymbol, string> = {
   C: "#8494a1",
   N: "#4d8dff",
@@ -113,7 +120,7 @@ const ELEMENT_COLORS: Record<ElementSymbol, string> = {
 };
 
 function compoundFor(base: string) {
-  return NUCLEOBASES[base as keyof typeof NUCLEOBASES];
+  return base === "U" ? URACIL : NUCLEOBASES[base as keyof typeof NUCLEOBASES];
 }
 
 function boundsFor(atoms: Atom[]) {
@@ -326,11 +333,13 @@ export function NucleobasePanel({
   mode,
   sample,
   position,
+  polymer = "dna",
 }: {
   base: string;
   mode: Exclude<NucleotideDisplayMode, "letters">;
   sample: string;
   position: number;
+  polymer?: "dna" | "rna";
 }) {
   const compound = useMemo(() => compoundFor(base), [base]);
 
@@ -351,7 +360,7 @@ export function NucleobasePanel({
       <div className="compound-details">
         <div className="compound-title-row">
           <span className="compound-symbol">{compound.symbol}</span>
-          <div><span className="eyebrow">{sample} · position {position}</span><h4>{compound.name}</h4><p>{compound.family} nucleobase · pairs with {compound.partner}</p></div>
+          <div><span className="eyebrow">{sample} · position {position}</span><h4>{compound.name}</h4><p>{compound.family} nucleobase · pairs with {polymer === "rna" && base === "A" ? "Uracil (U)" : compound.partner}</p></div>
         </div>
         <dl>
           <div><dt>Formula</dt><dd>{compound.formula}</dd></div>
@@ -359,7 +368,7 @@ export function NucleobasePanel({
           <div><dt>PubChem CID</dt><dd><a href={`https://pubchem.ncbi.nlm.nih.gov/compound/${compound.cid}`} target="_blank" rel="noreferrer">{compound.cid}</a></dd></div>
           <div className="smiles-fact"><dt>SMILES</dt><dd>{compound.smiles}</dd></div>
         </dl>
-        <p className="compound-note">Nucleobase only. Heavy atoms are shown; hydrogens are implicit. The deoxyribose sugar and phosphate backbone are not included.{mode === "3d" ? " The rotatable geometry is a connectivity-focused schematic, not an energy-minimized conformer." : ""}</p>
+        <p className="compound-note">Nucleobase only. Heavy atoms are shown; hydrogens are implicit. The {polymer === "rna" ? "ribose" : "deoxyribose"} sugar and phosphate backbone are not included.{mode === "3d" ? " The rotatable geometry is a connectivity-focused schematic, not an energy-minimized conformer." : ""}</p>
       </div>
     </section>
   );

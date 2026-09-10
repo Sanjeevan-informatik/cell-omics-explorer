@@ -1,0 +1,78 @@
+participant_id	sample_id	molecule	feature_id	measurement	value	unit	details	evidence
+SYN001	blood_bulk	dna-features	promoter_demo	annotation	1	feature	demo-dna:20–40; 1-based inclusive; promoter annotation	synthetic teaching observation
+SYN001	blood_bulk	dna-features	variant_demo	alternate_fraction	0.25	fraction	demo-dna:42; reference C; alternative T; synthetic variant	synthetic teaching observation
+SYN001	blood_bulk	epigenome	CpG_demo	5mC_beta	0.72	fraction	Synthetic methylation at demo-dna:24	synthetic teaching observation
+SYN001	blood_bulk	epigenome	peak_demo	ATAC_signal	32	arbitrary_units	Synthetic accessible interval demo-dna:20–40	synthetic teaching observation
+SYN001	blood_bulk	epigenome	histone_demo	H3K27ac_signal	18	arbitrary_units	Synthetic histone-mark interval demo-dna:41–60	synthetic teaching observation
+SYN001	blood_bulk	gene-regulation	TF_demo→GENE_demo	edge_weight	0.8	teaching_score	Illustrative directed regulatory edge; no causal inference	synthetic teaching observation
+SYN001	blood_bulk	gene-regulation	enhancer_demo→promoter_demo	link_score	0.6	teaching_score	Synthetic regulatory link; not inferred from Hi-C	synthetic teaching observation
+SYN001	blood_bulk	imaging	object_01	segmented_area	55	square_micrometers	Synthetic segmented cell object; no image pixels supplied	synthetic teaching observation
+SYN001	blood_bulk	imaging	object_02	segmented_area	72	square_micrometers	Synthetic segmented cell object; no image pixels supplied	synthetic teaching observation
+SYN001	blood_bulk	pathways	NODE_A→NODE_B	edge_weight	1	teaching_score	Synthetic directed pathway edge, not an experimentally established interaction	synthetic teaching observation
+SYN001	blood_bulk	pathways	NODE_B→NODE_C	edge_weight	0.5	teaching_score	Synthetic directed pathway edge	synthetic teaching observation
+SYN001	blood_bulk	immunomics	clone_demo_A	clonotype_count	8	counts	Synthetic TRB CDR3: CASSLGQETQYF; antigen specificity unknown	synthetic teaching observation
+SYN001	blood_bulk	immunomics	clone_demo_B	clonotype_count	3	counts	Synthetic TRB CDR3: CASSIRSSYEQYF; antigen specificity unknown	synthetic teaching observation
+SYN001	blood_bulk	evolution	ancestor→clone_A	branch_length	2	synthetic_events	Teaching lineage edge; tree was supplied, not inferred	synthetic teaching observation
+SYN001	blood_bulk	evolution	ancestor→clone_B	branch_length	3	synthetic_events	Teaching lineage edge; no mutation timing inference	synthetic teaching observation
+SYN001	blood_bulk	rna	GENE_A	expression	120	counts	Synthetic RNA count	synthetic teaching observation
+SYN001	blood_bulk	rna	GENE_B	expression	45	counts	Synthetic RNA count	synthetic teaching observation
+SYN001	blood_bulk	protein	PROTEIN_A	abundance	12	arbitrary_units	Synthetic protein abundance	synthetic teaching observation
+SYN001	blood_bulk	protein	PROTEIN_B	abundance	6	arbitrary_units	Synthetic protein abundance	synthetic teaching observation
+SYN001	blood_bulk	peptide-ms	fragment_1	intensity	100	arbitrary_units	Synthetic peak at m/z 147.1; no peptide identification inferred	synthetic teaching observation
+SYN001	blood_bulk	peptide-ms	fragment_2	intensity	60	arbitrary_units	Synthetic peak at m/z 260.2	synthetic teaching observation
+SYN001	blood_bulk	metabolite	metabolite_feature_1	intensity	90	arbitrary_units	Synthetic m/z 181.07, RT 2.1 min; identity unassigned	synthetic teaching observation
+SYN001	blood_bulk	metabolite	metabolite_feature_2	intensity	35	arbitrary_units	Synthetic m/z 89.02, RT 1.4 min; identity unassigned	synthetic teaching observation
+SYN001	blood_bulk	lipid	PC_34:1	abundance	24	arbitrary_units	Sum composition annotation only; acyl positions unresolved	synthetic teaching observation
+SYN001	blood_bulk	glycan	Hex5HexNAc2	abundance	17	arbitrary_units	Composition only; branching and linkage unresolved	synthetic teaching observation
+SYN001	blood_T01	dna-features	promoter_demo	annotation	1	feature	demo-dna:20–40; 1-based inclusive; promoter annotation	synthetic teaching observation
+SYN001	blood_T01	dna-features	variant_demo	alternate_fraction	0.25	fraction	demo-dna:42; reference C; alternative T; synthetic variant	synthetic teaching observation
+SYN001	blood_T01	epigenome	CpG_demo	5mC_beta	0.72	fraction	Synthetic methylation at demo-dna:24	synthetic teaching observation
+SYN001	blood_T01	epigenome	peak_demo	ATAC_signal	32	arbitrary_units	Synthetic accessible interval demo-dna:20–40	synthetic teaching observation
+SYN001	blood_T01	epigenome	histone_demo	H3K27ac_signal	18	arbitrary_units	Synthetic histone-mark interval demo-dna:41–60	synthetic teaching observation
+SYN001	blood_T01	gene-regulation	TF_demo→GENE_demo	edge_weight	0.8	teaching_score	Illustrative directed regulatory edge; no causal inference	synthetic teaching observation
+SYN001	blood_T01	gene-regulation	enhancer_demo→promoter_demo	link_score	0.6	teaching_score	Synthetic regulatory link; not inferred from Hi-C	synthetic teaching observation
+SYN001	blood_T01	single-cell	T01:GENE_A	expression	12	counts	Synthetic cell T01 feature GENE_A	synthetic teaching observation
+SYN001	blood_T01	single-cell	T01:GENE_B	expression	4	counts	Synthetic cell T01 feature GENE_B	synthetic teaching observation
+SYN001	blood_T01	imaging	object_01	segmented_area	55	square_micrometers	Synthetic segmented cell object; no image pixels supplied	synthetic teaching observation
+SYN001	blood_T01	imaging	object_02	segmented_area	72	square_micrometers	Synthetic segmented cell object; no image pixels supplied	synthetic teaching observation
+SYN001	blood_T01	pathways	NODE_A→NODE_B	edge_weight	1	teaching_score	Synthetic directed pathway edge, not an experimentally established interaction	synthetic teaching observation
+SYN001	blood_T01	pathways	NODE_B→NODE_C	edge_weight	0.5	teaching_score	Synthetic directed pathway edge	synthetic teaching observation
+SYN001	blood_T01	immunomics	clone_demo_A	clonotype_count	8	counts	Synthetic TRB CDR3: CASSLGQETQYF; antigen specificity unknown	synthetic teaching observation
+SYN001	blood_T01	immunomics	clone_demo_B	clonotype_count	3	counts	Synthetic TRB CDR3: CASSIRSSYEQYF; antigen specificity unknown	synthetic teaching observation
+SYN001	blood_T01	evolution	ancestor→clone_A	branch_length	2	synthetic_events	Teaching lineage edge; tree was supplied, not inferred	synthetic teaching observation
+SYN001	blood_T01	evolution	ancestor→clone_B	branch_length	3	synthetic_events	Teaching lineage edge; no mutation timing inference	synthetic teaching observation
+SYN001	blood_T01	rna	GENE_A	expression	120	counts	Synthetic RNA count	synthetic teaching observation
+SYN001	blood_T01	rna	GENE_B	expression	45	counts	Synthetic RNA count	synthetic teaching observation
+SYN001	blood_T01	protein	PROTEIN_A	abundance	12	arbitrary_units	Synthetic protein abundance	synthetic teaching observation
+SYN001	blood_T01	protein	PROTEIN_B	abundance	6	arbitrary_units	Synthetic protein abundance	synthetic teaching observation
+SYN001	blood_T01	peptide-ms	fragment_1	intensity	100	arbitrary_units	Synthetic peak at m/z 147.1; no peptide identification inferred	synthetic teaching observation
+SYN001	blood_T01	peptide-ms	fragment_2	intensity	60	arbitrary_units	Synthetic peak at m/z 260.2	synthetic teaching observation
+SYN001	blood_T01	metabolite	metabolite_feature_1	intensity	90	arbitrary_units	Synthetic m/z 181.07, RT 2.1 min; identity unassigned	synthetic teaching observation
+SYN001	blood_T01	metabolite	metabolite_feature_2	intensity	35	arbitrary_units	Synthetic m/z 89.02, RT 1.4 min; identity unassigned	synthetic teaching observation
+SYN001	blood_T01	lipid	PC_34:1	abundance	24	arbitrary_units	Sum composition annotation only; acyl positions unresolved	synthetic teaching observation
+SYN001	blood_T01	glycan	Hex5HexNAc2	abundance	17	arbitrary_units	Composition only; branching and linkage unresolved	synthetic teaching observation
+SYN002	liver_bulk	dna-features	promoter_demo	annotation	1	feature	demo-dna:20–40; 1-based inclusive; promoter annotation	synthetic teaching observation
+SYN002	liver_bulk	dna-features	variant_demo	alternate_fraction	0.25	fraction	demo-dna:42; reference C; alternative T; synthetic variant	synthetic teaching observation
+SYN002	liver_bulk	epigenome	CpG_demo	5mC_beta	0.72	fraction	Synthetic methylation at demo-dna:24	synthetic teaching observation
+SYN002	liver_bulk	epigenome	peak_demo	ATAC_signal	32	arbitrary_units	Synthetic accessible interval demo-dna:20–40	synthetic teaching observation
+SYN002	liver_bulk	epigenome	histone_demo	H3K27ac_signal	18	arbitrary_units	Synthetic histone-mark interval demo-dna:41–60	synthetic teaching observation
+SYN002	liver_bulk	gene-regulation	TF_demo→GENE_demo	edge_weight	0.8	teaching_score	Illustrative directed regulatory edge; no causal inference	synthetic teaching observation
+SYN002	liver_bulk	gene-regulation	enhancer_demo→promoter_demo	link_score	0.6	teaching_score	Synthetic regulatory link; not inferred from Hi-C	synthetic teaching observation
+SYN002	liver_bulk	spatial	spot_01	GENE_A_expression	8	counts	Synthetic tissue spot; x=10,y=20 µm; no microscopy image supplied	synthetic teaching observation
+SYN002	liver_bulk	spatial	spot_02	GENE_A_expression	20	counts	Synthetic tissue spot; x=30,y=40 µm; no microscopy image supplied	synthetic teaching observation
+SYN002	liver_bulk	imaging	object_01	segmented_area	55	square_micrometers	Synthetic segmented cell object; no image pixels supplied	synthetic teaching observation
+SYN002	liver_bulk	imaging	object_02	segmented_area	72	square_micrometers	Synthetic segmented cell object; no image pixels supplied	synthetic teaching observation
+SYN002	liver_bulk	pathways	NODE_A→NODE_B	edge_weight	1	teaching_score	Synthetic directed pathway edge, not an experimentally established interaction	synthetic teaching observation
+SYN002	liver_bulk	pathways	NODE_B→NODE_C	edge_weight	0.5	teaching_score	Synthetic directed pathway edge	synthetic teaching observation
+SYN002	liver_bulk	evolution	ancestor→clone_A	branch_length	2	synthetic_events	Teaching lineage edge; tree was supplied, not inferred	synthetic teaching observation
+SYN002	liver_bulk	evolution	ancestor→clone_B	branch_length	3	synthetic_events	Teaching lineage edge; no mutation timing inference	synthetic teaching observation
+SYN002	liver_bulk	rna	GENE_A	expression	120	counts	Synthetic RNA count	synthetic teaching observation
+SYN002	liver_bulk	rna	GENE_B	expression	45	counts	Synthetic RNA count	synthetic teaching observation
+SYN002	liver_bulk	protein	PROTEIN_A	abundance	12	arbitrary_units	Synthetic protein abundance	synthetic teaching observation
+SYN002	liver_bulk	protein	PROTEIN_B	abundance	6	arbitrary_units	Synthetic protein abundance	synthetic teaching observation
+SYN002	liver_bulk	peptide-ms	fragment_1	intensity	100	arbitrary_units	Synthetic peak at m/z 147.1; no peptide identification inferred	synthetic teaching observation
+SYN002	liver_bulk	peptide-ms	fragment_2	intensity	60	arbitrary_units	Synthetic peak at m/z 260.2	synthetic teaching observation
+SYN002	liver_bulk	metabolite	metabolite_feature_1	intensity	90	arbitrary_units	Synthetic m/z 181.07, RT 2.1 min; identity unassigned	synthetic teaching observation
+SYN002	liver_bulk	metabolite	metabolite_feature_2	intensity	35	arbitrary_units	Synthetic m/z 89.02, RT 1.4 min; identity unassigned	synthetic teaching observation
+SYN002	liver_bulk	lipid	PC_34:1	abundance	24	arbitrary_units	Sum composition annotation only; acyl positions unresolved	synthetic teaching observation
+SYN002	liver_bulk	glycan	Hex5HexNAc2	abundance	17	arbitrary_units	Composition only; branching and linkage unresolved	synthetic teaching observation

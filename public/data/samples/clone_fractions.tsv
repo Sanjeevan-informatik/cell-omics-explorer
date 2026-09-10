@@ -1,0 +1,4 @@
+clone	parent	fraction
+ancestor	none	0.3
+clone_A	ancestor	0.45
+clone_B	ancestor	0.25

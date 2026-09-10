@@ -1,0 +1,5 @@
+transcript	gene	sample	tpm
+TX_A1	GENE_A	control	12
+TX_A2	GENE_A	control	4
+TX_A1	GENE_A	case	6
+TX_A2	GENE_A	case	18

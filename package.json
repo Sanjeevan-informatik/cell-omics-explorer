@@ -1,6 +1,6 @@
 {
   "name": "cell-omics-explorer",
-  "version": "2.0.0",
+  "version": "6.0.0",
   "private": true,
   "engines": {
     "node": ">=22.13.0"
@@ -13,7 +13,10 @@
     "test": "node --test tests/*.test.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "data:materialize": "node scripts/materialize-data.mjs",
+    "prebuild": "npm run data:materialize",
+    "predev": "npm run data:materialize"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

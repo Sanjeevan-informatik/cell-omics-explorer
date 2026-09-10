@@ -1,0 +1,781 @@
+{
+  "schema_version": "1.0",
+  "project": "Cell Omics Explorer",
+  "storage_model": "catalog + immutable objects",
+  "datasets": [
+    {
+      "id": "alignment",
+      "category": "genome",
+      "title": "Aligned DNA",
+      "filename": "aligned_dna.fasta",
+      "description": "Three aligned sequences ready for DNA analysis.",
+      "units": "1-based alignment columns",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/genomics/aligned_dna.fasta",
+      "public_path": "/data/samples/aligned_dna.fasta",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "reads",
+      "category": "genome",
+      "title": "Sequencing reads",
+      "filename": "reads.fastq",
+      "description": "Two four-line FASTQ reads with quality scores.",
+      "units": "Phred+33 example",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/genomics/reads.fastq",
+      "public_path": "/data/samples/reads.fastq",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "variants",
+      "category": "genome",
+      "title": "Variant calls",
+      "filename": "variants.vcf",
+      "description": "Synthetic variants on an artificial demo chromosome.",
+      "units": "1-based positions; assembly: demo",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/genomics/variants.vcf",
+      "public_path": "/data/samples/variants.vcf",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "intervals",
+      "category": "genome",
+      "title": "Genome intervals",
+      "filename": "intervals.bed",
+      "description": "Two named intervals on an artificial chromosome.",
+      "units": "0-based, half-open; assembly: demo",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/genomics/intervals.bed",
+      "public_path": "/data/samples/intervals.bed",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "haplotypes",
+      "category": "genome",
+      "title": "Phased haplotypes",
+      "filename": "haplotypes.tsv",
+      "description": "Processed phased genotype table; no phasing is computed.",
+      "columns": [
+        "sample",
+        "chrom",
+        "position",
+        "haplotype_1",
+        "haplotype_2"
+      ],
+      "units": "1-based; assembly: demo",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/genomics/haplotypes.tsv",
+      "public_path": "/data/samples/haplotypes.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "methylation",
+      "category": "epigenome",
+      "title": "DNA methylation",
+      "filename": "methylation.tsv",
+      "description": "Per-feature methylation beta values.",
+      "columns": [
+        "feature",
+        "sample",
+        "beta"
+      ],
+      "units": "Beta: 0–1",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/epigenomics/methylation.tsv",
+      "public_path": "/data/samples/methylation.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "accessibility",
+      "category": "epigenome",
+      "title": "Chromatin accessibility",
+      "filename": "accessibility.tsv",
+      "description": "Processed ATAC-style peak signal.",
+      "columns": [
+        "chrom",
+        "start",
+        "end",
+        "signal"
+      ],
+      "units": "0-based, half-open; arbitrary signal",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/epigenomics/accessibility.tsv",
+      "public_path": "/data/samples/accessibility.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "contacts",
+      "category": "epigenome",
+      "title": "Hi-C contact export",
+      "filename": "hic_contacts.tsv",
+      "description": "Sparse binned contact counts; not a .hic/.cool binary file.",
+      "columns": [
+        "bin_1",
+        "bin_2",
+        "count"
+      ],
+      "units": "Demo bin IDs; raw counts",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/epigenomics/hic_contacts.tsv",
+      "public_path": "/data/samples/hic_contacts.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "expression",
+      "category": "transcriptome",
+      "title": "RNA expression",
+      "filename": "expression.csv",
+      "description": "Small gene-by-sample count matrix.",
+      "columns": [
+        "gene",
+        "control",
+        "case"
+      ],
+      "units": "Raw integer counts; not normalized",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/transcriptomics/expression.csv",
+      "public_path": "/data/samples/expression.csv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "isoforms",
+      "category": "transcriptome",
+      "title": "Isoform abundance",
+      "filename": "isoforms.tsv",
+      "description": "Processed transcript abundance for two samples.",
+      "columns": [
+        "transcript",
+        "gene",
+        "sample",
+        "tpm"
+      ],
+      "units": "TPM",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/transcriptomics/isoforms.tsv",
+      "public_path": "/data/samples/isoforms.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "cells",
+      "category": "singlecell",
+      "title": "Cell embedding",
+      "filename": "cell_embedding.csv",
+      "description": "Precomputed illustrative coordinates and cluster labels.",
+      "columns": [
+        "cell_id",
+        "x",
+        "y",
+        "cluster"
+      ],
+      "units": "Arbitrary embedding coordinates; not computed UMAP",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/single-cell/cell_embedding.csv",
+      "public_path": "/data/samples/cell_embedding.csv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "spatial",
+      "category": "singlecell",
+      "title": "Spatial spots",
+      "filename": "spatial_spots.tsv",
+      "description": "Spot coordinates and a marker value.",
+      "columns": [
+        "spot",
+        "x",
+        "y",
+        "gene",
+        "expression"
+      ],
+      "units": "Micrometres; arbitrary expression",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/single-cell/spatial_spots.tsv",
+      "public_path": "/data/samples/spatial_spots.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "proteins",
+      "category": "proteome",
+      "title": "Protein abundance",
+      "filename": "protein_abundance.tsv",
+      "description": "Processed relative protein intensities.",
+      "columns": [
+        "protein",
+        "control",
+        "case"
+      ],
+      "units": "Arbitrary intensity",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/proteomics/protein_abundance.tsv",
+      "public_path": "/data/samples/protein_abundance.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "spectrum",
+      "category": "proteome",
+      "title": "MS/MS peaks",
+      "filename": "msms_peaks.tsv",
+      "description": "Centroided peak list for a teaching spectrum.",
+      "columns": [
+        "mz",
+        "intensity"
+      ],
+      "units": "m/z; arbitrary intensity",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/proteomics/msms_peaks.tsv",
+      "public_path": "/data/samples/msms_peaks.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "ptm",
+      "category": "proteome",
+      "title": "Protein modifications",
+      "filename": "protein_ptm.tsv",
+      "description": "Processed site-level modification table.",
+      "columns": [
+        "protein",
+        "residue",
+        "modification",
+        "fold_change"
+      ],
+      "units": "1-based residues; case/control ratio",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/proteomics/protein_ptm.tsv",
+      "public_path": "/data/samples/protein_ptm.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "metabolites",
+      "category": "metabolome",
+      "title": "Metabolite features",
+      "filename": "metabolite_features.csv",
+      "description": "Processed LC-MS features with candidate annotations.",
+      "columns": [
+        "feature",
+        "mz",
+        "rt_min",
+        "intensity",
+        "candidate"
+      ],
+      "units": "m/z; minutes; arbitrary intensity",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/metabolomics/metabolite_features.csv",
+      "public_path": "/data/samples/metabolite_features.csv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "lipids",
+      "category": "metabolome",
+      "title": "Lipid abundance",
+      "filename": "lipids.tsv",
+      "description": "Processed lipid-class abundance examples.",
+      "columns": [
+        "lipid",
+        "sample",
+        "abundance"
+      ],
+      "units": "Relative abundance",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/metabolomics/lipids.tsv",
+      "public_path": "/data/samples/lipids.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "glycans",
+      "category": "metabolome",
+      "title": "Glycan compositions",
+      "filename": "glycans.tsv",
+      "description": "Composition annotations, not resolved glycan structures.",
+      "columns": [
+        "composition",
+        "sample",
+        "abundance"
+      ],
+      "units": "Relative abundance",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/metabolomics/glycans.tsv",
+      "public_path": "/data/samples/glycans.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "airr",
+      "category": "immunomics",
+      "title": "Repertoire export",
+      "filename": "repertoire.tsv",
+      "description": "AIRR-inspired subset; not full AIRR schema validation.",
+      "columns": [
+        "sequence_id",
+        "junction_aa",
+        "v_call",
+        "j_call",
+        "duplicate_count"
+      ],
+      "units": "Clonotype counts",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/immunomics/repertoire.tsv",
+      "public_path": "/data/samples/repertoire.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "cytometry",
+      "category": "imaging",
+      "title": "Cytometry events",
+      "filename": "cytometry_events.csv",
+      "description": "Processed event intensities exported from an FCS workflow.",
+      "columns": [
+        "event",
+        "CD3",
+        "CD4",
+        "CD8"
+      ],
+      "units": "Arbitrary fluorescence; uncompensated teaching values",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/imaging-cytometry/cytometry_events.csv",
+      "public_path": "/data/samples/cytometry_events.csv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "imagefeatures",
+      "category": "imaging",
+      "title": "Image measurements",
+      "filename": "image_measurements.tsv",
+      "description": "Segmented-cell measurements, not an image file.",
+      "columns": [
+        "cell",
+        "area_um2",
+        "mean_intensity"
+      ],
+      "units": "Square micrometres; arbitrary intensity",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/imaging-cytometry/image_measurements.tsv",
+      "public_path": "/data/samples/image_measurements.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "network",
+      "category": "pathways",
+      "title": "Interaction edges",
+      "filename": "network_edges.tsv",
+      "description": "Illustrative directed interactions.",
+      "columns": [
+        "source",
+        "target",
+        "relationship"
+      ],
+      "units": "Categorical relationships",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/pathways/network_edges.tsv",
+      "public_path": "/data/samples/network_edges.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "clones",
+      "category": "evolution",
+      "title": "Clone fractions",
+      "filename": "clone_fractions.tsv",
+      "description": "Processed clone fractions; no tree inference.",
+      "columns": [
+        "clone",
+        "parent",
+        "fraction"
+      ],
+      "units": "Fraction: 0–1",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/evolution/clone_fractions.tsv",
+      "public_path": "/data/samples/clone_fractions.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "integration",
+      "category": "multiomics",
+      "title": "Multi-omics evidence",
+      "filename": "multiomics_evidence.tsv",
+      "description": "Long-form evidence with explicit units per row.",
+      "columns": [
+        "sample",
+        "feature",
+        "layer",
+        "value",
+        "unit"
+      ],
+      "units": "Mixed; see unit column",
+      "synthetic": true,
+      "collection": "teaching-v3",
+      "role": "sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/teaching-v3/multi-omics/multiomics_evidence.tsv",
+      "public_path": "/data/samples/multiomics_evidence.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false
+      }
+    },
+    {
+      "id": "legacy-example-alignment",
+      "category": "genome",
+      "title": "Legacy aligned DNA",
+      "filename": "example_alignment.fasta",
+      "description": "FASTA reference/tumor/control teaching alignment",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/genomics/example_alignment.fasta",
+      "public_path": "/data/legacy/example_alignment.fasta",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    },
+    {
+      "id": "legacy-example-variants",
+      "category": "genome",
+      "title": "Legacy cancer variants",
+      "filename": "example_variants.vcf",
+      "description": "GRCh38-style TP53/EGFR/KRAS/CDKN2A teaching variants",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/genomics/example_variants.vcf",
+      "public_path": "/data/legacy/example_variants.vcf",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    },
+    {
+      "id": "legacy-example-expression",
+      "category": "transcriptome",
+      "title": "Legacy expression",
+      "filename": "example_expression.csv",
+      "description": "Tumor/control TPM teaching matrix",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/transcriptomics/example_expression.csv",
+      "public_path": "/data/legacy/example_expression.csv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    },
+    {
+      "id": "legacy-example-methylation",
+      "category": "epigenome",
+      "title": "Legacy methylation",
+      "filename": "example_methylation.tsv",
+      "description": "Feature-level methylation beta teaching values",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/epigenomics/example_methylation.tsv",
+      "public_path": "/data/legacy/example_methylation.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    },
+    {
+      "id": "legacy-example-single-cell",
+      "category": "singlecell",
+      "title": "Legacy single-cell markers",
+      "filename": "example_single_cell.csv",
+      "description": "Small marker-by-cell teaching table",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/single-cell/example_single_cell.csv",
+      "public_path": "/data/legacy/example_single_cell.csv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    },
+    {
+      "id": "legacy-example-clonotypes",
+      "category": "immunomics",
+      "title": "Legacy clonotypes",
+      "filename": "example_clonotypes.tsv",
+      "description": "TCR CDR3/V/J/frequency teaching table",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/immunomics/example_clonotypes.tsv",
+      "public_path": "/data/legacy/example_clonotypes.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    },
+    {
+      "id": "legacy-example-multiomics",
+      "category": "multiomics",
+      "title": "Legacy EGFR multi-omics",
+      "filename": "example_multiomics.tsv",
+      "description": "Cross-layer EGFR teaching evidence",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/multi-omics/example_multiomics.tsv",
+      "public_path": "/data/legacy/example_multiomics.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    },
+    {
+      "id": "legacy-proteins",
+      "category": "proteome",
+      "title": "Legacy proteins",
+      "filename": "proteins.fasta",
+      "description": "Protein sequences for peptide/MS teaching data",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/proteomics/proteins.fasta",
+      "public_path": "/data/legacy/proteins.fasta",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    },
+    {
+      "id": "legacy-psm",
+      "category": "proteome",
+      "title": "Legacy peptide-spectrum matches",
+      "filename": "psm.tsv",
+      "description": "PSM teaching results",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/proteomics/psm.tsv",
+      "public_path": "/data/legacy/psm.tsv",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    },
+    {
+      "id": "legacy-reference-library",
+      "category": "proteome",
+      "title": "Legacy spectral library",
+      "filename": "reference_library.msp",
+      "description": "Reference MS/MS teaching spectrum",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/proteomics/reference_library.msp",
+      "public_path": "/data/legacy/reference_library.msp",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    },
+    {
+      "id": "legacy-sample",
+      "category": "proteome",
+      "title": "Legacy mzML",
+      "filename": "sample.mzML",
+      "description": "Human-readable teaching MS1/MS2 mzML",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/proteomics/sample.mzML",
+      "public_path": "/data/legacy/sample.mzML",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    },
+    {
+      "id": "legacy-example-structure",
+      "category": "proteome",
+      "title": "Legacy mmCIF structure",
+      "filename": "example_structure.cif",
+      "description": "Small atom-coordinate teaching structure",
+      "units": "See file / format semantics",
+      "synthetic": true,
+      "collection": "legacy-v2",
+      "role": "legacy-sample",
+      "storage_kind": "filesystem",
+      "storage_path": "data/datasets/legacy-v2/proteomics/example_structure.cif",
+      "public_path": "/data/legacy/example_structure.cif",
+      "provenance": {
+        "kind": "synthetic-teaching",
+        "patient_data": false,
+        "preserved_from": "Cell Omics Explorer legacy dataset"
+      }
+    }
+  ]
+}

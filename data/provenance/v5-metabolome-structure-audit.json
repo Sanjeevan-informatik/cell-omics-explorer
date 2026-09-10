@@ -1,0 +1,33 @@
+{
+  "baseline_files": 147,
+  "v5_files_excluding_audit_and_node_modules": 153,
+  "missing_original_paths": [],
+  "added_paths": [
+    "components/metabolome-structure-explorer.tsx",
+    "data/knowledge/metabolome-structures.json",
+    "docs/METABOLOME_STRUCTURE_EXPLORER_V5.md",
+    "lib/metabolome-structures.ts",
+    "scripts/generate-metabolome-structures.py",
+    "tests/metabolome-structures.test.mjs"
+  ],
+  "changed_paths": [
+    "README.md",
+    "app/globals.css",
+    "components/explorer-frame.tsx",
+    "components/unified-omics-atlas.tsx",
+    "data/README.md",
+    "docs/FORMAT_SUPPORT.md",
+    "lib/data-catalog.ts",
+    "lib/workspaces.ts",
+    "package-lock.json",
+    "package.json"
+  ],
+  "unchanged_original_paths": 137,
+  "canonical_dataset_files": 36,
+  "canonical_dataset_files_changed": [],
+  "legacy_explorer_files": 4,
+  "legacy_explorer_files_changed": [],
+  "all_original_paths_preserved": true,
+  "canonical_biological_payloads_byte_identical": true,
+  "legacy_explorer_byte_identical": true
+}

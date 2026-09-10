@@ -1,0 +1,57 @@
+{
+  "files": [
+    {
+      "original": "lib/epigenome-structures.ts",
+      "preserved_path": "data/provenance/epigenome-original/lib/epigenome-structures.ts.snapshot",
+      "sha256": "8d203417c767fa18f45455b52f93a0f669a297fece5efad9db3917dd96b6d18f"
+    },
+    {
+      "original": "components/epigenome-structure-explorer.tsx",
+      "preserved_path": "data/provenance/epigenome-original/components/epigenome-structure-explorer.tsx.snapshot",
+      "sha256": "9d0757625e36f1074c67764533a5a5c3c37609b7d93610ce868bd8a9bd1d2796"
+    },
+    {
+      "original": "data/knowledge/epigenome-structures.json",
+      "preserved_path": "data/provenance/epigenome-original/data/knowledge/epigenome-structures.json.snapshot",
+      "sha256": "2160989d85d9525f5445e6a58c689f12c877932ea5e1300d2b4a3844570e3294"
+    },
+    {
+      "original": "docs/EPIGENOME_DNA_STRUCTURE_EXPLORER_V6.md",
+      "preserved_path": "data/provenance/epigenome-original/docs/EPIGENOME_DNA_STRUCTURE_EXPLORER_V6.md.snapshot",
+      "sha256": "2bddca376494f868469bf95be440ab5f44e16d82366e582500943673ceaa3bca"
+    }
+  ],
+  "positionCorrections": [
+    {
+      "modification": "5hmc",
+      "original_position": 10,
+      "corrected_position": 9
+    },
+    {
+      "modification": "8oxog",
+      "original_position": 14,
+      "corrected_position": 12
+    },
+    {
+      "modification": "5fc",
+      "original_position": 21,
+      "corrected_position": 20
+    },
+    {
+      "modification": "5cac",
+      "original_position": 41,
+      "corrected_position": 40
+    },
+    {
+      "modification": "6ma",
+      "original_position": 49,
+      "corrected_position": 47
+    },
+    {
+      "modification": "uracil",
+      "original_position": 55,
+      "corrected_position": 53
+    }
+  ],
+  "chemistryCorrection": "Unverified supplied SMILES withheld from active exact-structure display; originals preserved byte-for-byte."
+}

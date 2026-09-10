@@ -1,0 +1,26 @@
+# Cell Omics Explorer v6 — Epigenome & DNA Structures
+
+This release adds a structure-rich epigenome workspace without removing v5 data or features.
+
+## Linked representations
+
+1. **Sequence** — nucleotide-by-nucleotide modification calls with clickable positions.
+2. **2D chemistry** — parent-base ring plus chemical modification group, formula, mass shift and a structure representation/SMILES when suitable.
+3. **3D DNA** — teaching B-DNA helix with modification positions mapped onto the sequence.
+4. **4D states** — an explicitly conceptual chromatin-state/ensemble view; it is not molecular dynamics.
+5. **Epigenomic tracks** — 5mC, 5hmC, ATAC, histone-mark signals and a Hi-C matrix.
+6. **Modification registry** — searchable registry of covalent marks/lesions, enzymes/repair systems and assay examples.
+
+## Modification coverage
+
+The bundled registry includes representative members of the major classes needed for the UI architecture: 5mC, 5hmC, 5fC, 5caC, 6mA, 4mC, 8-oxoG, O6-meG, N7-meG, uracil, hypoxanthine, xanthine, abasic/AP sites, CPDs, 6-4 photoproducts, ethenoadenine, a bulky BPDE-dG adduct and an interstrand crosslink example.
+
+The term “all DNA modifications” is treated as an **extensible schema**, not a claim that a finite demo file enumerates all chemical lesions known or possible. Future records can add new modifications, exact structures, measured coordinates, sequence calls, assay evidence and data-lake object references without changing the viewer component.
+
+## Scientific boundaries
+
+- Epigenetic marks and DNA damage/adducts are labeled as different categories.
+- 2D drawings are teaching schematics unless an exact structure representation is present.
+- 3D B-DNA uses idealized geometry rather than an experimentally solved structure.
+- 4D is a state/ensemble teaching visualization, not an MD trajectory or time-resolved experiment.
+- Existing methylation, accessibility and Hi-C files remain canonical under the v4/v5 data architecture.

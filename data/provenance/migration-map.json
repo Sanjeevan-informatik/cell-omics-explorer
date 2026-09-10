@@ -1,0 +1,512 @@
+{
+  "all_original_contents_preserved": true,
+  "original_file_instances": 72,
+  "unique_content_objects": 36,
+  "canonical_content_objects": 36,
+  "mapping": [
+    {
+      "original_path": "data/example_alignment.fasta",
+      "sha256": "a94899b2a7b1949c93385ed089806cc290c3e0112aa735f4e0cf2b9931104a20",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/genomics/example_alignment.fasta"
+      ]
+    },
+    {
+      "original_path": "data/example_clonotypes.tsv",
+      "sha256": "377c5c537d4f7bee6eb91711acd0cff263488728d4d778dbadddf7c680341197",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/immunomics/example_clonotypes.tsv"
+      ]
+    },
+    {
+      "original_path": "data/example_expression.csv",
+      "sha256": "0b2ffcf57517128e47d5e75d6960d196e1ce19fd70271c0fe0b83d0709d90baa",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/transcriptomics/example_expression.csv"
+      ]
+    },
+    {
+      "original_path": "data/example_methylation.tsv",
+      "sha256": "946700f9dae7e304ee83c26022e734967f15921a2bc4db4a3e0c6c03b0a5eb8f",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/epigenomics/example_methylation.tsv"
+      ]
+    },
+    {
+      "original_path": "data/example_multiomics.tsv",
+      "sha256": "26ffce9f44abdf2ed4c0f2cf4df93f7a778b5e2159c0e90f5d229daf27c8d13f",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/multi-omics/example_multiomics.tsv"
+      ]
+    },
+    {
+      "original_path": "data/example_single_cell.csv",
+      "sha256": "7f6169e5b3a7026dc535c85262ddb696781d3daa4d87a4fadc716aa1579bd77f",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/single-cell/example_single_cell.csv"
+      ]
+    },
+    {
+      "original_path": "data/example_structure.cif",
+      "sha256": "4a8929d07290de6b1806abc4095d8246ac6891943d1d3b20ee4db4969d21ae5a",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/proteomics/example_structure.cif"
+      ]
+    },
+    {
+      "original_path": "data/example_variants.vcf",
+      "sha256": "9c870f380ea662c97ae6b5e03134c95bf388f85b40edcfddec342759a8b605c8",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/genomics/example_variants.vcf"
+      ]
+    },
+    {
+      "original_path": "data/proteins.fasta",
+      "sha256": "ccc45b19d40d879cd93f9bef281785fc737205eb3a51732f7c3fd0ef983eaacc",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/proteomics/proteins.fasta"
+      ]
+    },
+    {
+      "original_path": "data/psm.tsv",
+      "sha256": "90128b83e7bfbd39d01afc1be8f9524b8b66949abdb55f907d888dd388634751",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/proteomics/psm.tsv"
+      ]
+    },
+    {
+      "original_path": "data/reference_library.msp",
+      "sha256": "dffad34c06d4661f4026d122f98ed7ce978c997320481df2f64c0f1f3fb89a81",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/proteomics/reference_library.msp"
+      ]
+    },
+    {
+      "original_path": "data/sample.mzML",
+      "sha256": "cadd630cd94b9514b2837975dd7c9ea0656e2e1641912c4e73c2e8d0f227e51b",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/proteomics/sample.mzML"
+      ]
+    },
+    {
+      "original_path": "data/templates/accessibility.tsv",
+      "sha256": "7f8f943ef2ea265dd5c3b2e390fef233974dbaeaee7ad3a1669266ec6ead86bc",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/epigenomics/accessibility.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/aligned_dna.fasta",
+      "sha256": "d3278fd84e0c2e51e8ee4e32834c30375dcd9d902fffb2f669e708c76f57e79e",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/genomics/aligned_dna.fasta"
+      ]
+    },
+    {
+      "original_path": "data/templates/cell_embedding.csv",
+      "sha256": "1f66728fd9924f700ab37d011c442e001aa94fc35e695458405d5552f581ec28",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/single-cell/cell_embedding.csv"
+      ]
+    },
+    {
+      "original_path": "data/templates/clone_fractions.tsv",
+      "sha256": "cb876ee56dcbd08f3368e34ce49770f4485e27a2f527a499683350f9c3c0bbd6",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/evolution/clone_fractions.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/cytometry_events.csv",
+      "sha256": "fa01e941306c1f5498f3dd6d3e11d28a153fa184c10781e2a35b42779217405b",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/imaging-cytometry/cytometry_events.csv"
+      ]
+    },
+    {
+      "original_path": "data/templates/expression.csv",
+      "sha256": "1d396e94d8a01b7e8d739b8440e63423dbb83ce0a638e42e701587dff135e3ac",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/transcriptomics/expression.csv"
+      ]
+    },
+    {
+      "original_path": "data/templates/glycans.tsv",
+      "sha256": "009927e103dc97dba1438352cac345a99108aec93a9dfbc10512fa8fbb056630",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/metabolomics/glycans.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/haplotypes.tsv",
+      "sha256": "bc915227c3da21f82f63073cb3de622f11833a15383de70851cf7f6cab1ce374",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/genomics/haplotypes.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/hic_contacts.tsv",
+      "sha256": "946d8dee7c6a8f26a19f62d1319368ed63f95d1d50447e70747cc6c788371b11",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/epigenomics/hic_contacts.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/image_measurements.tsv",
+      "sha256": "c8c07be6c876f8b7d646281282efc6f84aafa093a6715244cee75e9ef2273d4e",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/imaging-cytometry/image_measurements.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/intervals.bed",
+      "sha256": "2cd55f030791f27ae99c1b7b723359ffe064846253054587a2ea81b4aaefe2ba",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/genomics/intervals.bed"
+      ]
+    },
+    {
+      "original_path": "data/templates/isoforms.tsv",
+      "sha256": "6f267fda08539b1f5fb5b959896d1d519349e86861249f1e19edf906cf3c55e1",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/transcriptomics/isoforms.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/lipids.tsv",
+      "sha256": "3ec68209e6c5a482c3d9cd0ed09f81528b1b764acf277a536485478c8baea3be",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/metabolomics/lipids.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/metabolite_features.csv",
+      "sha256": "9ad0532107cd347ff29635379826c7c03699ae483cde45362030d1ee75d5154d",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/metabolomics/metabolite_features.csv"
+      ]
+    },
+    {
+      "original_path": "data/templates/methylation.tsv",
+      "sha256": "771896086f110a50a98c3dc1657f87c2868ecc9ee2ccc336548655f3d776f9e8",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/epigenomics/methylation.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/msms_peaks.tsv",
+      "sha256": "df8c043a2fcf243c58b8f8cc0ccb52776831607a19b677960f05af0797931ec8",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/proteomics/msms_peaks.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/multiomics_evidence.tsv",
+      "sha256": "080b2387a414efb30a440fd9fd5c7c1a4f393772184209bdeca2d1d4dd4d4356",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/multi-omics/multiomics_evidence.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/network_edges.tsv",
+      "sha256": "8fef11d04a2de7601c1ce4c35906d183e74abc8aea06ec652cf039d02b12deaf",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/pathways/network_edges.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/protein_abundance.tsv",
+      "sha256": "6ea8e863b642c00f1f5d8d1846cb08d530f9ed2aabceb3c4e60c5327b6f02fda",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/proteomics/protein_abundance.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/protein_ptm.tsv",
+      "sha256": "8a60dd24f91a5bc948c4f3c30cb0951e0b61a0d140c87120d3598d3c9c158f31",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/proteomics/protein_ptm.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/reads.fastq",
+      "sha256": "d73339f558296f4d1a010278ead253b877f83cf9ca388dbfbd4e8c5ff4a8e6e8",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/genomics/reads.fastq"
+      ]
+    },
+    {
+      "original_path": "data/templates/repertoire.tsv",
+      "sha256": "e1f81607388535d74ad73c2b976cac2bafe728ac2c9c87f9e9c42b4f93d01e4d",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/immunomics/repertoire.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/spatial_spots.tsv",
+      "sha256": "9557b2285776e3627f76730182f28a5ebd9a47186b0198d26786dfc1ca7fbde5",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/single-cell/spatial_spots.tsv"
+      ]
+    },
+    {
+      "original_path": "data/templates/variants.vcf",
+      "sha256": "f76206f130aa2530f6d4dba9a04f34f6d8994e28040d30d5d5e63a6a4d7e7d94",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/genomics/variants.vcf"
+      ]
+    },
+    {
+      "original_path": "public/data/accessibility.tsv",
+      "sha256": "7f8f943ef2ea265dd5c3b2e390fef233974dbaeaee7ad3a1669266ec6ead86bc",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/epigenomics/accessibility.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/aligned_dna.fasta",
+      "sha256": "d3278fd84e0c2e51e8ee4e32834c30375dcd9d902fffb2f669e708c76f57e79e",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/genomics/aligned_dna.fasta"
+      ]
+    },
+    {
+      "original_path": "public/data/cell_embedding.csv",
+      "sha256": "1f66728fd9924f700ab37d011c442e001aa94fc35e695458405d5552f581ec28",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/single-cell/cell_embedding.csv"
+      ]
+    },
+    {
+      "original_path": "public/data/clone_fractions.tsv",
+      "sha256": "cb876ee56dcbd08f3368e34ce49770f4485e27a2f527a499683350f9c3c0bbd6",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/evolution/clone_fractions.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/cytometry_events.csv",
+      "sha256": "fa01e941306c1f5498f3dd6d3e11d28a153fa184c10781e2a35b42779217405b",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/imaging-cytometry/cytometry_events.csv"
+      ]
+    },
+    {
+      "original_path": "public/data/expression.csv",
+      "sha256": "1d396e94d8a01b7e8d739b8440e63423dbb83ce0a638e42e701587dff135e3ac",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/transcriptomics/expression.csv"
+      ]
+    },
+    {
+      "original_path": "public/data/glycans.tsv",
+      "sha256": "009927e103dc97dba1438352cac345a99108aec93a9dfbc10512fa8fbb056630",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/metabolomics/glycans.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/haplotypes.tsv",
+      "sha256": "bc915227c3da21f82f63073cb3de622f11833a15383de70851cf7f6cab1ce374",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/genomics/haplotypes.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/hic_contacts.tsv",
+      "sha256": "946d8dee7c6a8f26a19f62d1319368ed63f95d1d50447e70747cc6c788371b11",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/epigenomics/hic_contacts.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/image_measurements.tsv",
+      "sha256": "c8c07be6c876f8b7d646281282efc6f84aafa093a6715244cee75e9ef2273d4e",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/imaging-cytometry/image_measurements.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/intervals.bed",
+      "sha256": "2cd55f030791f27ae99c1b7b723359ffe064846253054587a2ea81b4aaefe2ba",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/genomics/intervals.bed"
+      ]
+    },
+    {
+      "original_path": "public/data/isoforms.tsv",
+      "sha256": "6f267fda08539b1f5fb5b959896d1d519349e86861249f1e19edf906cf3c55e1",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/transcriptomics/isoforms.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/lipids.tsv",
+      "sha256": "3ec68209e6c5a482c3d9cd0ed09f81528b1b764acf277a536485478c8baea3be",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/metabolomics/lipids.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/metabolite_features.csv",
+      "sha256": "9ad0532107cd347ff29635379826c7c03699ae483cde45362030d1ee75d5154d",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/metabolomics/metabolite_features.csv"
+      ]
+    },
+    {
+      "original_path": "public/data/methylation.tsv",
+      "sha256": "771896086f110a50a98c3dc1657f87c2868ecc9ee2ccc336548655f3d776f9e8",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/epigenomics/methylation.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/msms_peaks.tsv",
+      "sha256": "df8c043a2fcf243c58b8f8cc0ccb52776831607a19b677960f05af0797931ec8",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/proteomics/msms_peaks.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/multiomics_evidence.tsv",
+      "sha256": "080b2387a414efb30a440fd9fd5c7c1a4f393772184209bdeca2d1d4dd4d4356",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/multi-omics/multiomics_evidence.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/network_edges.tsv",
+      "sha256": "8fef11d04a2de7601c1ce4c35906d183e74abc8aea06ec652cf039d02b12deaf",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/pathways/network_edges.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/protein_abundance.tsv",
+      "sha256": "6ea8e863b642c00f1f5d8d1846cb08d530f9ed2aabceb3c4e60c5327b6f02fda",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/proteomics/protein_abundance.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/protein_ptm.tsv",
+      "sha256": "8a60dd24f91a5bc948c4f3c30cb0951e0b61a0d140c87120d3598d3c9c158f31",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/proteomics/protein_ptm.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/reads.fastq",
+      "sha256": "d73339f558296f4d1a010278ead253b877f83cf9ca388dbfbd4e8c5ff4a8e6e8",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/genomics/reads.fastq"
+      ]
+    },
+    {
+      "original_path": "public/data/repertoire.tsv",
+      "sha256": "e1f81607388535d74ad73c2b976cac2bafe728ac2c9c87f9e9c42b4f93d01e4d",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/immunomics/repertoire.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/spatial_spots.tsv",
+      "sha256": "9557b2285776e3627f76730182f28a5ebd9a47186b0198d26786dfc1ca7fbde5",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/single-cell/spatial_spots.tsv"
+      ]
+    },
+    {
+      "original_path": "public/data/variants.vcf",
+      "sha256": "f76206f130aa2530f6d4dba9a04f34f6d8994e28040d30d5d5e63a6a4d7e7d94",
+      "canonical_paths": [
+        "data/datasets/teaching-v3/genomics/variants.vcf"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/example_alignment.fasta",
+      "sha256": "a94899b2a7b1949c93385ed089806cc290c3e0112aa735f4e0cf2b9931104a20",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/genomics/example_alignment.fasta"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/example_clonotypes.tsv",
+      "sha256": "377c5c537d4f7bee6eb91711acd0cff263488728d4d778dbadddf7c680341197",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/immunomics/example_clonotypes.tsv"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/example_expression.csv",
+      "sha256": "0b2ffcf57517128e47d5e75d6960d196e1ce19fd70271c0fe0b83d0709d90baa",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/transcriptomics/example_expression.csv"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/example_methylation.tsv",
+      "sha256": "946700f9dae7e304ee83c26022e734967f15921a2bc4db4a3e0c6c03b0a5eb8f",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/epigenomics/example_methylation.tsv"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/example_multiomics.tsv",
+      "sha256": "26ffce9f44abdf2ed4c0f2cf4df93f7a778b5e2159c0e90f5d229daf27c8d13f",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/multi-omics/example_multiomics.tsv"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/example_single_cell.csv",
+      "sha256": "7f6169e5b3a7026dc535c85262ddb696781d3daa4d87a4fadc716aa1579bd77f",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/single-cell/example_single_cell.csv"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/example_structure.cif",
+      "sha256": "4a8929d07290de6b1806abc4095d8246ac6891943d1d3b20ee4db4969d21ae5a",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/proteomics/example_structure.cif"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/example_variants.vcf",
+      "sha256": "9c870f380ea662c97ae6b5e03134c95bf388f85b40edcfddec342759a8b605c8",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/genomics/example_variants.vcf"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/proteins.fasta",
+      "sha256": "ccc45b19d40d879cd93f9bef281785fc737205eb3a51732f7c3fd0ef983eaacc",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/proteomics/proteins.fasta"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/psm.tsv",
+      "sha256": "90128b83e7bfbd39d01afc1be8f9524b8b66949abdb55f907d888dd388634751",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/proteomics/psm.tsv"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/reference_library.msp",
+      "sha256": "dffad34c06d4661f4026d122f98ed7ce978c997320481df2f64c0f1f3fb89a81",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/proteomics/reference_library.msp"
+      ]
+    },
+    {
+      "original_path": "public/explorer/data/sample.mzML",
+      "sha256": "cadd630cd94b9514b2837975dd7c9ea0656e2e1641912c4e73c2e8d0f227e51b",
+      "canonical_paths": [
+        "data/datasets/legacy-v2/proteomics/sample.mzML"
+      ]
+    }
+  ]
+}

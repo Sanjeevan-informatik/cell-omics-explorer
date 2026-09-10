@@ -1,0 +1,23 @@
+import hierarchy from '../data/knowledge/biological-hierarchy.json';
+
+export type HierarchyNode = {
+  id: string;
+  label: string;
+  subtitle: string;
+  description: string;
+  group: string;
+  details: string[];
+  structure2d: string[];
+  structure3d: string[];
+};
+
+export const DNA_30 = hierarchy.dna_30;
+export const RNA_30 = hierarchy.rna_30;
+export const PROTEIN_30 = hierarchy.protein_30;
+export const TRANSLATED_10 = hierarchy.translated_10;
+export const CODONS = hierarchy.codons;
+export const RNA_CODONS = hierarchy.rna_codons;
+export const RESIDUES_10 = hierarchy.residues_10;
+export const PROTEIN_30_RESIDUES = hierarchy.protein_30_residues;
+export const HIERARCHY_GROUPS = hierarchy.hierarchy_groups;
+export const HIERARCHY_NODES = hierarchy.hierarchy_nodes as Record<string, HierarchyNode>;

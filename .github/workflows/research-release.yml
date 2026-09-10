@@ -1,0 +1,44 @@
+name: Research release candidate
+on:
+  push:
+    branches: ['codex/participant-molecular-hierarchy']
+    paths: ['research/release.json']
+permissions:
+  contents: write
+concurrency:
+  group: research-release-candidate
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test > research/release-test-run.txt 2>&1
+      - run: node research/evaluate-real-data.mjs
+      - run: npm run build
+      - name: Package source and evaluations
+        run: |
+          mkdir -p /tmp/cellomics-release
+          git archive HEAD | tar -x -C /tmp/cellomics-release
+          cp research/real-data-evaluation.json research/release-test-run.txt /tmp/cellomics-release/research/
+          cd /tmp
+          zip -qr CellOmics_Explorer_6.1_research.zip cellomics-release
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const {tag, title} = JSON.parse(fs.readFileSync('research/release.json', 'utf8'));
+            const {owner, repo} = context.repo;
+            let existing;
+            try { existing = await github.rest.repos.getReleaseByTag({owner, repo, tag}); }
+            catch (e) { if (e.status !== 404) throw e; }
+            if (existing) { core.info('Release already exists; it will not be overwritten.'); return; }
+            const release = await github.rest.repos.createRelease({owner, repo, tag_name: tag, target_commitish: context.sha, name: title, prerelease: true, body: 'Research software candidate with a matched TCGA RNA/RPPA example, preserved synthetic data, evaluation scripts and logs. See research/README.md. This release does not assert clinical validation or superiority. Manuscript author declarations and a Zenodo DOI remain pending. Upstream data retain their own terms.'});
+            const data = fs.readFileSync('/tmp/CellOmics_Explorer_6.1_research.zip');
+            await github.rest.repos.uploadReleaseAsset({owner, repo, release_id: release.data.id, name: 'CellOmics_Explorer_6.1_research.zip', data});

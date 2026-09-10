@@ -1,0 +1,4 @@
+participant_id	sample_id	tissue	cell_type	assay_mode	cell_id
+SYN001	blood_bulk	blood	leukocytes	bulk	not_applicable
+SYN001	blood_T01	blood	CD4 T cell	single-cell	T01
+SYN002	liver_bulk	liver	hepatocyte-enriched tissue	bulk	not_applicable

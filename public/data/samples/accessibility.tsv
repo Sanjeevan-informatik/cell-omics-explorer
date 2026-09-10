@@ -1,0 +1,4 @@
+chrom	start	end	signal
+demo	0	100	12
+demo	100	200	25
+demo	200	300	8

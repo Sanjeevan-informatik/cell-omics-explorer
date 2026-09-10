@@ -1,9 +1,18 @@
+import {metaboliteSamples} from './metabolite-structures';
+import {modifiedProteinSample} from './protein-modifications';
+import { proteinSample, proteinTeachingSamples } from './protein-structure';
+import { HIERARCHY_TEMPLATES } from "./hierarchy-data";
 export type DataCategory = 'genome' | 'epigenome' | 'transcriptome' | 'singlecell' | 'proteome' | 'metabolome' | 'immunomics' | 'imaging' | 'pathways' | 'evolution' | 'multiomics';
-export type DataTemplate = { id: string; category: DataCategory; title: string; filename: string; description: string; columns?: string[]; content: string; units: string; };
+export type DataTemplate = { id: string; category: DataCategory; title: string; filename: string; description: string; columns?: string[]; content: string; publicPath?:string; units: string; };
 export const CATEGORY_LABELS: Record<DataCategory, string> = {
   genome: 'Genome & variants', epigenome: 'Epigenome & Hi-C', transcriptome: 'Transcriptome', singlecell: 'Single cell & spatial', proteome: 'Proteome & structures', metabolome: 'Metabolites, lipids & glycans', immunomics: 'Immune repertoire', imaging: 'Imaging & cytometry', pathways: 'Pathways', evolution: 'Cell evolution', multiomics: 'Multi-omics evidence',
 };
 export const TEMPLATES: DataTemplate[] = [
+  ...HIERARCHY_TEMPLATES,
+  ...metaboliteSamples().map(m=>({id:m.id,category:'metabolome' as const,title:m.name+' structure',filename:m.id+'.json',description:m.provenance,units:'Schematic coordinates',content:JSON.stringify(m,null,2)+'\n'})),
+  {id:'protein-modified-chemistry',category:'proteome',title:'Phosphate & acetyl chemical components',filename:'protein_modified_chemistry.json',description:'Synthetic S16 phosphate and K9 acetyl heavy atoms, attachment bonds and coordinate frames.',units:'Schematic coordinates; illustrative steps',content:JSON.stringify(modifiedProteinSample(),null,2)+'\n'},
+  ...proteinTeachingSamples().slice(1).map((sample,i)=>({id:'protein-teaching-'+i,category:'proteome' as const,title:i===0?'100-residue structure & modification teaching set':'Sequence-only structure teaching set',filename:i===0?'protein_teaching_100.json':'protein_teaching_missing.json',description:sample.provenance,units:'Schematic coordinates',content:JSON.stringify(sample,null,2)+'\n'})),
+  {id:'protein-atomic-bundle',category:'proteome',title:'Peptide atoms, modifications & motion',filename:'protein_structure.json',description:'Synthetic backbone atoms, annotation examples and illustrative coordinate frames. No physical simulation.',units:'Schematic coordinates and illustrative steps',content:JSON.stringify(proteinSample(),null,2)+'\n'},
   {id:'alignment',category:'genome',title:'Aligned DNA',filename:'aligned_dna.fasta',description:'Three aligned sequences ready for DNA analysis.',units:'1-based alignment columns',content:'>reference\nATGGCTGAATTTCCGAAAGGTTACTGGAAC\n>sample_A\nATGGCTGAATTTCCAAAAGGTTACTGGAAC\n>sample_B\nATGGCTGAGTTTCCGAAAGGTTACTGGAAC\n'},
   {id:'reads',category:'genome',title:'Sequencing reads',filename:'reads.fastq',description:'Two four-line FASTQ reads with quality scores.',units:'Phred+33 example',content:'@read_1\nACGTACGT\n+\nIIIIIIII\n@read_2\nACGTTCGT\n+\nIIIIHIII\n'},
   {id:'variants',category:'genome',title:'Variant calls',filename:'variants.vcf',description:'Synthetic variants on an artificial demo chromosome.',units:'1-based positions; assembly: demo',content:'##fileformat=VCFv4.2\n##contig=<ID=demo,length=1000>\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\ndemo\t20\t.\tA\tG\t60\tPASS\t.\ndemo\t40\t.\tC\tT\t50\tPASS\t.\n'},
@@ -30,6 +39,8 @@ export const TEMPLATES: DataTemplate[] = [
   {id:'integration',category:'multiomics',title:'Multi-omics evidence',filename:'multiomics_evidence.tsv',description:'Long-form evidence with explicit units per row.',columns:['sample','feature','layer','value','unit'],units:'Mixed; see unit column',content:'sample\tfeature\tlayer\tvalue\tunit\ncase\tEGFR\tRNA\t320\tTPM\ncase\tEGFR\tprotein\t2.8\tfold_change\ncase\tEGFR\tcopy_number\t6\tcopies\n'},
 ];
 export const EXTERNAL_FORMATS = [
+  {extensions:['sdf','mol','mol2','xyz','pdb','cif','mmcif'],category:'metabolome',tool:'RDKit or Open Babel',action:'Export an explicit molecular JSON bundle. Direct coordinate-file decoding is not implemented.'},
+  {extensions:['mgf','msp'],category:'metabolome',tool:'MSConvert or spectral-library software',action:'Export a centroided m/z–intensity TSV. Direct spectral-library parsing is not implemented.'},
   { extensions: ['bam','cram','bcf'], category:'genome', tool:'SAMtools/BCFtools', action:'Export aligned FASTA, VCF text, or a processed interval table. CRAM also needs its matching reference.' },
   { extensions: ['bw','bigwig','bb','bigbed'], category:'epigenome', tool:'UCSC utilities or pyBigWig', action:'Export a BED/bedGraph or signal TSV for the interval of interest.' },
   { extensions: ['hic','cool','mcool'], category:'epigenome', tool:'Cooler or Juicer', action:'Export a small binned contact table with bin IDs and counts.' },

@@ -1,0 +1,73 @@
+import catalogJson from '../data/catalog/datasets.json';
+
+export type DataCategory = 'genome' | 'epigenome' | 'transcriptome' | 'singlecell' | 'proteome' | 'metabolome' | 'immunomics' | 'imaging' | 'pathways' | 'evolution' | 'multiomics';
+
+export type DataTemplate = {
+  id: string;
+  category: DataCategory;
+  title: string;
+  filename: string;
+  description: string;
+  columns?: string[];
+  units: string;
+  synthetic: boolean;
+  collection: string;
+  storagePath: string;
+  publicPath: string;
+};
+
+export const CATEGORY_LABELS: Record<DataCategory, string> = {
+  genome: 'Genome & variants', epigenome: 'Epigenome & Hi-C', transcriptome: 'Transcriptome', singlecell: 'Single cell & spatial', proteome: 'Proteome & structures', metabolome: 'Metabolites, lipids & glycans', immunomics: 'Immune repertoire', imaging: 'Imaging & cytometry', pathways: 'Pathways', evolution: 'Cell evolution', multiomics: 'Multi-omics evidence',
+};
+
+type CatalogRecord = {
+  id: string;
+  category: DataCategory;
+  title: string;
+  filename: string;
+  description: string;
+  columns?: string[];
+  units: string;
+  synthetic: boolean;
+  collection: string;
+  storage_path: string;
+  public_path: string;
+};
+
+const records = catalogJson.datasets as CatalogRecord[];
+
+/**
+ * Current teaching samples. The catalog stores metadata only; the biological
+ * payload exists once under data/datasets/ and is materialized for web serving.
+ */
+export const TEMPLATES: DataTemplate[] = records
+  .filter((record) => record.collection === 'teaching-v3')
+  .map((record) => ({
+    id: record.id,
+    category: record.category,
+    title: record.title,
+    filename: record.filename,
+    description: record.description,
+    columns: record.columns,
+    units: record.units,
+    synthetic: record.synthetic,
+    collection: record.collection,
+    storagePath: record.storage_path,
+    publicPath: record.public_path,
+  }));
+
+export const ALL_DATASETS = records;
+
+export const EXTERNAL_FORMATS = [
+  { extensions: ['sdf','mol','mol2','xyz'], category:'metabolome', tool:'RDKit or Open Babel', action:'The v5 structure viewer has a canonical atom/bond schema. Convert/import these coordinates through a future structure adapter; direct SDF/MOL parsing is not yet enabled in the browser loader.' },
+  { extensions: ['pdb','cif','mmcif'], category:'metabolome', tool:'RDKit, Open Babel, or Mol*', action:'Use coordinate files for validated metabolite/complex structures. The current browser loader recognizes them as specialist structure input but does not claim full chemical parsing.' },
+  { extensions: ['mgf','msp'], category:'metabolome', tool:'MSConvert or spectral-library software', action:'Export peak lists or link spectra through the metabolome evidence model. Full spectral-library parsing is not yet enabled in the browser.' },
+  { extensions: ['bam','cram','bcf'], category:'genome', tool:'SAMtools/BCFtools', action:'Export aligned FASTA, VCF text, or a processed interval table. CRAM also needs its matching reference.' },
+  { extensions: ['bw','bigwig','bb','bigbed'], category:'epigenome', tool:'UCSC utilities or pyBigWig', action:'Export a BED/bedGraph or signal TSV for the interval of interest.' },
+  { extensions: ['hic','cool','mcool'], category:'epigenome', tool:'Cooler or Juicer', action:'Export a small binned contact table with bin IDs and counts.' },
+  { extensions: ['h5ad','h5','loom','rds','rdata'], category:'singlecell', tool:'Scanpy/AnnData or Seurat', action:'Export an expression matrix and cell metadata/embedding as CSV or TSV. Keep cell IDs consistent.' },
+  { extensions: ['raw','wiff','d','mzml','mzxml','mzidentml','mzid'], category:'proteome', tool:'ProteoWizard and your MS analysis software', action:'Export centroided m/z–intensity peaks, PSMs, or protein abundance as TSV. Raw spectrum decoding is not available here.' },
+  { extensions: ['fcs'], category:'imaging', tool:'FlowJo or FlowKit', action:'Export compensated event intensities with marker names as CSV.' },
+  { extensions: ['tif','tiff','svs','ndpi','dcm','dicom','zarr','png','jpg','jpeg'], category:'imaging', tool:'QuPath, Fiji, or an OME workflow', action:'Export cell/spot measurements as CSV or TSV. Image rendering and segmentation are not implemented.' },
+  { extensions: ['gz','zip','bz2','xz','7z'], category:'genome', tool:'Archive/decompression software', action:'Decompress locally, then select the supported text files. Archives are never executed or expanded by this app.' },
+] as const;
