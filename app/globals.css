@@ -891,3 +891,62 @@ footer svg { width: 14px; }
 .epi-state-story{margin:12px 20px;padding:18px;border:1px solid #52699a;border-radius:12px;display:flex;gap:20px;align-items:center;background:#14243a}.epi-state-symbol{padding:20px;border:2px solid #af9ef4;border-radius:45%;color:#d8cfff;white-space:nowrap}.epi-state-story p{font-size:13px;line-height:1.6}
 
 .hic-linked-table{border-collapse:collapse;width:100%;min-width:650px;margin:16px 0}.hic-linked-table th{font-size:10px;padding:5px;color:#b7cad8}.hic-linked-table td{padding:2px}.hic-linked-table button{width:100%;padding:12px 5px;border:1px solid #34505c;color:#fff;border-radius:4px;cursor:pointer}.hic-linked-table button:focus-visible{outline:2px solid #ffdc88}.hic-linked-table caption{font-size:12px;padding:10px;text-align:left}
+
+
+/* Shared responsive native omics workspaces; biological values remain unchanged. */
+:is(.explorer-workspace,.data-hub,.hierarchy-explorer,.atlas-page,.protein-workbench,.epigenome-structure-explorer,.metabolome-structure-explorer){min-width:0;max-width:100%;box-sizing:border-box}
+:is(.protein-controls,.epi-range,.chem-filter-bar,.chem-structure-controls,.hierarchy-context,.range-brush,.molecule-controls,.data-section-title,.data-preview-heading,.epi-header,.chem-explorer-header){gap:12px;flex-wrap:wrap}
+:is(.protein-controls,.epi-range,.chem-structure-controls,.hierarchy-context,.range-brush,.molecule-controls) label{min-width:0;max-width:100%}
+:is(.protein-controls,.epi-range,.chem-filter-bar,.chem-structure-controls,.hierarchy-context,.range-brush,.molecule-controls) :is(input:not([type=checkbox]),select){max-width:100%;min-height:44px;box-sizing:border-box;font-size:14px}
+:is(.explorer-workspace,.hierarchy-explorer,.data-hub,.atlas-page) :is(button,[role=tab]){min-height:44px}
+:is(.protein-workbench,.epigenome-structure-explorer,.metabolome-structure-explorer,.hierarchy-explorer) :is(p,small){overflow-wrap:anywhere}
+:is(.protein-workbench,.epigenome-structure-explorer,.metabolome-structure-explorer,.hierarchy-explorer) :is(select,input,button,a):focus-visible{outline:3px solid #a8eedb;outline-offset:3px}
+:is(.workspace-mode-tabs,.protein-workbench [role=tablist],.chem-view-tabs,.epi-tabs){display:flex;flex-wrap:wrap;height:auto;gap:8px;max-width:100%}
+:is(.workspace-mode-tabs,.protein-workbench [role=tablist],.chem-view-tabs,.epi-tabs) :is(button,[role=tab]){white-space:normal;line-height:1.4;font-size:13px;padding:10px}
+:is(.protein-scroll,.epi-registry-table,.data-table-wrap){max-width:100%;overflow:auto;overscroll-behavior:contain}
+:is(.epi-registry-table,.data-table-wrap) th{position:sticky;top:0;z-index:2;background:#142c37}
+.epi-sequence-grid{grid-template-columns:repeat(auto-fit,minmax(44px,1fr))}
+:is(.protein-strip,.molecule-sequence){max-width:100%;overscroll-behavior:contain}
+:is(.chem-workbench,.epi-workbench,.molecule-detail,.range-workspace){min-width:0}
+:is(.chem-metrics,.chem-detail-grid,.chem-capability-grid,.protein-mod-grid,.specimen-facts){grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}
+:is(.chem-detail-footer,.epi-detail-footer){grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+:is(.chem-structure-svg,.epi-helix-svg,.protein-scene){width:100%;max-width:100%}
+.chem-compound-list button small,.chem-detail-footer span,.chem-metrics small,.chem-representation-note,.epi-sequence-legend{font-size:12px;line-height:1.5}
+.chem-compound-list button strong,.chem-compound-heading h3{overflow-wrap:anywhere}
+.omics-responsive-preview{min-width:0;max-width:100%;container-type:inline-size}
+.omics-preview-controls,.omics-preview-navigation{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin:16px 0}
+.omics-preview-controls label{flex:1 1 180px;min-width:0}
+.omics-preview-controls :is(input,select),.omics-preview-navigation select{width:100%;max-width:100%;min-height:44px;padding:10px;border:1px solid #496571;border-radius:8px;background:#102630;color:#e7f1f3;font-size:14px}
+.omics-preview-navigation{align-items:center;justify-content:space-between}
+.omics-preview-navigation label{min-width:0;flex:1 1 160px}
+.omics-responsive-preview .data-table-wrap{max-height:60vh}
+.omics-responsive-preview table{min-width:0;width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
+.omics-responsive-preview caption{text-align:left;padding:12px;color:#b5cbd3;font-size:12px}
+.omics-responsive-preview :is(td,th){padding:12px;overflow-wrap:anywhere;white-space:normal;font-size:14px;line-height:1.5;vertical-align:top}
+.omics-responsive-preview[data-density=compact] :is(td,th){padding:8px;font-size:13px}
+.omics-responsive-preview :is(td,th):first-child{position:sticky;left:0;background:#102630;z-index:1}
+.omics-responsive-preview thead th:first-child{z-index:3}
+.omics-responsive-preview :focus-visible{outline:3px solid #a8eedb;outline-offset:2px}
+@container(max-width:520px){.omics-preview-controls label{flex-basis:100%}.omics-preview-navigation label{flex-basis:100%;order:-1}.omics-preview-navigation button{flex:1}}
+@media(max-width:900px){
+ .chem-browser-layout,.metabolome-structure-explorer.compact .chem-browser-layout,.epi-main{grid-template-columns:minmax(0,1fr)}
+ .chem-compound-list,.epi-mod-list{max-height:220px;overflow:auto}
+ .chem-filter-bar,.chem-ion-layout,.epi-chem-layout{grid-template-columns:minmax(0,1fr)}
+ .protein-controls label,.hierarchy-context label,.molecule-controls label{flex:1 1 180px}
+}
+@media(max-width:600px){
+ .explorer-workspace,.data-hub,.hierarchy-explorer{padding-left:12px;padding-right:12px}
+ .protein-workbench,.molecule-detail{padding:12px}
+ .epigenome-structure-explorer,.metabolome-structure-explorer{margin:12px 0}
+ .protein-controls,.epi-range,.molecule-controls,.range-brush{align-items:stretch}
+ .protein-controls label,.hierarchy-context label,.molecule-controls label{flex-basis:100%;width:100%;min-width:0}
+ .protein-controls input[type=number],.hierarchy-context select{width:100%}
+ .epi-range label{flex:1 1 120px}.epi-range input{width:100%}
+ .chem-frame-control,.epi-state-controls{flex-wrap:wrap}
+ .epi-state-story{flex-direction:column;align-items:stretch;margin:12px;padding:12px}
+ .epi-state-symbol{white-space:normal;text-align:center}
+ .chem-formula,.epi-formula{overflow-wrap:anywhere}
+ .chem-structure-svg,.epi-helix-svg{height:clamp(240px,70vw,360px)}
+ .chem-spectrum-panel,.chem-isotope-chart,.chem-pathway-panel{max-width:100%;overflow-x:auto}
+ .data-preview-heading,.explorer-heading{align-items:flex-start;flex-wrap:wrap}
+}
