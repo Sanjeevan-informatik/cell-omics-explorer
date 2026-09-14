@@ -9,7 +9,7 @@ import { inspectData, MAX_FILE_BYTES } from '@/lib/data-import';
 import { saveSequenceWorkspace } from '@/lib/sequence-workspace';
 import { useDataSession, type Dataset } from './data-session';
 import {CatalogLibrary} from './catalog-library';
-import { DatasetPreview } from './dataset-preview';
+import {ResponsiveDatasetPreview as DatasetPreview} from './responsive-dataset-preview';
 import { RegionalGenomeReader } from './regional-genome-reader';
 const MAX_TOTAL=20*1024*1024;
 export function DataHub() {

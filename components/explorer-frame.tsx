@@ -7,7 +7,7 @@ import {Tabs,TabsList,TabsTrigger} from './ui/tabs';
 import {WORKSPACES,type WorkspaceId} from '@/lib/workspaces';
 import {TEMPLATES} from '@/lib/data-catalog';
 import {useDataSession} from './data-session';
-import {DatasetPreview} from './dataset-preview';
+import {ResponsiveDatasetPreview as DatasetPreview} from './responsive-dataset-preview';
 import {ProteinWorkbench} from './protein-workbench';
 import {MetaboliteWorkbench} from './metabolite-workbench';
 import {MetabolomeStructureExplorer} from './metabolome-structure-explorer';
