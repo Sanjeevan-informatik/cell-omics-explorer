@@ -1,0 +1,4 @@
+sample	feature	layer	value	unit
+case	EGFR	RNA	320	TPM
+case	EGFR	protein	2.8	fold_change
+case	EGFR	copy_number	6	copies

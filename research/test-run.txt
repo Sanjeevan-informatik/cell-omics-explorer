@@ -1,0 +1,71 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> cell-omics-explorer@6.0.0 test
+> node --test tests/*.test.mjs
+
+✔ catalog has one canonical storage object per unique biological sample (24.937603ms)
+✔ no-information-loss migration preserved every original content hash (39.768839ms)
+✔ authoritative source tree contains no duplicate sample payload paths (2.426022ms)
+1:43:23 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+✔ all downloadable samples match the catalog and import without errors (95.926308ms)
+✔ CSV preserves quoted commas, escaped quotes, and embedded newlines (1.466106ms)
+✔ missing cells remain missing instead of becoming zero (0.185708ms)
+✔ invalid methylation and malformed tables cannot become ready data (0.234414ms)
+✔ binary data offers a conversion route without reading it (0.444152ms)
+✔ FASTA connects to analysis only after alignment validation (0.204705ms)
+✔ header-only VCF and invalid BED coordinates explain missing input (0.148404ms)
+✔ RNA and protein FASTA use their declared alphabets without DNA analysis handoff (0.513771ms)
+✔ hierarchy records join by participant AND sample, and missing coordinates are excluded (0.608792ms)
+✔ RNA uracil has the expected heavy atoms and valid bond endpoints (206.803425ms)
+✔ range selection is 1-based inclusive and refuses invalid or oversized intervals (15.303806ms)
+✔ range evidence requires an exact reference, coordinate convention, and full containment (0.711748ms)
+✔ all three demo specimens have 41 DNA coordinates and two time regions for 20–60 (25.936565ms)
+✔ all epigenome calls match parent bases, valid inclusive spans and non-overlapping sites (3.11692ms)
+✔ idealized helix pairs cover the teaching sequence with complementary bases (1.918777ms)
+✔ track and contact bins cover full sequence without gaps and preserve zero-based matrix dimensions (0.729804ms)
+✔ original epigenome materials are preserved and unverified SMILES withheld (1.387988ms)
+WebSocket server error: Port 24678 is already in use
+✔ parses aligned FASTA records (552.619634ms)
+✔ rejects unaligned FASTA (1.29623ms)
+✔ returns variants, symmetric distances and Newick (3.227309ms)
+✔ defines complete heavy-atom graphs for the four DNA nucleobases (461.35524ms)
+✔ linked Hi-C samples cover all specimens with eight bins and unique symmetric contacts (2.679768ms)
+✔ contact map rejects duplicate, malformed and mixed-reference contacts (1.000297ms)
+✔ recorded zero remains distinct from an absent contact (0.298854ms)
+✔ linked observations cover all nine formerly empty hierarchy layers with valid specimen IDs (2.285593ms)
+✔ single-cell and spatial observations are restricted to appropriate teaching specimens (0.561886ms)
+✔ all 154 uploaded archive files remain byte-identical at documented preservation paths (179.774421ms)
+✔ all current sample payloads survive the integration unchanged (36.24618ms)
+✔ recognizes binary and compressed files without attempting text parsing (2.182688ms)
+✔ FASTA rejects empty records and missing headers (1.580851ms)
+✔ FASTQ requires valid bases and matching printable quality scores (0.458028ms)
+✔ VCF rejects nonpositive positions and missing headers (0.528101ms)
+✔ unvalidated and binary content cannot masquerade as parsed data (0.37105ms)
+WebSocket server error: Port 24678 is already in use
+✔ molecular examples have consistent heavy-atom compositions and complete frame mappings (6.451828ms)
+✔ molecule validation rejects orphan groups, malformed layouts and false trajectories (2.438771ms)
+✔ metabolome structure library spans major chemical families (1.697067ms)
+✔ every teaching metabolite has identity, 2D bonds, and at least one 3D conformer (0.552529ms)
+✔ viewer exposes 1D, 2D, 3D, 4D, ion, spectrum and pathway levels (0.516975ms)
+✔ metabolome route includes the new native structure explorer without removing legacy workspace handling (0.319401ms)
+✔ scientific boundaries distinguish conformer ensemble from molecular dynamics (0.524594ms)
+WebSocket server error: Port 24678 is already in use
+✔ 1–20 preserves every residue and all supplied backbone atoms (6.816499ms)
+✔ trajectory changes coordinates while preserving complete atom correspondence (6.341647ms)
+✔ rejects orphan interactions, duplicate atoms and out-of-range PTMs (0.858482ms)
+✔ sequence-only input remains without invented structures (0.287098ms)
+✔ every teaching bundle validates and covers complete reference categories (7.445942ms)
+✔ automatic boxes shrink with larger ranges and respect user limits (0.662764ms)
+✔ modified teaching peptide has explicit component atoms, attachment bonds and complete frames (95.003391ms)
+✔ rejects modification atom mappings without matching atoms or attachment bonds (2.673574ms)
+✔ v3 model preserves all original omics categories in the unified registry (1.491147ms)
+✔ benchmark design model includes all eight reference software families (0.290448ms)
+✔ atlas exposes synchronized genome, cell, multi-omics, structure, metabolome and workflow views (0.319946ms)
+ℹ tests 54
+ℹ suites 0
+ℹ pass 54
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2608.041557

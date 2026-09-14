@@ -1,5 +1,191 @@
 [
   {
+    "id": "rna-sequence",
+    "category": "transcriptome",
+    "title": "RNA sequence",
+    "filename": "rna_sequence.fasta",
+    "description": "Synthetic RNA with U bases; sequence preview, not expression quantification.",
+    "units": "1-based nucleotide positions",
+    "synthetic": true
+  },
+  {
+    "id": "protein-sequence",
+    "category": "proteome",
+    "title": "Protein sequence",
+    "filename": "protein_sequence.fasta",
+    "description": "Synthetic amino-acid sequence; no folding prediction.",
+    "units": "1-based residue positions",
+    "synthetic": true
+  },
+  {
+    "id": "hierarchy-metadata",
+    "category": "multiomics",
+    "title": "Participant & sample metadata",
+    "filename": "hierarchy_metadata.tsv",
+    "description": "Two fictional participants, blood/liver specimens, single-cell and bulk assays.",
+    "columns": [
+      "participant_id",
+      "sample_id",
+      "tissue",
+      "cell_type",
+      "assay_mode",
+      "cell_id"
+    ],
+    "units": "Categorical metadata; synthetic participants",
+    "synthetic": true
+  },
+  {
+    "id": "hierarchy-sequences",
+    "category": "multiomics",
+    "title": "Linked molecular sequences",
+    "filename": "hierarchy_sequences.tsv",
+    "description": "DNA, RNA, protein and peptide records linked by participant and sample IDs.",
+    "columns": [
+      "participant_id",
+      "sample_id",
+      "molecule",
+      "sequence"
+    ],
+    "units": "DNA/RNA nucleotides or protein residues; synthetic",
+    "synthetic": true
+  },
+  {
+    "id": "hierarchy-coordinates",
+    "category": "multiomics",
+    "title": "3D schematic coordinates",
+    "filename": "hierarchy_coordinates.tsv",
+    "description": "Synthetic coarse points for seven molecule layers. Not atoms or experimentally resolved structures.",
+    "columns": [
+      "participant_id",
+      "sample_id",
+      "molecule",
+      "point_id",
+      "x",
+      "y",
+      "z",
+      "unit",
+      "resolution",
+      "reference_id",
+      "coordinate_system",
+      "start",
+      "end"
+    ],
+    "units": "Schematic units; no physical length or inferred bonds",
+    "synthetic": true
+  },
+  {
+    "id": "hierarchy-time",
+    "category": "multiomics",
+    "title": "Molecular time course",
+    "filename": "hierarchy_timecourse.tsv",
+    "description": "Four synthetic measurement times for seven molecule layers; not a moving molecular trajectory.",
+    "columns": [
+      "participant_id",
+      "sample_id",
+      "molecule",
+      "time_hours",
+      "value",
+      "unit",
+      "reference_id",
+      "coordinate_system",
+      "start",
+      "end",
+      "feature_id"
+    ],
+    "units": "Hours; arbitrary measurement units",
+    "synthetic": true
+  },
+  {
+    "id": "ethanol-demo",
+    "category": "metabolome",
+    "title": "Ethanol structure",
+    "filename": "ethanol-demo.json",
+    "description": "Synthetic heavy-atom connectivity and illustrative coordinates. Hydrogens are implicit; stereochemistry, protonation equilibria and energy minimization are not modeled. Motion is not molecular dynamics.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "glycerol-demo",
+    "category": "metabolome",
+    "title": "Glycerol structure",
+    "filename": "glycerol-demo.json",
+    "description": "Synthetic heavy-atom connectivity and illustrative coordinates. Hydrogens are implicit; stereochemistry, protonation equilibria and energy minimization are not modeled. Motion is not molecular dynamics.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "palmitic-acid-demo",
+    "category": "metabolome",
+    "title": "Palmitic acid structure",
+    "filename": "palmitic-acid-demo.json",
+    "description": "Synthetic heavy-atom connectivity and illustrative coordinates. Hydrogens are implicit; stereochemistry, protonation equilibria and energy minimization are not modeled. Motion is not molecular dynamics.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "glucose-ring-demo",
+    "category": "metabolome",
+    "title": "Glucose ring connectivity structure",
+    "filename": "glucose-ring-demo.json",
+    "description": "Synthetic heavy-atom connectivity and illustrative coordinates. Hydrogens are implicit; stereochemistry, protonation equilibria and energy minimization are not modeled. Motion is not molecular dynamics.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "maltose-demo",
+    "category": "metabolome",
+    "title": "Maltose connectivity structure",
+    "filename": "maltose-demo.json",
+    "description": "Synthetic heavy-atom connectivity and illustrative coordinates. Hydrogens are implicit; stereochemistry, protonation equilibria and energy minimization are not modeled. Motion is not molecular dynamics.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "metabolite-missing-demo",
+    "category": "metabolome",
+    "title": "Unresolved metabolite feature structure",
+    "filename": "metabolite-missing-demo.json",
+    "description": "Synthetic unresolved feature. No chemical identity, atom graph or coordinates supplied.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "protein-modified-chemistry",
+    "category": "proteome",
+    "title": "Phosphate & acetyl chemical components",
+    "filename": "protein_modified_chemistry.json",
+    "description": "Synthetic S16 phosphate and K9 acetyl heavy atoms, attachment bonds and coordinate frames.",
+    "units": "Schematic coordinates; illustrative steps",
+    "synthetic": true
+  },
+  {
+    "id": "protein-teaching-0",
+    "category": "proteome",
+    "title": "100-residue structure & modification teaching set",
+    "filename": "protein_teaching_100.json",
+    "description": "Synthetic backbone-only teaching geometry across all 20 standard amino-acid types. All 15 reference modification categories are annotations only. No side-chain atoms, hydrogens, terminal oxygen or physical simulation.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "protein-teaching-1",
+    "category": "proteome",
+    "title": "Sequence-only structure teaching set",
+    "filename": "protein_teaching_missing.json",
+    "description": "Synthetic sequence only. No atom, modification or interaction evidence supplied.",
+    "units": "Schematic coordinates",
+    "synthetic": true
+  },
+  {
+    "id": "protein-atomic-bundle",
+    "category": "proteome",
+    "title": "Peptide atoms, modifications & motion",
+    "filename": "protein_structure.json",
+    "description": "Synthetic backbone atoms, annotation examples and illustrative coordinate frames. No physical simulation.",
+    "units": "Schematic coordinates and illustrative steps",
+    "synthetic": true
+  },
+  {
     "id": "alignment",
     "category": "genome",
     "title": "Aligned DNA",

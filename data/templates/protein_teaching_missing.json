@@ -1,0 +1,12 @@
+{
+  "reference": "sequence-only-teaching",
+  "sequence": "ACDEFGHIKLMNPQRSTVWY",
+  "provenance": "Synthetic sequence only. No atom, modification or interaction evidence supplied.",
+  "unit": "schematic",
+  "atoms": [],
+  "bonds": [],
+  "modifications": [],
+  "interactions": [],
+  "frames": [],
+  "timeUnit": ""
+}

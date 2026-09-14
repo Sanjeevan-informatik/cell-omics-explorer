@@ -1,0 +1,15 @@
+{
+  "id": "metabolite-missing-demo",
+  "name": "Unresolved metabolite feature",
+  "category": "Missing structure example",
+  "formula": "Not identified",
+  "provenance": "Synthetic unresolved feature. No chemical identity, atom graph or coordinates supplied.",
+  "unit": "schematic",
+  "atoms": [],
+  "bonds": [],
+  "interactions": [],
+  "groups": [],
+  "frames": [],
+  "timeUnit": "illustrative step",
+  "has3d": false
+}

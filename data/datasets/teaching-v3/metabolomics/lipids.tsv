@@ -1,0 +1,5 @@
+lipid	sample	abundance
+PC 16:0_18:1	control	12
+PC 16:0_18:1	case	18
+SM d18:1_16:0	control	9
+SM d18:1_16:0	case	7

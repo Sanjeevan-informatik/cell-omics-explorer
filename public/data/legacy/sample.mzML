@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Teaching mzML-like file. Numerical arrays are deliberately human-readable rather than base64 encoded. -->
+<mzML>
+  <run id="two_protein_cell_sample">
+    <spectrumList count="4">
+      <spectrum id="scan=1001">
+        <cvParam name="ms level" value="1"/>
+        <cvParam name="scan start time" value="5.20" unitName="minute"/>
+        <mzArray>440.7424 464.7347 500.2011</mzArray>
+        <intensityArray>620000 850000 35000</intensityArray>
+      </spectrum>
+      <spectrum id="scan=1002">
+        <cvParam name="ms level" value="2"/>
+        <cvParam name="scan start time" value="5.21" unitName="minute"/>
+        <precursorMz charge="2">464.7347</precursorMz>
+        <mzArray>147.1128 227.1026 276.1554 391.1823 504.2664 605.3141 702.3668</mzArray>
+        <intensityArray>210000 175000 390000 520000 650000 440000 280000</intensityArray>
+      </spectrum>
+      <spectrum id="scan=2001">
+        <cvParam name="ms level" value="1"/>
+        <cvParam name="scan start time" value="8.40" unitName="minute"/>
+        <mzArray>440.7424 464.7347 530.2100</mzArray>
+        <intensityArray>620000 21000 19000</intensityArray>
+      </spectrum>
+      <spectrum id="scan=2002">
+        <cvParam name="ms level" value="2"/>
+        <cvParam name="scan start time" value="8.41" unitName="minute"/>
+        <precursorMz charge="2">440.7424</precursorMz>
+        <mzArray>147.1128 276.1554 377.2031 540.2664 597.2879 710.3719</mzArray>
+        <intensityArray>185000 310000 400000 590000 330000 205000</intensityArray>
+      </spectrum>
+    </spectrumList>
+  </run>
+</mzML>

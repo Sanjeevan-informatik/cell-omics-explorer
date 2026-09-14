@@ -1,0 +1,943 @@
+{
+  "omics_layers": [
+    {
+      "id": "genome",
+      "label": "Genome & variants",
+      "short": "DNA",
+      "benchmark": "JBrowse / IGV",
+      "description": "Reference sequence, variants, haplotypes, intervals and aligned-read context.",
+      "coordinateLinked": true
+    },
+    {
+      "id": "epigenome",
+      "label": "Epigenome & 3D genome",
+      "short": "EPI",
+      "benchmark": "HiGlass",
+      "description": "Methylation, accessibility and chromatin-contact evidence linked to the selected locus.",
+      "coordinateLinked": true
+    },
+    {
+      "id": "transcriptome",
+      "label": "Transcriptome",
+      "short": "RNA",
+      "benchmark": "Genome browsers + RNA tools",
+      "description": "Gene/isoform abundance and expression consequences for the selected region.",
+      "coordinateLinked": true
+    },
+    {
+      "id": "singlecell",
+      "label": "Single cell & spatial",
+      "short": "CELL",
+      "benchmark": "CELLxGENE / scverse",
+      "description": "Cell-state and spatial context with linked feature selection.",
+      "coordinateLinked": false
+    },
+    {
+      "id": "proteome",
+      "label": "Proteome & structures",
+      "short": "PROT",
+      "benchmark": "FragPipe / Mol*",
+      "description": "Protein abundance, peptides, PTMs and structural context from sequence to atoms.",
+      "coordinateLinked": false
+    },
+    {
+      "id": "metabolome",
+      "label": "Metabolome",
+      "short": "MET",
+      "benchmark": "MetaboAnalyst",
+      "description": "Metabolite features, spectra, pathways, lipids and glycan context.",
+      "coordinateLinked": false
+    },
+    {
+      "id": "immunomics",
+      "label": "Immune repertoire",
+      "short": "AIRR",
+      "benchmark": "AIRR-style repertoire tools",
+      "description": "Clonotypes, receptor sequences and immune-cell evidence.",
+      "coordinateLinked": false
+    },
+    {
+      "id": "imaging",
+      "label": "Imaging & cytometry",
+      "short": "IMG",
+      "benchmark": "OME / cytometry workflows",
+      "description": "Cell-level measurements and marker phenotypes.",
+      "coordinateLinked": false
+    },
+    {
+      "id": "pathways",
+      "label": "Pathways & networks",
+      "short": "NET",
+      "benchmark": "Network analysis tools",
+      "description": "Cross-layer signaling and molecular relationships.",
+      "coordinateLinked": false
+    },
+    {
+      "id": "evolution",
+      "label": "Cell evolution",
+      "short": "EVO",
+      "benchmark": "Phylogenetic workflows",
+      "description": "Clone fractions and evolutionary relationships.",
+      "coordinateLinked": false
+    },
+    {
+      "id": "multiomics",
+      "label": "Integrated evidence",
+      "short": "ALL",
+      "benchmark": "cBioPortal-style integration",
+      "description": "A common evidence spine connecting all available modalities.",
+      "coordinateLinked": false
+    }
+  ],
+  "benchmark_models": [
+    {
+      "name": "Galaxy",
+      "contribution": "Reproducible workflow graph, step provenance and explicit tool boundaries."
+    },
+    {
+      "name": "scverse / CELLxGENE",
+      "contribution": "Shared observations/features, linked selection and interactive cell exploration."
+    },
+    {
+      "name": "cBioPortal",
+      "contribution": "Patient/sample-centric multi-omics evidence and compact alteration matrices."
+    },
+    {
+      "name": "JBrowse / IGV",
+      "contribution": "Coordinate-first genomic navigation with synchronized tracks."
+    },
+    {
+      "name": "HiGlass",
+      "contribution": "Multiscale contact-matrix thinking for 3D genome data."
+    },
+    {
+      "name": "Mol*",
+      "contribution": "Sequence-to-structure navigation and atom-level inspection concepts."
+    },
+    {
+      "name": "FragPipe",
+      "contribution": "Proteomics pipeline stages, peptide-spectrum matches and PTM context."
+    },
+    {
+      "name": "MetaboAnalyst",
+      "contribution": "Feature → annotation → pathway analysis flow for metabolomics."
+    }
+  ],
+  "demo_locus": {
+    "assembly": "GRCh38",
+    "chromosome": "chr17",
+    "start": 43044295,
+    "end": 43125482,
+    "gene": "BRCA1"
+  },
+  "demo_tracks": [
+    {
+      "label": "Reference",
+      "detail": "BRCA1 locus · GRCh38",
+      "values": [
+        18,
+        18,
+        19,
+        20,
+        20,
+        18,
+        17,
+        17,
+        20,
+        22,
+        22,
+        21,
+        19,
+        18,
+        20,
+        20,
+        21,
+        18
+      ]
+    },
+    {
+      "label": "Variants",
+      "detail": "SNV / indel density",
+      "values": [
+        0,
+        1,
+        0,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        3,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Methylation",
+      "detail": "CpG beta signal",
+      "values": [
+        12,
+        15,
+        20,
+        35,
+        65,
+        78,
+        72,
+        54,
+        39,
+        30,
+        25,
+        40,
+        70,
+        82,
+        67,
+        45,
+        28,
+        18
+      ]
+    },
+    {
+      "label": "ATAC",
+      "detail": "Chromatin accessibility",
+      "values": [
+        8,
+        12,
+        18,
+        35,
+        62,
+        88,
+        70,
+        42,
+        28,
+        22,
+        45,
+        76,
+        91,
+        70,
+        40,
+        22,
+        16,
+        10
+      ]
+    },
+    {
+      "label": "RNA",
+      "detail": "Transcript coverage",
+      "values": [
+        5,
+        8,
+        20,
+        30,
+        50,
+        70,
+        88,
+        76,
+        55,
+        35,
+        28,
+        38,
+        58,
+        82,
+        74,
+        44,
+        20,
+        9
+      ]
+    }
+  ],
+  "single_cell_points": [
+    {
+      "x": 28,
+      "y": 45,
+      "cluster": "T cell",
+      "expression": 0.15
+    },
+    {
+      "x": 80.8482460764086,
+      "y": 35.216598722605326,
+      "cluster": "B cell",
+      "expression": 0.52
+    },
+    {
+      "x": 41.24334769076436,
+      "y": 61.76262121297432,
+      "cluster": "Tumor",
+      "expression": 0.89
+    },
+    {
+      "x": 67.34285313620694,
+      "y": 61.40371472642055,
+      "cluster": "Myeloid",
+      "expression": 0.36
+    },
+    {
+      "x": 39.135649936187946,
+      "y": 33.475930341377875,
+      "cluster": "T cell",
+      "expression": 0.73
+    },
+    {
+      "x": 76.39468914323201,
+      "y": 38.95005369334227,
+      "cluster": "B cell",
+      "expression": 0.2
+    },
+    {
+      "x": 34.20269633448667,
+      "y": 73.54848115566766,
+      "cluster": "Tumor",
+      "expression": 0.57
+    },
+    {
+      "x": 71.7116831587931,
+      "y": 67.41756164628961,
+      "cluster": "Myeloid",
+      "expression": 0.9400000000000001
+    },
+    {
+      "x": 42.47403856326721,
+      "y": 24.545301937968812,
+      "cluster": "T cell",
+      "expression": 0.41000000000000003
+    },
+    {
+      "x": 73.65031226340004,
+      "y": 28.182914733457,
+      "cluster": "B cell",
+      "expression": 0.78
+    },
+    {
+      "x": 31.002706827123866,
+      "y": 76.36070296141038,
+      "cluster": "Tumor",
+      "expression": 0.25
+    },
+    {
+      "x": 78.15359751462204,
+      "y": 78.66010098357455,
+      "cluster": "Myeloid",
+      "expression": 0.62
+    },
+    {
+      "x": 41.31446492772534,
+      "y": 31.07652108922688,
+      "cluster": "T cell",
+      "expression": 0.99
+    },
+    {
+      "x": 65.25899296295619,
+      "y": 19.281799036138448,
+      "cluster": "B cell",
+      "expression": 0.45999999999999996
+    },
+    {
+      "x": 37.50580173486461,
+      "y": 64.19974825311118,
+      "cluster": "Tumor",
+      "expression": 0.8300000000000001
+    },
+    {
+      "x": 83.751275528013,
+      "y": 76.90675931720627,
+      "cluster": "Myeloid",
+      "expression": 0.3
+    },
+    {
+      "x": 35.71948382984637,
+      "y": 43.819202701241494,
+      "cluster": "T cell",
+      "expression": 0.67
+    },
+    {
+      "x": 59.11821804230324,
+      "y": 32.39204792608109,
+      "cluster": "B cell",
+      "expression": 1
+    },
+    {
+      "x": 42.73073749880884,
+      "y": 59.58719387979473,
+      "cluster": "Tumor",
+      "expression": 0.51
+    },
+    {
+      "x": 90.91834740758654,
+      "y": 61.35454717794265,
+      "cluster": "Myeloid",
+      "expression": 0.88
+    },
+    {
+      "x": 27.490383583396582,
+      "y": 34.35813020950519,
+      "cluster": "T cell",
+      "expression": 0.35
+    },
+    {
+      "x": 57.24323361258399,
+      "y": 41.89829756693417,
+      "cluster": "B cell",
+      "expression": 0.72
+    },
+    {
+      "x": 49.23726380961046,
+      "y": 74.49946980914179,
+      "cluster": "Tumor",
+      "expression": 0.19
+    },
+    {
+      "x": 88.41328256942641,
+      "y": 64.8179070543379,
+      "cluster": "Myeloid",
+      "expression": 0.5599999999999999
+    },
+    {
+      "x": 24.46105915238056,
+      "y": 23.905258441883163,
+      "cluster": "T cell",
+      "expression": 0.93
+    },
+    {
+      "x": 59.97704418119635,
+      "y": 29.050132101937066,
+      "cluster": "B cell",
+      "expression": 0.4
+    },
+    {
+      "x": 54.08273132168936,
+      "y": 76.38868599479991,
+      "cluster": "Tumor",
+      "expression": 0.77
+    },
+    {
+      "x": 81.82608468203297,
+      "y": 76.55700370084563,
+      "cluster": "Myeloid",
+      "expression": 0.24
+    },
+    {
+      "x": 19.38709095846862,
+      "y": 31.728584065457362,
+      "cluster": "T cell",
+      "expression": 0.61
+    },
+    {
+      "x": 70.85595072527316,
+      "y": 21.511288242468034,
+      "cluster": "B cell",
+      "expression": 0.98
+    },
+    {
+      "x": 54.97564588224738,
+      "y": 64.84660926283937,
+      "cluster": "Tumor",
+      "expression": 0.44999999999999996
+    },
+    {
+      "x": 73.34700307328858,
+      "y": 77.4014144158896,
+      "cluster": "Myeloid",
+      "expression": 0.8200000000000001
+    },
+    {
+      "x": 18.865523938741553,
+      "y": 42.28334833761365,
+      "cluster": "T cell",
+      "expression": 0.29000000000000004
+    },
+    {
+      "x": 77.18333845894381,
+      "y": 29.499081698725487,
+      "cluster": "B cell",
+      "expression": 0.66
+    },
+    {
+      "x": 56.17396202814528,
+      "y": 57.71596907091755,
+      "cluster": "Tumor",
+      "expression": 1
+    },
+    {
+      "x": 65.90792843274463,
+      "y": 65.0999148029433,
+      "cluster": "Myeloid",
+      "expression": 0.5
+    },
+    {
+      "x": 22.70880656296918,
+      "y": 38.65506136323265,
+      "cluster": "T cell",
+      "expression": 0.87
+    },
+    {
+      "x": 81.08678253127971,
+      "y": 40.988624348044155,
+      "cluster": "B cell",
+      "expression": 0.33999999999999997
+    },
+    {
+      "x": 48.77597380624907,
+      "y": 71.7696803352724,
+      "cluster": "Tumor",
+      "expression": 0.7100000000000001
+    },
+    {
+      "x": 67.03305610623923,
+      "y": 62.441793603436096,
+      "cluster": "Myeloid",
+      "expression": 0.18
+    },
+    {
+      "x": 29.01831330790055,
+      "y": 23.612155616996198,
+      "cluster": "T cell",
+      "expression": 0.55
+    },
+    {
+      "x": 80.64407340179264,
+      "y": 29.95169618044656,
+      "cluster": "B cell",
+      "expression": 0.92
+    },
+    {
+      "x": 40.289770188031376,
+      "y": 79.59525894471498,
+      "cluster": "Tumor",
+      "expression": 0.39
+    },
+    {
+      "x": 67.84937090937805,
+      "y": 77.6806492469525,
+      "cluster": "Myeloid",
+      "expression": 0.76
+    },
+    {
+      "x": 39.928628887035686,
+      "y": 28.99893967450403,
+      "cluster": "T cell",
+      "expression": 0.22999999999999998
+    },
+    {
+      "x": 75.63674629096772,
+      "y": 20.601963869565438,
+      "cluster": "B cell",
+      "expression": 0.6
+    },
+    {
+      "x": 33.65003377712584,
+      "y": 65.64365463776103,
+      "cluster": "Tumor",
+      "expression": 0.97
+    },
+    {
+      "x": 72.64485541285659,
+      "y": 77.64651809777172,
+      "cluster": "Myeloid",
+      "expression": 0.43999999999999995
+    },
+    {
+      "x": 42.73082579186334,
+      "y": 40.41181311341085,
+      "cluster": "T cell",
+      "expression": 0.81
+    },
+    {
+      "x": 72.63572202315818,
+      "y": 30.10614867664782,
+      "cluster": "B cell",
+      "expression": 0.28
+    },
+    {
+      "x": 31.067609639766964,
+      "y": 59.6804498047541,
+      "cluster": "Tumor",
+      "expression": 0.65
+    },
+    {
+      "x": 79.14760940939247,
+      "y": 65.59478578091024,
+      "cluster": "Myeloid",
+      "expression": 1
+    },
+    {
+      "x": 40.9343967263981,
+      "y": 39.30174774283045,
+      "cluster": "T cell",
+      "expression": 0.49
+    },
+    {
+      "x": 64.38548701286109,
+      "y": 39.717767869066165,
+      "cluster": "B cell",
+      "expression": 0.86
+    },
+    {
+      "x": 38.162827227878275,
+      "y": 68.9216609869189,
+      "cluster": "Tumor",
+      "expression": 0.32999999999999996
+    },
+    {
+      "x": 84.41646234634476,
+      "y": 60.33898081252587,
+      "cluster": "Myeloid",
+      "expression": 0.7000000000000001
+    },
+    {
+      "x": 34.85155154260821,
+      "y": 27.140432443355895,
+      "cluster": "T cell",
+      "expression": 0.16999999999999998
+    },
+    {
+      "x": 58.72822130781066,
+      "y": 34.31884743922335,
+      "cluster": "B cell",
+      "expression": 0.54
+    },
+    {
+      "x": 43.7223237111747,
+      "y": 78.95487251501147,
+      "cluster": "Tumor",
+      "expression": 0.91
+    },
+    {
+      "x": 90.993947849964,
+      "y": 75.0808058553748,
+      "cluster": "Myeloid",
+      "expression": 0.38
+    },
+    {
+      "x": 26.47482719227143,
+      "y": 26.45013092310635,
+      "cluster": "T cell",
+      "expression": 0.75
+    },
+    {
+      "x": 57.48962954311068,
+      "y": 20.050547135742192,
+      "cluster": "B cell",
+      "expression": 0.22
+    },
+    {
+      "x": 50.17469692110173,
+      "y": 66.52590418796976,
+      "cluster": "Tumor",
+      "expression": 0.59
+    },
+    {
+      "x": 87.86966034563012,
+      "y": 81.09704808638097,
+      "cluster": "Myeloid",
+      "expression": 0.9600000000000001
+    },
+    {
+      "x": 23.695989078355456,
+      "y": 41.73611127149484,
+      "cluster": "T cell",
+      "expression": 0.43000000000000005
+    },
+    {
+      "x": 60.7632425839291,
+      "y": 27.28169629527261,
+      "cluster": "B cell",
+      "expression": 0.8
+    },
+    {
+      "x": 54.59852618433743,
+      "y": 58.50000016865545,
+      "cluster": "Tumor",
+      "expression": 0.27
+    },
+    {
+      "x": 80.8763462963051,
+      "y": 66.28510638488162,
+      "cluster": "Myeloid",
+      "expression": 0.64
+    },
+    {
+      "x": 19.172423948576593,
+      "y": 39.7386460584319,
+      "cluster": "T cell",
+      "expression": 1
+    },
+    {
+      "x": 71.87375229210211,
+      "y": 38.095522153950306,
+      "cluster": "B cell",
+      "expression": 0.48
+    },
+    {
+      "x": 54.86760465484303,
+      "y": 69.52223514532818,
+      "cluster": "Tumor",
+      "expression": 0.85
+    },
+    {
+      "x": 72.36345749032465,
+      "y": 62.04934579633389,
+      "cluster": "Myeloid",
+      "expression": 0.32
+    }
+  ],
+  "hic_matrix": [
+    [
+      92,
+      52,
+      21,
+      11,
+      8,
+      4,
+      2,
+      1
+    ],
+    [
+      52,
+      88,
+      47,
+      19,
+      10,
+      6,
+      3,
+      2
+    ],
+    [
+      21,
+      47,
+      84,
+      50,
+      22,
+      12,
+      7,
+      3
+    ],
+    [
+      11,
+      19,
+      50,
+      96,
+      58,
+      29,
+      16,
+      8
+    ],
+    [
+      8,
+      10,
+      22,
+      58,
+      90,
+      49,
+      24,
+      12
+    ],
+    [
+      4,
+      6,
+      12,
+      29,
+      49,
+      86,
+      52,
+      20
+    ],
+    [
+      2,
+      3,
+      7,
+      16,
+      24,
+      52,
+      91,
+      48
+    ],
+    [
+      1,
+      2,
+      3,
+      8,
+      12,
+      20,
+      48,
+      89
+    ]
+  ],
+  "oncoprint": [
+    {
+      "feature": "BRCA1",
+      "values": [
+        "mut",
+        "none",
+        "loss",
+        "mut",
+        "none",
+        "loss",
+        "none",
+        "mut"
+      ]
+    },
+    {
+      "feature": "TP53",
+      "values": [
+        "mut",
+        "mut",
+        "none",
+        "mut",
+        "mut",
+        "none",
+        "mut",
+        "mut"
+      ]
+    },
+    {
+      "feature": "EGFR",
+      "values": [
+        "none",
+        "gain",
+        "gain",
+        "none",
+        "gain",
+        "gain",
+        "none",
+        "none"
+      ]
+    },
+    {
+      "feature": "MYC",
+      "values": [
+        "gain",
+        "none",
+        "gain",
+        "gain",
+        "none",
+        "gain",
+        "none",
+        "gain"
+      ]
+    },
+    {
+      "feature": "PTEN",
+      "values": [
+        "none",
+        "loss",
+        "none",
+        "loss",
+        "none",
+        "none",
+        "loss",
+        "none"
+      ]
+    }
+  ],
+  "protein_sequence": "MDLSALRVEEVQNVINAMQKILECPICLELIKEPVSTKCDHIFCKFCMLKLLNQKKGPSQCPLCKNDITKRSLQESTRFSQLVEELLKIICAFQLDTGL",
+  "ptm_sites": [
+    {
+      "residue": 12,
+      "modification": "phosphorylation"
+    },
+    {
+      "residue": 24,
+      "modification": "acetylation"
+    },
+    {
+      "residue": 38,
+      "modification": "ubiquitination"
+    },
+    {
+      "residue": 61,
+      "modification": "phosphorylation"
+    },
+    {
+      "residue": 78,
+      "modification": "methylation"
+    }
+  ],
+  "spectrum": [
+    [
+      87.01,
+      28
+    ],
+    [
+      89.02,
+      46
+    ],
+    [
+      104.11,
+      18
+    ],
+    [
+      147.11,
+      35
+    ],
+    [
+      191.02,
+      54
+    ],
+    [
+      227.1,
+      31
+    ],
+    [
+      276.16,
+      62
+    ],
+    [
+      315.21,
+      25
+    ],
+    [
+      391.18,
+      74
+    ],
+    [
+      445.34,
+      89
+    ],
+    [
+      504.27,
+      100
+    ],
+    [
+      622.33,
+      57
+    ]
+  ],
+  "workflow": [
+    {
+      "id": "01",
+      "label": "Ingest",
+      "detail": "Validate files, metadata, coordinates, units and provenance."
+    },
+    {
+      "id": "02",
+      "label": "Normalize",
+      "detail": "Keep raw values separate; run layer-specific QC/normalization."
+    },
+    {
+      "id": "03",
+      "label": "Map features",
+      "detail": "Resolve genomic loci, genes, transcripts, proteins and metabolites."
+    },
+    {
+      "id": "04",
+      "label": "Analyze",
+      "detail": "Run modality-specific statistics or specialist tools."
+    },
+    {
+      "id": "05",
+      "label": "Integrate",
+      "detail": "Join evidence by sample, feature, locus and biological relationship."
+    },
+    {
+      "id": "06",
+      "label": "Visualize",
+      "detail": "Synchronize selections without hiding missing or incompatible data."
+    }
+  ]
+}

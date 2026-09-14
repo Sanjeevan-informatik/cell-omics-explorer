@@ -1,0 +1,3 @@
+// Backwards-compatible command. Canonical data is no longer generated from
+// TypeScript strings; it is materialized from data/datasets/.
+await import('./materialize-data.mjs');

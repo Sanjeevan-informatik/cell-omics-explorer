@@ -1,0 +1,462 @@
+{
+  "modules": [
+    [
+      "cell",
+      "🧫",
+      "Cell Explorer"
+    ],
+    [
+      "genome",
+      "🧬",
+      "Genome & Variants"
+    ],
+    [
+      "epigenome",
+      "🧿",
+      "Epigenome & 3D Genome"
+    ],
+    [
+      "transcriptome",
+      "🧾",
+      "Transcriptome"
+    ],
+    [
+      "singlecell",
+      "🔬",
+      "Single Cell & Spatial"
+    ],
+    [
+      "proteome",
+      "🧪",
+      "Proteome & Structures"
+    ],
+    [
+      "metabolome",
+      "⚗️",
+      "Metabolome / Lipidome / Glycome"
+    ],
+    [
+      "immunomics",
+      "🛡️",
+      "Immunomics"
+    ],
+    [
+      "imaging",
+      "🖼️",
+      "Imaging & Cytometry"
+    ],
+    [
+      "pathways",
+      "🕸️",
+      "Interactions & Pathways"
+    ],
+    [
+      "evolution",
+      "🌳",
+      "Cell Evolution"
+    ],
+    [
+      "multiomics",
+      "🔗",
+      "Multi-Omics Integration"
+    ],
+    [
+      "loader",
+      "📂",
+      "Data Loader"
+    ]
+  ],
+  "organelles": {
+    "nucleus": {
+      "name": "Nucleus",
+      "summary": "Stores chromosomes and coordinates transcription and genome regulation.",
+      "molecules": [
+        "DNA",
+        "chromatin",
+        "mRNA precursor",
+        "lncRNA",
+        "histones"
+      ],
+      "formats": [
+        "FASTA",
+        "FASTQ",
+        "BAM/CRAM",
+        "VCF/BCF",
+        "BED",
+        "GTF/GFF3",
+        "bigWig",
+        "Hi-C .cool/.hic"
+      ],
+      "modules": [
+        "Genome & Variants",
+        "Epigenome & 3D Genome",
+        "Transcriptome"
+      ]
+    },
+    "mitochondria": {
+      "name": "Mitochondria",
+      "summary": "Contains mtDNA and supports oxidative phosphorylation, redox biology and central metabolism.",
+      "molecules": [
+        "mtDNA",
+        "mtRNA",
+        "respiratory proteins",
+        "ATP",
+        "NADH",
+        "TCA metabolites"
+      ],
+      "formats": [
+        "VCF",
+        "BAM",
+        "FASTQ",
+        "mzML",
+        "CSV/TSV",
+        "PDB/mmCIF"
+      ],
+      "modules": [
+        "Genome & Variants",
+        "Proteome",
+        "Metabolome"
+      ]
+    },
+    "membrane": {
+      "name": "Cell membrane",
+      "summary": "Lipid bilayer carrying receptors, transporters, channels and surface glycans.",
+      "molecules": [
+        "phospholipids",
+        "cholesterol",
+        "EGFR",
+        "CD markers",
+        "glycans"
+      ],
+      "formats": [
+        "mzML",
+        "SDF/SMILES",
+        "FCS",
+        "CSV/TSV"
+      ],
+      "modules": [
+        "Lipidome",
+        "Immunomics",
+        "Cytometry"
+      ]
+    },
+    "er": {
+      "name": "Endoplasmic reticulum",
+      "summary": "Protein synthesis/folding and lipid biosynthesis; rough ER is ribosome-associated.",
+      "molecules": [
+        "nascent proteins",
+        "chaperones",
+        "phospholipids",
+        "ER stress proteins"
+      ],
+      "formats": [
+        "mzML",
+        "PDB/mmCIF",
+        "FASTA",
+        "CSV/TSV"
+      ],
+      "modules": [
+        "Proteome",
+        "Lipidome",
+        "Pathways"
+      ]
+    },
+    "golgi": {
+      "name": "Golgi apparatus",
+      "summary": "Processes and traffics proteins and lipids, including glycosylation.",
+      "molecules": [
+        "glycoproteins",
+        "glycans",
+        "lipids",
+        "secretory cargo"
+      ],
+      "formats": [
+        "mzML",
+        "SDF",
+        "GlycoCT/WURCS",
+        "CSV/TSV"
+      ],
+      "modules": [
+        "Proteome",
+        "Glycome",
+        "Secretome"
+      ]
+    },
+    "ribosome": {
+      "name": "Ribosome",
+      "summary": "Translates mRNA into polypeptides and links transcriptomics directly to proteomics.",
+      "molecules": [
+        "rRNA",
+        "ribosomal proteins",
+        "mRNA",
+        "nascent peptide"
+      ],
+      "formats": [
+        "FASTQ",
+        "BAM",
+        "FASTA",
+        "mzML",
+        "PDB/mmCIF"
+      ],
+      "modules": [
+        "Transcriptome",
+        "Proteome"
+      ]
+    },
+    "lysosome": {
+      "name": "Lysosome",
+      "summary": "Acidic degradation compartment for proteins, lipids and autophagic cargo.",
+      "molecules": [
+        "hydrolases",
+        "degraded peptides",
+        "lipids",
+        "metabolites"
+      ],
+      "formats": [
+        "mzML",
+        "CSV/TSV",
+        "PDB/mmCIF"
+      ],
+      "modules": [
+        "Proteome",
+        "Metabolome",
+        "Pathways"
+      ]
+    },
+    "cytoplasm": {
+      "name": "Cytoplasm",
+      "summary": "Contains soluble proteins, signaling networks, RNA, metabolites and cytoskeleton.",
+      "molecules": [
+        "enzymes",
+        "mRNA",
+        "ATP",
+        "lactate",
+        "amino acids",
+        "signaling proteins"
+      ],
+      "formats": [
+        "mzML",
+        "FASTQ",
+        "BAM",
+        "CSV/TSV",
+        "PDB/mmCIF"
+      ],
+      "modules": [
+        "Transcriptome",
+        "Proteome",
+        "Metabolome",
+        "Pathways"
+      ]
+    }
+  },
+  "demo": {
+    "variants": [
+      [
+        "chr17",
+        "7674220",
+        "C",
+        "T",
+        "SNV",
+        "TP53"
+      ],
+      [
+        "chr7",
+        "55181378",
+        "G",
+        "A",
+        "SNV",
+        "EGFR"
+      ],
+      [
+        "chr12",
+        "25245350",
+        "G",
+        "T",
+        "SNV",
+        "KRAS"
+      ],
+      [
+        "chr9",
+        "21967751",
+        "C",
+        "-",
+        "DEL",
+        "CDKN2A"
+      ]
+    ],
+    "expression": [
+      [
+        "TP53",
+        44,
+        125
+      ],
+      [
+        "MYC",
+        450,
+        60
+      ],
+      [
+        "EGFR",
+        320,
+        30
+      ],
+      [
+        "BRCA1",
+        35,
+        87
+      ],
+      [
+        "MKI67",
+        280,
+        18
+      ]
+    ],
+    "methyl": [
+      [
+        "TP53 promoter",
+        0.18
+      ],
+      [
+        "BRCA1 promoter",
+        0.78
+      ],
+      [
+        "MYC enhancer",
+        0.21
+      ],
+      [
+        "CDKN2A promoter",
+        0.84
+      ]
+    ],
+    "proteome": {
+      "ms1": [
+        [
+          440.7424,
+          620000
+        ],
+        [
+          464.7347,
+          850000
+        ],
+        [
+          500.2011,
+          35000
+        ]
+      ],
+      "ms2": [
+        [
+          147.1128,
+          210000
+        ],
+        [
+          227.1026,
+          175000
+        ],
+        [
+          276.1554,
+          390000
+        ],
+        [
+          391.1823,
+          520000
+        ],
+        [
+          504.2664,
+          650000
+        ],
+        [
+          605.3141,
+          440000
+        ],
+        [
+          702.3668,
+          280000
+        ]
+      ]
+    },
+    "metabolites": [
+      [
+        "F001",
+        87.0088,
+        1.8,
+        380000,
+        "Pyruvate",
+        "C3H4O3"
+      ],
+      [
+        "F002",
+        89.0244,
+        3.2,
+        720000,
+        "Lactate",
+        "C3H6O3"
+      ],
+      [
+        "F003",
+        191.0197,
+        6.5,
+        510000,
+        "Citrate",
+        "C6H8O7"
+      ]
+    ],
+    "clonotypes": [
+      [
+        "CASSIRSSYEQYF",
+        "TRBV19",
+        "TRBJ2-7",
+        12.8
+      ],
+      [
+        "CASSLGQGNEQFF",
+        "TRBV7-9",
+        "TRBJ2-1",
+        8.6
+      ],
+      [
+        "CASSPGQNTLYF",
+        "TRBV5-1",
+        "TRBJ2-3",
+        4.2
+      ]
+    ],
+    "multi": [
+      [
+        "DNA",
+        "EGFR amplification",
+        "CN≈6"
+      ],
+      [
+        "Epigenome",
+        "EGFR promoter accessibility",
+        "High"
+      ],
+      [
+        "RNA",
+        "EGFR expression",
+        "320 TPM"
+      ],
+      [
+        "Protein",
+        "EGFR abundance",
+        "2.8× control"
+      ],
+      [
+        "Phosphoproteome",
+        "pEGFR Y1068",
+        "3.4× control"
+      ],
+      [
+        "Metabolome",
+        "Lactate",
+        "2.2× control"
+      ],
+      [
+        "Phenotype",
+        "Proliferation",
+        "High"
+      ]
+    ]
+  }
+}

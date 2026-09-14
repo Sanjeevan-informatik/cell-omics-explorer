@@ -1,0 +1,4 @@
+spot	x	y	gene	expression
+spot_1	0	0	CD3D	4
+spot_2	100	0	CD3D	7
+spot_3	0	100	CD3D	2

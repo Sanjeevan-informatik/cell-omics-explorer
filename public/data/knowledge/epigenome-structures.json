@@ -1,0 +1,2140 @@
+{
+  "schemaVersion": "1.0.0",
+  "scopeNote": "Representative registry spanning major covalent DNA base modifications, damage lesions, photoproducts and crosslinks. Chemical space is not finite/exhaustive; the schema is designed for extension.",
+  "sequence": {
+    "id": "demo-epigenome-sequence",
+    "assembly": "teaching",
+    "chromosome": "demo",
+    "start": 1,
+    "sequence": "ACGTCGATCGCGTACCGTACGCGATTCGCCGATCGTACGCGTACCTAGCGTACGATCG",
+    "strand": "+"
+  },
+  "modifications": [
+    {
+      "id": "5mc",
+      "name": "5-methylcytosine",
+      "short": "5mC",
+      "base": "C",
+      "category": "Epigenetic base modification",
+      "formula": "C5H7N3O",
+      "deltaMass": 14.01565,
+      "group": "CH3 at C5",
+      "smiles": "",
+      "roles": [
+        "stable DNA methylation mark",
+        "transcriptional regulation",
+        "imprinting and repeat control"
+      ],
+      "enzymes": [
+        "DNMT1",
+        "DNMT3A",
+        "DNMT3B"
+      ],
+      "assays": [
+        "WGBS",
+        "RRBS",
+        "EM-seq",
+        "nanopore methylation calling"
+      ],
+      "color": "#efb45b",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "5hmc",
+      "name": "5-hydroxymethylcytosine",
+      "short": "5hmC",
+      "base": "C",
+      "category": "Epigenetic base modification",
+      "formula": "C5H7N3O2",
+      "deltaMass": 30.01056,
+      "group": "CH2OH at C5",
+      "smiles": "",
+      "roles": [
+        "TET oxidation product of 5mC",
+        "active demethylation intermediate",
+        "regulatory mark enriched in selected tissues"
+      ],
+      "enzymes": [
+        "TET1",
+        "TET2",
+        "TET3"
+      ],
+      "assays": [
+        "oxBS-seq",
+        "TAB-seq",
+        "ACE-seq",
+        "nanopore/direct detection"
+      ],
+      "color": "#55d5b1",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "5fc",
+      "name": "5-formylcytosine",
+      "short": "5fC",
+      "base": "C",
+      "category": "Epigenetic demethylation intermediate",
+      "formula": "C5H5N3O2",
+      "deltaMass": 27.99491,
+      "group": "CHO at C5",
+      "smiles": "",
+      "roles": [
+        "TET oxidation product",
+        "active DNA demethylation intermediate"
+      ],
+      "enzymes": [
+        "TET1",
+        "TET2",
+        "TET3",
+        "TDG"
+      ],
+      "assays": [
+        "fCAB-seq",
+        "redBS-seq",
+        "chemical-labeling methods"
+      ],
+      "color": "#5bb9e8",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "5cac",
+      "name": "5-carboxylcytosine",
+      "short": "5caC",
+      "base": "C",
+      "category": "Epigenetic demethylation intermediate",
+      "formula": "C5H5N3O3",
+      "deltaMass": 43.98983,
+      "group": "COOH at C5",
+      "smiles": "",
+      "roles": [
+        "late TET oxidation product",
+        "substrate for TDG-mediated base excision"
+      ],
+      "enzymes": [
+        "TET1",
+        "TET2",
+        "TET3",
+        "TDG"
+      ],
+      "assays": [
+        "CAB-seq",
+        "chemical enrichment"
+      ],
+      "color": "#7e9eea",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "6ma",
+      "name": "N6-methyladenine",
+      "short": "6mA",
+      "base": "A",
+      "category": "DNA methylation",
+      "formula": "C6H7N5",
+      "deltaMass": 14.01565,
+      "group": "CH3 at exocyclic N6",
+      "smiles": "",
+      "roles": [
+        "common bacterial DNA methylation",
+        "reported at low abundance in some eukaryotic contexts"
+      ],
+      "enzymes": [
+        "Dam and other adenine methyltransferases in microbes"
+      ],
+      "assays": [
+        "SMRT sequencing",
+        "LC-MS/MS",
+        "nanopore/direct detection"
+      ],
+      "color": "#c78cf2",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "4mc",
+      "name": "N4-methylcytosine",
+      "short": "4mC",
+      "base": "C",
+      "category": "DNA methylation",
+      "formula": "C5H7N3O",
+      "deltaMass": 14.01565,
+      "group": "CH3 at exocyclic N4",
+      "smiles": "",
+      "roles": [
+        "prokaryotic restriction-modification systems"
+      ],
+      "enzymes": [
+        "N4-cytosine methyltransferases"
+      ],
+      "assays": [
+        "SMRT sequencing",
+        "LC-MS/MS",
+        "nanopore/direct detection"
+      ],
+      "color": "#d58be4",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "8oxog",
+      "name": "8-oxo-7,8-dihydroguanine",
+      "short": "8-oxoG",
+      "base": "G",
+      "category": "Oxidative DNA damage",
+      "formula": "C5H5N5O2",
+      "deltaMass": 15.99491,
+      "group": "O at C8",
+      "smiles": "",
+      "roles": [
+        "major oxidative guanine lesion",
+        "can mispair with adenine and cause G\u2192T transversions"
+      ],
+      "enzymes": [
+        "OGG1",
+        "MUTYH pathway"
+      ],
+      "assays": [
+        "LC-MS/MS",
+        "OGG1-based mapping",
+        "comet/lesion assays"
+      ],
+      "color": "#ef7777",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "o6mg",
+      "name": "O6-methylguanine",
+      "short": "O6-meG",
+      "base": "G",
+      "category": "Alkylation damage/adduct",
+      "formula": "C6H7N5O",
+      "deltaMass": 14.01565,
+      "group": "O-CH3 at O6",
+      "smiles": "",
+      "roles": [
+        "alkylation lesion",
+        "can mispair with thymine"
+      ],
+      "enzymes": [
+        "MGMT"
+      ],
+      "assays": [
+        "LC-MS/MS",
+        "adductomics",
+        "immunoassay"
+      ],
+      "color": "#eb8a68",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "n7mg",
+      "name": "N7-methylguanine",
+      "short": "N7-meG",
+      "base": "G",
+      "category": "Alkylation damage/adduct",
+      "formula": "C6H7N5O",
+      "deltaMass": 14.01565,
+      "group": "CH3 at N7",
+      "smiles": "",
+      "roles": [
+        "common methylation adduct",
+        "can destabilize glycosidic bond"
+      ],
+      "enzymes": [
+        "base-excision/repair context dependent"
+      ],
+      "assays": [
+        "LC-MS/MS",
+        "adductomics"
+      ],
+      "color": "#e89463",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "uracil",
+      "name": "Uracil in DNA",
+      "short": "U",
+      "base": "C",
+      "category": "Deamination / misincorporation lesion",
+      "formula": "C4H4N2O2",
+      "deltaMass": 0.98402,
+      "group": "C4 amine \u2192 carbonyl",
+      "smiles": "",
+      "roles": [
+        "cytosine deamination product",
+        "can generate C\u2192T transition if unrepaired"
+      ],
+      "enzymes": [
+        "UNG",
+        "SMUG1"
+      ],
+      "assays": [
+        "UDG-dependent sequencing",
+        "LC-MS/MS"
+      ],
+      "color": "#f09a73",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "hypoxanthine",
+      "name": "Hypoxanthine in DNA",
+      "short": "Hx",
+      "base": "A",
+      "category": "Deamination lesion",
+      "formula": "C5H4N4O",
+      "deltaMass": 0.98402,
+      "group": "adenine N6 deamination",
+      "smiles": "",
+      "roles": [
+        "adenine deamination product",
+        "can pair with cytosine"
+      ],
+      "enzymes": [
+        "AAG/MPG"
+      ],
+      "assays": [
+        "LC-MS/MS",
+        "glycosylase-assisted assays"
+      ],
+      "color": "#e49770",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "xanthine",
+      "name": "Xanthine in DNA",
+      "short": "Xan",
+      "base": "G",
+      "category": "Deamination lesion",
+      "formula": "C5H4N4O2",
+      "deltaMass": 0.98402,
+      "group": "guanine N2 deamination",
+      "smiles": "",
+      "roles": [
+        "guanine deamination product",
+        "potential mutagenic lesion"
+      ],
+      "enzymes": [
+        "repair context dependent"
+      ],
+      "assays": [
+        "LC-MS/MS"
+      ],
+      "color": "#df8d6d",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "abasic",
+      "name": "Abasic / AP site",
+      "short": "AP",
+      "base": "N",
+      "category": "DNA backbone/base-loss lesion",
+      "formula": "base absent",
+      "deltaMass": null,
+      "group": "missing nucleobase",
+      "smiles": "",
+      "roles": [
+        "intermediate in base-excision repair",
+        "arises from spontaneous or enzyme-catalyzed depurination/depyrimidination"
+      ],
+      "enzymes": [
+        "APE1",
+        "POLB",
+        "XRCC1-associated BER"
+      ],
+      "assays": [
+        "aldehyde-reactive probe assays",
+        "AP-seq"
+      ],
+      "color": "#d46f6f",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "cpd",
+      "name": "Cyclobutane pyrimidine dimer",
+      "short": "CPD",
+      "base": "TT/TC/CT/CC",
+      "category": "UV photolesion",
+      "formula": "dinucleotide lesion",
+      "deltaMass": 0.0,
+      "group": "cyclobutane bridge between adjacent pyrimidines",
+      "smiles": "",
+      "roles": [
+        "major UVB/UVC photoproduct",
+        "distorts DNA and blocks polymerases"
+      ],
+      "enzymes": [
+        "nucleotide-excision repair; photolyase in organisms that encode it"
+      ],
+      "assays": [
+        "CPD-seq",
+        "Damage-seq",
+        "immunodetection"
+      ],
+      "color": "#e36e9a",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "64pp",
+      "name": "(6-4) pyrimidine-pyrimidone photoproduct",
+      "short": "6-4PP",
+      "base": "TT/TC",
+      "category": "UV photolesion",
+      "formula": "dinucleotide lesion",
+      "deltaMass": 0.0,
+      "group": "6-4 covalent photoproduct",
+      "smiles": "",
+      "roles": [
+        "UV photolesion",
+        "strong helix distortion"
+      ],
+      "enzymes": [
+        "nucleotide-excision repair"
+      ],
+      "assays": [
+        "6-4PP-seq",
+        "Damage-seq",
+        "immunodetection"
+      ],
+      "color": "#d96bb4",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "ethenoa",
+      "name": "1,N6-ethenoadenine",
+      "short": "\u03b5A",
+      "base": "A",
+      "category": "Lipid-peroxidation / exocyclic adduct",
+      "formula": "C7H5N5",
+      "deltaMass": 24.0,
+      "group": "etheno bridge on adenine",
+      "smiles": "",
+      "roles": [
+        "exocyclic DNA adduct from reactive aldehydes",
+        "potentially mutagenic"
+      ],
+      "enzymes": [
+        "AAG/MPG"
+      ],
+      "assays": [
+        "LC-MS/MS",
+        "adductomics"
+      ],
+      "color": "#d781ac",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "bpdg",
+      "name": "Benzo[a]pyrene diol epoxide\u2013dG adduct",
+      "short": "BPDE-dG",
+      "base": "G",
+      "category": "Bulky environmental adduct",
+      "formula": "bulky adduct",
+      "deltaMass": null,
+      "group": "PAH-derived bulky covalent adduct",
+      "smiles": "",
+      "roles": [
+        "tobacco/combustion-associated bulky DNA adduct",
+        "strong helix distortion"
+      ],
+      "enzymes": [
+        "nucleotide-excision repair"
+      ],
+      "assays": [
+        "LC-MS/MS adductomics",
+        "32P-postlabeling"
+      ],
+      "color": "#bd7d68",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    },
+    {
+      "id": "psoralen",
+      "name": "Psoralen interstrand crosslink",
+      "short": "ICL",
+      "base": "TA sites",
+      "category": "DNA crosslink",
+      "formula": "crosslink lesion",
+      "deltaMass": null,
+      "group": "covalent interstrand crosslink",
+      "smiles": "",
+      "roles": [
+        "blocks strand separation",
+        "requires coordinated crosslink repair"
+      ],
+      "enzymes": [
+        "Fanconi anemia pathway",
+        "nucleases",
+        "homologous recombination"
+      ],
+      "assays": [
+        "crosslink mapping",
+        "mass spectrometry"
+      ],
+      "color": "#a978df",
+      "structureStatus": "Exact modified-base structure not verified. Parent-base drawing and chemical-change annotation only; original supplied representation retained in provenance."
+    }
+  ],
+  "exampleCalls": [
+    {
+      "position": 5,
+      "modification": "5mc"
+    },
+    {
+      "position": 9,
+      "modification": "5hmc"
+    },
+    {
+      "position": 12,
+      "modification": "8oxog"
+    },
+    {
+      "position": 20,
+      "modification": "5fc"
+    },
+    {
+      "position": 28,
+      "modification": "o6mg"
+    },
+    {
+      "position": 33,
+      "modification": "cpd",
+      "span": 2
+    },
+    {
+      "position": 40,
+      "modification": "5cac"
+    },
+    {
+      "position": 47,
+      "modification": "6ma"
+    },
+    {
+      "position": 53,
+      "modification": "uracil"
+    }
+  ],
+  "tracks": [
+    {
+      "id": "methylation",
+      "label": "5mC beta",
+      "type": "quantitative",
+      "values": [
+        0.12,
+        0.18,
+        0.82,
+        0.76,
+        0.21,
+        0.67,
+        0.91,
+        0.42,
+        0.25,
+        0.78,
+        0.84,
+        0.33
+      ],
+      "bins": [
+        {
+          "start": 1,
+          "end": 4
+        },
+        {
+          "start": 5,
+          "end": 9
+        },
+        {
+          "start": 10,
+          "end": 14
+        },
+        {
+          "start": 15,
+          "end": 19
+        },
+        {
+          "start": 20,
+          "end": 24
+        },
+        {
+          "start": 25,
+          "end": 29
+        },
+        {
+          "start": 30,
+          "end": 33
+        },
+        {
+          "start": 34,
+          "end": 38
+        },
+        {
+          "start": 39,
+          "end": 43
+        },
+        {
+          "start": 44,
+          "end": 48
+        },
+        {
+          "start": 49,
+          "end": 53
+        },
+        {
+          "start": 54,
+          "end": 58
+        }
+      ],
+      "unit": "fraction (0\u20131)"
+    },
+    {
+      "id": "hydroxymethylation",
+      "label": "5hmC signal",
+      "type": "quantitative",
+      "values": [
+        0.03,
+        0.05,
+        0.12,
+        0.38,
+        0.44,
+        0.31,
+        0.09,
+        0.07,
+        0.22,
+        0.35,
+        0.18,
+        0.04
+      ],
+      "bins": [
+        {
+          "start": 1,
+          "end": 4
+        },
+        {
+          "start": 5,
+          "end": 9
+        },
+        {
+          "start": 10,
+          "end": 14
+        },
+        {
+          "start": 15,
+          "end": 19
+        },
+        {
+          "start": 20,
+          "end": 24
+        },
+        {
+          "start": 25,
+          "end": 29
+        },
+        {
+          "start": 30,
+          "end": 33
+        },
+        {
+          "start": 34,
+          "end": 38
+        },
+        {
+          "start": 39,
+          "end": 43
+        },
+        {
+          "start": 44,
+          "end": 48
+        },
+        {
+          "start": 49,
+          "end": 53
+        },
+        {
+          "start": 54,
+          "end": 58
+        }
+      ],
+      "unit": "arbitrary teaching units"
+    },
+    {
+      "id": "accessibility",
+      "label": "ATAC accessibility",
+      "type": "quantitative",
+      "values": [
+        12,
+        18,
+        25,
+        41,
+        55,
+        49,
+        32,
+        20,
+        28,
+        46,
+        38,
+        17
+      ],
+      "bins": [
+        {
+          "start": 1,
+          "end": 4
+        },
+        {
+          "start": 5,
+          "end": 9
+        },
+        {
+          "start": 10,
+          "end": 14
+        },
+        {
+          "start": 15,
+          "end": 19
+        },
+        {
+          "start": 20,
+          "end": 24
+        },
+        {
+          "start": 25,
+          "end": 29
+        },
+        {
+          "start": 30,
+          "end": 33
+        },
+        {
+          "start": 34,
+          "end": 38
+        },
+        {
+          "start": 39,
+          "end": 43
+        },
+        {
+          "start": 44,
+          "end": 48
+        },
+        {
+          "start": 49,
+          "end": 53
+        },
+        {
+          "start": 54,
+          "end": 58
+        }
+      ],
+      "unit": "arbitrary teaching units"
+    },
+    {
+      "id": "histone",
+      "label": "H3K27ac teaching signal",
+      "type": "quantitative",
+      "values": [
+        5,
+        8,
+        13,
+        26,
+        44,
+        50,
+        39,
+        21,
+        18,
+        33,
+        29,
+        11
+      ],
+      "bins": [
+        {
+          "start": 1,
+          "end": 4
+        },
+        {
+          "start": 5,
+          "end": 9
+        },
+        {
+          "start": 10,
+          "end": 14
+        },
+        {
+          "start": 15,
+          "end": 19
+        },
+        {
+          "start": 20,
+          "end": 24
+        },
+        {
+          "start": 25,
+          "end": 29
+        },
+        {
+          "start": 30,
+          "end": 33
+        },
+        {
+          "start": 34,
+          "end": 38
+        },
+        {
+          "start": 39,
+          "end": 43
+        },
+        {
+          "start": 44,
+          "end": 48
+        },
+        {
+          "start": 49,
+          "end": 53
+        },
+        {
+          "start": 54,
+          "end": 58
+        }
+      ],
+      "unit": "arbitrary teaching units"
+    }
+  ],
+  "hic": {
+    "size": 8,
+    "matrix": [
+      [
+        80,
+        42,
+        20,
+        11,
+        8,
+        5,
+        3,
+        2
+      ],
+      [
+        42,
+        76,
+        36,
+        18,
+        10,
+        7,
+        4,
+        3
+      ],
+      [
+        20,
+        36,
+        73,
+        40,
+        19,
+        11,
+        7,
+        4
+      ],
+      [
+        11,
+        18,
+        40,
+        70,
+        34,
+        22,
+        12,
+        7
+      ],
+      [
+        8,
+        10,
+        19,
+        34,
+        68,
+        38,
+        21,
+        12
+      ],
+      [
+        5,
+        7,
+        11,
+        22,
+        38,
+        65,
+        35,
+        18
+      ],
+      [
+        3,
+        4,
+        7,
+        12,
+        21,
+        35,
+        62,
+        31
+      ],
+      [
+        2,
+        3,
+        4,
+        7,
+        12,
+        18,
+        31,
+        59
+      ]
+    ],
+    "bins": [
+      {
+        "start": 1,
+        "end": 7
+      },
+      {
+        "start": 8,
+        "end": 14
+      },
+      {
+        "start": 15,
+        "end": 21
+      },
+      {
+        "start": 22,
+        "end": 29
+      },
+      {
+        "start": 30,
+        "end": 36
+      },
+      {
+        "start": 37,
+        "end": 43
+      },
+      {
+        "start": 44,
+        "end": 50
+      },
+      {
+        "start": 51,
+        "end": 58
+      }
+    ],
+    "unit": "arbitrary contact intensity"
+  },
+  "helix": [
+    {
+      "position": 1,
+      "strand": 1,
+      "base": "A",
+      "x": 10.0,
+      "y": 0.0,
+      "z": 0.0,
+      "backboneX": 11.5,
+      "backboneY": 0.0
+    },
+    {
+      "position": 1,
+      "strand": 2,
+      "base": "T",
+      "x": -10.0,
+      "y": 0.0,
+      "z": 0.0,
+      "backboneX": -11.5,
+      "backboneY": 0.0
+    },
+    {
+      "position": 2,
+      "strand": 1,
+      "base": "C",
+      "x": 8.261,
+      "y": 5.635,
+      "z": 3.4,
+      "backboneX": 9.5,
+      "backboneY": 6.481
+    },
+    {
+      "position": 2,
+      "strand": 2,
+      "base": "G",
+      "x": -8.261,
+      "y": -5.635,
+      "z": 3.4,
+      "backboneX": -9.5,
+      "backboneY": -6.481
+    },
+    {
+      "position": 3,
+      "strand": 1,
+      "base": "G",
+      "x": 3.649,
+      "y": 9.311,
+      "z": 6.8,
+      "backboneX": 4.196,
+      "backboneY": 10.707
+    },
+    {
+      "position": 3,
+      "strand": 2,
+      "base": "C",
+      "x": -3.649,
+      "y": -9.311,
+      "z": 6.8,
+      "backboneX": -4.196,
+      "backboneY": -10.707
+    },
+    {
+      "position": 4,
+      "strand": 1,
+      "base": "T",
+      "x": -2.233,
+      "y": 9.748,
+      "z": 10.2,
+      "backboneX": -2.567,
+      "backboneY": 11.21
+    },
+    {
+      "position": 4,
+      "strand": 2,
+      "base": "A",
+      "x": 2.233,
+      "y": -9.748,
+      "z": 10.2,
+      "backboneX": 2.567,
+      "backboneY": -11.21
+    },
+    {
+      "position": 5,
+      "strand": 1,
+      "base": "C",
+      "x": -7.337,
+      "y": 6.794,
+      "z": 13.6,
+      "backboneX": -8.438,
+      "backboneY": 7.814
+    },
+    {
+      "position": 5,
+      "strand": 2,
+      "base": "G",
+      "x": 7.337,
+      "y": -6.794,
+      "z": 13.6,
+      "backboneX": 8.438,
+      "backboneY": -7.814
+    },
+    {
+      "position": 6,
+      "strand": 1,
+      "base": "G",
+      "x": -9.89,
+      "y": 1.478,
+      "z": 17.0,
+      "backboneX": -11.374,
+      "backboneY": 1.7
+    },
+    {
+      "position": 6,
+      "strand": 2,
+      "base": "C",
+      "x": 9.89,
+      "y": -1.478,
+      "z": 17.0,
+      "backboneX": 11.374,
+      "backboneY": -1.7
+    },
+    {
+      "position": 7,
+      "strand": 1,
+      "base": "A",
+      "x": -9.003,
+      "y": -4.352,
+      "z": 20.4,
+      "backboneX": -10.354,
+      "backboneY": -5.005
+    },
+    {
+      "position": 7,
+      "strand": 2,
+      "base": "T",
+      "x": 9.003,
+      "y": 4.352,
+      "z": 20.4,
+      "backboneX": 10.354,
+      "backboneY": 5.005
+    },
+    {
+      "position": 8,
+      "strand": 1,
+      "base": "T",
+      "x": -4.985,
+      "y": -8.669,
+      "z": 23.8,
+      "backboneX": -5.733,
+      "backboneY": -9.969
+    },
+    {
+      "position": 8,
+      "strand": 2,
+      "base": "A",
+      "x": 4.985,
+      "y": 8.669,
+      "z": 23.8,
+      "backboneX": 5.733,
+      "backboneY": 9.969
+    },
+    {
+      "position": 9,
+      "strand": 1,
+      "base": "C",
+      "x": 0.767,
+      "y": -9.971,
+      "z": 27.2,
+      "backboneX": 0.882,
+      "backboneY": -11.466
+    },
+    {
+      "position": 9,
+      "strand": 2,
+      "base": "G",
+      "x": -0.767,
+      "y": 9.971,
+      "z": 27.2,
+      "backboneX": -0.882,
+      "backboneY": 11.466
+    },
+    {
+      "position": 10,
+      "strand": 1,
+      "base": "G",
+      "x": 6.252,
+      "y": -7.804,
+      "z": 30.6,
+      "backboneX": 7.19,
+      "backboneY": -8.975
+    },
+    {
+      "position": 10,
+      "strand": 2,
+      "base": "C",
+      "x": -6.252,
+      "y": 7.804,
+      "z": 30.6,
+      "backboneX": -7.19,
+      "backboneY": 8.975
+    },
+    {
+      "position": 11,
+      "strand": 1,
+      "base": "C",
+      "x": 9.563,
+      "y": -2.924,
+      "z": 34.0,
+      "backboneX": 10.998,
+      "backboneY": -3.362
+    },
+    {
+      "position": 11,
+      "strand": 2,
+      "base": "G",
+      "x": -9.563,
+      "y": 2.924,
+      "z": 34.0,
+      "backboneX": -10.998,
+      "backboneY": 3.362
+    },
+    {
+      "position": 12,
+      "strand": 1,
+      "base": "G",
+      "x": 9.548,
+      "y": 2.974,
+      "z": 37.4,
+      "backboneX": 10.98,
+      "backboneY": 3.42
+    },
+    {
+      "position": 12,
+      "strand": 2,
+      "base": "C",
+      "x": -9.548,
+      "y": -2.974,
+      "z": 37.4,
+      "backboneX": -10.98,
+      "backboneY": -3.42
+    },
+    {
+      "position": 13,
+      "strand": 1,
+      "base": "T",
+      "x": 6.211,
+      "y": 7.837,
+      "z": 40.8,
+      "backboneX": 7.143,
+      "backboneY": 9.012
+    },
+    {
+      "position": 13,
+      "strand": 2,
+      "base": "A",
+      "x": -6.211,
+      "y": -7.837,
+      "z": 40.8,
+      "backboneX": -7.143,
+      "backboneY": -9.012
+    },
+    {
+      "position": 14,
+      "strand": 1,
+      "base": "A",
+      "x": 0.715,
+      "y": 9.974,
+      "z": 44.2,
+      "backboneX": 0.822,
+      "backboneY": 11.471
+    },
+    {
+      "position": 14,
+      "strand": 2,
+      "base": "T",
+      "x": -0.715,
+      "y": -9.974,
+      "z": 44.2,
+      "backboneX": -0.822,
+      "backboneY": -11.471
+    },
+    {
+      "position": 15,
+      "strand": 1,
+      "base": "C",
+      "x": -5.03,
+      "y": 8.643,
+      "z": 47.6,
+      "backboneX": -5.785,
+      "backboneY": 9.939
+    },
+    {
+      "position": 15,
+      "strand": 2,
+      "base": "G",
+      "x": 5.03,
+      "y": -8.643,
+      "z": 47.6,
+      "backboneX": 5.785,
+      "backboneY": -9.939
+    },
+    {
+      "position": 16,
+      "strand": 1,
+      "base": "C",
+      "x": -9.026,
+      "y": 4.305,
+      "z": 51.0,
+      "backboneX": -10.38,
+      "backboneY": 4.951
+    },
+    {
+      "position": 16,
+      "strand": 2,
+      "base": "G",
+      "x": 9.026,
+      "y": -4.305,
+      "z": 51.0,
+      "backboneX": 10.38,
+      "backboneY": -4.951
+    },
+    {
+      "position": 17,
+      "strand": 1,
+      "base": "G",
+      "x": -9.882,
+      "y": -1.53,
+      "z": 54.4,
+      "backboneX": -11.365,
+      "backboneY": -1.759
+    },
+    {
+      "position": 17,
+      "strand": 2,
+      "base": "C",
+      "x": 9.882,
+      "y": 1.53,
+      "z": 54.4,
+      "backboneX": 11.365,
+      "backboneY": 1.759
+    },
+    {
+      "position": 18,
+      "strand": 1,
+      "base": "T",
+      "x": -7.302,
+      "y": -6.833,
+      "z": 57.8,
+      "backboneX": -8.397,
+      "backboneY": -7.858
+    },
+    {
+      "position": 18,
+      "strand": 2,
+      "base": "A",
+      "x": 7.302,
+      "y": 6.833,
+      "z": 57.8,
+      "backboneX": 8.397,
+      "backboneY": 7.858
+    },
+    {
+      "position": 19,
+      "strand": 1,
+      "base": "A",
+      "x": -2.181,
+      "y": -9.759,
+      "z": 61.2,
+      "backboneX": -2.509,
+      "backboneY": -11.223
+    },
+    {
+      "position": 19,
+      "strand": 2,
+      "base": "T",
+      "x": 2.181,
+      "y": 9.759,
+      "z": 61.2,
+      "backboneX": 2.509,
+      "backboneY": 11.223
+    },
+    {
+      "position": 20,
+      "strand": 1,
+      "base": "C",
+      "x": 3.697,
+      "y": -9.291,
+      "z": 64.6,
+      "backboneX": 4.252,
+      "backboneY": -10.685
+    },
+    {
+      "position": 20,
+      "strand": 2,
+      "base": "G",
+      "x": -3.697,
+      "y": 9.291,
+      "z": 64.6,
+      "backboneX": -4.252,
+      "backboneY": 10.685
+    },
+    {
+      "position": 21,
+      "strand": 1,
+      "base": "G",
+      "x": 8.29,
+      "y": -5.592,
+      "z": 68.0,
+      "backboneX": 9.534,
+      "backboneY": -6.431
+    },
+    {
+      "position": 21,
+      "strand": 2,
+      "base": "C",
+      "x": -8.29,
+      "y": 5.592,
+      "z": 68.0,
+      "backboneX": -9.534,
+      "backboneY": 6.431
+    },
+    {
+      "position": 22,
+      "strand": 1,
+      "base": "C",
+      "x": 10.0,
+      "y": 0.052,
+      "z": 71.4,
+      "backboneX": 11.5,
+      "backboneY": 0.06
+    },
+    {
+      "position": 22,
+      "strand": 2,
+      "base": "G",
+      "x": -10.0,
+      "y": -0.052,
+      "z": 71.4,
+      "backboneX": -11.5,
+      "backboneY": -0.06
+    },
+    {
+      "position": 23,
+      "strand": 1,
+      "base": "G",
+      "x": 8.231,
+      "y": 5.678,
+      "z": 74.8,
+      "backboneX": 9.466,
+      "backboneY": 6.53
+    },
+    {
+      "position": 23,
+      "strand": 2,
+      "base": "C",
+      "x": -8.231,
+      "y": -5.678,
+      "z": 74.8,
+      "backboneX": -9.466,
+      "backboneY": -6.53
+    },
+    {
+      "position": 24,
+      "strand": 1,
+      "base": "A",
+      "x": 3.6,
+      "y": 9.33,
+      "z": 78.2,
+      "backboneX": 4.14,
+      "backboneY": 10.729
+    },
+    {
+      "position": 24,
+      "strand": 2,
+      "base": "T",
+      "x": -3.6,
+      "y": -9.33,
+      "z": 78.2,
+      "backboneX": -4.14,
+      "backboneY": -10.729
+    },
+    {
+      "position": 25,
+      "strand": 1,
+      "base": "T",
+      "x": -2.284,
+      "y": 9.736,
+      "z": 81.6,
+      "backboneX": -2.626,
+      "backboneY": 11.196
+    },
+    {
+      "position": 25,
+      "strand": 2,
+      "base": "A",
+      "x": 2.284,
+      "y": -9.736,
+      "z": 81.6,
+      "backboneX": 2.626,
+      "backboneY": -11.196
+    },
+    {
+      "position": 26,
+      "strand": 1,
+      "base": "T",
+      "x": -7.373,
+      "y": 6.756,
+      "z": 85.0,
+      "backboneX": -8.479,
+      "backboneY": 7.769
+    },
+    {
+      "position": 26,
+      "strand": 2,
+      "base": "A",
+      "x": 7.373,
+      "y": -6.756,
+      "z": 85.0,
+      "backboneX": 8.479,
+      "backboneY": -7.769
+    },
+    {
+      "position": 27,
+      "strand": 1,
+      "base": "C",
+      "x": -9.898,
+      "y": 1.426,
+      "z": 88.4,
+      "backboneX": -11.382,
+      "backboneY": 1.64
+    },
+    {
+      "position": 27,
+      "strand": 2,
+      "base": "G",
+      "x": 9.898,
+      "y": -1.426,
+      "z": 88.4,
+      "backboneX": 11.382,
+      "backboneY": -1.64
+    },
+    {
+      "position": 28,
+      "strand": 1,
+      "base": "G",
+      "x": -8.98,
+      "y": -4.399,
+      "z": 91.8,
+      "backboneX": -10.327,
+      "backboneY": -5.059
+    },
+    {
+      "position": 28,
+      "strand": 2,
+      "base": "C",
+      "x": 8.98,
+      "y": 4.399,
+      "z": 91.8,
+      "backboneX": 10.327,
+      "backboneY": 5.059
+    },
+    {
+      "position": 29,
+      "strand": 1,
+      "base": "C",
+      "x": -4.939,
+      "y": -8.695,
+      "z": 95.2,
+      "backboneX": -5.68,
+      "backboneY": -9.999
+    },
+    {
+      "position": 29,
+      "strand": 2,
+      "base": "G",
+      "x": 4.939,
+      "y": 8.695,
+      "z": 95.2,
+      "backboneX": 5.68,
+      "backboneY": 9.999
+    },
+    {
+      "position": 30,
+      "strand": 1,
+      "base": "C",
+      "x": 0.819,
+      "y": -9.966,
+      "z": 98.6,
+      "backboneX": 0.942,
+      "backboneY": -11.461
+    },
+    {
+      "position": 30,
+      "strand": 2,
+      "base": "G",
+      "x": -0.819,
+      "y": 9.966,
+      "z": 98.6,
+      "backboneX": -0.942,
+      "backboneY": 11.461
+    },
+    {
+      "position": 31,
+      "strand": 1,
+      "base": "G",
+      "x": 6.293,
+      "y": -7.771,
+      "z": 102.0,
+      "backboneX": 7.237,
+      "backboneY": -8.937
+    },
+    {
+      "position": 31,
+      "strand": 2,
+      "base": "C",
+      "x": -6.293,
+      "y": 7.771,
+      "z": 102.0,
+      "backboneX": -7.237,
+      "backboneY": 8.937
+    },
+    {
+      "position": 32,
+      "strand": 1,
+      "base": "A",
+      "x": 9.578,
+      "y": -2.874,
+      "z": 105.4,
+      "backboneX": 11.015,
+      "backboneY": -3.305
+    },
+    {
+      "position": 32,
+      "strand": 2,
+      "base": "T",
+      "x": -9.578,
+      "y": 2.874,
+      "z": 105.4,
+      "backboneX": -11.015,
+      "backboneY": 3.305
+    },
+    {
+      "position": 33,
+      "strand": 1,
+      "base": "T",
+      "x": 9.532,
+      "y": 3.024,
+      "z": 108.8,
+      "backboneX": 10.962,
+      "backboneY": 3.477
+    },
+    {
+      "position": 33,
+      "strand": 2,
+      "base": "A",
+      "x": -9.532,
+      "y": -3.024,
+      "z": 108.8,
+      "backboneX": -10.962,
+      "backboneY": -3.477
+    },
+    {
+      "position": 34,
+      "strand": 1,
+      "base": "C",
+      "x": 6.17,
+      "y": 7.869,
+      "z": 112.2,
+      "backboneX": 7.096,
+      "backboneY": 9.05
+    },
+    {
+      "position": 34,
+      "strand": 2,
+      "base": "G",
+      "x": -6.17,
+      "y": -7.869,
+      "z": 112.2,
+      "backboneX": -7.096,
+      "backboneY": -9.05
+    },
+    {
+      "position": 35,
+      "strand": 1,
+      "base": "G",
+      "x": 0.663,
+      "y": 9.978,
+      "z": 115.6,
+      "backboneX": 0.762,
+      "backboneY": 11.475
+    },
+    {
+      "position": 35,
+      "strand": 2,
+      "base": "C",
+      "x": -0.663,
+      "y": -9.978,
+      "z": 115.6,
+      "backboneX": -0.762,
+      "backboneY": -11.475
+    },
+    {
+      "position": 36,
+      "strand": 1,
+      "base": "T",
+      "x": -5.075,
+      "y": 8.616,
+      "z": 119.0,
+      "backboneX": -5.837,
+      "backboneY": 9.909
+    },
+    {
+      "position": 36,
+      "strand": 2,
+      "base": "A",
+      "x": 5.075,
+      "y": -8.616,
+      "z": 119.0,
+      "backboneX": 5.837,
+      "backboneY": -9.909
+    },
+    {
+      "position": 37,
+      "strand": 1,
+      "base": "A",
+      "x": -9.048,
+      "y": 4.258,
+      "z": 122.4,
+      "backboneX": -10.406,
+      "backboneY": 4.896
+    },
+    {
+      "position": 37,
+      "strand": 2,
+      "base": "T",
+      "x": 9.048,
+      "y": -4.258,
+      "z": 122.4,
+      "backboneX": 10.406,
+      "backboneY": -4.896
+    },
+    {
+      "position": 38,
+      "strand": 1,
+      "base": "C",
+      "x": -9.874,
+      "y": -1.582,
+      "z": 125.8,
+      "backboneX": -11.355,
+      "backboneY": -1.819
+    },
+    {
+      "position": 38,
+      "strand": 2,
+      "base": "G",
+      "x": 9.874,
+      "y": 1.582,
+      "z": 125.8,
+      "backboneX": 11.355,
+      "backboneY": 1.819
+    },
+    {
+      "position": 39,
+      "strand": 1,
+      "base": "G",
+      "x": -7.266,
+      "y": -6.871,
+      "z": 129.2,
+      "backboneX": -8.356,
+      "backboneY": -7.902
+    },
+    {
+      "position": 39,
+      "strand": 2,
+      "base": "C",
+      "x": 7.266,
+      "y": 6.871,
+      "z": 129.2,
+      "backboneX": 8.356,
+      "backboneY": 7.902
+    },
+    {
+      "position": 40,
+      "strand": 1,
+      "base": "C",
+      "x": -2.13,
+      "y": -9.77,
+      "z": 132.6,
+      "backboneX": -2.45,
+      "backboneY": -11.236
+    },
+    {
+      "position": 40,
+      "strand": 2,
+      "base": "G",
+      "x": 2.13,
+      "y": 9.77,
+      "z": 132.6,
+      "backboneX": 2.45,
+      "backboneY": 11.236
+    },
+    {
+      "position": 41,
+      "strand": 1,
+      "base": "G",
+      "x": 3.746,
+      "y": -9.272,
+      "z": 136.0,
+      "backboneX": 4.308,
+      "backboneY": -10.663
+    },
+    {
+      "position": 41,
+      "strand": 2,
+      "base": "C",
+      "x": -3.746,
+      "y": 9.272,
+      "z": 136.0,
+      "backboneX": -4.308,
+      "backboneY": 10.663
+    },
+    {
+      "position": 42,
+      "strand": 1,
+      "base": "T",
+      "x": 8.32,
+      "y": -5.548,
+      "z": 139.4,
+      "backboneX": 9.567,
+      "backboneY": -6.381
+    },
+    {
+      "position": 42,
+      "strand": 2,
+      "base": "A",
+      "x": -8.32,
+      "y": 5.548,
+      "z": 139.4,
+      "backboneX": -9.567,
+      "backboneY": 6.381
+    },
+    {
+      "position": 43,
+      "strand": 1,
+      "base": "A",
+      "x": 9.999,
+      "y": 0.105,
+      "z": 142.8,
+      "backboneX": 11.499,
+      "backboneY": 0.12
+    },
+    {
+      "position": 43,
+      "strand": 2,
+      "base": "T",
+      "x": -9.999,
+      "y": -0.105,
+      "z": 142.8,
+      "backboneX": -11.499,
+      "backboneY": -0.12
+    },
+    {
+      "position": 44,
+      "strand": 1,
+      "base": "C",
+      "x": 8.202,
+      "y": 5.721,
+      "z": 146.2,
+      "backboneX": 9.432,
+      "backboneY": 6.58
+    },
+    {
+      "position": 44,
+      "strand": 2,
+      "base": "G",
+      "x": -8.202,
+      "y": -5.721,
+      "z": 146.2,
+      "backboneX": -9.432,
+      "backboneY": -6.58
+    },
+    {
+      "position": 45,
+      "strand": 1,
+      "base": "C",
+      "x": 3.551,
+      "y": 9.348,
+      "z": 149.6,
+      "backboneX": 4.084,
+      "backboneY": 10.75
+    },
+    {
+      "position": 45,
+      "strand": 2,
+      "base": "G",
+      "x": -3.551,
+      "y": -9.348,
+      "z": 149.6,
+      "backboneX": -4.084,
+      "backboneY": -10.75
+    },
+    {
+      "position": 46,
+      "strand": 1,
+      "base": "T",
+      "x": -2.334,
+      "y": 9.724,
+      "z": 153.0,
+      "backboneX": -2.685,
+      "backboneY": 11.182
+    },
+    {
+      "position": 46,
+      "strand": 2,
+      "base": "A",
+      "x": 2.334,
+      "y": -9.724,
+      "z": 153.0,
+      "backboneX": 2.685,
+      "backboneY": -11.182
+    },
+    {
+      "position": 47,
+      "strand": 1,
+      "base": "A",
+      "x": -7.408,
+      "y": 6.717,
+      "z": 156.4,
+      "backboneX": -8.519,
+      "backboneY": 7.725
+    },
+    {
+      "position": 47,
+      "strand": 2,
+      "base": "T",
+      "x": 7.408,
+      "y": -6.717,
+      "z": 156.4,
+      "backboneX": 8.519,
+      "backboneY": -7.725
+    },
+    {
+      "position": 48,
+      "strand": 1,
+      "base": "G",
+      "x": -9.905,
+      "y": 1.374,
+      "z": 159.8,
+      "backboneX": -11.391,
+      "backboneY": 1.581
+    },
+    {
+      "position": 48,
+      "strand": 2,
+      "base": "C",
+      "x": 9.905,
+      "y": -1.374,
+      "z": 159.8,
+      "backboneX": 11.391,
+      "backboneY": -1.581
+    },
+    {
+      "position": 49,
+      "strand": 1,
+      "base": "C",
+      "x": -8.957,
+      "y": -4.446,
+      "z": 163.2,
+      "backboneX": -10.301,
+      "backboneY": -5.113
+    },
+    {
+      "position": 49,
+      "strand": 2,
+      "base": "G",
+      "x": 8.957,
+      "y": 4.446,
+      "z": 163.2,
+      "backboneX": 10.301,
+      "backboneY": 5.113
+    },
+    {
+      "position": 50,
+      "strand": 1,
+      "base": "G",
+      "x": -4.894,
+      "y": -8.721,
+      "z": 166.6,
+      "backboneX": -5.628,
+      "backboneY": -10.029
+    },
+    {
+      "position": 50,
+      "strand": 2,
+      "base": "C",
+      "x": 4.894,
+      "y": 8.721,
+      "z": 166.6,
+      "backboneX": 5.628,
+      "backboneY": 10.029
+    },
+    {
+      "position": 51,
+      "strand": 1,
+      "base": "T",
+      "x": 0.872,
+      "y": -9.962,
+      "z": 170.0,
+      "backboneX": 1.002,
+      "backboneY": -11.456
+    },
+    {
+      "position": 51,
+      "strand": 2,
+      "base": "A",
+      "x": -0.872,
+      "y": 9.962,
+      "z": 170.0,
+      "backboneX": -1.002,
+      "backboneY": 11.456
+    },
+    {
+      "position": 52,
+      "strand": 1,
+      "base": "A",
+      "x": 6.334,
+      "y": -7.738,
+      "z": 173.4,
+      "backboneX": 7.284,
+      "backboneY": -8.899
+    },
+    {
+      "position": 52,
+      "strand": 2,
+      "base": "T",
+      "x": -6.334,
+      "y": 7.738,
+      "z": 173.4,
+      "backboneX": -7.284,
+      "backboneY": 8.899
+    },
+    {
+      "position": 53,
+      "strand": 1,
+      "base": "C",
+      "x": 9.593,
+      "y": -2.823,
+      "z": 176.8,
+      "backboneX": 11.032,
+      "backboneY": -3.247
+    },
+    {
+      "position": 53,
+      "strand": 2,
+      "base": "G",
+      "x": -9.593,
+      "y": 2.823,
+      "z": 176.8,
+      "backboneX": -11.032,
+      "backboneY": 3.247
+    },
+    {
+      "position": 54,
+      "strand": 1,
+      "base": "G",
+      "x": 9.516,
+      "y": 3.074,
+      "z": 180.2,
+      "backboneX": 10.943,
+      "backboneY": 3.535
+    },
+    {
+      "position": 54,
+      "strand": 2,
+      "base": "C",
+      "x": -9.516,
+      "y": -3.074,
+      "z": 180.2,
+      "backboneX": -10.943,
+      "backboneY": -3.535
+    },
+    {
+      "position": 55,
+      "strand": 1,
+      "base": "A",
+      "x": 6.129,
+      "y": 7.902,
+      "z": 183.6,
+      "backboneX": 7.048,
+      "backboneY": 9.087
+    },
+    {
+      "position": 55,
+      "strand": 2,
+      "base": "T",
+      "x": -6.129,
+      "y": -7.902,
+      "z": 183.6,
+      "backboneX": -7.048,
+      "backboneY": -9.087
+    },
+    {
+      "position": 56,
+      "strand": 1,
+      "base": "T",
+      "x": 0.61,
+      "y": 9.981,
+      "z": 187.0,
+      "backboneX": 0.702,
+      "backboneY": 11.479
+    },
+    {
+      "position": 56,
+      "strand": 2,
+      "base": "A",
+      "x": -0.61,
+      "y": -9.981,
+      "z": 187.0,
+      "backboneX": -0.702,
+      "backboneY": -11.479
+    },
+    {
+      "position": 57,
+      "strand": 1,
+      "base": "C",
+      "x": -5.12,
+      "y": 8.59,
+      "z": 190.4,
+      "backboneX": -5.888,
+      "backboneY": 9.878
+    },
+    {
+      "position": 57,
+      "strand": 2,
+      "base": "G",
+      "x": 5.12,
+      "y": -8.59,
+      "z": 190.4,
+      "backboneX": 5.888,
+      "backboneY": -9.878
+    },
+    {
+      "position": 58,
+      "strand": 1,
+      "base": "G",
+      "x": -9.07,
+      "y": 4.21,
+      "z": 193.8,
+      "backboneX": -10.431,
+      "backboneY": 4.842
+    },
+    {
+      "position": 58,
+      "strand": 2,
+      "base": "C",
+      "x": 9.07,
+      "y": -4.21,
+      "z": 193.8,
+      "backboneX": 10.431,
+      "backboneY": -4.842
+    }
+  ],
+  "assayFamilies": [
+    {
+      "name": "Cytosine methylation",
+      "examples": [
+        "WGBS",
+        "RRBS",
+        "EM-seq",
+        "nanopore"
+      ]
+    },
+    {
+      "name": "Oxidized cytosines",
+      "examples": [
+        "oxBS-seq",
+        "TAB-seq",
+        "ACE-seq",
+        "fCAB-seq",
+        "CAB-seq"
+      ]
+    },
+    {
+      "name": "Chromatin accessibility",
+      "examples": [
+        "ATAC-seq",
+        "DNase-seq"
+      ]
+    },
+    {
+      "name": "Protein-DNA / histone marks",
+      "examples": [
+        "ChIP-seq",
+        "CUT&RUN",
+        "CUT&Tag"
+      ]
+    },
+    {
+      "name": "3D genome",
+      "examples": [
+        "Hi-C",
+        "Micro-C",
+        "Capture-C"
+      ]
+    },
+    {
+      "name": "DNA damage/adducts",
+      "examples": [
+        "Damage-seq",
+        "CPD-seq",
+        "AP-seq",
+        "LC-MS/MS adductomics"
+      ]
+    }
+  ],
+  "provenance": {
+    "kind": "synthetic teaching data",
+    "participant": null,
+    "tissue": null,
+    "resolution": "Illustrative sequence bins, not genomic assay resolution",
+    "assayNote": "Standard bisulfite and EM-seq do not independently resolve 5mC from 5hmC. Assay choice and controls determine specificity.",
+    "sources": [
+      "https://pubchem.ncbi.nlm.nih.gov/compound/5-Methylcytosine",
+      "https://www.neb.com/en-gb/tools-and-resources/video-library/nebnext-enzymatic-methyl-seq-workflow"
+    ]
+  }
+}

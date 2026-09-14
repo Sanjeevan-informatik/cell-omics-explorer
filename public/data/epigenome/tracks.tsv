@@ -1,0 +1,49 @@
+track	start_1based	end_inclusive	value	unit
+methylation	1	4	0.12	fraction (0–1)
+methylation	5	9	0.18	fraction (0–1)
+methylation	10	14	0.82	fraction (0–1)
+methylation	15	19	0.76	fraction (0–1)
+methylation	20	24	0.21	fraction (0–1)
+methylation	25	29	0.67	fraction (0–1)
+methylation	30	33	0.91	fraction (0–1)
+methylation	34	38	0.42	fraction (0–1)
+methylation	39	43	0.25	fraction (0–1)
+methylation	44	48	0.78	fraction (0–1)
+methylation	49	53	0.84	fraction (0–1)
+methylation	54	58	0.33	fraction (0–1)
+hydroxymethylation	1	4	0.03	arbitrary teaching units
+hydroxymethylation	5	9	0.05	arbitrary teaching units
+hydroxymethylation	10	14	0.12	arbitrary teaching units
+hydroxymethylation	15	19	0.38	arbitrary teaching units
+hydroxymethylation	20	24	0.44	arbitrary teaching units
+hydroxymethylation	25	29	0.31	arbitrary teaching units
+hydroxymethylation	30	33	0.09	arbitrary teaching units
+hydroxymethylation	34	38	0.07	arbitrary teaching units
+hydroxymethylation	39	43	0.22	arbitrary teaching units
+hydroxymethylation	44	48	0.35	arbitrary teaching units
+hydroxymethylation	49	53	0.18	arbitrary teaching units
+hydroxymethylation	54	58	0.04	arbitrary teaching units
+accessibility	1	4	12	arbitrary teaching units
+accessibility	5	9	18	arbitrary teaching units
+accessibility	10	14	25	arbitrary teaching units
+accessibility	15	19	41	arbitrary teaching units
+accessibility	20	24	55	arbitrary teaching units
+accessibility	25	29	49	arbitrary teaching units
+accessibility	30	33	32	arbitrary teaching units
+accessibility	34	38	20	arbitrary teaching units
+accessibility	39	43	28	arbitrary teaching units
+accessibility	44	48	46	arbitrary teaching units
+accessibility	49	53	38	arbitrary teaching units
+accessibility	54	58	17	arbitrary teaching units
+histone	1	4	5	arbitrary teaching units
+histone	5	9	8	arbitrary teaching units
+histone	10	14	13	arbitrary teaching units
+histone	15	19	26	arbitrary teaching units
+histone	20	24	44	arbitrary teaching units
+histone	25	29	50	arbitrary teaching units
+histone	30	33	39	arbitrary teaching units
+histone	34	38	21	arbitrary teaching units
+histone	39	43	18	arbitrary teaching units
+histone	44	48	33	arbitrary teaching units
+histone	49	53	29	arbitrary teaching units
+histone	54	58	11	arbitrary teaching units

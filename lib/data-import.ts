@@ -1,7 +1,9 @@
+import {validateMolecule,type Molecule} from './metabolite-structures';
+import {validateStructure,type Structure} from './protein-structure';
 import { EXTERNAL_FORMATS, TEMPLATES, type DataCategory } from './data-catalog';
 import { parseFasta } from './genome-analysis';
 export const MAX_FILE_BYTES = 5 * 1024 * 1024;
-export type Inspection = { status: 'ready' | 'preview' | 'unsupported' | 'invalid'; format: string; category: DataCategory; message: string; nextStep: string; headers: string[]; rows: string[][]; rowCount: number; missing: number; templateId?: string; fasta?: string; };
+export type Inspection = { molecule?:Molecule; structure?:Structure; status: 'ready' | 'preview' | 'unsupported' | 'invalid'; format: string; category: DataCategory; message: string; nextStep: string; headers: string[]; rows: string[][]; rowCount: number; missing: number; templateId?: string; fasta?: string; };
 export function parseDelimited(text: string, delimiter: string): string[][] {
   const records: string[][] = []; let row: string[] = [], value = '', quoted = false, closed = false;
   const field = () => {row.push(value); value = ''; closed = false;};
@@ -28,7 +30,17 @@ export function inspectData(name: string, text: string | null, category: DataCat
     text=text.replace(/^\uFEFF/,'');
     if(!text.trim())throw new Error('This file is empty.');
     if(text.includes('\0'))throw new Error('Binary content detected. Select a text export.');
+    if(ext==='json'&&category==='metabolome'){const molecule=validateMolecule(JSON.parse(text));return {...result,status:'ready',format:'Molecular structure bundle',molecule,headers:['molecule','formula','atoms'],rows:[[molecule.name,molecule.formula,String(molecule.atoms.length)]],rowCount:1,message:'Molecular structure bundle validated.',nextStep:'Open Metabolites, lipids & glycans to inspect chemistry, atoms and frames.'};}
+    if(ext==='json'&&category==='proteome'){const structure=validateStructure(JSON.parse(text));return {...result,status:'ready',format:'Protein structure bundle',structure,headers:['reference','sequence'],rows:[[structure.reference,structure.sequence]],rowCount:1,message:'Protein structure bundle validated.',nextStep:'Open Proteome & structures to inspect atomic coordinates, annotations and frames.'};}
     if(['fa','fasta','fna'].includes(ext)) {
+      if(category==='transcriptome'||category==='proteome') {
+        if(!text.trimStart().startsWith('>'))throw new Error('FASTA requires a header starting with >.');
+        const records=text.trim().split(/^>/m).filter(Boolean).map(block=>{const [id,...lines]=block.split(/\r?\n/);return {id:id.trim(),sequence:lines.join('').replace(/\s/g,'').toUpperCase()};});
+        const alphabet=category==='transcriptome'?/^[ACGURYSWKMBDHVN]+$/:/^[ACDEFGHIKLMNPQRSTVWYBXZJUO*]+$/;
+        if(records.some(r=>!r.id||!alphabet.test(r.sequence)))throw new Error('Invalid '+(category==='transcriptome'?'RNA (use U, not T)':'protein')+' sequence or empty header.');
+        return {...result,status:'ready',format:category==='transcriptome'?'RNA FASTA':'Protein FASTA',headers:['sequence_id','sequence'],rows:records.slice(0,200).map(r=>[r.id,r.sequence]),rowCount:records.length,message:`${records.length} molecular sequences validated.`,nextStep:'Sequence only. Body location and participant identity require separately supplied sample metadata.'};
+      }
+
       const records=parseFasta(text);
       return {...result,status:'ready',format:'Aligned FASTA',category:'genome',headers:['sequence','length'],rows:records.map(r=>[r.id,String(r.sequence.length)]),rowCount:records.length,fasta:text,message:`${records.length} aligned DNA sequences validated.`,nextStep:'Open DNA analysis to calculate variants, distances, and a tree.',templateId:'alignment'};
     }
@@ -61,9 +73,9 @@ export function inspectData(name: string, text: string | null, category: DataCat
       if(rows.some(r=>r.length!==headers.length))throw new Error('Some rows have a different number of columns. Check the delimiter and quoting.');
       const template=TEMPLATES.find(t=>t.category===category&&t.columns?.every(c=>headers.includes(c)));
       const missing=rows.reduce((n,r)=>n+r.filter(v=>!v.trim()||/^(NA|N\/A|null|NaN)$/i.test(v.trim())).length,0);
-      const numeric=new Set(['beta','fraction','position','start','end','count','duplicate_count','mz','intensity','rt_min','tpm','abundance','control','case','x','y','signal','expression','area_um2','mean_intensity','fold_change','CD3','CD4','CD8']);
-      for(const [index,h] of headers.entries())if(template&&numeric.has(h))for(const row of rows){const v=row[index].trim();if(!v||/^(NA|N\/A|null|NaN)$/i.test(v))continue;const n=Number(v);if(!Number.isFinite(n))throw new Error(`Column ${h} contains a nonnumeric value.`);if(['beta','fraction'].includes(h)&&(n<0||n>1))throw new Error(`${h} must be between 0 and 1.`);if(!['x','y','fold_change'].includes(h)&&n<0)throw new Error(`${h} cannot be negative.`);}
-      return {...result,status:'ready',headers,rows:rows.slice(0,200),rowCount:rows.length,missing,templateId:template?.id,message:`${rows.length} rows loaded${missing?`; ${missing} missing values preserved`:''}. ${template?'Matches '+template.title+'.':'Generic table; biological schema not validated.'}`,nextStep:'Inspect rows in the matching workspace. Values are shown as supplied; no normalization or statistical analysis is performed.'};
+      const numeric=new Set(['beta','fraction','position','start','end','count','duplicate_count','mz','intensity','rt_min','tpm','abundance','control','case','x','y','z','time_hours','value','signal','expression','area_um2','mean_intensity','fold_change','CD3','CD4','CD8']);
+      for(const [index,h] of headers.entries())if(template&&numeric.has(h))for(const row of rows){const v=row[index].trim();if(!v||/^(NA|N\/A|null|NaN)$/i.test(v))continue;const n=Number(v);if(!Number.isFinite(n))throw new Error(`Column ${h} contains a nonnumeric value.`);if(['beta','fraction'].includes(h)&&(n<0||n>1))throw new Error(`${h} must be between 0 and 1.`);if(!['x','y','z','value','fold_change'].includes(h)&&n<0)throw new Error(`${h} cannot be negative.`);}
+      return {...result,status:'ready',headers,rows:rows.slice(0,5000),rowCount:rows.length,missing,templateId:template?.id,message:`${rows.length} rows loaded${missing?`; ${missing} missing values preserved`:''}. ${template?'Matches '+template.title+'.':'Generic table; biological schema not validated.'}`,nextStep:'Inspect rows in the matching workspace. Values are shown as supplied; no normalization or statistical analysis is performed.'};
     }
     return {...result,message:'Text preview available; this format has no scientific parser in the app.',nextStep:'Convert to a matching CSV/TSV template for a structured table.',headers:['text'],rows:text.split(/\r?\n/).slice(0,80).map(l=>[l.slice(0,500)]),rowCount:text.split(/\r?\n/).length};
   } catch(error) {return {...result,status:'invalid',message:error instanceof Error?error.message:'The file could not be parsed.',nextStep:'Correct the file or download a matching sample template, then import again.'};}

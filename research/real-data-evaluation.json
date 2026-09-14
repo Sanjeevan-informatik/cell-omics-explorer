@@ -1,0 +1,514 @@
+{
+  "date": "2026-09-10T20:44:34.949Z",
+  "source": "0a5ba02709e2d4f665c3bda6018d30e654db8e9d",
+  "imports": [
+    {
+      "file": "tcga_metadata.tsv",
+      "status": "ready",
+      "reported": 10,
+      "retained": 10
+    },
+    {
+      "file": "tcga_rna.tsv",
+      "status": "ready",
+      "reported": 30,
+      "retained": 30
+    },
+    {
+      "file": "tcga_protein.tsv",
+      "status": "ready",
+      "reported": 30,
+      "retained": 30
+    }
+  ],
+  "links": [
+    {
+      "participant": "brca_tcga_pan_can_atlas_2018|TCGA-3C-AALI",
+      "sample": "TCGA-3C-AALI-01",
+      "rna": 3,
+      "protein": 3
+    },
+    {
+      "participant": "brca_tcga_pan_can_atlas_2018|TCGA-3C-AALK",
+      "sample": "TCGA-3C-AALK-01",
+      "rna": 3,
+      "protein": 3
+    },
+    {
+      "participant": "brca_tcga_pan_can_atlas_2018|TCGA-4H-AAAK",
+      "sample": "TCGA-4H-AAAK-01",
+      "rna": 3,
+      "protein": 3
+    },
+    {
+      "participant": "brca_tcga_pan_can_atlas_2018|TCGA-5T-A9QA",
+      "sample": "TCGA-5T-A9QA-01",
+      "rna": 3,
+      "protein": 3
+    },
+    {
+      "participant": "brca_tcga_pan_can_atlas_2018|TCGA-A1-A0SF",
+      "sample": "TCGA-A1-A0SF-01",
+      "rna": 3,
+      "protein": 3
+    },
+    {
+      "participant": "brca_tcga_pan_can_atlas_2018|TCGA-A1-A0SH",
+      "sample": "TCGA-A1-A0SH-01",
+      "rna": 3,
+      "protein": 3
+    },
+    {
+      "participant": "brca_tcga_pan_can_atlas_2018|TCGA-A1-A0SJ",
+      "sample": "TCGA-A1-A0SJ-01",
+      "rna": 3,
+      "protein": 3
+    },
+    {
+      "participant": "brca_tcga_pan_can_atlas_2018|TCGA-A1-A0SK",
+      "sample": "TCGA-A1-A0SK-01",
+      "rna": 3,
+      "protein": 3
+    },
+    {
+      "participant": "brca_tcga_pan_can_atlas_2018|TCGA-A1-A0SO",
+      "sample": "TCGA-A1-A0SO-01",
+      "rna": 3,
+      "protein": 3
+    },
+    {
+      "participant": "brca_tcga_pan_can_atlas_2018|TCGA-A1-A0SQ",
+      "sample": "TCGA-A1-A0SQ-01",
+      "rna": 3,
+      "protein": 3
+    }
+  ],
+  "controls": {
+    "mismatched_sample_rejected": true,
+    "all_values_finite": true,
+    "no_synthetic_rows": true,
+    "no_coordinate_or_time_records": true
+  },
+  "values": [
+    {
+      "sample": "TCGA-3C-AALI-01",
+      "molecule": "rna",
+      "feature": "ERBB2",
+      "value": "194625",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-3C-AALI-01",
+      "molecule": "rna",
+      "feature": "ESR1",
+      "value": "68.5155",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-3C-AALI-01",
+      "molecule": "rna",
+      "feature": "PGR",
+      "value": "27.1887",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-3C-AALK-01",
+      "molecule": "rna",
+      "feature": "ERBB2",
+      "value": "36022.8",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-3C-AALK-01",
+      "molecule": "rna",
+      "feature": "ESR1",
+      "value": "2485.31",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-3C-AALK-01",
+      "molecule": "rna",
+      "feature": "PGR",
+      "value": "2236.46",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-4H-AAAK-01",
+      "molecule": "rna",
+      "feature": "ERBB2",
+      "value": "12236.6",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-4H-AAAK-01",
+      "molecule": "rna",
+      "feature": "ESR1",
+      "value": "5518.3",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-4H-AAAK-01",
+      "molecule": "rna",
+      "feature": "PGR",
+      "value": "4425.19",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-5T-A9QA-01",
+      "molecule": "rna",
+      "feature": "ERBB2",
+      "value": "11993.2",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-5T-A9QA-01",
+      "molecule": "rna",
+      "feature": "ESR1",
+      "value": "3557.01",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-5T-A9QA-01",
+      "molecule": "rna",
+      "feature": "PGR",
+      "value": "108.787",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SF-01",
+      "molecule": "rna",
+      "feature": "ERBB2",
+      "value": "7976.87",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SF-01",
+      "molecule": "rna",
+      "feature": "ESR1",
+      "value": "7895.91",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SF-01",
+      "molecule": "rna",
+      "feature": "PGR",
+      "value": "7068.28",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SH-01",
+      "molecule": "rna",
+      "feature": "ERBB2",
+      "value": "17990.8",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SH-01",
+      "molecule": "rna",
+      "feature": "ESR1",
+      "value": "1288.95",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SH-01",
+      "molecule": "rna",
+      "feature": "PGR",
+      "value": "4629.31",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SJ-01",
+      "molecule": "rna",
+      "feature": "ERBB2",
+      "value": "9313.95",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SJ-01",
+      "molecule": "rna",
+      "feature": "ESR1",
+      "value": "4684.77",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SJ-01",
+      "molecule": "rna",
+      "feature": "PGR",
+      "value": "3781.23",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SK-01",
+      "molecule": "rna",
+      "feature": "ERBB2",
+      "value": "303.498",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SK-01",
+      "molecule": "rna",
+      "feature": "ESR1",
+      "value": "7.2487",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SK-01",
+      "molecule": "rna",
+      "feature": "PGR",
+      "value": "6.9335",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SO-01",
+      "molecule": "rna",
+      "feature": "ERBB2",
+      "value": "9483.46",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SO-01",
+      "molecule": "rna",
+      "feature": "ESR1",
+      "value": "14.5991",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SO-01",
+      "molecule": "rna",
+      "feature": "PGR",
+      "value": "11.6252",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SQ-01",
+      "molecule": "rna",
+      "feature": "ERBB2",
+      "value": "5585.07",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SQ-01",
+      "molecule": "rna",
+      "feature": "ESR1",
+      "value": "12833.9",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-A1-A0SQ-01",
+      "molecule": "rna",
+      "feature": "PGR",
+      "value": "8382.37",
+      "unit": "batch-normalized RSEM"
+    },
+    {
+      "sample": "TCGA-3C-AALI-01",
+      "molecule": "protein",
+      "feature": "ERBB2",
+      "value": "3.824",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-3C-AALI-01",
+      "molecule": "protein",
+      "feature": "ESR1",
+      "value": "0.0659",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-3C-AALI-01",
+      "molecule": "protein",
+      "feature": "PGR",
+      "value": "-0.5406",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-3C-AALK-01",
+      "molecule": "protein",
+      "feature": "ERBB2",
+      "value": "1.3543",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-3C-AALK-01",
+      "molecule": "protein",
+      "feature": "ESR1",
+      "value": "1.8195",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-3C-AALK-01",
+      "molecule": "protein",
+      "feature": "PGR",
+      "value": "-0.4701",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-4H-AAAK-01",
+      "molecule": "protein",
+      "feature": "ERBB2",
+      "value": "1.1094",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-4H-AAAK-01",
+      "molecule": "protein",
+      "feature": "ESR1",
+      "value": "5.2517",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-4H-AAAK-01",
+      "molecule": "protein",
+      "feature": "PGR",
+      "value": "-0.3954",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-5T-A9QA-01",
+      "molecule": "protein",
+      "feature": "ERBB2",
+      "value": "1.6035",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-5T-A9QA-01",
+      "molecule": "protein",
+      "feature": "ESR1",
+      "value": "6.2896",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-5T-A9QA-01",
+      "molecule": "protein",
+      "feature": "PGR",
+      "value": "-0.7198",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SF-01",
+      "molecule": "protein",
+      "feature": "ERBB2",
+      "value": "0.6947",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SF-01",
+      "molecule": "protein",
+      "feature": "ESR1",
+      "value": "2.1683",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SF-01",
+      "molecule": "protein",
+      "feature": "PGR",
+      "value": "-0.5889",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SH-01",
+      "molecule": "protein",
+      "feature": "ERBB2",
+      "value": "1.2122",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SH-01",
+      "molecule": "protein",
+      "feature": "ESR1",
+      "value": "-0.0346",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SH-01",
+      "molecule": "protein",
+      "feature": "PGR",
+      "value": "-0.1506",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SJ-01",
+      "molecule": "protein",
+      "feature": "ERBB2",
+      "value": "0.7842",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SJ-01",
+      "molecule": "protein",
+      "feature": "ESR1",
+      "value": "1.5106",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SJ-01",
+      "molecule": "protein",
+      "feature": "PGR",
+      "value": "-0.6085",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SK-01",
+      "molecule": "protein",
+      "feature": "ERBB2",
+      "value": "-0.5202",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SK-01",
+      "molecule": "protein",
+      "feature": "ESR1",
+      "value": "-1.8545",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SK-01",
+      "molecule": "protein",
+      "feature": "PGR",
+      "value": "-0.8181",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SO-01",
+      "molecule": "protein",
+      "feature": "ERBB2",
+      "value": "0.6943",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SO-01",
+      "molecule": "protein",
+      "feature": "ESR1",
+      "value": "-2.1359",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SO-01",
+      "molecule": "protein",
+      "feature": "PGR",
+      "value": "-0.8805",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SQ-01",
+      "molecule": "protein",
+      "feature": "ERBB2",
+      "value": "0.8109",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SQ-01",
+      "molecule": "protein",
+      "feature": "ESR1",
+      "value": "2.6481",
+      "unit": "RPPA log2 value"
+    },
+    {
+      "sample": "TCGA-A1-A0SQ-01",
+      "molecule": "protein",
+      "feature": "PGR",
+      "value": "-0.2055",
+      "unit": "RPPA log2 value"
+    }
+  ]
+}

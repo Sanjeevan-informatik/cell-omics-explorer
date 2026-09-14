@@ -1,0 +1,4 @@
+sample	chrom	position	haplotype_1	haplotype_2
+S1	demo	20	A	G
+S1	demo	40	C	T
+S2	demo	20	A	A

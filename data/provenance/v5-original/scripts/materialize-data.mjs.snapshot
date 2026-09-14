@@ -1,0 +1,22 @@
+import { cp, mkdir, readFile, rm } from 'node:fs/promises';
+import { dirname } from 'node:path';
+
+const catalog = JSON.parse(await readFile(new URL('../data/catalog/datasets.json', import.meta.url), 'utf8'));
+const publicRoot = new URL('../public/data/', import.meta.url);
+await rm(publicRoot, { recursive: true, force: true });
+
+for (const dataset of catalog.datasets) {
+  const src = new URL(`../${dataset.storage_path}`, import.meta.url);
+  const relative = dataset.public_path.replace(/^\/data\//, '');
+  const dst = new URL(relative, publicRoot);
+  await mkdir(dirname(dst.pathname), { recursive: true });
+  await cp(src, dst);
+}
+
+await mkdir(publicRoot, { recursive: true });
+await cp(new URL('../data/catalog/datasets.json', import.meta.url), new URL('catalog.json', publicRoot));
+await mkdir(new URL('knowledge/', publicRoot), { recursive: true });
+for (const name of ['unified-atlas.json','biological-hierarchy.json','legacy-explorer.json']) {
+  await cp(new URL(`../data/knowledge/${name}`, import.meta.url), new URL(`knowledge/${name}`, publicRoot));
+}
+console.log(`Materialized ${catalog.datasets.length} canonical datasets into public/data for local/browser delivery.`);

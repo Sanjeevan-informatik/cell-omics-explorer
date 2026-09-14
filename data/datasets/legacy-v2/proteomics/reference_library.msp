@@ -1,0 +1,24 @@
+Name: PEPTIDEK/2
+MW: 927.4549
+PrecursorMZ: 464.7347
+Charge: 2+
+Comment: Teaching reference spectrum for UI demonstration
+Num Peaks: 7
+147.1128 100
+227.1026 80
+276.1554 180
+391.1823 240
+504.2664 300
+605.3141 205
+702.3668 130
+
+Name: GILGYTEK/2
+PrecursorMZ: 440.7424
+Charge: 2+
+Num Peaks: 6
+147.1128 90
+276.1554 150
+377.2031 210
+540.2664 300
+597.2879 170
+710.3719 115
