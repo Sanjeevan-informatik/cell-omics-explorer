@@ -30,6 +30,7 @@ import {
   analyzeLocally,
   DistanceModel,
   SAMPLE_FASTA,
+  TreeNode,
 } from "@/lib/genome-analysis";
 import { clearSequenceWorkspace, readSequenceWorkspace, saveSequenceWorkspace } from "@/lib/sequence-workspace";
 
@@ -453,6 +454,38 @@ function DistanceHeatmap({ result }: { result: AnalysisResult }) {
   );
 }
 
+function TreePlot({ root }: { root: TreeNode }) {
+  type Positioned = { name?: string; height: number; x: number; y: number; children?: [Positioned, Positioned] };
+  const width = 680;
+  const height = 270;
+  const tips: string[] = [];
+  const collect = (node: TreeNode) => { if (node.name) tips.push(node.name); node.children?.forEach(collect); };
+  collect(root);
+  const maxHeight = Math.max(root.height, 0.0001);
+  const yFor = new Map(tips.map((tip, index) => [tip, 34 + index * ((height - 68) / Math.max(tips.length - 1, 1))]));
+  const position = (node: TreeNode): Positioned => {
+    if (node.name) return { name: node.name, height: node.height, x: width - 158, y: yFor.get(node.name) ?? height / 2 };
+    const children = node.children!.map(position) as [Positioned, Positioned];
+    return { ...node, children, x: 38 + ((maxHeight - node.height) / maxHeight) * (width - 220), y: (children[0].y + children[1].y) / 2 };
+  };
+  const positioned = position(root);
+  const lines: React.ReactNode[] = [];
+  const labels: React.ReactNode[] = [];
+  let key = 0;
+  const draw = (node: Positioned) => {
+    if (node.name) { labels.push(<text key={`label-${node.name}`} x={node.x + 12} y={node.y + 5}>{node.name.replace(/_/g, " ")}</text>); return; }
+    const [first, second] = node.children!;
+    lines.push(<line key={key++} x1={node.x} y1={first.y} x2={node.x} y2={second.y} className="tree-branch" />);
+    node.children!.forEach((child) => {
+      lines.push(<line key={key++} x1={node.x} y1={child.y} x2={child.x} y2={child.y} className="tree-branch" />);
+      lines.push(<circle key={key++} cx={node.x} cy={child.y} r="3" className="tree-node" />);
+      draw(child);
+    });
+  };
+  draw(positioned);
+  return <div className="tree-wrap"><svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="UPGMA phylogenetic tree">{lines}{labels}</svg></div>;
+}
+
 export function GenomeWorkbench() {
   const router = useRouter();
   const [fasta, setFasta] = useState(SAMPLE_FASTA);
@@ -577,7 +610,8 @@ export function GenomeWorkbench() {
               <TabsTrigger value="overview">Overview</TabsTrigger><TabsTrigger value="hierarchy">Hierarchy</TabsTrigger><TabsTrigger value="sequence">Sequence map</TabsTrigger><TabsTrigger value="variants">Variants <span className="tab-count">{result.variants.length}</span></TabsTrigger><TabsTrigger value="distances">Distances</TabsTrigger>
             </TabsList><span className="dataset-id">DEMO · ALIGNMENT_A</span></div>
             <TabsContent value="overview" className="tab-panel">
-              <section className="visual-card full-card"><div className="card-heading"><div><h3>Base composition</h3><p>Relative nucleotide abundance per sequence</p></div><span>GC content</span></div><BaseComposition result={result} /></section>
+              <section className="visual-card"><div className="card-heading"><div><h3>Base composition</h3><p>Relative nucleotide abundance per sequence</p></div><span>GC content</span></div><BaseComposition result={result} /></section>
+              <section className="visual-card"><div className="card-heading"><div><h3>Phylogenetic structure</h3><p>UPGMA from {MODEL_LABELS[model]} distances</p></div><button className="icon-action" onClick={() => download("cellomics-tree.nwk", result.tree.newick)} title="Download Newick"><Download /></button></div><TreePlot root={result.tree.root} /><div className="newick-row"><span>Newick</span><code>{result.tree.newick}</code></div></section>
             </TabsContent>
                         <TabsContent value="hierarchy" className="tab-panel">
               <HierarchicalBiologyPanel />
@@ -592,9 +626,9 @@ export function GenomeWorkbench() {
           <div className="quality-list">
             <div><span>Alignment</span><strong className="positive"><CheckCircle2 /> Valid</strong></div><div><span>Ambiguous bases</span><strong>{result.metrics.ambiguousBases}</strong></div><div><span>Transitions</span><strong>{result.metrics.transitions}</strong></div><div><span>Transversions</span><strong>{result.metrics.transversions}</strong></div><div><span>Ts/Tv ratio</span><strong>{result.metrics.transitionTransversionRatio?.toFixed(2) ?? "∞"}</strong></div>
           </div>
-          <section className="insight-card"><span className="eyebrow">Interpretation</span><h3>{result.variants.length <= 10 ? "Closely related sequences" : "Moderate sequence diversity"}</h3><p>{result.variants.length} variable sites separate these samples. Inspect the pairwise distances to compare the aligned sequences.</p><button type="button" onClick={() => setTab("distances")}>Inspect distances <ChevronRight /></button></section>
+          <section className="insight-card"><span className="eyebrow">Interpretation</span><h3>{result.variants.length <= 10 ? "Closely related sequences" : "Moderate sequence diversity"}</h3><p>{result.variants.length} variable sites separate these samples. The tree groups sequences by corrected evolutionary distance.</p><button type="button" onClick={() => setTab("distances")}>Inspect distances <ChevronRight /></button></section>
           <section className="method-card" id="methods"><span className="eyebrow">Methods</span><ol>
-            <li><span>1</span><div><strong>Validate</strong><p>Aligned FASTA and IUPAC-safe bases</p></div></li><li><span>2</span><div><strong>Compare</strong><p>Variants and pairwise distances</p></div></li><li><span>3</span><div><strong>Explore</strong><p>Position-linked sequence and molecular views</p></div></li>
+            <li><span>1</span><div><strong>Validate</strong><p>Aligned FASTA and IUPAC-safe bases</p></div></li><li><span>2</span><div><strong>Compare</strong><p>Variants and pairwise distances</p></div></li><li><span>3</span><div><strong>Infer</strong><p>UPGMA tree with Newick export</p></div></li>
           </ol></section>
           <div className="tech-stack"><span>React + TypeScript</span><span>Python + FastAPI</span><span>Docker</span></div>
         </aside>
