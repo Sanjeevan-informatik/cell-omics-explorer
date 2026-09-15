@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Dna, Download, FileUp, Play, RefreshCw } from "lucide-react";
-import { ConsensusDnaViewer } from "@/components/consensus-dna-viewer";
 import { SequenceMap } from "@/components/genome-workbench";
 import type { NucleotideDisplayMode } from "@/components/nucleobase-viewer";
 import { Badge } from "@/components/ui/badge";
@@ -176,7 +175,6 @@ export function SequenceMapPage() {
             onPositionChange={setSelectedPosition}
           />
         </section>
-        <ConsensusDnaViewer key={revision} records={result.records} selectedPosition={selectedPosition} onPositionChange={setSelectedPosition} />
       </section>
     </main>
   );

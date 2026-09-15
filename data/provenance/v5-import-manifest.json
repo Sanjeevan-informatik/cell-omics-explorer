@@ -549,9 +549,9 @@
     },
     {
       "original_path": "components/sequence-map-page.tsx",
-      "preserved_path": "components/sequence-map-page.tsx",
+      "preserved_path": "data/provenance/v5-original/components/sequence-map-page.tsx.snapshot",
       "sha256": "1de62414264551ea629593cc29aaecd31a651d595c00bc2ac28848c0b37a3032",
-      "integration": "same"
+      "integration": "adapted; original snapshot preserved"
     },
     {
       "original_path": "components/data-session.tsx",
