@@ -6,7 +6,7 @@ import { AppNavigation } from "@/components/app-navigation";
 export const metadata: Metadata = {
   title: "CellOmics Explorer | Cell and multi-omics workbench",
   description:
-    "Explore aligned DNA sequences, variant sites, evolutionary distances, and phylogenetic relationships.",
+    "Explore aligned DNA sequences, variant sites, pairwise distances, and consensus DNA models.",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 

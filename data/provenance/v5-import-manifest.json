@@ -549,9 +549,9 @@
     },
     {
       "original_path": "components/sequence-map-page.tsx",
-      "preserved_path": "components/sequence-map-page.tsx",
+      "preserved_path": "data/provenance/v5-original/components/sequence-map-page.tsx.snapshot",
       "sha256": "1de62414264551ea629593cc29aaecd31a651d595c00bc2ac28848c0b37a3032",
-      "integration": "same"
+      "integration": "adapted; original snapshot preserved"
     },
     {
       "original_path": "components/data-session.tsx",
@@ -561,15 +561,15 @@
     },
     {
       "original_path": "components/genome-workbench.tsx",
-      "preserved_path": "components/genome-workbench.tsx",
+      "preserved_path": "data/provenance/v5-original/components/genome-workbench.tsx.snapshot",
       "sha256": "6d77b6337ce42268c93fcc8858bec838e2a8974ec5b9b4a6a60856ca67dd23f6",
-      "integration": "same"
+      "integration": "adapted; original snapshot preserved"
     },
     {
       "original_path": "components/hierarchical-biology-panel.tsx",
-      "preserved_path": "components/hierarchical-biology-panel.tsx",
+      "preserved_path": "data/provenance/v5-original/components/hierarchical-biology-panel.tsx.snapshot",
       "sha256": "657cd799b103e9b7335a18792a55c895fa1e409ea229a3b3b676800913db5c73",
-      "integration": "same"
+      "integration": "adapted; original snapshot preserved"
     },
     {
       "original_path": "components/ui/badge.tsx",
