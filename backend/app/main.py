@@ -9,7 +9,7 @@ from .models import AnalysisRequest
 app = FastAPI(
     title="CellOmics API",
     version="1.0.0",
-    description="Validated DNA alignment statistics, evolutionary distances, and UPGMA trees.",
+    description="Validated DNA alignment statistics, base composition, and variable-site inspection.",
 )
 
 origins = [
@@ -33,6 +33,6 @@ def health() -> dict[str, str]:
 @app.post("/api/v1/analyze", tags=["analysis"])
 def analyze(request: AnalysisRequest) -> dict:
     try:
-        return analyze_alignment(request.fasta, request.model)
+        return analyze_alignment(request.fasta)
     except ValueError as error:
         raise HTTPException(status_code=422, detail=str(error)) from error

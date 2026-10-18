@@ -65,7 +65,6 @@ const NODE_ICONS: Record<string, ComponentType<{ className?: string }>> = {
   imaging: GalleryVerticalEnd,
   pathways: Network,
   immunomics: Network,
-  evolution: GitBranch,
 };
 
 function ProteinRibbon({ selectedResidueIndex }: { selectedResidueIndex: number }) {
@@ -240,7 +239,7 @@ export function HierarchicalBiologyPanel() {
           <ul className="callout-list">
             <li><strong>Keep together:</strong> DNA, DNA features, RNA, protein, and peptide/MS because they directly map from sequence to function.</li>
             <li><strong>Separate:</strong> metabolite, lipid, and glycan because they are chemically important but not arranged as a simple linear central-dogma chain.</li>
-            <li><strong>Supportive context:</strong> epigenome, chromatin, imaging, pathways, immunomics, and phylogeny remain available as adjacent functional panels.</li>
+            <li><strong>Supportive context:</strong> epigenome, chromatin, imaging, pathways, and immunomics remain available as adjacent functional panels.</li>
           </ul>
         </article>
       </section>

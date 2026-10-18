@@ -300,20 +300,6 @@
     "synthetic": true
   },
   {
-    "id": "clones",
-    "category": "evolution",
-    "title": "Clone fractions",
-    "filename": "clone_fractions.tsv",
-    "description": "Processed clone fractions; no tree inference.",
-    "columns": [
-      "clone",
-      "parent",
-      "fraction"
-    ],
-    "units": "Fraction: 0–1",
-    "synthetic": true
-  },
-  {
     "id": "integration",
     "category": "multiomics",
     "title": "Multi-omics evidence",

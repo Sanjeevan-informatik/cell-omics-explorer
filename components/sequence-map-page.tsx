@@ -7,16 +7,9 @@ import { SequenceMap } from "@/components/genome-workbench";
 import type { NucleotideDisplayMode } from "@/components/nucleobase-viewer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { AnalysisResult, analyzeLocally, DistanceModel, SAMPLE_FASTA } from "@/lib/genome-analysis";
+import { AnalysisResult, analyzeLocally, SAMPLE_FASTA } from "@/lib/genome-analysis";
 import { clearSequenceWorkspace, readSequenceWorkspace, saveSequenceWorkspace } from "@/lib/sequence-workspace";
-
-const MODEL_LABELS: Record<DistanceModel, string> = {
-  "p-distance": "p-distance",
-  jc69: "Jukes–Cantor (JC69)",
-  k2p: "Kimura 2-parameter",
-};
 
 function downloadFasta(fasta: string) {
   const url = URL.createObjectURL(new Blob([fasta], { type: "text/plain" }));
@@ -29,10 +22,8 @@ function downloadFasta(fasta: string) {
 
 export function SequenceMapPage() {
   const [fasta, setFasta] = useState(SAMPLE_FASTA);
-  const [model, setModel] = useState<DistanceModel>("jc69");
   const [activeFasta, setActiveFasta] = useState(SAMPLE_FASTA);
-  const [activeModel, setActiveModel] = useState<DistanceModel>("jc69");
-  const [result, setResult] = useState<AnalysisResult>(() => analyzeLocally(SAMPLE_FASTA, "jc69"));
+  const [result, setResult] = useState<AnalysisResult>(() => analyzeLocally(SAMPLE_FASTA));
   const [selectedPosition, setSelectedPosition] = useState(0);
   const [displayMode, setDisplayMode] = useState<NucleotideDisplayMode>("letters");
   const [revision, setRevision] = useState(0);
@@ -45,11 +36,9 @@ export function SequenceMapPage() {
       const saved = readSequenceWorkspace();
       if (!saved) return;
       try {
-        const analyzed = analyzeLocally(saved.fasta, saved.model);
+        const analyzed = analyzeLocally(saved.fasta);
         setFasta(saved.fasta);
-        setModel(saved.model);
         setActiveFasta(saved.fasta);
-        setActiveModel(saved.model);
         setResult(analyzed);
         setSelectedPosition(Math.min(saved.selectedPosition, analyzed.sequenceLength - 1));
         setRevision((current) => current + 1);
@@ -64,15 +53,14 @@ export function SequenceMapPage() {
   const runAnalysis = () => {
     setError(null);
     try {
-      const analyzed = analyzeLocally(fasta, model);
+      const analyzed = analyzeLocally(fasta);
       const nextPosition = Math.max(0, (analyzed.variants[0]?.position ?? 1) - 1);
       setResult(analyzed);
       setActiveFasta(fasta);
-      setActiveModel(model);
       setSelectedPosition(nextPosition);
       setRevision((current) => current + 1);
       setRestored(true);
-      saveSequenceWorkspace({ fasta, model, selectedPosition: nextPosition });
+      saveSequenceWorkspace({ fasta, selectedPosition: nextPosition });
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "The alignment could not be analyzed.");
     }
@@ -89,13 +77,11 @@ export function SequenceMapPage() {
   };
 
   const resetWorkspace = () => {
-    const analyzed = analyzeLocally(SAMPLE_FASTA, "jc69");
+    const analyzed = analyzeLocally(SAMPLE_FASTA);
     const nextPosition = Math.max(0, (analyzed.variants[0]?.position ?? 1) - 1);
     clearSequenceWorkspace();
     setFasta(SAMPLE_FASTA);
-    setModel("jc69");
     setActiveFasta(SAMPLE_FASTA);
-    setActiveModel("jc69");
     setResult(analyzed);
     setSelectedPosition(nextPosition);
     setRevision((current) => current + 1);
@@ -103,7 +89,7 @@ export function SequenceMapPage() {
   };
 
   const preserveWorkspace = () => {
-    saveSequenceWorkspace({ fasta: activeFasta, model: activeModel, selectedPosition });
+    saveSequenceWorkspace({ fasta: activeFasta, selectedPosition });
   };
 
   return (
@@ -127,22 +113,17 @@ export function SequenceMapPage() {
           <div><span>Samples</span><strong>{result.records.length}</strong></div>
           <div><span>Positions</span><strong>{result.sequenceLength.toLocaleString()}</strong></div>
           <div><span>Variable sites</span><strong>{result.variants.length}</strong></div>
-          <div><span>Distance model</span><strong>{MODEL_LABELS[activeModel]}</strong></div>
+          <div><span>Ambiguous bases</span><strong>{result.metrics.ambiguousBases.toLocaleString()}</strong></div>
         </div>
 
         <details className="sequence-data-editor">
-          <summary><span><strong>Change alignment or model</strong><small>The map remains visible until you run the updated analysis.</small></span><span className="editor-summary-action">Edit data</span></summary>
+          <summary><span><strong>Change alignment</strong><small>The map remains visible until you run the updated analysis.</small></span><span className="editor-summary-action">Edit data</span></summary>
           <div className="sequence-editor-body">
             <div className="sequence-editor-input">
               <label htmlFor="full-page-fasta">Aligned FASTA</label>
               <Textarea id="full-page-fasta" value={fasta} onChange={(event) => setFasta(event.target.value)} spellCheck={false} />
             </div>
             <div className="sequence-editor-controls">
-              <label htmlFor="full-page-model">Substitution model</label>
-              <Select value={model} onValueChange={(value) => setModel(value as DistanceModel)}>
-                <SelectTrigger id="full-page-model"><SelectValue /></SelectTrigger>
-                <SelectContent><SelectItem value="p-distance">p-distance</SelectItem><SelectItem value="jc69">Jukes–Cantor (JC69)</SelectItem><SelectItem value="k2p">Kimura 2-parameter</SelectItem></SelectContent>
-              </Select>
               <input ref={fileInput} type="file" accept=".fa,.fas,.fasta,.txt,text/plain" hidden onChange={(event) => selectFile(event.target.files?.[0])} />
               <Button variant="outline" onClick={() => fileInput.current?.click()}><FileUp /> Upload FASTA</Button>
               <Button variant="ghost" onClick={resetWorkspace}><RefreshCw /> Use example</Button>
