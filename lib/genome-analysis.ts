@@ -1,5 +1,3 @@
-export type DistanceModel = "p-distance" | "jc69" | "k2p";
-
 export type SequenceRecord = { id: string; sequence: string };
 export type Composition = {
   id: string;
@@ -16,17 +14,11 @@ export type VariantSite = {
   alternates: string[];
   counts: Record<string, number>;
 };
-export type TreeNode = {
-  name?: string;
-  height: number;
-  children?: [TreeNode, TreeNode];
-};
 export type AnalysisResult = {
   records: SequenceRecord[];
   sequenceLength: number;
   composition: Composition[];
   variants: VariantSite[];
-  matrix: { samples: string[]; values: Array<Array<number | null>> };
   metrics: {
     meanGcPercent: number;
     ambiguousBases: number;
@@ -34,7 +26,6 @@ export type AnalysisResult = {
     transversions: number;
     transitionTransversionRatio: number | null;
   };
-  tree: { root: TreeNode; newick: string };
 };
 
 const DNA = new Set(["A", "C", "G", "T", "N", "-", "?"]);
@@ -87,75 +78,7 @@ export function parseFasta(input: string): SequenceRecord[] {
   return records;
 }
 
-function correctedDistance(first: string, second: string, model: DistanceModel) {
-  let comparable = 0;
-  let differences = 0;
-  let transitions = 0;
-  let transversions = 0;
-  for (let index = 0; index < first.length; index += 1) {
-    const a = first[index];
-    const b = second[index];
-    if (!"ACGT".includes(a) || !"ACGT".includes(b)) continue;
-    comparable += 1;
-    if (a !== b) {
-      differences += 1;
-      if (TRANSITIONS.has(`${a}${b}`)) transitions += 1;
-      else transversions += 1;
-    }
-  }
-  if (!comparable) return null;
-  const p = differences / comparable;
-  if (model === "p-distance") return p;
-  if (model === "jc69") {
-    const term = 1 - (4 * p) / 3;
-    return term > 0 ? -0.75 * Math.log(term) : null;
-  }
-  const transitionRate = transitions / comparable;
-  const transversionRate = transversions / comparable;
-  const firstTerm = 1 - 2 * transitionRate - transversionRate;
-  const secondTerm = 1 - 2 * transversionRate;
-  return firstTerm > 0 && secondTerm > 0
-    ? -0.5 * Math.log(firstTerm) - 0.25 * Math.log(secondTerm)
-    : null;
-}
-
-function buildTree(samples: string[], matrix: Array<Array<number | null>>) {
-  type Cluster = { members: number[]; node: TreeNode; newick: string };
-  let clusters: Cluster[] = samples.map((sample, index) => ({
-    members: [index],
-    node: { name: sample, height: 0 },
-    newick: sample.replace(/[^A-Za-z0-9_.-]/g, "_"),
-  }));
-  const averageDistance = (a: Cluster, b: Cluster) => {
-    const values = a.members.flatMap((left) =>
-      b.members.map((right) => matrix[left][right]).filter((value): value is number => value !== null),
-    );
-    return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : Infinity;
-  };
-  while (clusters.length > 1) {
-    let best: [number, number, number] = [0, 1, averageDistance(clusters[0], clusters[1])];
-    for (let i = 0; i < clusters.length; i += 1) {
-      for (let j = i + 1; j < clusters.length; j += 1) {
-        const distance = averageDistance(clusters[i], clusters[j]);
-        if (distance < best[2]) best = [i, j, distance];
-      }
-    }
-    const [i, j, distance] = best;
-    const left = clusters[i];
-    const right = clusters[j];
-    const height = Number.isFinite(distance) ? distance / 2 : Math.max(left.node.height, right.node.height) + 0.01;
-    const merged: Cluster = {
-      members: [...left.members, ...right.members],
-      node: { height, children: [left.node, right.node] },
-      newick: `(${left.newick}:${Math.max(0, height - left.node.height).toFixed(5)},${right.newick}:${Math.max(0, height - right.node.height).toFixed(5)})`,
-    };
-    clusters = clusters.filter((_, index) => index !== i && index !== j);
-    clusters.push(merged);
-  }
-  return { root: clusters[0].node, newick: `${clusters[0].newick};` };
-}
-
-export function analyzeLocally(input: string, model: DistanceModel): AnalysisResult {
+export function analyzeLocally(input: string): AnalysisResult {
   const records = parseFasta(input);
   const sequenceLength = records[0].sequence.length;
   const composition = records.map((record) => {
@@ -184,9 +107,6 @@ export function analyzeLocally(input: string, model: DistanceModel): AnalysisRes
       }
     }
   }
-  const values = records.map((first, row) => records.map((second, column) =>
-    row === column ? 0 : correctedDistance(first.sequence, second.sequence, model),
-  ));
   const ambiguousBases = composition.reduce((sum, row) => sum + row.N, 0);
   const meanGcPercent = composition.reduce((sum, row) => sum + row.gcPercent, 0) / composition.length;
   return {
@@ -194,7 +114,6 @@ export function analyzeLocally(input: string, model: DistanceModel): AnalysisRes
     sequenceLength,
     composition,
     variants,
-    matrix: { samples: records.map((record) => record.id), values },
     metrics: {
       meanGcPercent,
       ambiguousBases,
@@ -202,6 +121,5 @@ export function analyzeLocally(input: string, model: DistanceModel): AnalysisRes
       transversions,
       transitionTransversionRatio: transversions ? transitions / transversions : null,
     },
-    tree: buildTree(records.map((record) => record.id), values),
   };
 }

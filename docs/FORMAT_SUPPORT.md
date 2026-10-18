@@ -16,7 +16,7 @@ The native React upload workspace replaces the old single-file preview. Select t
 | FCS and image files | Export-to-table guidance; no image viewer or event decoder |
 | Compressed archives | Decompress externally; archive contents are never extracted |
 
-24 synthetic examples are available under `/data/` and in `data/templates/`. The catalog covers aligned DNA, reads, variants, intervals, haplotypes, methylation, accessibility, Hi-C contacts, expression, isoforms, cell embeddings, spatial spots, protein abundance, MS/MS peaks, PTMs, metabolites, lipids, glycans, immune repertoire, cytometry events, image measurements, network edges, clone fractions and multi-omics evidence.
+23 synthetic examples are available under `/data/` and in `data/templates/`. The catalog covers aligned DNA, reads, variants, intervals, haplotypes, methylation, accessibility, Hi-C contacts, expression, isoforms, cell embeddings, spatial spots, protein abundance, MS/MS peaks, PTMs, metabolites, lipids, glycans, immune repertoire, cytometry events, image measurements, network edges and multi-omics evidence.
 
 5 MiB per text file; 20 MiB total previews; 20 files per batch; 40 session entries. Delimited tables are capped at 10,000 data rows. Structured previews retain up to 200 rows and show up to 100 matching rows. Missing values are preserved, never filled with zero. Ready means the table can be inspected, not that all biological semantics are validated.
 

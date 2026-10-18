@@ -10,7 +10,6 @@ export const WORKSPACES = [
   { id: "immunomics", label: "Immune repertoire", group: "Cells & systems", detail: "Example CDR3 sequences, V/J assignments, and clonotype frequencies." },
   { id: "imaging", label: "Imaging & cytometry", group: "Cells & systems", detail: "Synthetic microscopy and cytometry examples." },
   { id: "pathways", label: "Pathways", group: "Cells & systems", detail: "Illustrative signaling relationships; not inferred from uploaded data." },
-  { id: "evolution", label: "Cell evolution", group: "Cells & systems", detail: "A conceptual tumor-clone tree; DNA analysis separately supports UPGMA." },
   { id: "multiomics", label: "Multi-omics evidence", group: "Cells & systems", detail: "An EGFR-centered synthetic evidence table connecting molecular layers." },
 ] as const;
 export type WorkspaceId = typeof WORKSPACES[number]["id"];

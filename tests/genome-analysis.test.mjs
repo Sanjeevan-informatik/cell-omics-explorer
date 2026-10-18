@@ -26,12 +26,36 @@ test("rejects unaligned FASTA", async () => {
   assert.throws(() => parseFasta(">a\nACGT\n>b\nACG\n"), /same length/);
 });
 
-test("returns variants, symmetric distances and Newick", async () => {
+test("returns alignment, composition and variable-site results", async () => {
   const { analyzeLocally } = await vite.ssrLoadModule("/lib/genome-analysis.ts");
-  const result = analyzeLocally(">reference\nACGTACGT\n>sample\nACGTGCGT\n", "jc69");
+  const result = analyzeLocally(">reference\nACGTACGT\n>sample\nACGTGCGT\n");
   assert.deepEqual(result.variants.map((site) => site.position), [5]);
-  assert.equal(result.matrix.values[0][1], result.matrix.values[1][0]);
-  assert.match(result.tree.newick, /;$/);
+  assert.deepEqual(Object.keys(result).sort(), ["composition", "metrics", "records", "sequenceLength", "variants"]);
+  assert.equal(result.composition[0].gcPercent, 50);
+  assert.deepEqual(result.variants[0].counts, { A: 1, G: 1 });
+});
+
+test("restores earlier sequence sessions without their obsolete settings", async () => {
+  const { readSequenceWorkspace, saveSequenceWorkspace, SEQUENCE_WORKSPACE_KEY } =
+    await vite.ssrLoadModule("/lib/sequence-workspace.ts");
+  const fasta = ">a\nACGT\n>b\nACGA\n";
+  const values = new Map([[SEQUENCE_WORKSPACE_KEY, JSON.stringify({
+    fasta, selectedPosition: 3, model: "legacy-setting",
+  })]]);
+  const previousWindow = globalThis.window;
+  globalThis.window = { sessionStorage: {
+    getItem: (key) => values.get(key) ?? null,
+    setItem: (key, value) => values.set(key, value),
+  } };
+  try {
+    const restored = readSequenceWorkspace();
+    assert.deepEqual(restored, { fasta, selectedPosition: 3 });
+    assert.equal(saveSequenceWorkspace(restored), true);
+    assert.deepEqual(JSON.parse(values.get(SEQUENCE_WORKSPACE_KEY)), restored);
+  } finally {
+    if (previousWindow === undefined) delete globalThis.window;
+    else globalThis.window = previousWindow;
+  }
 });
 
 test("defines complete heavy-atom graphs for the four DNA nucleobases", async () => {

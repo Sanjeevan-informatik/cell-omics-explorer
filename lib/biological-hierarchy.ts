@@ -46,9 +46,9 @@ export const HIERARCHY_GROUPS = [
   },
   {
     id: "systems",
-    title: "Systems and evolution",
-    subtitle: "Network, immune, and phylogenetic context.",
-    nodes: ["pathways", "immunomics", "evolution"],
+    title: "Systems and immunity",
+    subtitle: "Network and immune context.",
+    nodes: ["pathways", "immunomics"],
   },
 ] as const;
 
@@ -212,15 +212,5 @@ export const HIERARCHY_NODES: Record<string, HierarchyNode> = {
     details: ["V(D)J usage", "CDR3 clonotypes", "Antigen recognition"],
     structure2d: ["CDR3 sequence", "Rearrangement map", "Clonotype table"],
     structure3d: ["Receptor model", "Receptor–HLA concept", "Binding loop context"],
-  },
-  evolution: {
-    id: "evolution",
-    label: "Cell evolution / phylogeny",
-    subtitle: "Lineages and trees",
-    description: "Evolutionary relationships unify variant patterns, sequence distance, and lineage progression.",
-    group: "systems",
-    details: ["Distance matrix", "Tree topology", "Clonal progression"],
-    structure2d: ["Phylogenetic tree", "Clone diagram", "Mutation table"],
-    structure3d: ["3D lineage landscape", "Tumor clone space", "Tree-in-space concept"],
   },
 };

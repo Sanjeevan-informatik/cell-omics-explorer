@@ -22,27 +22,18 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BaseStructureGlyph, NucleobasePanel, type NucleotideDisplayMode } from "@/components/nucleobase-viewer";
 import { HierarchicalBiologyPanel } from "@/components/hierarchical-biology-panel";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import {
   AnalysisResult,
   analyzeLocally,
-  DistanceModel,
   SAMPLE_FASTA,
-  TreeNode,
 } from "@/lib/genome-analysis";
 import { clearSequenceWorkspace, readSequenceWorkspace, saveSequenceWorkspace } from "@/lib/sequence-workspace";
 
 const BASE_COLORS: Record<string, string> = {
   A: "#33d6a6", C: "#4d8dff", G: "#f4b942", T: "#f06d91", N: "#8592a6",
 };
-const MODEL_LABELS: Record<DistanceModel, string> = {
-  "p-distance": "p-distance",
-  jc69: "Jukes–Cantor (JC69)",
-  k2p: "Kimura 2-parameter",
-};
-
 const ALIGNMENT_LABEL_WIDTH = 148;
 const ALIGNMENT_ZOOM = {
   Compact: 22,
@@ -430,68 +421,11 @@ export function SequenceMap({
   );
 }
 
-function DistanceHeatmap({ result }: { result: AnalysisResult }) {
-  const finite = result.matrix.values.flat().filter((value): value is number => value !== null);
-  const maximum = Math.max(...finite, 0.001);
-  const columns = `minmax(118px, 1.4fr) repeat(${result.matrix.samples.length}, minmax(54px, 1fr))`;
-  return (
-    <div className="heatmap-scroll"><div className="heatmap" style={{ gridTemplateColumns: columns }}>
-      <div />{result.matrix.samples.map((sample, index) => <div className="heatmap-column" key={sample}>S{index + 1}</div>)}
-      {result.matrix.samples.map((sample, row) => (
-        <div key={sample} style={{ display: "contents" }}>
-          <div className="heatmap-label">{sample.replace(/_/g, " ")}</div>
-          {result.matrix.values[row].map((value, column) => {
-            const intensity = value === null ? 0 : value / maximum;
-            return <div className={`heatmap-cell ${value === null ? "is-null" : ""}`} key={`${row}-${column}`}
-              style={{ background: value === null ? undefined : `rgba(77, 141, 255, ${0.08 + intensity * 0.78})` }}
-              title={`${sample} × ${result.matrix.samples[column]}: ${value === null ? "saturated" : value.toFixed(5)}`}>
-              {value === null ? "—" : value.toFixed(3)}
-            </div>;
-          })}
-        </div>
-      ))}
-    </div></div>
-  );
-}
-
-function TreePlot({ root }: { root: TreeNode }) {
-  type Positioned = { name?: string; height: number; x: number; y: number; children?: [Positioned, Positioned] };
-  const width = 680;
-  const height = 270;
-  const tips: string[] = [];
-  const collect = (node: TreeNode) => { if (node.name) tips.push(node.name); node.children?.forEach(collect); };
-  collect(root);
-  const maxHeight = Math.max(root.height, 0.0001);
-  const yFor = new Map(tips.map((tip, index) => [tip, 34 + index * ((height - 68) / Math.max(tips.length - 1, 1))]));
-  const position = (node: TreeNode): Positioned => {
-    if (node.name) return { name: node.name, height: node.height, x: width - 158, y: yFor.get(node.name) ?? height / 2 };
-    const children = node.children!.map(position) as [Positioned, Positioned];
-    return { ...node, children, x: 38 + ((maxHeight - node.height) / maxHeight) * (width - 220), y: (children[0].y + children[1].y) / 2 };
-  };
-  const positioned = position(root);
-  const lines: React.ReactNode[] = [];
-  const labels: React.ReactNode[] = [];
-  let key = 0;
-  const draw = (node: Positioned) => {
-    if (node.name) { labels.push(<text key={`label-${node.name}`} x={node.x + 12} y={node.y + 5}>{node.name.replace(/_/g, " ")}</text>); return; }
-    const [first, second] = node.children!;
-    lines.push(<line key={key++} x1={node.x} y1={first.y} x2={node.x} y2={second.y} className="tree-branch" />);
-    node.children!.forEach((child) => {
-      lines.push(<line key={key++} x1={node.x} y1={child.y} x2={child.x} y2={child.y} className="tree-branch" />);
-      lines.push(<circle key={key++} cx={node.x} cy={child.y} r="3" className="tree-node" />);
-      draw(child);
-    });
-  };
-  draw(positioned);
-  return <div className="tree-wrap"><svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="UPGMA phylogenetic tree">{lines}{labels}</svg></div>;
-}
-
 export function GenomeWorkbench() {
   const router = useRouter();
   const [fasta, setFasta] = useState(SAMPLE_FASTA);
-  const [model, setModel] = useState<DistanceModel>("jc69");
   const [tab, setTab] = useState("overview");
-  const [result, setResult] = useState(() => analyzeLocally(SAMPLE_FASTA, "jc69"));
+  const [result, setResult] = useState(() => analyzeLocally(SAMPLE_FASTA));
   const [sequencePosition, setSequencePosition] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -506,8 +440,7 @@ export function GenomeWorkbench() {
       if (!saved) return;
       try {
         setFasta(saved.fasta);
-        setModel(saved.model);
-        setResult(analyzeLocally(saved.fasta, saved.model));
+        setResult(analyzeLocally(saved.fasta));
         setSequencePosition(saved.selectedPosition);
         setEngine("browser");
       } catch {
@@ -522,7 +455,7 @@ export function GenomeWorkbench() {
     try {
       if (apiBase) {
         const response = await fetch(`${apiBase}/api/v1/analyze`, {
-          method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ fasta, model }),
+          method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ fasta }),
         });
         if (!response.ok) {
           const detail = await response.json().catch(() => null);
@@ -532,9 +465,9 @@ export function GenomeWorkbench() {
         setResult(analyzed); setEngine("api");
       } else {
         await new Promise((resolve) => setTimeout(resolve, 260));
-        setResult(analyzeLocally(fasta, model)); setEngine("browser");
+        setResult(analyzeLocally(fasta)); setEngine("browser");
       }
-      saveSequenceWorkspace({ fasta, model, selectedPosition: 0 });
+      saveSequenceWorkspace({ fasta, selectedPosition: 0 });
       setSequencePosition(0);
     } catch (caught) { setError(caught instanceof Error ? caught.message : "Analysis failed."); }
     finally { setLoading(false); }
@@ -548,12 +481,12 @@ export function GenomeWorkbench() {
 
   const openSequencePage = (selectedPosition: number) => {
     try {
-      analyzeLocally(fasta, model);
+      analyzeLocally(fasta);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Run a valid alignment before opening the full sequence page.");
       return;
     }
-    if (!saveSequenceWorkspace({ fasta, model, selectedPosition })) {
+    if (!saveSequenceWorkspace({ fasta, selectedPosition })) {
       setError("Your browser blocked session storage, so the full page was not opened to avoid losing this alignment.");
       return;
     }
@@ -579,14 +512,6 @@ export function GenomeWorkbench() {
             <Button variant="outline" onClick={() => fileInput.current?.click()}><FileUp /> Upload</Button>
             <Button variant="ghost" onClick={() => { clearSequenceWorkspace(); setFasta(SAMPLE_FASTA); setSequencePosition(0); setError(null); }}><RefreshCw /> Reset</Button>
           </div>
-          <div className="control-block">
-            <label htmlFor="model-select">Substitution model</label>
-            <Select value={model} onValueChange={(value) => setModel(value as DistanceModel)}>
-              <SelectTrigger id="model-select" className="w-full"><SelectValue /></SelectTrigger>
-              <SelectContent><SelectItem value="p-distance">p-distance</SelectItem><SelectItem value="jc69">Jukes–Cantor (JC69)</SelectItem><SelectItem value="k2p">Kimura 2-parameter</SelectItem></SelectContent>
-            </Select>
-            <p>{model === "jc69" ? "Corrects for multiple substitutions with equal base frequencies." : model === "k2p" ? "Models transitions and transversions at different rates." : "Observed mismatch proportion without evolutionary correction."}</p>
-          </div>
           {error && <div className="error-message" role="alert">{error}</div>}
           <Button className="analyze-button" size="lg" onClick={runAnalysis} disabled={loading}>{loading ? <LoaderCircle className="spin" /> : <Play />}{loading ? "Analyzing…" : "Run analysis"}</Button>
           <div className="privacy-note"><ShieldCheck /><span><strong>Privacy by design</strong>Demo analysis stays in your browser unless an API is configured.</span></div>
@@ -596,7 +521,7 @@ export function GenomeWorkbench() {
             <div><span className="eyebrow">Analysis 02</span><h2>Sequence and structure overview</h2></div>
             <div className="analysis-actions">
               <button type="button" onClick={() => download("cellomics-report.json", JSON.stringify(result, null, 2), "application/json")}><Download /> Report</button>
-              <span className="analysis-state"><CheckCircle2 /> Ready <i>{MODEL_LABELS[model]}</i></span>
+              <span className="analysis-state"><CheckCircle2 /> Alignment inspected</span>
             </div>
           </div>
           <div className="metrics-grid">
@@ -607,18 +532,17 @@ export function GenomeWorkbench() {
           </div>
           <Tabs value={tab} onValueChange={setTab} className="analysis-tabs">
             <div className="tabs-header"><TabsList variant="line">
-              <TabsTrigger value="overview">Overview</TabsTrigger><TabsTrigger value="hierarchy">Hierarchy</TabsTrigger><TabsTrigger value="sequence">Sequence map</TabsTrigger><TabsTrigger value="variants">Variants <span className="tab-count">{result.variants.length}</span></TabsTrigger><TabsTrigger value="distances">Distances</TabsTrigger>
-            </TabsList><span className="dataset-id">DEMO · ALIGNMENT_A</span></div>
+              <TabsTrigger value="overview">Overview</TabsTrigger><TabsTrigger value="hierarchy">Hierarchy</TabsTrigger><TabsTrigger value="sequence">Sequence map</TabsTrigger><TabsTrigger value="variants">Variants <span className="tab-count">{result.variants.length}</span></TabsTrigger>
+            </TabsList><span className="dataset-id">ALIGNED FASTA</span></div>
             <TabsContent value="overview" className="tab-panel">
               <section className="visual-card"><div className="card-heading"><div><h3>Base composition</h3><p>Relative nucleotide abundance per sequence</p></div><span>GC content</span></div><BaseComposition result={result} /></section>
-              <section className="visual-card"><div className="card-heading"><div><h3>Phylogenetic structure</h3><p>UPGMA from {MODEL_LABELS[model]} distances</p></div><button className="icon-action" onClick={() => download("cellomics-tree.nwk", result.tree.newick)} title="Download Newick"><Download /></button></div><TreePlot root={result.tree.root} /><div className="newick-row"><span>Newick</span><code>{result.tree.newick}</code></div></section>
+              <section className="visual-card"><div className="card-heading"><div><h3>Variable-site overview</h3><p>Observed bases relative to {result.records[0].id}</p></div><span>{result.variants.length} sites</span></div><VariantMap result={result} /></section>
             </TabsContent>
-                        <TabsContent value="hierarchy" className="tab-panel">
+            <TabsContent value="hierarchy" className="tab-panel">
               <HierarchicalBiologyPanel />
             </TabsContent>
-<TabsContent value="sequence" className="tab-panel"><section className="visual-card full-card"><div className="card-heading"><div><h3>DNA position explorer</h3><p>Linked whole-sequence map and base-by-base alignment</p></div><span>All {result.sequenceLength.toLocaleString()} positions</span></div><SequenceMap key={`${result.records.length}-${result.sequenceLength}-${result.variants.map((variant) => variant.position).join("-")}`} result={result} defaultPosition={sequencePosition} onPositionChange={setSequencePosition} onOpenFullPage={openSequencePage} /></section></TabsContent>
+            <TabsContent value="sequence" className="tab-panel"><section className="visual-card full-card"><div className="card-heading"><div><h3>DNA position explorer</h3><p>Linked whole-sequence map and base-by-base alignment</p></div><span>All {result.sequenceLength.toLocaleString()} positions</span></div><SequenceMap key={`${result.records.length}-${result.sequenceLength}-${result.variants.map((variant) => variant.position).join("-")}`} result={result} defaultPosition={sequencePosition} onPositionChange={setSequencePosition} onOpenFullPage={openSequencePage} /></section></TabsContent>
             <TabsContent value="variants" className="tab-panel"><section className="visual-card full-card"><div className="card-heading"><div><h3>Variant landscape</h3><p>Variable positions relative to {result.records[0].id}</p></div><span>{result.variants.length} sites</span></div><VariantMap result={result} /></section></TabsContent>
-            <TabsContent value="distances" className="tab-panel"><section className="visual-card full-card"><div className="card-heading"><div><h3>Pairwise distance matrix</h3><p>{MODEL_LABELS[model]} substitutions per site</p></div><span>Darker = farther</span></div><DistanceHeatmap result={result} /></section></TabsContent>
           </Tabs>
         </section>
         <aside className="insight-rail">
@@ -626,9 +550,9 @@ export function GenomeWorkbench() {
           <div className="quality-list">
             <div><span>Alignment</span><strong className="positive"><CheckCircle2 /> Valid</strong></div><div><span>Ambiguous bases</span><strong>{result.metrics.ambiguousBases}</strong></div><div><span>Transitions</span><strong>{result.metrics.transitions}</strong></div><div><span>Transversions</span><strong>{result.metrics.transversions}</strong></div><div><span>Ts/Tv ratio</span><strong>{result.metrics.transitionTransversionRatio?.toFixed(2) ?? "∞"}</strong></div>
           </div>
-          <section className="insight-card"><span className="eyebrow">Interpretation</span><h3>{result.variants.length <= 10 ? "Closely related sequences" : "Moderate sequence diversity"}</h3><p>{result.variants.length} variable sites separate these samples. The tree groups sequences by corrected evolutionary distance.</p><button type="button" onClick={() => setTab("distances")}>Inspect distances <ChevronRight /></button></section>
+          <section className="insight-card"><span className="eyebrow">Alignment summary</span><h3>{result.variants.length} variable sites</h3><p>Inspect observed base differences across {result.sequenceLength.toLocaleString()} alignment columns and {result.records.length} samples.</p><button type="button" onClick={() => setTab("variants")}>Inspect variants <ChevronRight /></button></section>
           <section className="method-card" id="methods"><span className="eyebrow">Methods</span><ol>
-            <li><span>1</span><div><strong>Validate</strong><p>Aligned FASTA and IUPAC-safe bases</p></div></li><li><span>2</span><div><strong>Compare</strong><p>Variants and pairwise distances</p></div></li><li><span>3</span><div><strong>Infer</strong><p>UPGMA tree with Newick export</p></div></li>
+            <li><span>1</span><div><strong>Validate</strong><p>Aligned FASTA and supported DNA bases</p></div></li><li><span>2</span><div><strong>Inspect</strong><p>Base composition and variable sites</p></div></li><li><span>3</span><div><strong>Export</strong><p>JSON report and aligned FASTA</p></div></li>
           </ol></section>
           <div className="tech-stack"><span>React + TypeScript</span><span>Python + FastAPI</span><span>Docker</span></div>
         </aside>

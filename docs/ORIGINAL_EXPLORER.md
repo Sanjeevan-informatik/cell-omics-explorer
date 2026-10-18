@@ -1,10 +1,10 @@
 # CellOmics Explorer Studio
 
-Interactive **cell-to-multi-omics visualization and data-management studio** that extends the ideas in [Sanjeevan-informatik/omics-data-visualization-and-managment-management](https://github.com/Sanjeevan-informatik/omics-data-visualization-and-managment-management) from a DNA/phylogenetics workbench into an integrated human-cell molecular explorer.
+Interactive **cell-to-multi-omics visualization and data-management studio** that extends the ideas in [Sanjeevan-informatik/omics-data-visualization-and-managment-management](https://github.com/Sanjeevan-informatik/omics-data-visualization-and-managment-management) from a DNA sequence workbench into an integrated human-cell molecular explorer.
 
 > **Live application:** `cell-omics-explorer`
 
-CellOmics Explorer starts from an interactive human-cell diagram and connects each organelle to the molecular data that can be measured there. It links biological location → molecule → experiment → raw/processed file → visualization → interpretation, while preserving the GenomeVista-style genome and phylogenetic concepts as the **Genome & Variants** layer.
+CellOmics Explorer starts from an interactive human-cell diagram and connects each organelle to the molecular data that can be measured there. It links biological location → molecule → experiment → raw/processed file → visualization → interpretation, with sequence inspection and variant concepts in the **Genome & Variants** layer.
 
 ## What it demonstrates
 
@@ -19,7 +19,6 @@ CellOmics Explorer starts from an interactive human-cell diagram and connects ea
 - **Immunomics:** TCR/BCR/HLA concepts, CDR3 sequences, V/J assignments, clonotypes and AIRR-style repertoire data.
 - **Imaging & cytometry:** microscopy/histology concepts, FCS-like cell events, cell markers and imaging file families.
 - **Interactions & pathways:** gene/protein/metabolite networks, signaling relationships and phenotype links.
-- **Cell evolution:** tumor clone relationships, somatic events and phylogenetic-style reconstruction concepts.
 - **Multi-omics integration:** one gene or locus linked across DNA → epigenome → RNA → protein → phosphoproteome → metabolite → phenotype.
 - **Data loading:** local recognition/preview of small text files and routing guidance for large scientific binary formats.
 
@@ -224,19 +223,7 @@ EGFR → RAS / PI3K → MAPK / AKT → Proliferation
 
 Nodes can conceptually receive evidence from genomic variants, RNA expression, protein abundance, phosphorylation and metabolites.
 
-### 11. Cell Evolution
-
-Representative tumor-clone model:
-
-```text
-Normal → TP53-mutant ancestor
-            ├── KRAS clone → EGFR-amplified descendant
-            └── CNV clone
-```
-
-This workspace is designed to reuse the phylogenetic ideas from GenomeVista for somatic evolution while keeping the biological assumptions distinct from ordinary species-tree inference.
-
-### 12. Multi-Omics Integration
+### 11. Multi-Omics Integration
 
 The bundled demo uses **EGFR** as an anchor across seven layers:
 
@@ -258,7 +245,7 @@ Phenotype
 
 Example linked evidence includes EGFR amplification, promoter accessibility, RNA abundance, EGFR protein abundance, pEGFR Y1068, lactate and proliferation.
 
-### 13. Data Loader
+### 12. Data Loader
 
 The Data Loader recognizes or previews the following families:
 
@@ -374,13 +361,13 @@ Recommended backend/tooling directions:
 
 ## Relationship to GenomeVista Studio
 
-The original repository currently demonstrates aligned FASTA exploration, SNP detection, p-distance, JC69, K2P, UPGMA/Newick output, sequence navigation and nucleobase chemistry. CellOmics Explorer keeps those capabilities conceptually as the **Genome layer** and extends the architecture across the rest of the cell rather than replacing them.
+CellOmics Explorer retains aligned FASTA exploration, SNP detection, sequence navigation and nucleobase chemistry in its **Genome layer**, and connects these capabilities to the other molecular layers.
 
 This makes the combined portfolio story:
 
 ```text
 GenomeVista
-DNA / variants / phylogenetics
+DNA / variants / sequence inspection
           ↓
 CellOmics Explorer
 cell → genome → epigenome → transcriptome → proteome
