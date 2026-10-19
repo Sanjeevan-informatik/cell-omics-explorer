@@ -1,5 +1,25 @@
 [
   {
+    "id": "sample-metadata",
+    "category": "multiomics",
+    "title": "Sample metadata",
+    "filename": "sample_metadata.tsv",
+    "description": "One row per synthetic sample, linked by exact sample ID. Leave unknown fields empty.",
+    "columns": [
+      "sample_id",
+      "organism",
+      "tissue",
+      "condition",
+      "batch",
+      "assay",
+      "unit",
+      "reference_assembly",
+      "source"
+    ],
+    "units": "Sample identifiers and supplied annotations",
+    "synthetic": true
+  },
+  {
     "id": "alignment",
     "category": "genome",
     "title": "Aligned DNA",

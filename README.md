@@ -18,7 +18,7 @@ npm ci
 npm run dev
 ```
 
-Open **http://localhost:3000**. The cell explorer opens immediately. Choose **DNA analysis** for an aligned FASTA dataset; the other workspaces explain molecular layers using synthetic examples.
+Open **http://localhost:3000**. Choose **Upload data & samples** to import your data or load the public PBMC and matched TCGA examples. Choose **DNA analysis** for aligned FASTA. Teaching views remain explicitly labeled.
 
 For the optional API, in another terminal:
 
@@ -41,25 +41,30 @@ API docs: **http://localhost:8000/docs**. Set `NEXT_PUBLIC_API_BASE_URL=http://l
 | DNA analysis | Implemented | Validate aligned FASTA, QC, GC composition, variants, and JSON exports |
 | Sequence map | Implemented | Linked position selection and base-by-base alignment navigation |
 | DNA → RNA → protein | Teaching model | Linked codons and residues with conceptual molecular views |
-| Upload data & samples | Implemented, bounded | Multi-file input, CSV/TSV tables, FASTA/FASTQ/VCF/BED validation, sample catalog and conversion guidance |
+| Upload data & samples | Implemented, bounded | Complete small tables, single-cell matrices/packages, sample metadata and public datasets |
 | Epigenome & Hi-C | Synthetic examples | Methylation table and contact-map illustration |
-| Transcriptome | Synthetic examples | Expression and exon/isoform illustration |
-| Single cell & spatial | Synthetic examples | Predetermined clusters and spatial positions, not computed UMAP |
+| Transcriptome | Imported tables + teaching examples | Full expression-table search/export; exact sample-ID links |
+| Single cell & spatial | Native imported-data workspace | Gene-colored supplied embeddings, cell/gene annotations, group summaries and package export |
 | Proteome & structures | Synthetic examples | MS1/MS2, peptide matches, modifications, atom-coordinate concepts |
 | Metabolites/lipids/glycans | Synthetic examples | LC-MS feature and chemistry concepts |
 | Immunomics | Synthetic examples | Clonotype sequences and frequencies |
 | Imaging & cytometry | Synthetic examples | Microscopy and event-marker concepts |
-| Pathways/integration | Synthetic examples | Signaling and EGFR evidence |
+| Pathways | Synthetic examples + imported tables | Signaling illustrations and edge-table inspection |
+| Multi-omics evidence | Native sample linking | Sample metadata, linked long/wide tables, unmatched-ID coverage and separate source units |
 
-Open **Upload data & samples** to select multiple local files, drag and drop a batch, or load any of **23 synthetic templates across 10 omics families**. Samples are served from `/data/` and maintained in `data/templates/`, with a manifest describing units and expected columns. Load all samples or only the selected category.
+Open **Upload data & samples** to select multiple local files, drag and drop a batch, or load any of **24 synthetic templates across 10 omics families**, including sample metadata. Templates are served from `/data/` and maintained in `data/templates/`, with a manifest describing units and expected columns.
+
+Two separately labeled **public experimental datasets** are bundled: PBMC3k (2,638 cells, 16 selected markers and existing UMAP/t-SNE coordinates) and TCGA breast cancer (10 matched specimens, three RNA/protein features). Their source records, processing limitations and licensing notices ship with the files. Start with **Load real PBMC data → Open single-cell**, or **Load matched TCGA data → Open sample links**. See [real-data workflows](docs/REAL_DATA.md).
 
 Ready tables appear in their selected omics workspace. Invalid files show correction guidance; binary files show specialist conversion routes. Missing data remains empty until a file or sample is selected. Teaching demos require an explicit action and remain separate from uploaded measurements. FASTA can be passed directly to DNA analysis.
 
-Limits: 5 MiB per text file, 20 MiB of previews per session, 20 files per batch, 40 files total, and 10,000 rows for delimited tables. Table previews retain the first 200 rows and display/filter that subset. Files stay in browser memory and the upload list clears on refresh; opening FASTA analysis separately stores that alignment in tab session storage. There is no server upload store, remote path/URL importer, or universal binary parser. See [format support](docs/FORMAT_SUPPORT.md).
+Limits: 5 MiB per text file, 20 MiB single-cell JSON and parsed session data, 20 files per batch, 40 session files, and 10,000 table rows. All accepted table rows are retained, searchable and exportable, with paginated display. Single-cell matrices are bounded to 10,000 cells, 5,000 genes and 1,000,000 stored values. The optional H5AD reader accepts up to 32 MiB and uses the same matrix bounds. Files stay in browser memory and the upload list clears on refresh; export a single-cell package to reopen it later. FASTA analysis separately uses tab session storage. See [format support](docs/FORMAT_SUPPORT.md).
 
 DNA analysis accepts 2–50 aligned sequences of up to 20,000 sites. Positions are 1-based alignment columns, not automatically mapped human reference coordinates. Only A, C, G, T, N, ?, and alignment gaps are accepted. Variable-site summaries use observed canonical bases; gaps and unknown bases remain visible in the alignment. The 30-base coding example translates to 10 amino acids within a longer protein context, not 30 amino acids. Conceptual structures are not experimentally resolved structures or folding predictions.
 
 The optional `POST /api/v1/analyze` endpoint takes `{ "fasta": ">sample..." }` and returns records, alignment length, base composition, variable sites, and QC metrics. The JSON report uses the same result shape.
+
+`POST /api/v1/import/h5ad` accepts a raw `application/octet-stream` H5AD body. It reads dense/CSR/CSC X, obs/var metadata, and selected supplied embeddings. The UI explicitly identifies the configured API before sending a file. Temporary server files are deleted after the request; no durable server upload store is added. This bounded reader is not a complete AnnData implementation.
 
 ## Architecture
 
