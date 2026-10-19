@@ -1,0 +1,167 @@
+{
+  "study_id": "brca_tcga_pan_can_atlas_2018",
+  "selection": "First ten lexicographically ordered (studyId, patientId, sampleId) keys having finite measurements for ERBB2, ESR1 and PGR in both profiles. Selected for software inspection, not representative biology.",
+  "eligible_matched_specimens": 874,
+  "selected_specimens": 10,
+  "selected_patients": 10,
+  "genes": [
+    "ERBB2",
+    "ESR1",
+    "PGR"
+  ],
+  "profiles": {
+    "rna_seq_v2_mrna": {
+      "rows": 30,
+      "minimum": 6.9335,
+      "maximum": 194625
+    },
+    "rppa": {
+      "rows": 30,
+      "minimum": -2.1359,
+      "maximum": 6.2896
+    }
+  },
+  "samples": [
+    {
+      "study_id": "brca_tcga_pan_can_atlas_2018",
+      "patient_id": "TCGA-3C-AALI",
+      "sample_id": "TCGA-3C-AALI-01"
+    },
+    {
+      "study_id": "brca_tcga_pan_can_atlas_2018",
+      "patient_id": "TCGA-3C-AALK",
+      "sample_id": "TCGA-3C-AALK-01"
+    },
+    {
+      "study_id": "brca_tcga_pan_can_atlas_2018",
+      "patient_id": "TCGA-4H-AAAK",
+      "sample_id": "TCGA-4H-AAAK-01"
+    },
+    {
+      "study_id": "brca_tcga_pan_can_atlas_2018",
+      "patient_id": "TCGA-5T-A9QA",
+      "sample_id": "TCGA-5T-A9QA-01"
+    },
+    {
+      "study_id": "brca_tcga_pan_can_atlas_2018",
+      "patient_id": "TCGA-A1-A0SF",
+      "sample_id": "TCGA-A1-A0SF-01"
+    },
+    {
+      "study_id": "brca_tcga_pan_can_atlas_2018",
+      "patient_id": "TCGA-A1-A0SH",
+      "sample_id": "TCGA-A1-A0SH-01"
+    },
+    {
+      "study_id": "brca_tcga_pan_can_atlas_2018",
+      "patient_id": "TCGA-A1-A0SJ",
+      "sample_id": "TCGA-A1-A0SJ-01"
+    },
+    {
+      "study_id": "brca_tcga_pan_can_atlas_2018",
+      "patient_id": "TCGA-A1-A0SK",
+      "sample_id": "TCGA-A1-A0SK-01"
+    },
+    {
+      "study_id": "brca_tcga_pan_can_atlas_2018",
+      "patient_id": "TCGA-A1-A0SO",
+      "sample_id": "TCGA-A1-A0SO-01"
+    },
+    {
+      "study_id": "brca_tcga_pan_can_atlas_2018",
+      "patient_id": "TCGA-A1-A0SQ",
+      "sample_id": "TCGA-A1-A0SQ-01"
+    }
+  ],
+  "source_counts": {
+    "rna_seq_v2_mrna:2064": 1082,
+    "rna_seq_v2_mrna:2099": 1082,
+    "rna_seq_v2_mrna:5241": 1082,
+    "rppa:2064": 876,
+    "rppa:2099": 876,
+    "rppa:5241": 876
+  },
+  "retrieval": {
+    "retrieved_at": "2026-09-10T20:39:56.418142+00:00",
+    "files": [
+      {
+        "file": "profiles.json",
+        "url": "https://www.cbioportal.org/api/studies/brca_tcga_pan_can_atlas_2018/molecular-profiles",
+        "sha256": "d6757ef2ec4e7117396c64b9d8cd3a3a4e49fdee8540f250635d5f43351950dd",
+        "bytes": 7299
+      },
+      {
+        "file": "study.json",
+        "url": "https://www.cbioportal.org/api/studies/brca_tcga_pan_can_atlas_2018",
+        "sha256": "cd0fd02fe96f5f0173d01d47bce77a83805fc0b20b8b8abb8b8337e7d1d53f3a",
+        "bytes": 1912
+      },
+      {
+        "file": "samples.json",
+        "url": "https://www.cbioportal.org/api/studies/brca_tcga_pan_can_atlas_2018/samples?projection=DETAILED&pageSize=10000",
+        "sha256": "841f94c357d5925930b728ee0eda92badee9e82ae96a52beb2ea8cf6a6cbe977",
+        "bytes": 368579
+      },
+      {
+        "file": "rppa_2064.json",
+        "url": "https://www.cbioportal.org/api/molecular-profiles/brca_tcga_pan_can_atlas_2018_rppa/molecular-data?sampleListId=brca_tcga_pan_can_atlas_2018_all&entrezGeneId=2064&projection=DETAILED",
+        "sha256": "ae332e795be1259e759392e256bfee0b4e3056d0139bb8175b8a05ad07a73c56",
+        "bytes": 373197
+      },
+      {
+        "file": "rppa_2099.json",
+        "url": "https://www.cbioportal.org/api/molecular-profiles/brca_tcga_pan_can_atlas_2018_rppa/molecular-data?sampleListId=brca_tcga_pan_can_atlas_2018_all&entrezGeneId=2099&projection=DETAILED",
+        "sha256": "71b6bffebbed1a564ddcca6b36725f41a41d3f88697b521391824938607cf359",
+        "bytes": 372466
+      },
+      {
+        "file": "rppa_5241.json",
+        "url": "https://www.cbioportal.org/api/molecular-profiles/brca_tcga_pan_can_atlas_2018_rppa/molecular-data?sampleListId=brca_tcga_pan_can_atlas_2018_all&entrezGeneId=5241&projection=DETAILED",
+        "sha256": "59db2762b554706a7c994a147477ea39e07817b4fb85178717d4d551c85eb1b8",
+        "bytes": 372157
+      },
+      {
+        "file": "rna_seq_v2_mrna_2064.json",
+        "url": "https://www.cbioportal.org/api/molecular-profiles/brca_tcga_pan_can_atlas_2018_rna_seq_v2_mrna/molecular-data?sampleListId=brca_tcga_pan_can_atlas_2018_all&entrezGeneId=2064&projection=DETAILED",
+        "sha256": "6961660f6a9d01ee8a3ffdd78873b2a689812125b43741622f39921ef0363d9c",
+        "bytes": 473747
+      },
+      {
+        "file": "rna_seq_v2_mrna_2099.json",
+        "url": "https://www.cbioportal.org/api/molecular-profiles/brca_tcga_pan_can_atlas_2018_rna_seq_v2_mrna/molecular-data?sampleListId=brca_tcga_pan_can_atlas_2018_all&entrezGeneId=2099&projection=DETAILED",
+        "sha256": "625d1c4cf58093eecfc755055e4f597fde8420970687bd2e1d552233cb4ff45c",
+        "bytes": 472639
+      },
+      {
+        "file": "rna_seq_v2_mrna_5241.json",
+        "url": "https://www.cbioportal.org/api/molecular-profiles/brca_tcga_pan_can_atlas_2018_rna_seq_v2_mrna/molecular-data?sampleListId=brca_tcga_pan_can_atlas_2018_all&entrezGeneId=5241&projection=DETAILED",
+        "sha256": "6d199d79b27e7c71d1d6f0a6f43a6c3c38353d7ec57ea79c5b14c221745eb1f0",
+        "bytes": 471530
+      },
+      {
+        "file": "LICENSE",
+        "url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_tcga_pan_can_atlas_2018/LICENSE",
+        "sha256": "a290da9a9b7f53084667f3b21cc3b4fce4168f917994e7516a02dd0e44385d38",
+        "bytes": 446
+      },
+      {
+        "file": "README.md",
+        "url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_tcga_pan_can_atlas_2018/README.md",
+        "sha256": "7969716b3516ab0d994efa9dee8d19cba42efe1e48ab476a3aba9062d54b56e6",
+        "bytes": 1541
+      },
+      {
+        "file": "meta_study.txt",
+        "url": "https://raw.githubusercontent.com/cBioPortal/datahub/master/public/brca_tcga_pan_can_atlas_2018/meta_study.txt",
+        "sha256": "c216ae618e84ef26a684ff01839166aa4f3a37aef23d032444cfe56b3e3048d8",
+        "bytes": 634
+      }
+    ]
+  },
+  "scope": "Matched cBioPortal sample identifiers; does not establish same aliquot, same individual cell or longitudinal sampling. No imputation, normalization or structure inference performed.",
+  "files": {
+    "tcga_protein.tsv": "3a128c4466bbefa1373a98289225a10546ca2032b4a61a82d02177d2c9a267ab",
+    "tcga_rna.tsv": "c34cff8c0f3a0ad0ec49ef8287f0658fa1af9920819e92de284b4f844878ade2",
+    "tcga_metadata.tsv": "71496f725bd71da81f31f0cad43db626a2100ea8c09f6746f7979df783f61fe3"
+  }
+}

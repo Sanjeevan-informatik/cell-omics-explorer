@@ -1,0 +1,3 @@
+sample_id	organism	tissue	condition	batch	assay	unit	reference_assembly	source
+control	Homo sapiens	synthetic tissue	control	demo_batch	RNA and protein teaching tables	see measurement table		synthetic
+case	Homo sapiens	synthetic tissue	case	demo_batch	RNA and protein teaching tables	see measurement table		synthetic

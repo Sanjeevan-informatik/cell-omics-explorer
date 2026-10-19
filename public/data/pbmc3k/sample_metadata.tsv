@@ -1,0 +1,2 @@
+sample_id	organism	tissue	condition	batch	assay	unit	reference_assembly	source	participant_id
+pbmc3k	Homo sapiens	peripheral blood	Healthy donor		single-cell RNA-seq	source raw.X log-expression		10x Genomics PBMC3k via Scanpy/cellxgene	""
